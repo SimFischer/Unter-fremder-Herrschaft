@@ -6,7 +6,7 @@ try{const saved=JSON.parse(localStorage.getItem(KEY));if(saved?.version===1&&Arr
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch{$('#storage-note').textContent='Der Browser kann den Fortschritt nicht speichern. Die App funktioniert für diese Sitzung weiter.';}}
 function esc(t){return String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function options(key,items){return `<div class="options">${items.map((t,i)=>`<button class="option ${state.answers[active][key]===i?'selected':''}" data-key="${key}" data-value="${i}" aria-pressed="${state.answers[active][key]===i}">${esc(t)}</button>`).join('')}</div>`;}
-function scene(){const count=state.solved.filter(Boolean).length;$('#hotspots').innerHTML=PUZZLES.map((p,i)=>`<button class="hotspot ${state.solved[i]?'done':''}" style="left:${p.pos[0]}%;top:${p.pos[1]}%" data-open="${i}" aria-label="${p.object}: ${state.solved[i]?'gelöst':'ungelöst'}"><span class="tag-seal" aria-hidden="true"><img src="seal-${state.solved[i]?'open':'closed'}.webp" alt="">${state.solved[i]?'':`<span>${i+1}</span>`}</span><span class="tag-label">${p.object}</span></button>`).join('');$('#seals').innerHTML=state.solved.map((v,i)=>`<img class="seal" src="seal-${v?'open':'closed'}.webp" alt="Siegel ${i+1}: ${v?'offen':'geschlossen'}">`).join('');$('#progress').textContent=count===5?'Alle fünf Siegel sind geöffnet.':`${count} von 5 Siegeln geöffnet` ;$('#backdrop').src=`control-post${count===5?'-open':''}.webp`;$('#end').hidden=count!==5;}
+function scene(){const count=state.solved.filter(Boolean).length;$('#hotspots').innerHTML=PUZZLES.map((p,i)=>`<button class="hotspot ${state.solved[i]?'done':''}" style="left:${p.pos[0]}%;top:${p.pos[1]}%" data-open="${i}" aria-label="${p.object}: ${state.solved[i]?'gelöst':'ungelöst'}"><span class="tag-seal" aria-hidden="true"><img src="seal-${state.solved[i]?'open':'closed'}.webp" alt="">${state.solved[i]?'':`<span>${i+1}</span>`}</span><span class="tag-label">${p.object}</span></button>`).join('');$('#seals').innerHTML=state.solved.map((v,i)=>`<img class="seal" src="seal-${v?'open':'closed'}.webp" alt="Siegel ${i+1}: ${v?'offen':'geschlossen'}">`).join('');$('#progress').textContent=count===5?'Alle fünf Siegel sind geöffnet.':`${count} von 5 Siegeln geöffnet` ;$('#backdrop').src=`control-post${count===5?'-open':''}.webp`;$('#end').hidden=count!==5;requestAnimationFrame(positionMarkers);}
 function open(i){active=i;pending=null;opener=document.activeElement;$('#chapter').textContent=`SIEGEL ${i+1} · ${PUZZLES[i].object}`;$('#title').textContent=PUZZLES[i].name;$('#knowledge-text').innerHTML=PUZZLES[i].knowledge.map(k=>`<p><strong>${KNOWLEDGE[k][0]}.</strong> ${KNOWLEDGE[k][1]}</p>`).join('');$('#knowledge').open=false;$('#feedback').textContent='';render();$('#puzzle').showModal();$('#puzzle .scroll').scrollTop=0;}
 function render(){const a=state.answers[active];let html='';
 if(active===0){const pairs=a.pairs||{};html='<p>Tippt zuerst eine Herrschaftsform links und dann ihre Folge rechts an. Verbindungen lassen sich durch erneutes Antippen ändern.</p><div class="columns"><div class="stack">'+LEFT.map((t,i)=>`<button class="card ${pending===i?'selected':''} ${pairs[i]!==undefined?'connected':''}" data-left="${i}">${i+1}. ${t}${pairs[i]!==undefined?`<br><small>→ ${RIGHT[pairs[i]]}</small>`:''}</button>`).join('')+'</div><div class="stack">'+[3,0,4,2,1].map(i=>`<button class="card" data-right="${i}">${RIGHT[i]}</button>`).join('')+'</div></div><h3>Vom Eingriff zur Erfahrung</h3><p>Bildet anschließend drei Ursache-Folge-Ketten. Wählt pro Kette einen Zwischenschritt und eine Folge.</p>'+CHAINS.map((c,i)=>`<div class="row"><h4>${c.start} →</h4>${options('mid'+i,c.mid)}<strong>→ Welche Erfahrung folgt daraus?</strong>${options('end'+i,c.end)}</div>`).join('');}
@@ -28,3 +28,30 @@ $('#task').addEventListener('click',e=>{const b=e.target.closest('button');if(!b
 $('#task').addEventListener('input',e=>{if(e.target.id==='sentence'){state.answers[4].sentence=e.target.value;save();}});
 $('#puzzle').setAttribute('aria-labelledby','title');$('#finale').setAttribute('aria-label','Der Weg ist frei');$('#reset-dialog').setAttribute('aria-label','Fortschritt zurücksetzen');
 $('#hotspots').addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(b)open(Number(b.dataset.open));});$('#check').onclick=check;$('#close').onclick=()=>$('#puzzle').close();$('#puzzle').addEventListener('close',()=>opener?.focus());$('#end').onclick=()=>{if(state.solved.every(Boolean))$('#finale').showModal();};$('#return').onclick=()=>$('#finale').close();$('#reset').onclick=()=>$('#reset-dialog').showModal();$('#cancel-reset').onclick=()=>$('#reset-dialog').close();$('#confirm-reset').onclick=()=>{state=fresh();save();scene();$('#reset-dialog').close();};scene();
+
+function positionMarkers(){
+ const layer=$('#object-markers'),image=$('#backdrop');if(!layer||!image.naturalWidth)return;
+ const base=layer.getBoundingClientRect(),r=image.getBoundingClientRect();
+ const scale=Math.min(r.width/image.naturalWidth,r.height/image.naturalHeight);
+ const width=image.naturalWidth*scale,height=image.naturalHeight*scale;
+ const offsetX=r.left-base.left+(r.width-width)/2,offsetY=r.top-base.top+(r.height-height)/2;
+ layer.replaceChildren();
+ PUZZLES.forEach((p,i)=>{
+  const label=$(`[data-open="${i}"]`).getBoundingClientRect();
+  const targetX=offsetX+width*p.anchor[0]/100,targetY=offsetY+height*p.anchor[1]/100;
+  const x=Math.max(label.left+8,Math.min(base.left+targetX,label.right-8))-base.left;
+  const y=(base.top+targetY>=label.bottom?label.bottom:label.top)-base.top;
+  const dx=targetX-x,dy=targetY-y;
+  const line=document.createElement('span');line.className='object-line';
+  line.style.cssText=`left:${x}px;top:${y}px;width:${Math.hypot(dx,dy)}px;transform:rotate(${Math.atan2(dy,dx)}rad)`;
+  const dot=document.createElement('span');dot.className='object-point';dot.dataset.object=i;
+  dot.style.cssText=`left:${targetX}px;top:${targetY}px`;
+  layer.append(line,dot);
+ });
+}
+const markerLayer=document.createElement('div');markerLayer.id='object-markers';markerLayer.setAttribute('aria-hidden','true');$('#scene').insertBefore(markerLayer,$('#hotspots'));
+new ResizeObserver(positionMarkers).observe($('#scene'));
+$('#backdrop').addEventListener('load',positionMarkers);
+$('#hotspots').addEventListener('pointerover',e=>{const b=e.target.closest('[data-open]');if(b)markerLayer.querySelector(`[data-object="${b.dataset.open}"]`)?.classList.add('lit');});
+$('#hotspots').addEventListener('pointerout',()=>markerLayer.querySelectorAll('.lit').forEach(e=>e.classList.remove('lit')));
+requestAnimationFrame(positionMarkers);

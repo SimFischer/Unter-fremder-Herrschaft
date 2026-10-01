@@ -32,3 +32,12 @@ textarea{background:linear-gradient(#fff5df,#f9ebcc);border-color:#b49360;border
 @media(prefers-reduced-motion:no-preference){.hotspot,.hotspot:before{transition:background .18s,box-shadow .18s}.hotspot:active{transform:translate(-50%,-48%)} }
 @media(max-width:650px){.hotspot{font-size:11px;padding:7px 9px 7px 21px;min-height:44px}.tag-seal{width:29px;height:35px;left:-10px}.tag-seal>span{font-size:10px;width:16px;height:16px}.hotspot.done .tag-seal{width:33px}.hotspot:after{height:13px;bottom:-14px}.hotspot:before{bottom:-22px}}
 @media(max-width:430px){.hotspot[data-open="1"]{top:63%!important}.hotspot[data-open="4"]{left:49%!important;top:84%!important}.hotspot[data-open="3"]{left:82%!important;top:69%!important}.hotspot[data-open="4"]:after{height:8px;bottom:-9px}.hotspot[data-open="4"]:before{bottom:-17px}}
+#hotspots,#object-markers{position:absolute;inset:0}
+#object-markers{pointer-events:none;z-index:1}
+#hotspots{z-index:2;pointer-events:none}
+.hotspot{pointer-events:auto}
+.hotspot:before,.hotspot:after{display:none}
+.object-line{position:absolute;height:1px;background:#f0d498;transform-origin:0 50%;box-shadow:0 1px 2px #33210b99}
+.object-point{position:absolute;transform:translate(-50%,-50%);width:11px;height:11px;border:1px solid #ffe4a7;border-radius:50%;background:#ad7c3880;box-shadow:0 1px 3px #21150d88}
+.object-point.lit{background:#f3cf77;box-shadow:0 0 0 7px #f5ce7444,0 0 22px 12px #ffc96355}
+@media(max-width:430px){.hotspot[data-open="1"]{left:27%!important;top:47%!important}.hotspot[data-open="4"]{left:51%!important;top:88%!important}.hotspot[data-open="3"]{left:81%!important;top:70%!important}}
