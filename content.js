@@ -1,9 +1,89 @@
 const READINGS=[
-[['Wer bestimmt?','Rom bestimmt, wer herrschen darf. In Galiläa regiert <strong>Herodes Antipas mit Roms Zustimmung</strong>. In Judäa setzt Rom eigene Statthalter ein. Die Menschen wählen diese Herrscher nicht selbst.','edict-board'],['Was erleben die Menschen?','Soldaten kontrollieren Reisende und Waren. Familien zahlen <strong>Abgaben</strong>. Nach einer schlechten Ernte bleibt armen Familien dadurch oft wenig zum Leben. Ein Kaiserbild auf einer Münze zeigt Roms Macht im Alltag.','coin-table'],['Warum gibt es Spannungen?','Viele Juden glauben an <strong>einen Gott</strong>. Die Römer verehren viele Götter und auch den Kaiser. Die Kaiserverehrung widerspricht dem Glauben vieler Juden. Ihr Glaube ist deshalb nicht allgemein verboten.','report-scroll']],
-[['Ein Herrscher aus der Region','Herodes Antipas regiert in Galiläa. Das bedeutet nicht, dass Galiläa unabhängig ist: Er braucht <strong>Roms Zustimmung</strong>. Rom kann also auch durch einen örtlichen Herrscher Einfluss ausüben. Soldaten kontrollieren trotzdem Straßen.','edict-board'],['Gleiche Abgabe – gleiche Belastung?','Stellt euch zwei Familien vor: Eine hat 20 Säcke Getreide, die andere 5. Beide geben 2 Säcke ab. Es bleiben 18 oder 3 Säcke. <strong>Die Familie mit wenig Vorräten spürt die Abgabe stärker.</strong>','coin-table'],['Münze und Glaube unterscheiden','Das Kaiserbild auf einer Münze zeigt römische Macht. <strong>Mit der Münze zu bezahlen ist noch keine Verehrung des Kaisers als Gott.</strong> Viele Juden benutzen Geld und halten zugleich an ihrem Glauben an einen Gott fest.','report-scroll']],
-[['Den Alltag sichern','Manche Menschen machen weiter mit: Sie handeln auf dem Markt und vermeiden Streit mit Beamten. Sie <strong>arrangieren sich</strong>. Das heißt nicht automatisch, dass sie die Herrschaft gerecht finden.','group-people'],['Hoffen oder kämpfen?','Manche wünschen sich <strong>Freiheit und Selbstbestimmung</strong>. Ein Wunsch ist noch kein Plan für einen Kampf. Andere wollen die Römer mit Waffen vertreiben: Das ist <strong>bewaffneter Widerstand</strong>.','report-scroll'],['Die Sicht eines Soldaten','Ein römischer Soldat kontrolliert im Auftrag Roms Reisende und Waren. Er soll die <strong>römische Ordnung sichern</strong>. Menschen in derselben Gegend können also ganz unterschiedlich denken und handeln.','roman-guard']],
-[['Norden, Mitte, Süden','Merkt euch die Reihenfolge: <strong>Galiläa im Norden – Samaria in der Mitte – Judäa im Süden</strong>. Der See Genezareth liegt in Galiläa. Der Jordan fließt vom See nach Süden zum Toten Meer.','palestine-map'],['Orte in Galiläa','<strong>Kafarnaum liegt am Nordufer des Sees Genezareth.</strong> Nazareth liegt ebenfalls in Galiläa. Daher kommt der Name „Jesus von Nazareth“. Jesus lebte und wirkte in dieser nördlichen Region.','map-table'],['Warum Jerusalem wichtig ist','<strong>Jerusalem liegt in Judäa.</strong> Dort stand der Tempel: ein wichtiger Mittelpunkt des jüdischen Glaubens. Verwechselt also die Stadt Jerusalem nicht mit der Region Galiläa.','edict-board']],
-[['Spuren der Herrschaft','Ein Bericht kann unterschiedliche Belege enthalten: <strong>Soldaten kontrollieren</strong> den Alltag. Ein <strong>Kaiserbild</strong> zeigt, wessen politische Macht sichtbar ist. Eine bloße Ortsangabe beweist noch keine Belastung.','roman-guard'],['Was bleibt zum Leben?','Eine schlechte Ernte bedeutet weniger Vorräte. Müssen trotzdem <strong>Abgaben</strong> gezahlt werden, bleibt besonders armen Familien wenig. Das ist eine wirtschaftliche Belastung.','coin-table'],['Wünsche und Reaktionen','Wer sich Selbstbestimmung wünscht, <strong>hofft auf Freiheit</strong>. Daraus folgt nicht automatisch ein bewaffneter Kampf. Verbindet für eure Erklärung zwei Beobachtungen und denkt daran: Nicht alle Menschen waren gleich betroffen.','group-people']]
+  [
+    [
+      "Wer bestimmt?",
+      "Rom bestimmt, wer herrschen darf. In Galiläa regiert <strong>Herodes Antipas mit Roms Zustimmung</strong>. In Judäa setzt Rom eigene Statthalter ein. Die Menschen wählen diese Herrscher nicht selbst.</p><p>Ein Herrscher aus der eigenen Region kann also trotzdem von einer fremden Macht abhängig sein. <strong>Fremdbestimmung</strong> bedeutet hier: Wichtige Entscheidungen über die Herrschaft werden nicht von der Bevölkerung selbst getroffen. Rom will seinen Einfluss in den Gebieten sichern.",
+      "edict-board"
+    ],
+    [
+      "Was erleben die Menschen?",
+      "Soldaten kontrollieren Reisende und Waren. Familien zahlen <strong>Abgaben</strong>. Nach einer schlechten Ernte bleibt armen Familien dadurch oft wenig zum Leben. Ein Kaiserbild auf einer Münze zeigt Roms Macht im Alltag.</p><p>Abgaben sind Geld oder Waren, die Menschen an die Herrschenden abgeben müssen. Eine Bauernfamilie braucht ihre Ernte aber auch zum Essen und für die nächste Aussaat. <strong>Kontrolle, Abgaben und sichtbare Machtzeichen</strong> begegnen den Menschen deshalb in ganz verschiedenen Lebensbereichen.",
+      "coin-table"
+    ],
+    [
+      "Warum gibt es Spannungen?",
+      "Viele Juden glauben an <strong>einen Gott</strong>. Die Römer verehren viele Götter und auch den Kaiser. Die Kaiserverehrung widerspricht dem Glauben vieler Juden. Ihr Glaube ist deshalb nicht allgemein verboten.</p><p>Religion gehört für viele Menschen fest zu ihrem Alltag. Sie wollen ihre Traditionen bewahren und ihrem Gott treu bleiben. Wenn der Kaiser auch religiös verehrt wird, kann das für sie ein Problem sein: <strong>Politische Macht und religiöser Glaube geraten in Spannung.</strong>",
+      "report-scroll"
+    ]
+  ],
+  [
+    [
+      "Ein Herrscher aus der Region",
+      "Herodes Antipas regiert in Galiläa. Das bedeutet nicht, dass Galiläa unabhängig ist: Er braucht <strong>Roms Zustimmung</strong>. Rom kann also auch durch einen örtlichen Herrscher Einfluss ausüben. Soldaten kontrollieren trotzdem Straßen.</p><p>Der Unterschied ist wichtig: <strong>Ein örtlicher Herrscher ist nicht dasselbe wie ein römischer Statthalter.</strong> Herodes Antipas stammt aus einer Herrscherfamilie der Region; ein Statthalter verwaltet ein Gebiet im Auftrag Roms. Beide Formen können römischen Einfluss ermöglichen.",
+      "edict-board"
+    ],
+    [
+      "Gleiche Abgabe – gleiche Belastung?",
+      "Stellt euch zwei Familien vor: Eine hat 20 Säcke Getreide, die andere 5. Beide geben 2 Säcke ab. Es bleiben 18 oder 3 Säcke. <strong>Die Familie mit wenig Vorräten spürt die Abgabe stärker.</strong></p><p>Überlegt, welche Familie leichter genug Essen und Saatgut zurücklegen kann. Für die ärmere Familie können schon wenige Säcke entscheidend sein. Die Zahl der abgegebenen Säcke allein verrät also noch nicht, <strong>wie schwer die Belastung für eine Familie ist.</strong>",
+      "coin-table"
+    ],
+    [
+      "Münze und Glaube unterscheiden",
+      "Das Kaiserbild auf einer Münze zeigt römische Macht. <strong>Mit der Münze zu bezahlen ist noch keine Verehrung des Kaisers als Gott.</strong> Viele Juden benutzen Geld und halten zugleich an ihrem Glauben an einen Gott fest.</p><p>Unterscheidet deshalb zwei Handlungen: Jemand kauft mit einer Münze Brot oder jemand verehrt den Kaiser religiös. Das ist nicht dasselbe. Aus einem Gegenstand, den ein Mensch benutzt, könnt ihr <strong>nicht automatisch auf seinen Glauben oder seine Zustimmung zu Rom schließen.</strong>",
+      "report-scroll"
+    ]
+  ],
+  [
+    [
+      "Den Alltag sichern",
+      "Manche Menschen machen weiter mit: Sie handeln auf dem Markt und vermeiden Streit mit Beamten. Sie <strong>arrangieren sich</strong>. Das heißt nicht automatisch, dass sie die Herrschaft gerecht finden.</p><p>Eine Händlerin muss zum Beispiel Waren verkaufen, damit ihre Familie leben kann. Streit mit Beamten könnte ihren Alltag erschweren. Sich zu arrangieren heißt deshalb oft: mit den vorhandenen Verhältnissen umgehen. <strong>Anpassung kann eine praktische Entscheidung sein, auch wenn jemand unzufrieden ist.</strong>",
+      "group-people"
+    ],
+    [
+      "Hoffen oder kämpfen?",
+      "Manche wünschen sich <strong>Freiheit und Selbstbestimmung</strong>. Ein Wunsch ist noch kein Plan für einen Kampf. Andere wollen die Römer mit Waffen vertreiben: Das ist <strong>bewaffneter Widerstand</strong>.</p><p>Achtet beim Lesen auf die Worte einer Person: Wünscht sie sich nur eine andere Zukunft, oder fordert sie ausdrücklich den Einsatz von Waffen? Beides kann aus Unzufriedenheit entstehen. <strong>Hoffnung und bewaffneter Widerstand sind trotzdem unterschiedliche Reaktionen.</strong>",
+      "report-scroll"
+    ],
+    [
+      "Die Sicht eines Soldaten",
+      "Ein römischer Soldat kontrolliert im Auftrag Roms Reisende und Waren. Er soll die <strong>römische Ordnung sichern</strong>. Menschen in derselben Gegend können also ganz unterschiedlich denken und handeln.</p><p>Für einen Soldaten gehört die Kontrolle zu seinem Auftrag. Ein Reisender kann dieselbe Kontrolle als Einschränkung erleben. <strong>Die Aufgabe, die Lebenslage und die Sichtweise einer Person</strong> helfen euch, ihre Aussage zu verstehen. Eine einzelne Stimme steht nicht für alle Menschen.",
+      "roman-guard"
+    ]
+  ],
+  [
+    [
+      "Norden, Mitte, Süden",
+      "Merkt euch die Reihenfolge: <strong>Galiläa im Norden – Samaria in der Mitte – Judäa im Süden</strong>. Der See Genezareth liegt in Galiläa. Der Jordan fließt vom See nach Süden zum Toten Meer.</p><p>Eine Region ist ein größeres Gebiet, eine Stadt oder ein Dorf dagegen ein einzelner Ort. Sucht auf der Karte zuerst die Regionen und dann die Orte und Gewässer. <strong>Der Jordan ist ein Fluss, der See Genezareth ein See.</strong> Solche Unterschiede helfen bei Reisehinweisen.",
+      "palestine-map"
+    ],
+    [
+      "Orte in Galiläa",
+      "<strong>Kafarnaum liegt am Nordufer des Sees Genezareth.</strong> Nazareth liegt ebenfalls in Galiläa. Daher kommt der Name „Jesus von Nazareth“. Jesus lebte und wirkte in dieser nördlichen Region.</p><p>Viele Menschen am See leben vom Fischfang oder vom Handel. Die Nähe zum Wasser hilft euch, Kafarnaum auf der Karte zu finden. Bei Nazareth hilft euch der Name Jesu. <strong>Beide Orte gehören zu Galiläa, sind aber nicht derselbe Ort.</strong>",
+      "map-table"
+    ],
+    [
+      "Warum Jerusalem wichtig ist",
+      "<strong>Jerusalem liegt in Judäa.</strong> Dort stand der Tempel: ein wichtiger Mittelpunkt des jüdischen Glaubens. Verwechselt also die Stadt Jerusalem nicht mit der Region Galiläa.</p><p>Menschen kommen auch aus anderen Gegenden zum Tempel nach Jerusalem. Die Stadt hat deshalb eine besondere religiöse Bedeutung. <strong>Judäa ist die Region, Jerusalem die Stadt darin.</strong> Der Tempel steht also nicht in der nördlichen Region Galiläa.",
+      "edict-board"
+    ]
+  ],
+  [
+    [
+      "Spuren der Herrschaft",
+      "Ein Bericht kann unterschiedliche Belege enthalten: <strong>Soldaten kontrollieren</strong> den Alltag. Ein <strong>Kaiserbild</strong> zeigt, wessen politische Macht sichtbar ist. Eine bloße Ortsangabe beweist noch keine Belastung.</p><p>Ein <strong>Beleg</strong> ist eine Beobachtung oder Textstelle, die eure Erklärung stützt. Fragt jeweils: Was passiert hier genau? Werden Waren geprüft, Abgaben verlangt oder Wünsche geäußert? So könnt ihr die Stelle dem passenden Schwerpunkt zuordnen, statt nur ein einzelnes Wort zu suchen.",
+      "roman-guard"
+    ],
+    [
+      "Was bleibt zum Leben?",
+      "Eine schlechte Ernte bedeutet weniger Vorräte. Müssen trotzdem <strong>Abgaben</strong> gezahlt werden, bleibt besonders armen Familien wenig. Das ist eine wirtschaftliche Belastung.</p><p>Wirtschaftlich meint hier alles, was mit Vorräten, Arbeit und dem Lebensunterhalt zu tun hat. Familien mit großen Vorräten können eine Abgabe eher verkraften. <strong>Die gleiche Herrschaft betrifft Menschen daher unterschiedlich stark.</strong> Achtet in einem Bericht auch auf ihre Lebenslage.",
+      "coin-table"
+    ],
+    [
+      "Wünsche und Reaktionen",
+      "Wer sich Selbstbestimmung wünscht, <strong>hofft auf Freiheit</strong>. Daraus folgt nicht automatisch ein bewaffneter Kampf. Verbindet für eure Erklärung zwei Beobachtungen und denkt daran: Nicht alle Menschen waren gleich betroffen.</p><p>Eine gute Erklärung nennt nicht nur Stichwörter, sondern verbindet sie: „Nach der schlechten Ernte …, deshalb …“. Nutzt Beobachtungen aus dem Bericht. <strong>Unterscheidet dabei eine Belastung von einer Reaktion darauf:</strong> Eine Abgabe ist eine Belastung; der Wunsch nach Freiheit ist eine mögliche Reaktion.",
+      "group-people"
+    ]
+  ]
 ];
 const KNOWLEDGE=[
 ['Herrschaft','Palästina stand unter römischer Herrschaft. Rom setzte Herrscher und Beamte ein, die römische Interessen durchsetzten. In Galiläa regierte Herodes Antipas, solange Rom ihm vertraute. In Judäa setzte Rom eigene Statthalter ein. Die Bevölkerung konnte daher nicht selbst bestimmen, wer über sie herrschte. Römische Soldaten bewachten wichtige Orte, kontrollierten Straßen und gingen gegen Widerstand vor.'],
@@ -14,7 +94,7 @@ const KNOWLEDGE=[
 const PUZZLES=[
 {name:'Herrschaftsnetz',object:'Erlassbrett',pos:[17,28],anchor:[9,42],knowledge:[0,1,2],hint:'Unterscheidet politische, wirtschaftliche und religiöse Folgen. Eine Kette führt von einer Maßnahme über ihre Wirkung zum Erleben der Menschen.'},
 {name:'Manipulierte Akte',object:'Abgabentisch',pos:[28,54],anchor:[21,64],knowledge:[0,1,2],hint:'Prüft besonders, wer Herrscher bestimmte, wo Rom im Alltag sichtbar war und wie viele Juden zur Kaiserverehrung standen.'},
-{name:'Stimmen unter Besatzung',object:'Figurengruppe',pos:[77,37],anchor:[79,52],knowledge:[0,1,3],hint:'Achtet auf die Verben: weiterleben, hoffen, kämpfen und sichern. Haltung und Begründung müssen zur selben Stimme passen.'},
+{name:'Stimmen unter Besatzung',object:'Figurengruppe',pos:[79,26],anchor:[79,52],knowledge:[0,1,3],hint:'Achtet auf die Verben: weiterleben, hoffen, kämpfen und sichern. Haltung und Begründung müssen zur selben Stimme passen.'},
 {name:'Karte Palästinas',object:'Karte',pos:[83,55],anchor:[83,67],knowledge:[4],hint:'Orientiert euch zuerst an Norden, Mitte und Süden. Unterscheidet dann Orte, Gewässer und Regionen.'},
 {name:'Zacharias’ Bericht',object:'Pergamentrolle',pos:[54,69],anchor:[51,77],knowledge:[0,1,3],hint:'Sucht die vier konkreten Erfahrungen: Kontrolle, ein sichtbares Zeichen der kaiserlichen Macht, Abgaben und Hoffnung auf Selbstbestimmung.'}];
 
