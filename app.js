@@ -1,7 +1,7 @@
 'use strict';
 const $=s=>document.querySelector(s),KEY='palaestina-adventure-klasse6-v2';
 const fresh=()=>({version:1,solved:Array(5).fill(false),answers:Array.from({length:5},()=>({})),attempts:Array(5).fill(0)});
-let state=fresh(),active=0,pending=null,opener=null,views=Array(5).fill(0),awaitingNext=false;
+let state=fresh(),active=0,pending=null,opener=null,views=Array(5).fill(0),awaitingNext=false,reading=false;
 try{const saved=JSON.parse(localStorage.getItem(KEY));if(saved?.version===1&&Array.isArray(saved.solved)&&saved.solved.length===5&&saved.answers?.length===5&&saved.attempts?.length===5)state=saved;}catch{ }
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch{$('#storage-note').textContent='Der Browser kann den Fortschritt nicht speichern. Die App funktioniert für diese Sitzung weiter.';}}
 function esc(t){return String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
@@ -12,19 +12,27 @@ function options(key,items){
  return `<div class="options">${order.map((i,j)=>`<button class="option ${state.answers[active][key]===i?'selected':''}" data-key="${key}" data-value="${i}" aria-pressed="${state.answers[active][key]===i}"><span class="choice-letter" aria-hidden="true">${String.fromCharCode(65+j)}</span><span>${esc(items[i])}</span>${state.answers[active][key]===i?'<span class="choice-state">Gewählt</span>':''}</button>`).join('')}</div>`;
 }
 function mission(title,text){return `<div class="mission"><span class="eyebrow">EUER AUFTRAG</span><h3>${title}</h3><p>${text}</p></div>`;}
+const readingAssets={'edict-board':'edict-board.webp','coin-table':'coin-table.webp','report-scroll':'report-scroll.webp','map-table':'map-table.webp','palestine-map':'palestine-map.webp','group-people':'group-people.webp','roman-guard':'roman-guard.webp'};
+function readingCards(){return READINGS[active].map((r,i)=>`<article class="reading-card"><img src="${readingAssets[r[2]]}" alt=""><div><span class="reading-number">${i+1}</span><h3>${r[0]}</h3><p>${r[1]}</p></div></article>`).join('');}
 function portrait(i){return i===3?'<div class="voice-portrait guard"><img src="roman-guard.webp" alt="Marcus, römischer Soldat"></div>':`<div class="voice-portrait people person-${i}"><img src="group-people.webp" alt="${esc(PEOPLE[i][0])}"></div>`;}
-function scene(){const count=state.solved.filter(Boolean).length;$('#hotspots').innerHTML=PUZZLES.map((p,i)=>`<button class="hotspot ${state.solved[i]?'done':''}" style="left:${p.pos[0]}%;top:${p.pos[1]}%" data-open="${i}" aria-label="${p.object}: ${state.solved[i]?'gelöst':'ungelöst'}"><span class="tag-seal" aria-hidden="true"><img src="seal-${state.solved[i]?'open':'closed'}.webp" alt="">${state.solved[i]?'':`<span>${i+1}</span>`}</span><span class="tag-label">${p.object}</span></button>`).join('');$('#seals').innerHTML=state.solved.map((v,i)=>`<img class="seal" src="seal-${v?'open':'closed'}.webp" alt="Siegel ${i+1}: ${v?'offen':'geschlossen'}">`).join('');$('#progress').textContent=count===5?'Alle fünf Siegel sind geöffnet.':`${count} von 5 Siegeln geöffnet` ;$('#backdrop').src=`control-post${count===5?'-open':''}.webp`;$('#end').hidden=count!==5;requestAnimationFrame(positionMarkers);}
+function scene(){const count=state.solved.filter(Boolean).length;$('#hotspots').innerHTML=PUZZLES.map((p,i)=>`<button class="hotspot ${state.solved[i]?'done':''}" style="left:${p.pos[0]}%;top:${p.pos[1]}%" data-open="${i}" aria-label="${p.object}: ${state.solved[i]?'gelöst':'ungelöst'}"><span class="tag-seal" aria-hidden="true"><img src="seal-${state.solved[i]?'open':'closed'}.webp" alt="">${state.solved[i]?'':`<span>${i+1}</span>`}</span><span class="tag-label">${p.object}</span></button>`).join('');$('#seals').innerHTML=state.solved.map((v,i)=>`<img class="seal" src="seal-${v?'open':'closed'}.webp" alt="Siegel ${i+1}: ${v?'offen':'geschlossen'}">`).join('');$('#progress').textContent=count===5?'Alle fünf Siegel sind geöffnet.':`${count} von 5 Siegeln geöffnet` ;$('#backdrop').src=`control-post${count===5?'-open':''}.webp`;$('#end').hidden=count!==5;$('#bonus-invite').hidden=count!==5;requestAnimationFrame(positionMarkers);}
 
 function open(i){
  active=i;pending=null;awaitingNext=false;opener=document.activeElement;
+ reading=!state.answers[i].read;
  views[i]=state.solved[i]?0:Math.min(state.answers[i].stage||0,TOTALS[i]-1);
  $('#chapter').textContent=`SIEGEL ${i+1} · ${PUZZLES[i].object}`;$('#title').textContent=BRIEFS[i][0];
- $('#knowledge-text').innerHTML=PUZZLES[i].knowledge.map(k=>`<p><strong>${KNOWLEDGE[k][0]}.</strong> ${KNOWLEDGE[k][1]}</p>`).join('');
+ $('#knowledge-text').innerHTML=readingCards()+`<details class="extra-knowledge"><summary>Mehr Hintergrundwissen</summary>${PUZZLES[i].knowledge.map(k=>`<p><strong>${KNOWLEDGE[k][0]}.</strong> ${KNOWLEDGE[k][1]}</p>`).join('')}</details>`;
  $('#knowledge').open=false;$('#feedback').textContent='';$('#feedback').className='';
  render();$('#puzzle').showModal();$('#puzzle .scroll').scrollTop=0;
 }
 function render(){
  const a=state.answers[active],round=views[active],total=TOTALS[active],unlocked=Math.min(a.stage||0,total-1);
+ $('#knowledge').hidden=reading;
+ if(reading){
+  $('#task').innerHTML=`<div class="reading-intro"><span class="eyebrow">ERST ENTDECKEN · DANN RÄTSELN</span><h3>Euer Wissen für dieses Siegel</h3><p>Lest die drei Wissenskarten gemeinsam. Erklärt euch kurz, was ihr verstanden habt. Danach startet ihr das Rätsel.</p></div><div class="reading-cards">${readingCards()}</div><div class="reading-reminder"><strong>Ihr müsst nicht alles auswendig wissen.</strong><p>Beim Rätseln könnt ihr diese Karten jederzeit unter „Wissenskarten nachlesen“ wieder öffnen.</p></div>`;
+  $('#check').textContent='Gelesen – zum Rätsel →';$('#solved').textContent='';return;
+ }
  let html='';
  if(active===0&&round===0){
   const pairs=a.pairs||{};
@@ -81,11 +89,12 @@ function render(){
  $('#solved').textContent=state.solved[active]?'Siegel offen · ihr könnt weiter nachlesen':'';
  $('#check').textContent=awaitingNext?(round===total-1?'Zur Szene':'Weiter →'):'Diesen Schritt prüfen';
 }
-function failure(message='Da passt noch etwas nicht. Prüft eure Auswahl noch einmal. „Wissen nachlesen“ kann euch helfen.'){
+function failure(message='Da passt noch etwas nicht. Prüft eure Auswahl noch einmal. „Wissenskarten nachlesen“ kann euch helfen.'){
  state.attempts[active]++;save();$('#feedback').className='needs-help';
  $('#feedback').textContent=message+(state.attempts[active]>=2?' Tipp: '+PUZZLES[active].hint:'');
 }
 function check(){
+ if(reading){state.answers[active].read=true;reading=false;save();render();$('#puzzle .scroll').scrollTop=0;return;}
  const a=state.answers[active],round=views[active];
  if(awaitingNext){
   awaitingNext=false;$('#feedback').textContent='';$('#feedback').className='';
@@ -172,3 +181,38 @@ $('#backdrop').addEventListener('load',positionMarkers);
 $('#hotspots').addEventListener('pointerover',e=>{const b=e.target.closest('[data-open]');if(b)markerLayer.querySelector(`[data-object="${b.dataset.open}"]`)?.classList.add('lit');});
 $('#hotspots').addEventListener('pointerout',()=>markerLayer.querySelectorAll('.lit').forEach(e=>e.classList.remove('lit')));
 requestAnimationFrame(positionMarkers);
+
+function validBonus(tiles){return Array.isArray(tiles)&&tiles.length===9&&tiles.every(n=>Number.isInteger(n)&&n>=0&&n<=8)&&new Set(tiles).size===9;}
+function slideNeighbors(i){return [i%3>0?i-1:-1,i%3<2?i+1:-1,i>=3?i-3:-1,i<6?i+3:-1].filter(n=>n>=0);}
+function bonusComplete(){return validBonus(state.bonus)&&state.bonus.every((n,i)=>n===i);}
+function shuffleBonus(){
+ state.bonus=Array.from({length:9},(_,i)=>i);let empty=8,previous=-1;
+ // Legal moves from the solved picture guarantee a solvable puzzle.
+ for(let step=0;step<24;step++){const choices=slideNeighbors(empty).filter(i=>i!==previous);const next=choices[Math.floor(Math.random()*choices.length)];[state.bonus[empty],state.bonus[next]]=[state.bonus[next],state.bonus[empty]];previous=empty;empty=next;}
+ if(bonusComplete()){const next=slideNeighbors(empty)[0];[state.bonus[empty],state.bonus[next]]=[state.bonus[next],state.bonus[empty]];}
+ save();renderBonus();$('#bonus-status').textContent='Das Bild ist gemischt. Die hell umrandeten Stücke lassen sich in die freie Stelle schieben.';
+}
+function renderBonus(){
+ const empty=state.bonus.indexOf(8),neighbors=slideNeighbors(empty),done=bonusComplete();
+ $('#slide-board').className='slide-board'+($('#show-numbers').checked?' with-numbers':'')+(done?' picture-complete':'');
+ $('#slide-board').innerHTML=state.bonus.map((n,i)=>n===8&&!done?'<div class="slide-gap" role="img" aria-label="Freie Stelle"><span>frei</span></div>':`<button class="slide-tile ${neighbors.includes(i)&&!done?'movable':''}" data-slide="${i}" ${done?'disabled':''} aria-label="Bildstück ${n+1}, Reihe ${Math.floor(i/3)+1}, Spalte ${i%3+1}${neighbors.includes(i)&&!done?', verschiebbar':''}" style="background-position:${(n%3)*50}% ${Math.floor(n/3)*50}%"><span class="tile-label">${n+1}</span></button>`).join('');
+ if(done)$('#bonus-status').textContent='Geschafft! Der Kontrollposten ist wieder vollständig. Ihr könnt das Bild ansehen oder noch einmal spielen.';
+}
+function openBonus(){
+ if(!state.solved.every(Boolean))return;
+ if(!validBonus(state.bonus))shuffleBonus();else renderBonus();
+ $('#bonus').showModal();$('#bonus .scroll').scrollTop=0;
+}
+$('#bonus-open').onclick=openBonus;
+$('#finale-bonus').onclick=()=>{$('#finale').close();openBonus();};
+$('#bonus-close').onclick=()=>$('#bonus').close();
+$('#bonus-shuffle').onclick=shuffleBonus;
+$('#show-numbers').addEventListener('change',renderBonus);
+$('#slide-board').addEventListener('click',e=>{
+ const b=e.target.closest('[data-slide]');if(!b||bonusComplete())return;
+ const i=Number(b.dataset.slide),empty=state.bonus.indexOf(8);
+ if(!slideNeighbors(empty).includes(i)){$('#bonus-status').textContent='Dieses Stück liegt nicht neben der freien Stelle. Wählt ein hell umrandetes Stück.';return;}
+ [state.bonus[empty],state.bonus[i]]=[state.bonus[i],state.bonus[empty]];save();
+ $('#bonus-status').textContent='Gut verschoben. Sucht das nächste passende Stück.';renderBonus();
+ $('#slide-board').querySelector(`[data-slide="${empty}"]`)?.focus({preventScroll:true});
+});
