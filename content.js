@@ -10,16 +10,62 @@ const PUZZLES=[
 {name:'Stimmen unter Besatzung',object:'Figurengruppe',pos:[77,37],anchor:[79,52],knowledge:[0,1,3],hint:'Achtet auf die Verben: weiterleben, hoffen, kämpfen und sichern. Haltung und Begründung müssen zur selben Stimme passen.'},
 {name:'Karte Palästinas',object:'Karte',pos:[83,55],anchor:[83,67],knowledge:[4],hint:'Orientiert euch zuerst an Norden, Mitte und Süden. Unterscheidet dann Orte, Gewässer und Regionen.'},
 {name:'Zacharias’ Bericht',object:'Pergamentrolle',pos:[54,69],anchor:[51,77],knowledge:[0,1,3],hint:'Sucht die vier konkreten Erfahrungen: Kontrolle, ein sichtbares Zeichen der kaiserlichen Macht, Abgaben und Hoffnung auf Selbstbestimmung.'}];
-const LEFT=['Rom setzte Herrscher und Beamte ein.','Soldaten kontrollierten Straßen und wichtige Orte.','Steuern und Abgaben wurden verlangt.','Römische Götter und Kaiserverehrung waren präsent.','Kaiserbilder waren auf Münzen sichtbar.'];
-const RIGHT=['politische Fremdbestimmung','Kontrolle, Angst und ständige Machterfahrung','wirtschaftliche Belastung besonders armer Familien','religiöse Spannungen','römische Herrschaft wird im Alltag sichtbar'];
-const CHAINS=[{start:'Rom setzt Herrscher ein',mid:['Menschen bestimmen nicht selbst','Menschen zahlen keine Abgaben','Menschen verehren viele Götter'],end:['Gefühl von Unfreiheit','Mehr Geld für arme Familien','Religiöse Einigkeit'],answer:[0,0]}, {start:'Abgaben werden auch nach schlechter Ernte verlangt',mid:['Bauern können frei über Herrscher entscheiden','Armen Familien bleibt wenig zum Leben','Soldaten verlassen das Land'],end:['Wirtschaftliche Sicherheit für alle','Ende der Fremdherrschaft','Existenzsorgen nehmen zu'],answer:[1,2]}, {start:'Kaiserverehrung wird öffentlich sichtbar',mid:['Viele Juden wollen ihren Glauben an den einen Gott bewahren','Alle Juden übernehmen römische Religion','Der Tempel verliert für alle seine Bedeutung'],end:['Alle reagieren gleich','Religiöse Spannungen entstehen','Abgaben werden abgeschafft'],answer:[0,1]}];
-const STATEMENTS=['Die Menschen in Galiläa konnten selbst bestimmen, wer über sie herrschte.','Herodes Antipas durfte herrschen, solange Rom ihm vertraute.','Soldaten kontrollierten wichtige Orte und Straßen.','Die römische Herrschaft spielte im Alltag kaum eine Rolle.','Hohe Abgaben trafen besonders arme Familien hart.','Viele Juden übernahmen die Kaiserverehrung bereitwillig.'];
-const CORRECTIONS={0:{options:['Rom entschied, welche Herrscher es unterstützte.','Die Bauern wählten Herodes Antipas.','Galiläa hatte keine Herrscher.'],answer:0},3:{options:['Rom war nur bei Festen sichtbar.','Münzen, Abgaben und Kontrollen machten Rom im Alltag spürbar.','Nur reiche Menschen begegneten römischer Macht.'],answer:1},5:{options:['Jüdische Religion war vollständig verboten.','Alle Juden kämpften gegen Rom.','Viele Juden lehnten Kaiserverehrung ab und bewahrten ihren Glauben.'],answer:2}};
-const PEOPLE=[['Miriam, Händlerin','Ich kann Rom nicht ändern. Ich versuche weiterzuleben.',0,2],['Jakob, Bauer','Ich hoffe, dass wir eines Tages wieder selbst bestimmen.',1,3],['Eleasar','Nur wenn wir kämpfen, verschwinden die Römer.',2,0],['Marcus, Soldat','Wir sichern die römische Ordnung.',3,1]];
-const ATTITUDES=['arrangiert sich','hofft auf Freiheit','gewaltsamer Widerstand','römische Ordnungsmacht'];
-const REASONS=['Ablehnung der Fremdherrschaft mit dem Ziel, Rom kämpfend zu vertreiben','Kontrolle im Auftrag Roms','Alltag trotz Besatzung fortführen','Wunsch nach Selbstbestimmung angesichts von Fremdbestimmung und Belastung'];
+
+const LEFT=['Rom bestimmt Herrscher und Beamte.','Soldaten prüfen Reisende und Waren.','Familien müssen Abgaben zahlen.','Der Kaiser wird religiös verehrt.','Das Kaiserbild steht auf Münzen.'];
+const RIGHT=['Menschen entscheiden nicht selbst, wer regiert.','Römische Macht ist auf den Straßen spürbar.','Besonders armen Familien bleibt weniger zum Leben.','Der Glaube an einen Gott gerät in Spannung zur Kaiserverehrung.','Römische Macht begegnet Menschen auch beim Bezahlen.'];
+const CHAINS=[
+{start:'Wer bestimmt?',tiles:['Die Bevölkerung kann ihren Herrscher nicht selbst wählen.','Rom bestimmt, wer herrschen darf.','Menschen fühlen sich politisch unfrei.','Der eingesetzte Herrscher ist von Rom unabhängig.'],answer:[1,0,2],why:'Auch ein Herrscher aus der Region konnte von Rom abhängig sein. Entscheidend ist, wer über seine Macht bestimmt.'},
+{start:'Was bleibt zum Leben?',tiles:['Für arme Familien kann das Essen knapp werden.','Die Ernte fällt schlecht aus.','Die Abgaben werden automatisch an die Ernte angepasst.','Abgaben müssen trotzdem bezahlt werden.'],answer:[1,3,0],why:'Eine schlechte Ernte verringert den Vorrat. Wenn trotzdem Abgaben fällig sind, bleibt besonders armen Familien wenig.'},
+{start:'Warum entsteht Streit um den Glauben?',tiles:['Viele Juden wollen nur ihren einen Gott verehren.','Die Verehrung des Kaisers wird als religiöse Pflicht gezeigt.','Spannungen zwischen Glauben und römischem Anspruch entstehen.','Ein Kaiserbild zeigt, dass beide Religionen dieselben Götter haben.'],answer:[1,0,2],why:'Jüdischer Glaube an einen Gott und religiöse Kaiserverehrung passten für viele Juden nicht zusammen. Ihr Glaube war deshalb nicht allgemein verboten.'}
+];
+const STATEMENTS=[
+'In Galiläa durfte Herodes Antipas regieren, weil die Bewohner ihn zum Herrscher wählten.',
+'Rom konnte auch durch einen Herrscher aus der Region Einfluss ausüben.',
+'Soldaten kontrollierten Straßen, obwohl manche Gebiete einen eigenen Herrscher hatten.',
+'Zwei Familien zahlen gleich viele Abgaben. Deshalb belastet das beide Familien gleich stark.',
+'Ein Kaiserbild auf einer Münze machte römische Macht beim Einkaufen sichtbar.',
+'Wer Münzen mit einem Kaiserbild benutzte, verehrte damit automatisch den Kaiser als Gott.'
+];
+const CORRECTIONS={
+0:{options:['Herodes durfte regieren, weil Rom ihm vertraute.','Herodes durfte regieren, weil er römischer Statthalter war.','Herodes durfte regieren, weil Galiläa außerhalb von Roms Macht lag.'],answer:0,why:'Herodes Antipas war ein von Rom abhängiger Herrscher. Er war weder ein gewählter Herrscher noch ein römischer Statthalter.'},
+3:{options:['Gleiche Abgaben belasten stärker, wenn eine Familie mehr Vorräte hat.','Gleiche Abgaben belasten stärker, wenn eine Familie wenig Vorräte hat.','Gleiche Abgaben belasten stärker, weil die Familien dieselbe Menge zahlen.'],answer:1,why:'Es zählt auch, was nach der Abgabe übrig bleibt. Eine Familie mit kleinen Vorräten kann schneller in Not geraten.'},
+5:{options:['Ein Kaiserbild zeigt, dass Münzen nur für römische Soldaten bestimmt waren.','Ein Kaiserbild zeigt, dass jüdische Händler ihre Religion aufgeben mussten.','Ein Kaiserbild zeigt römische Macht; Bezahlen ist noch keine religiöse Verehrung.'],answer:2,why:'Mit einer Münze zu bezahlen sagt noch nichts über den Glauben eines Menschen aus. Viele Juden lehnten die Kaiserverehrung ab.'}
+};
+const PEOPLE=[
+['Miriam · Händlerin','Ich verkaufe weiter auf dem Markt. Mit den Beamten lege ich mich lieber nicht an. Meine Familie braucht das Geld.',0,2],
+['Jakob · Bauer','Nach der schlechten Ernte wird es knapp. Ich wünsche mir, dass wir eines Tages selbst über unser Land bestimmen.',1,3],
+['Eleasar','Warten reicht mir nicht. Wir sollten die Römer mit Waffen aus dem Land vertreiben.',2,0],
+['Marcus · Soldat','Ich kontrolliere Reisende und Waren. Mein Auftrag ist, die römische Ordnung zu sichern.',3,1]
+];
+const ATTITUDES=['Sich mit der Herrschaft arrangieren','Auf Freiheit hoffen','Mit Gewalt Widerstand leisten','Römische Herrschaft sichern'];
+const REASONS=['Die Fremdherrschaft soll durch einen bewaffneten Kampf enden.','Die Kontrolle wird im Auftrag Roms durchgesetzt.','Der Alltag wird angepasst, ohne damit Rom begeistert zu unterstützen.','Selbstbestimmung wird gewünscht, ein bewaffneter Kampf aber nicht angekündigt.'];
+const OVERALL=['Wer sich im Alltag anpasst, hält die römische Herrschaft auch für gerecht.','Unzufriedenheit mit Rom kann zu verschiedenen Reaktionen führen.','Wer auf Freiheit hofft, gehört deshalb schon zu bewaffneten Widerstandskämpfern.'];
 const PLACES=[['Galiläa',34,13],['Samaria',30,47],['Judäa',29,86],['Jordan',70,48],['See Genezareth',76,27],['Jerusalem',44,65],['Kafarnaum',66,17],['Nazareth',40,32],['Bethlehem',43,76]];
-const CLUES=[['Region im Norden, in der der See Genezareth liegt',0],['Region zwischen Galiläa und Judäa',1],['Stadt in Judäa mit dem Tempel',5],['Fischerdorf am Nordufer des Sees Genezareth',6],['Ort in Galiläa, mit dem Jesus besonders verbunden wird',7],['Fluss, der durch Palästina fließt und in das Tote Meer mündet',3]];
-const REPORT=['Auf dem Heimweg kommen Zacharias und Joschua an einer Straßensperre vorbei.','Römische Soldaten kontrollieren die Reisenden und ihre Waren.','Auf dem Markt bezahlt ein Händler mit einer Münze, auf der das Bild des Kaisers zu sehen ist. Zacharias erinnert sich daran, dass selbst beim Einkaufen die Macht Roms sichtbar bleibt.','Später erzählt sein Vater, dass die Ernte schlecht war. Trotzdem müssen Steuern und Abgaben bezahlt werden.','Beim Abendessen sagt sein älterer Bruder leise: „Ich hoffe, dass wir eines Tages wieder selbst über unser Land bestimmen können.“'];
-const CATEGORIES=['POLITISCH','WIRTSCHAFTLICH','ALLTAG/KONTROLLE','HOFFNUNG/REAKTION'];
-const MODEL='Die römische Herrschaft beeinflusste Politik, Wirtschaft und Alltag, weshalb sich viele Menschen unfrei und belastet fühlten und auf Veränderung hofften.';
+const CLUES=[['Euer Weg führt nach Norden. Sucht die Region, in der auch der See Genezareth liegt.',0],['Zwischen eurer nördlichen Zielregion und Judäa liegt eine weitere Region. Welche?',1],['Ein Reisender sucht den Tempel. In welche Stadt in Judäa muss er gehen?',5],['Ein Fischer wohnt am Nordufer des Sees Genezareth. Findet seinen Ort.',6],['Gesucht ist der Ort in Galiläa, der im Namen „Jesus von …“ vorkommt.',7],['Ihr folgt dem Wasser vom See Genezareth nach Süden zum Toten Meer. Welcher Fluss ist das?',3]];
+const TRANSFER=[
+{question:'Warum führt eure nächste Lernreise gerade nach Galiläa?',options:['Dort lebte und wirkte Jesus; wir fragen nach seiner Botschaft in dieser Welt.','Dort stand der Tempel; wir fragen nach Jesu Leben rund um den Tempel.','Dort hatte der römische Statthalter seinen Sitz; wir fragen nach Jesu Begegnung mit ihm.'],answer:0,why:'Galiläa ist eng mit Jesu Leben und Wirken verbunden. Der Tempel stand dagegen in Jerusalem in Judäa. Galiläa wurde zur Zeit Jesu von Herodes Antipas regiert.'},
+{question:'Warum hatte Jerusalem für Juden eine besondere Bedeutung?',options:['Dort wohnte Herodes Antipas; deshalb lag dort das Zentrum des Glaubens.','Dort endete der Jordan; deshalb trafen sich dort die Pilger am Fluss.','Dort stand der Tempel; er war ein wichtiger Mittelpunkt des jüdischen Glaubens.'],answer:2,why:'Jerusalem war als Standort des Tempels religiös besonders wichtig. Politische und religiöse Bedeutung sind nicht dasselbe.'}
+];
+const REPORT=[
+'Auf dem Heimweg kommen Zacharias und Joschua an einer Straßensperre vorbei.',
+'Römische Soldaten kontrollieren die Reisenden und ihre Waren.',
+'Auf dem Markt bezahlt ein Händler mit einer Münze, auf der das Bild des Kaisers zu sehen ist. Zacharias merkt: Selbst beim Einkaufen bleibt die Macht Roms sichtbar.',
+'Der Vater erzählt von der schlechten Ernte. Trotzdem müssen Steuern und Abgaben bezahlt werden.',
+'Beim Abendessen sagt der ältere Bruder leise: „Ich hoffe, dass wir eines Tages wieder selbst über unser Land bestimmen können.“'
+];
+const CATEGORIES=['Politische Macht','Wirtschaftliche Belastung','Kontrolle im Alltag','Hoffnung auf Freiheit'];
+const EVIDENCE=[
+{fragment:1,question:'Welcher Schwerpunkt passt zur Handlung der Soldaten?',answer:2,why:'Die Soldaten greifen hier direkt in den Alltag der Reisenden ein: Sie kontrollieren Menschen und Waren.'},
+{fragment:2,question:'Welcher Schwerpunkt passt zur Frage: Wessen Macht zeigt das Bild auf der Münze?',answer:0,why:'Das Kaiserbild zeigt die politische Macht Roms. Es verrät nicht, ob der Händler den Kaiser religiös verehrt.'},
+{fragment:3,question:'Welcher Schwerpunkt erklärt, warum der Familie weniger zum Leben bleibt?',answer:1,why:'Schlechte Ernte und trotzdem fällige Abgaben belasten den Vorrat der Familie.'},
+{fragment:4,question:'Welcher Schwerpunkt passt zum Wunsch des Bruders?',answer:3,why:'Der Bruder hofft auf Selbstbestimmung. Er sagt nicht, dass er mit Waffen kämpfen will.'}
+];
+const MODEL='Die römische Herrschaft bestimmte, wer regierte, verlangte Abgaben und kontrollierte den Alltag. Besonders arme Familien konnten dadurch in Not geraten. Die Menschen reagierten unterschiedlich: Sie passten sich an, hofften auf Freiheit oder leisteten Widerstand.';
+const TOTALS=[4,4,5,8,6];
+const BRIEFS=[
+['Das Netz der Macht','Die Zettel am Brett sind durcheinander. Verbindet Eingriff und Folge. Baut danach drei Erklärungsketten.'],
+['Die verdrehte Akte','In der Kontrollakte stehen drei falsche Aussagen. Findet sie und repariert die Einträge.'],
+['Vier Stimmen, vier Wege','Die Reisenden denken unterschiedlich über Rom. Hört genau hin: Eine Hoffnung ist noch kein Plan zum Kämpfen.'],
+['Euer Weg nach Norden','Löst sechs Reisehinweise auf der Karte. Zwei letzte Fragen öffnen das Kartensiegel.'],
+['Spuren im Reisebericht','Zacharias hat vier Beobachtungen notiert. Sichert die Belege und erklärt, was sie über das Leben unter Rom zeigen.']
+];
