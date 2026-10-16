@@ -12,7 +12,7 @@ const READINGS=[
     ],
     [
       "Warum gibt es Spannungen?",
-      "Viele Juden glauben an <strong>einen Gott</strong>. Die Römer verehren viele Götter und auch den Kaiser. Die Kaiserverehrung widerspricht dem Glauben vieler Juden. Ihr Glaube ist deshalb nicht allgemein verboten.</p><p>Religion gehört für viele Menschen fest zu ihrem Alltag. Sie wollen ihre Traditionen bewahren und ihrem Gott treu bleiben. Wenn der Kaiser auch religiös verehrt wird, kann das für sie ein Problem sein: <strong>Politische Macht und religiöser Glaube geraten in Spannung.</strong>",
+      "Viele Juden glauben an <strong>einen Gott</strong>. In der römischen Welt werden viele Götter und auch Kaiser religiös verehrt. Form und Verbreitung unterscheiden sich je nach Ort. Die Kaiserverehrung widerspricht dem Glauben vieler Juden. Ihr Glaube ist deshalb nicht allgemein verboten.</p><p>Religion gehört für viele Menschen fest zu ihrem Alltag. Sie wollen ihre Traditionen bewahren und ihrem Gott treu bleiben. Wenn der Kaiser auch religiös verehrt wird, kann das für sie ein Problem sein: <strong>Politische Macht und religiöser Glaube geraten in Spannung.</strong>",
       "report-scroll"
     ]
   ],
@@ -89,12 +89,12 @@ const KNOWLEDGE=[
 ['Herrschaft','Palästina stand unter römischer Herrschaft. Rom setzte Herrscher und Beamte ein, die römische Interessen durchsetzten. In Galiläa regierte Herodes Antipas, solange Rom ihm vertraute. In Judäa setzte Rom eigene Statthalter ein. Die Bevölkerung konnte daher nicht selbst bestimmen, wer über sie herrschte. Römische Soldaten bewachten wichtige Orte, kontrollierten Straßen und gingen gegen Widerstand vor.'],
 ['Belastungen','Die Menschen mussten Steuern und andere Abgaben zahlen. Für wohlhabende Familien war das oft leichter zu tragen als für arme Bauern und Handwerker. Nach schlechten Ernten konnte die Belastung so groß werden, dass kaum genug zum Leben blieb. Zeichen römischer Herrschaft waren auch im Alltag sichtbar, zum Beispiel auf Münzen.'],
 ['Religion','Juden glaubten an den einen Gott. Die Römer verehrten dagegen viele Götter; auch der Kaiser wurde besonders verehrt. Viele Juden lehnten diese Verehrung ab und wollten ihren Glauben und ihre Traditionen bewahren. Dadurch entstanden religiöse Spannungen.'],
-['Reaktionen','Die Menschen reagierten unterschiedlich auf die römische Herrschaft. Manche arrangierten sich und versuchten, ihren Alltag weiterzuleben. Andere hofften auf Freiheit. Manche wollten die Römer mit Gewalt vertreiben. Solche Widerstandskämpfer werden häufig als Zeloten bezeichnet.'],
+['Reaktionen','Die Menschen reagierten unterschiedlich auf die römische Herrschaft. Manche arrangierten sich und versuchten, ihren Alltag weiterzuleben. Andere hofften auf Freiheit. Manche wollten die Römer mit Gewalt vertreiben. Die organisierte Gruppe der Zeloten ist erst aus dem Krieg gegen Rom ab 66 n. Chr. bekannt. Nicht alle früheren Gegner Roms gehörten zu ihr.'],
 ['Palästina','Palästina gliederte sich in Galiläa im Norden, Samaria in der Mitte und Judäa im Süden. Der Jordan fließt durch das Land. Der See Genezareth liegt in Galiläa. Kafarnaum lag am Nordufer des Sees. Jerusalem war die wichtigste Stadt Judäas und Standort des Tempels.']];
 const PUZZLES=[
-{name:'Herrschaftsnetz',object:'Erlassbrett',pos:[17,28],anchor:[9,42],knowledge:[0,1,2],hint:'Unterscheidet politische, wirtschaftliche und religiöse Folgen. Eine Kette führt von einer Maßnahme über ihre Wirkung zum Erleben der Menschen.'},
+{name:'Herrschaftsnetz',object:'Erlassbrett',pos:[17,28],anchor:[20,42],knowledge:[0,1,2],hint:'Unterscheidet politische, wirtschaftliche und religiöse Folgen. Eine Kette führt von einer Maßnahme über ihre Wirkung zum Erleben der Menschen.'},
 {name:'Manipulierte Akte',object:'Abgabentisch',pos:[28,54],anchor:[21,64],knowledge:[0,1,2],hint:'Prüft besonders, wer Herrscher bestimmte, wo Rom im Alltag sichtbar war und wie viele Juden zur Kaiserverehrung standen.'},
-{name:'Stimmen unter Besatzung',object:'Figurengruppe',pos:[79,26],anchor:[79,52],knowledge:[0,1,3],hint:'Achtet auf die Verben: weiterleben, hoffen, kämpfen und sichern. Haltung und Begründung müssen zur selben Stimme passen.'},
+{name:'Stimmen unter Fremdherrschaft',object:'Figurengruppe',pos:[79,26],anchor:[66,65],knowledge:[0,1,3],hint:'Achtet auf die Verben: weiterleben, hoffen, kämpfen und sichern. Haltung und Begründung müssen zur selben Stimme passen.'},
 {name:'Karte Palästinas',object:'Karte',pos:[83,55],anchor:[83,67],knowledge:[4],hint:'Orientiert euch zuerst an Norden, Mitte und Süden. Unterscheidet dann Orte, Gewässer und Regionen.'},
 {name:'Zacharias’ Bericht',object:'Pergamentrolle',pos:[54,69],anchor:[51,77],knowledge:[0,1,3],hint:'Sucht die vier konkreten Erfahrungen: Kontrolle, ein sichtbares Zeichen der kaiserlichen Macht, Abgaben und Hoffnung auf Selbstbestimmung.'}];
 
@@ -103,7 +103,7 @@ const RIGHT=['Menschen entscheiden nicht selbst, wer regiert.','Römische Macht 
 const CHAINS=[
 {start:'Wer bestimmt?',tiles:['Die Bevölkerung kann ihren Herrscher nicht selbst wählen.','Rom bestimmt, wer herrschen darf.','Menschen fühlen sich politisch unfrei.','Der eingesetzte Herrscher ist von Rom unabhängig.'],answer:[1,0,2],why:'Auch ein Herrscher aus der Region konnte von Rom abhängig sein. Entscheidend ist, wer über seine Macht bestimmt.'},
 {start:'Was bleibt zum Leben?',tiles:['Für arme Familien kann das Essen knapp werden.','Die Ernte fällt schlecht aus.','Die Abgaben werden automatisch an die Ernte angepasst.','Abgaben müssen trotzdem bezahlt werden.'],answer:[1,3,0],why:'Eine schlechte Ernte verringert den Vorrat. Wenn trotzdem Abgaben fällig sind, bleibt besonders armen Familien wenig.'},
-{start:'Warum entsteht Streit um den Glauben?',tiles:['Viele Juden wollen nur ihren einen Gott verehren.','Die Verehrung des Kaisers wird als religiöse Pflicht gezeigt.','Spannungen zwischen Glauben und römischem Anspruch entstehen.','Ein Kaiserbild zeigt, dass beide Religionen dieselben Götter haben.'],answer:[1,0,2],why:'Jüdischer Glaube an einen Gott und religiöse Kaiserverehrung passten für viele Juden nicht zusammen. Ihr Glaube war deshalb nicht allgemein verboten.'}
+{start:'Warum entsteht Streit um den Glauben?',tiles:['Viele Juden wollen nur ihren einen Gott verehren.','Ein römischer Beamter fordert religiöse Ehrung für den Kaiser.','Spannungen zwischen Glauben und römischem Anspruch entstehen.','Ein Kaiserbild zeigt, dass beide Religionen dieselben Götter haben.'],answer:[1,0,2],why:'Jüdischer Glaube an einen Gott und religiöse Kaiserverehrung passten für viele Juden nicht zusammen. Ihr Glaube war deshalb nicht allgemein verboten.'}
 ];
 const STATEMENTS=[
 'In Galiläa durfte Herodes Antipas regieren, weil die Bewohner ihn zum Herrscher wählten.',
@@ -127,8 +127,9 @@ const PEOPLE=[
 const ATTITUDES=['Sich mit der Herrschaft arrangieren','Auf Freiheit hoffen','Mit Gewalt Widerstand leisten','Römische Herrschaft sichern'];
 const REASONS=['Die Fremdherrschaft soll durch einen bewaffneten Kampf enden.','Die Kontrolle wird im Auftrag Roms durchgesetzt.','Der Alltag wird angepasst, ohne damit Rom begeistert zu unterstützen.','Selbstbestimmung wird gewünscht, ein bewaffneter Kampf aber nicht angekündigt.'];
 const OVERALL=['Wer sich im Alltag anpasst, hält die römische Herrschaft auch für gerecht.','Unzufriedenheit mit Rom kann zu verschiedenen Reaktionen führen.','Wer auf Freiheit hofft, gehört deshalb schon zu bewaffneten Widerstandskämpfern.'];
-const PLACES=[['Galiläa',34,13],['Samaria',30,47],['Judäa',29,86],['Jordan',70,48],['See Genezareth',76,27],['Jerusalem',44,65],['Kafarnaum',66,17],['Nazareth',40,32],['Bethlehem',43,76]];
-const CLUES=[['Euer Weg führt nach Norden. Sucht die Region, in der auch der See Genezareth liegt.',0],['Zwischen eurer nördlichen Zielregion und Judäa liegt eine weitere Region. Welche?',1],['Ein Reisender sucht den Tempel. In welche Stadt in Judäa muss er gehen?',5],['Ein Fischer wohnt am Nordufer des Sees Genezareth. Findet seinen Ort.',6],['Gesucht ist der Ort in Galiläa, der im Namen „Jesus von …“ vorkommt.',7],['Ihr folgt dem Wasser vom See Genezareth nach Süden zum Toten Meer. Welcher Fluss ist das?',3]];
+// Anchors checked against the new full map: the lake is at (75,17), Jerusalem west of the Dead Sea.
+const PLACES=[['Galiläa',62,19,'galilaea'],['Samaria',61,42,'samaria'],['Judäa',59,70,'judaea'],['Jordan',75,40,null],['See Genezareth',75,17,null],['Jerusalem',66,61,'jerusalem'],['Kafarnaum',75,12,'kafarnaum'],['Nazareth',65,24,'nazareth']];
+const CLUES=[['Euer Ziel liegt im Norden. Sucht die Region rund um Nazareth und den See Genezareth.',0],['Welche Region liegt zwischen Galiläa und Judäa?',1],['In welcher südlichen Region liegt Jerusalem?',2],['Welches Gewässer liegt in Galiläa und speist den Jordan?',4],['Ein Reisender sucht den Tempel. In welche Stadt in Judäa muss er gehen?',5],['Ein Fischer wohnt am Nordufer des Sees Genezareth. Findet seinen Ort.',6],['Welcher Ort in Galiläa kommt im Namen „Jesus von …“ vor?',7],['Welcher Fluss führt vom See Genezareth nach Süden zum Toten Meer?',3]];
 const TRANSFER=[
 {question:'Warum führt eure nächste Lernreise gerade nach Galiläa?',options:['Dort lebte und wirkte Jesus; wir fragen nach seiner Botschaft in dieser Welt.','Dort stand der Tempel; wir fragen nach Jesu Leben rund um den Tempel.','Dort hatte der römische Statthalter seinen Sitz; wir fragen nach Jesu Begegnung mit ihm.'],answer:0,why:'Galiläa ist eng mit Jesu Leben und Wirken verbunden. Der Tempel stand dagegen in Jerusalem in Judäa. Galiläa wurde zur Zeit Jesu von Herodes Antipas regiert.'},
 {question:'Warum hatte Jerusalem für Juden eine besondere Bedeutung?',options:['Dort wohnte Herodes Antipas; deshalb lag dort das Zentrum des Glaubens.','Dort endete der Jordan; deshalb trafen sich dort die Pilger am Fluss.','Dort stand der Tempel; er war ein wichtiger Mittelpunkt des jüdischen Glaubens.'],answer:2,why:'Jerusalem war als Standort des Tempels religiös besonders wichtig. Politische und religiöse Bedeutung sind nicht dasselbe.'}
@@ -148,11 +149,42 @@ const EVIDENCE=[
 {fragment:4,question:'Welcher Schwerpunkt passt zum Wunsch des Bruders?',answer:3,why:'Der Bruder hofft auf Selbstbestimmung. Er sagt nicht, dass er mit Waffen kämpfen will.'}
 ];
 const MODEL='Die römische Herrschaft bestimmte, wer regierte, verlangte Abgaben und kontrollierte den Alltag. Besonders arme Familien konnten dadurch in Not geraten. Die Menschen reagierten unterschiedlich: Sie passten sich an, hofften auf Freiheit oder leisteten Widerstand.';
-const TOTALS=[4,4,5,8,6];
+const TOTALS=AdventureRules.totals;
 const BRIEFS=[
 ['Das Netz der Macht','Die Zettel am Brett sind durcheinander. Verbindet Eingriff und Folge. Baut danach drei Erklärungsketten.'],
 ['Die verdrehte Akte','In der Kontrollakte stehen drei falsche Aussagen. Findet sie und repariert die Einträge.'],
 ['Vier Stimmen, vier Wege','Die Reisenden denken unterschiedlich über Rom. Hört genau hin: Eine Hoffnung ist noch kein Plan zum Kämpfen.'],
-['Euer Weg nach Norden','Löst sechs Reisehinweise auf der Karte. Zwei letzte Fragen öffnen das Kartensiegel.'],
+['Euer Weg nach Norden','Löst acht Reisehinweise auf der Karte. Zwei letzte Fragen öffnen das Kartensiegel.'],
 ['Spuren im Reisebericht','Zacharias hat vier Beobachtungen notiert. Sichert die Belege und erklärt, was sie über das Leben unter Rom zeigen.']
 ];
+
+const SEALS=['authority','burden','voices','land','evidence'];
+const INSIGHTS=['Rom übte Macht durch abhängige Herrscher, Abgaben, Kontrollen und sichtbare Zeichen aus.','Die gleiche Abgabe konnte arme Familien stärker treffen. Münznutzung verrät keinen Glauben.','Menschen reagierten verschieden: Anpassung, Hoffnung und bewaffneter Widerstand sind zu unterscheiden.','Galiläa liegt im Norden, Samaria in der Mitte und Judäa im Süden. Jerusalem liegt in Judäa.','Eine Erklärung verbindet konkrete Beobachtungen mit passenden Ursachen und Folgen.'];
+const CORE=[
+'Um 30 n. Chr.: In Galiläa regiert Herodes Antipas mit Roms Zustimmung. Judäa und Samaria werden von einem römischen Präfekten verwaltet. Am Brett untersucht ihr, wie Macht den Alltag verändert.',
+'Der Schreiber bittet um Hilfe: Drei Einträge wurden verdreht. Vergleicht sie mit der Münze, den Vorräten und dem Erlass am Tisch.',
+'Vier erfundene Gesprächspartner zeigen mögliche Perspektiven. Hört zuerst die Haltung heraus und begründet sie danach. Keine Stimme steht für alle Menschen.',
+'Die Karte ist eine vereinfachte Orientierung: Norden ist oben. Region, Ort, Fluss und See sind verschiedene Dinge. Der Kartenschreiber erklärt euch die Lage im Reisebuch.',
+'Zacharias’ Bericht ist eine erfundene Spielsituation. Sichert Beobachtungen, ordnet ihre Bedeutung und baut daraus eine Erklärung.'
+];
+const ARGUMENTS={
+obs:['Die Ernte ist klein; trotzdem werden Abgaben verlangt.','Soldaten prüfen Reisende; der Bruder hofft auf Selbstbestimmung.','Ein Händler bezahlt mit einer Kaisermünze.'],
+link:['Abgaben verkleinern den ohnehin knappen Vorrat.','Kontrolle kann den Wunsch nach Selbstbestimmung verstärken.','Wer eine Kaisermünze benutzt, verehrt den Kaiser als Gott.'],
+conclusion:['Besonders arme Familien können dadurch in Not geraten.','Menschen können auf Freiheit hoffen, ohne einen bewaffneten Kampf anzukündigen.','Alle Menschen reagieren gleich auf Rom.']
+};
+const HINTS=[
+['Fragt: Welche Maßnahme verändert welchen Lebensbereich?','Herrscher → Mitbestimmung; Soldaten → Kontrolle; Abgaben → Vorräte.','Ketten: Rom bestimmt → keine Wahl → unfrei; Ernte klein → Abgaben → Essen knapp; Kaiser ehrend verehren → ein Gott → Spannung.'],
+['Prüft Aussagen über Herrscherwahl, Vorräte und Glauben.','In den Einträgen 1, 4 und 6 steckt jeweils eine falsche Schlussfolgerung.','Berichtigt: Rom erlaubt Antipas die Herrschaft; wenig Vorräte bedeuten stärkere Belastung; Bezahlen ist keine Verehrung.'],
+['Welche Handlung oder welcher Wunsch wird ausdrücklich genannt?','Miriam handelt weiter, Jakob hofft, Eleasar fordert Waffen, Marcus erfüllt einen Kontrollauftrag.','Ordnet jeweils dieselbe Haltung und Begründung zu. Aus diesen Stimmen folgt: Unzufriedenheit kann verschiedene Reaktionen auslösen.'],
+['Sucht zuerst Norden, Mitte und Süden, danach einzelne Orte.','Galiläa – Samaria – Judäa. See und Kafarnaum liegen im Norden; Jerusalem im Süden.','Nazareth liegt südwestlich des Sees, Kafarnaum an seinem Nordufer. Der Jordan fließt südlich zum Toten Meer.'],
+['Was geschieht konkret? Welche Bedeutung hat diese Beobachtung?','Belege 2–5: Kontrolle, Machtzeichen, wirtschaftliche Belastung, Hoffnung.','Für die Werkstatt: kleine Ernte + Abgaben → kleiner Vorrat → Not; oder Kontrolle + Freiheitswunsch → Einschränkung → Hoffnung ohne Kampfplan.']
+];
+const BONUS_CASES=[
+{person:'merchant',goods:'amphora',text:'Der Händler meldet drei Amphoren an. Die Liste nennt drei, aber auf dem Wagen stehen vier. Die geltende Spielregel verlangt, angemeldete Waren zu zählen.',answer:0,why:'Die konkrete Abweichung rechtfertigt eine Warenkontrolle. Beruf und Kleidung spielen dabei keine Rolle.'},
+{person:'family',goods:'grain',text:'Die Familie hat zwei Säcke angemeldet. Zwei Säcke sind vorhanden; der Abgabenbeleg stimmt. Es gibt keinen weiteren Hinweis auf eine Unstimmigkeit.',answer:1,why:'Die Angaben und der Beleg stimmen. Armut oder Aussehen sind kein Grund, die Familie aufzuhalten.'},
+{person:'pilgrim',goods:'purse',text:'Ein Pilger bezahlt mit einer Kaisermünze. Ein Helfer behauptet: „Dann verehrt er den Kaiser!“ Alle Reiseangaben sind vollständig und stimmen.',answer:1,why:'Münznutzung ist keine religiöse Verehrung. Aus dieser Behauptung ergibt sich kein Grund zur Kontrolle.'},
+{person:'goods-traveller',goods:'wax-tablet',text:'Eine Wachstafel ist beschädigt. Ihr könnt die Zahl der angemeldeten Waren nicht lesen. Die Person bietet an, den Inhalt mit euch abzugleichen.',answer:2,why:'Erst genauer nachfragen und die Angaben klären. Ein unlesbarer Beleg beweist keinen Betrug.'},
+{person:'roman-courier',goods:'basket',text:'Ein Bote erklärt: „Mein Auftrag erlaubt mir jede Menge Waren.“ Die vorliegende Spielregel sagt: Auch Boten müssen Handelswaren anmelden. Sein Korb enthält unangemeldete Handelswaren.',answer:0,why:'Der konkrete Widerspruch zur Warenregel begründet eine Kontrolle – unabhängig vom Rang des Boten.'}
+];
+
+const SPRITES={"assets/puzzles/map/map-marker-set.png": {"nazareth": [0, 0, 512, 512], "kafarnaum": [512, 0, 512, 512], "jerusalem": [1024, 0, 512, 512], "galilaea": [0, 512, 512, 512], "samaria": [512, 512, 512, 512], "judaea": [1024, 512, 512, 512]}, "assets/puzzles/map/map-route-strip.png": {"dots": [0, 0, 768, 341], "footprints": [768, 0, 768, 341], "broken-path": [0, 341, 768, 342], "direction": [768, 341, 768, 342], "cairns": [0, 683, 768, 341], "fork": [768, 683, 768, 341]}, "assets/puzzles/report/evidence-marker.png": {"red-wax": [0, 0, 444, 430], "branch-seal": [444, 0, 444, 430], "ochre-wax": [887, 0, 444, 430], "bronze": [1330, 0, 444, 430], "olive-ribbon": [0, 430, 444, 457], "red-ribbon": [444, 430, 444, 457], "parchment-fold": [887, 430, 444, 457], "tag": [1330, 430, 444, 457]}, "assets/puzzles/report/argument-tiles.png": {"short-left": [0, 0, 768, 290], "short-right": [768, 0, 768, 290], "medium-left": [0, 290, 768, 340], "medium-right": [768, 290, 768, 340], "wide-left": [0, 630, 768, 394], "wide-right": [768, 630, 768, 394]}, "assets/bonus/travellers-sheet.png": {"merchant": [0, 0, 430, 758], "family": [430, 0, 525, 758], "pilgrim": [955, 0, 365, 758], "goods-traveller": [1320, 0, 390, 758], "roman-courier": [1710, 0, 363, 758]}, "assets/bonus/goods-sheet.png": {"amphora": [0, 0, 460, 535], "grain": [460, 0, 530, 535], "cloth": [990, 0, 546, 535], "purse": [0, 535, 460, 489], "wax-tablet": [460, 535, 530, 489], "basket": [990, 535, 546, 489]}, "assets/bonus/bonus-ui.png": {"seal": [0, 0, 405, 530], "stamp": [405, 0, 445, 530], "pass-token": [850, 0, 310, 530], "inspection-ribbon": [1160, 0, 376, 530], "parchment-sign": [0, 530, 435, 494], "wood-sign": [435, 530, 400, 494], "wax-sign": [835, 530, 395, 494], "tag": [1230, 530, 306, 494]}};
