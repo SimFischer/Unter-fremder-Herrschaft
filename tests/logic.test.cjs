@@ -4,7 +4,7 @@ const assert=require('node:assert/strict');
 const R=require('../logic.js');
 test('old completed seals survive, old free text is replaced without revoking progress',()=>{
  const s=R.migrate({version:1,solved:[true,false,true,true,true],answers:[{stage:4},{stage:2},{stage:5},{stage:8},{stage:6,sentence:'Eine alte Erklärung'}],attempts:[0,1,0,0,0]});
- assert.deepEqual(s.solved,[true,false,true,true,true]);assert.equal(s.answers[4].stage,6);assert.equal(s.answers[4].sentence,undefined);assert.equal(s.version,2);
+ assert.deepEqual(s.solved,[true,false,true,true,true]);assert.equal(s.answers[4].stage,6);assert.equal(s.answers[4].sentence,undefined);assert.equal(s.version,3);
 });
 test('unfinished old explanation now requires argument, incomplete route restarts safely',()=>{
  const s=R.migrate({version:1,solved:[false,false,false,false,false],answers:[{},{},{},{stage:5,place0:0},{stage:5,sentence:'Alt'}]});

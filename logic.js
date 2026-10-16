@@ -2,10 +2,10 @@
 'use strict';
 const AdventureRules = (() => {
  const totals=[4,4,5,10,6];
- const fresh=()=>({version:2,solved:Array(5).fill(false),answers:Array.from({length:5},()=>({})),attempts:Array(5).fill(0),discoveries:[],finale:0,bonusRound:0});
+ const fresh=()=>({version:3,solved:Array(5).fill(false),answers:Array.from({length:5},()=>({})),attempts:Array(5).fill(0),discoveries:[],finale:0,bonusRound:0,interludeStarted:false,interludeCompleted:false,interludeStats:{collectibles:[],undetected:false},interludeRun:null,bonusSettings:{motif:'control-post',mode:'swap',size:3},bonusCompleted:[]});
  function migrate(raw){
   const s=fresh();
-  if(!raw||![1,2].includes(raw.version))return s;
+  if(!raw||![1,2,3].includes(raw.version))return s;
   for(let i=0;i<5;i++){
    const a=raw.answers?.[i];
    if(a&&typeof a==='object'&&!Array.isArray(a)){
@@ -29,6 +29,15 @@ const AdventureRules = (() => {
   s.solved.forEach((v,i)=>{if(v&&!s.discoveries.includes(i))s.discoveries.push(i);});
   s.finale=s.solved.every(Boolean)&&Number.isInteger(raw.finale)?Math.max(0,Math.min(raw.finale,2)):0;
   s.bonusRound=Number.isInteger(raw.bonusRound)?Math.max(0,Math.min(raw.bonusRound,5)):0;
+  const ids=['map','provisions','permit'],motifs=['control-post','map-palestine','taxes-market','people-under-rome','road-galilee'];
+  const collect=v=>Array.isArray(v)?[...new Set(v.filter(id=>ids.includes(id)))]:[];
+  s.interludeCompleted=raw.interludeCompleted===true;s.interludeStarted=s.interludeCompleted||raw.interludeStarted===true;
+  s.interludeStats={collectibles:collect(raw.interludeStats?.collectibles),undetected:raw.interludeStats?.undetected===true};
+  const run=raw.interludeRun;
+  if(s.interludeStarted&&!s.interludeCompleted&&run&&typeof run==='object')s.interludeRun={checkpoint:Number.isInteger(run.checkpoint)?Math.max(0,Math.min(run.checkpoint,3)):0,collected:collect(run.collected),detections:Number.isInteger(run.detections)?Math.max(0,Math.min(run.detections,999)):0,elapsed:Number.isFinite(run.elapsed)?Math.max(0,Math.min(run.elapsed,7200)):0,finished:run.finished===true};
+  const bonus=raw.bonusSettings;
+  s.bonusSettings={motif:motifs.includes(bonus?.motif)?bonus.motif:'control-post',mode:bonus?.mode==='slide'?'slide':'swap',size:[3,4,5].includes(bonus?.size)?bonus.size:3};
+  s.bonusCompleted=Array.isArray(raw.bonusCompleted)?[...new Set(raw.bonusCompleted.filter(key=>typeof key==='string'&&motifs.some(m=>['swap','slide'].some(mode=>[3,4,5].some(n=>key===`${m}:${mode}:${n}`)))))]:[];
   return s;
  }
  function argument(a){

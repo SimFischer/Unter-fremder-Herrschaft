@@ -26,6 +26,7 @@ function scene(){
  }
  $('#end').hidden=count!==5;
  $('#end').textContent='Durch das Tor nach Galiläa';
+ window.dispatchEvent(new Event('adventure:state'));
 }
 
 function open(i){
@@ -227,25 +228,6 @@ function renderFinale(){
 }
 $('#finale-next').onclick=()=>{if(!state.solved.every(Boolean))return;if(state.finale<2){state.finale++;save();renderFinale();$('#finale .scroll').scrollTop=0;$('#finale-next').focus();}else $('#finale').close();};
 $('#finale-book').onclick=()=>{$('#finale').close();openNotebook();};
-$('#finale-bonus').onclick=()=>{$('#finale').close();openBonus();};
-let bonusAnswered=false;
-function renderBonus(){
- bonusAnswered=false;const n=state.bonusRound,c=BONUS_CASES[n];
- $('#bonus-next').hidden=true;$('#bonus-status').textContent='';
- if(!c){$('#bonus-stage').innerHTML='';$('#bonus-situation').innerHTML='<h3>Der Posten ist für heute geschlossen.</h3><p>Ihr habt nach konkreten Belegen entschieden. Die fünf Erkenntnissiegel bleiben von diesem freiwilligen Spiel unabhängig.</p>';$('#bonus-decisions').innerHTML='<button id="bonus-again">Noch einmal spielen</button>';$('#bonus-again').onclick=()=>{state.bonusRound=0;save();renderBonus();};return;}
- $('#bonus-stage').innerHTML=`<img class="bonus-background" src="assets/bonus/checkpoint-bg.png" alt="Kontrollposten mit freier Fläche vor dem Tor"><div class="traveller traveller-${c.person}">${sprite('assets/bonus/travellers-sheet.png',c.person)}</div><div class="bonus-goods">${sprite('assets/bonus/goods-sheet.png',c.goods)}</div>`;
- $('#bonus-situation').innerHTML=`<h3>Situation ${n+1} von ${BONUS_CASES.length}</h3><p>${c.text}</p>`;
- $('#bonus-decisions').innerHTML=['Waren kontrollieren','Passieren lassen','Genauer prüfen'].map((t,i)=>`<button data-decision="${i}">${sprite('assets/bonus/bonus-ui.png',['stamp','pass-token','inspection-ribbon'][i])}<span>${t}</span></button>`).join('');
-}
-function openBonus(){renderBonus();$('#bonus').showModal();}
-$('#bonus-open').onclick=openBonus;$('#bonus-close').onclick=()=>$('#bonus').close();
-$('#bonus-decisions').onclick=e=>{
- const b=e.target.closest('[data-decision]');if(!b||bonusAnswered)return;
- const c=BONUS_CASES[state.bonusRound],ok=Number(b.dataset.decision)===c.answer;
- $('#bonus-status').textContent=(ok?'Die Entscheidung ist durch die Angaben begründet. ':'Prüft eure Entscheidung erneut. ')+c.why;
- if(ok){bonusAnswered=true;$('#bonus-next').hidden=false;document.querySelectorAll('[data-decision]').forEach(b=>b.disabled=true);$('#bonus-next').focus();}
-};
-$('#bonus-next').onclick=()=>{if(!bonusAnswered)return;state.bonusRound++;save();renderBonus();$('#bonus .scroll').scrollTop=0;};
 // Native modal dialogs supply focus trapping and Escape; restore the trigger on every close.
 const dialogTriggers=new WeakMap();
 const showModal=HTMLDialogElement.prototype.showModal;
@@ -276,3 +258,6 @@ let bookReturn=null;
 $('#puzzle-book').onclick=()=>{bookReturn={i:active,round:views[active]};$('#puzzle').close();openNotebook();$('#notebook [data-close]').textContent='Zum Rätsel zurück';};
 $('#notebook').addEventListener('close',()=>{if(bookReturn){const back=bookReturn;bookReturn=null;open(back.i);views[back.i]=back.round;render();}$('#notebook [data-close]').textContent='Schließen ×';});
 $('#hint-close').onclick=()=>{$('#hint-panel').hidden=true;$('#hint-open').focus();};
+
+// Narrow integration boundary for the two optional game modules; core puzzle rules stay here.
+window.Adventure=Object.freeze({getState:()=>state,save});
