@@ -1,0 +1,16 @@
+ASSET-MANIFEST.txt
+ASSET-MAP.md
+assets/scenes/control-post-stage-0.png
+assets/scenes/control-post-stage-1.png
+assets/scenes/control-post-stage-2.png
+assets/scenes/control-post-stage-3.png
+assets/scenes/control-post-stage-4.png
+assets/scenes/control-post-stage-5.png
+assets/seals/seal-authority.png
+assets/seals/seal-board.png
+assets/seals/seal-burden.png
+assets/seals/seal-evidence.png
+assets/seals/seal-land.png
+assets/seals/seal-reward-frame.png
+assets/seals/seal-slot-empty.png
+assets/seals/seal-voices.png

@@ -1,0 +1,636 @@
+{
+  "date": "2026-10-16",
+  "blocks": [
+    {
+      "block": 1,
+      "files": [
+        "assets/puzzles/map/map-table-large.png",
+        "assets/puzzles/map/map-marker-set.png",
+        "assets/puzzles/map/map-route-strip.png",
+        "assets/puzzles/map/map-compass.png"
+      ],
+      "saved_and_reviewed_before_next_block": true
+    },
+    {
+      "block": 2,
+      "files": [
+        "assets/puzzles/report/report-table.png",
+        "assets/puzzles/report/report-scroll-large.png",
+        "assets/puzzles/report/evidence-marker.png",
+        "assets/puzzles/report/argument-tiles.png"
+      ],
+      "saved_and_reviewed_before_next_block": true
+    },
+    {
+      "block": 3,
+      "files": [
+        "assets/ui/notebook-open.png",
+        "assets/ui/hint-tablet.png",
+        "assets/scenes/finale-road-galilee.webp",
+        "assets/ui/finale-travel-permit.png"
+      ],
+      "saved_and_reviewed_before_next_block": true
+    },
+    {
+      "block": 4,
+      "files": [
+        "assets/bonus/checkpoint-bg.png",
+        "assets/bonus/travellers-sheet.png",
+        "assets/bonus/goods-sheet.png",
+        "assets/bonus/bonus-ui.png"
+      ],
+      "saved_and_reviewed_before_next_block": true
+    }
+  ],
+  "new_images": 16,
+  "all_repository_images": 52,
+  "duplicate_groups_existing": [
+    [
+      "assets/characters/group-people.webp",
+      "group-people.webp"
+    ],
+    [
+      "assets/characters/roman-guard.webp",
+      "roman-guard.webp"
+    ],
+    [
+      "assets/objects/coin-table.webp",
+      "coin-table.webp"
+    ],
+    [
+      "assets/objects/edict-board.webp",
+      "edict-board.webp"
+    ],
+    [
+      "assets/objects/map-table.webp",
+      "map-table.webp"
+    ],
+    [
+      "assets/objects/palestine-map.webp",
+      "palestine-map.webp"
+    ],
+    [
+      "assets/objects/report-scroll.webp",
+      "report-scroll.webp"
+    ],
+    [
+      "assets/scene/control-post-open.webp",
+      "control-post-open.webp"
+    ],
+    [
+      "assets/scene/control-post.webp",
+      "control-post.webp"
+    ],
+    [
+      "assets/ui/seal-closed.webp",
+      "seal-closed.webp"
+    ],
+    [
+      "assets/ui/seal-open.webp",
+      "seal-open.webp"
+    ]
+  ],
+  "inventory": [
+    {
+      "path": "assets/bonus/bonus-ui.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "0854e70c6d7f4a9a2ac51f1fc76c6853dda59ca30755ed2797b8678207a0323e",
+      "new": true,
+      "visible_bbox_alpha_gt_16": [
+        27,
+        51,
+        1524,
+        961
+      ]
+    },
+    {
+      "path": "assets/bonus/checkpoint-bg.png",
+      "width": 1600,
+      "height": 1067,
+      "format": "PNG",
+      "transparent": false,
+      "sha256": "5587cd7f46aa199683e9ee1675fe251c858541efe4f9ea1112c7dc9ad9eac8d5",
+      "new": true
+    },
+    {
+      "path": "assets/bonus/goods-sheet.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "ede99d16711da6baf7d381c0a5b4cbfec04a03a3c73346adb83cbbb52eca51c8",
+      "new": true,
+      "visible_bbox_alpha_gt_16": [
+        21,
+        16,
+        1511,
+        989
+      ]
+    },
+    {
+      "path": "assets/bonus/travellers-sheet.png",
+      "width": 2073,
+      "height": 758,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "3e30e9ab4eb4ae6edfc6b5fd0c9dfaecd1fac03398b14ac216d6dd2a00c18984",
+      "new": true,
+      "visible_bbox_alpha_gt_16": [
+        82,
+        27,
+        2014,
+        718
+      ]
+    },
+    {
+      "path": "assets/characters/group-people.webp",
+      "width": 1341,
+      "height": 1173,
+      "format": "WEBP",
+      "transparent": true,
+      "sha256": "5453a847ec6520f6dfe74d0908bd00acfe577e5db635135bd98d43d1d1ff8e5a",
+      "new": false
+    },
+    {
+      "path": "assets/characters/roman-guard.webp",
+      "width": 1024,
+      "height": 1536,
+      "format": "WEBP",
+      "transparent": true,
+      "sha256": "402a421eb82885edb05139e3bbdba54de0327a188acf55395cea2ac748b3ef97",
+      "new": false
+    },
+    {
+      "path": "assets/objects/coin-table.webp",
+      "width": 1536,
+      "height": 1024,
+      "format": "WEBP",
+      "transparent": true,
+      "sha256": "addfa7711aa174e0a0edabde73b03e5e1786b8b11f8af93b8a8f489229b0fc37",
+      "new": false
+    },
+    {
+      "path": "assets/objects/edict-board.webp",
+      "width": 1261,
+      "height": 1247,
+      "format": "WEBP",
+      "transparent": true,
+      "sha256": "a55b4170a5df5087f9357e534bbbd216b123d1121e36d4b809115ee3c981010f",
+      "new": false
+    },
+    {
+      "path": "assets/objects/map-table.webp",
+      "width": 1536,
+      "height": 1024,
+      "format": "WEBP",
+      "transparent": true,
+      "sha256": "aa10546378f9c5f616a6b8289ca4f942293ae1065f1e6adef71cab3e187b4ac7",
+      "new": false
+    },
+    {
+      "path": "assets/objects/palestine-map.webp",
+      "width": 1086,
+      "height": 1448,
+      "format": "WEBP",
+      "transparent": false,
+      "sha256": "c72e37a87d4e5e655f51ee720ecb99ae91e98f57889c544a014b080040d69d0a",
+      "new": false
+    },
+    {
+      "path": "assets/objects/report-scroll.webp",
+      "width": 1484,
+      "height": 1060,
+      "format": "WEBP",
+      "transparent": true,
+      "sha256": "0ed1054082f494214b7e551e38e859ed9a6e0b02444d1d6c481c4e64f169b434",
+      "new": false
+    },
+    {
+      "path": "assets/puzzles/map/map-compass.png",
+      "width": 1254,
+      "height": 1254,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "c5d82c4029a1ec98c6a35b4138a9aa96065dc31f9d1901a18e14829d15b785e6",
+      "new": true,
+      "visible_bbox_alpha_gt_16": [
+        124,
+        121,
+        1130,
+        1132
+      ]
+    },
+    {
+      "path": "assets/puzzles/map/map-marker-set.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "08f90bcec83785db600a575835d88f85410abf2c295b799f075251778ad2f5a3",
+      "new": true,
+      "visible_bbox_alpha_gt_16": [
+        55,
+        29,
+        1487,
+        975
+      ]
+    },
+    {
+      "path": "assets/puzzles/map/map-route-strip.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "eea1af212feb74a4d5b2bf7f5971e8cd12aa1b6f0df318320f80b9de23748dda",
+      "new": true,
+      "visible_bbox_alpha_gt_16": [
+        60,
+        95,
+        1472,
+        933
+      ]
+    },
+    {
+      "path": "assets/puzzles/map/map-table-large.png",
+      "width": 1600,
+      "height": 1065,
+      "format": "PNG",
+      "transparent": false,
+      "sha256": "3c2d98caf0fbc7f863de01430ad03c9859fcc426d8c3d9878a3c404ebb69486f",
+      "new": true
+    },
+    {
+      "path": "assets/puzzles/report/argument-tiles.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "6393a7cd1eeb6827a2fe64fac589e843d6bbd649e3289ab06a848cec8cbf871a",
+      "new": true,
+      "visible_bbox_alpha_gt_16": [
+        32,
+        96,
+        1505,
+        933
+      ]
+    },
+    {
+      "path": "assets/puzzles/report/evidence-marker.png",
+      "width": 1774,
+      "height": 887,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "1afa9873dc3ace4cdf5e0234d0542e16908fef7449c2560b4f98fe200d39db36",
+      "new": true,
+      "visible_bbox_alpha_gt_16": [
+        143,
+        102,
+        1665,
+        800
+      ]
+    },
+    {
+      "path": "assets/puzzles/report/report-scroll-large.png",
+      "width": 1024,
+      "height": 1536,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "91232bf9a799e75b38224e2bed1ad39c52a96618affc9289d88ae7c4c704adf3",
+      "new": true,
+      "visible_bbox_alpha_gt_16": [
+        21,
+        22,
+        1003,
+        1509
+      ]
+    },
+    {
+      "path": "assets/puzzles/report/report-table.png",
+      "width": 1600,
+      "height": 1067,
+      "format": "PNG",
+      "transparent": false,
+      "sha256": "8233842bd1574865e78c7f93e58df1773e7c0382baf10722e6f4aaafd7bd8a28",
+      "new": true
+    },
+    {
+      "path": "assets/scene/control-post-open.webp",
+      "width": 1536,
+      "height": 1024,
+      "format": "WEBP",
+      "transparent": false,
+      "sha256": "432f82b3f3786f2ecc2699f5c5f5c0c5325a46ba0ed1e398e1533036313e2ddd",
+      "new": false
+    },
+    {
+      "path": "assets/scene/control-post.webp",
+      "width": 1536,
+      "height": 1024,
+      "format": "WEBP",
+      "transparent": false,
+      "sha256": "1dec69bf554e676a618af3443db1eadc16f6ee1ac410de7f5ca208ebffb9156d",
+      "new": false
+    },
+    {
+      "path": "assets/scenes/finale-road-galilee.webp",
+      "width": 1600,
+      "height": 1067,
+      "format": "WEBP",
+      "transparent": false,
+      "sha256": "4f76060446485cf40fcb8962dc105e4aca2f62943f8a0c30672000f65ec078ab",
+      "new": true
+    },
+    {
+      "path": "assets/ui/finale-travel-permit.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "3ef8ccf9ccfd52cdc42ea0eafe558196f087093d7e9e1b0c202e00e3d5a01785",
+      "new": true,
+      "visible_bbox_alpha_gt_16": [
+        44,
+        41,
+        1499,
+        974
+      ]
+    },
+    {
+      "path": "assets/ui/hint-tablet.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "0b886d9dd86dec12649a58ea1ce62142c677877009b6d84686f4fd6378a922c5",
+      "new": true,
+      "visible_bbox_alpha_gt_16": [
+        81,
+        110,
+        1452,
+        906
+      ]
+    },
+    {
+      "path": "assets/ui/notebook-open.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "676cf596b92b742f314684739b4f4042089fef901ea4d7f1a25388aaa8acb678",
+      "new": true,
+      "visible_bbox_alpha_gt_16": [
+        12,
+        127,
+        1525,
+        884
+      ]
+    },
+    {
+      "path": "assets/ui/seal-closed.webp",
+      "width": 1254,
+      "height": 1254,
+      "format": "WEBP",
+      "transparent": true,
+      "sha256": "9c1954f0bc0627b5ae3f09a5128175d90ce123ade0478ffb29b748bc19997436",
+      "new": false
+    },
+    {
+      "path": "assets/ui/seal-open.webp",
+      "width": 1536,
+      "height": 1024,
+      "format": "WEBP",
+      "transparent": true,
+      "sha256": "ba27f27b58224415b477bbd0fb19b9d82deeac0ba9752eb58b3c802ceeb06c9b",
+      "new": false
+    },
+    {
+      "path": "coin-table.webp",
+      "width": 1536,
+      "height": 1024,
+      "format": "WEBP",
+      "transparent": true,
+      "sha256": "addfa7711aa174e0a0edabde73b03e5e1786b8b11f8af93b8a8f489229b0fc37",
+      "new": false
+    },
+    {
+      "path": "control-post-open.webp",
+      "width": 1536,
+      "height": 1024,
+      "format": "WEBP",
+      "transparent": false,
+      "sha256": "432f82b3f3786f2ecc2699f5c5f5c0c5325a46ba0ed1e398e1533036313e2ddd",
+      "new": false
+    },
+    {
+      "path": "control-post-stage-0.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "transparent": false,
+      "sha256": "fd2a6957423670ebdb6b6047854ee39a9bff520f809c9f2bef9c7da6ad8dfdec",
+      "new": false
+    },
+    {
+      "path": "control-post-stage-1.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "transparent": false,
+      "sha256": "3fb7e13d38ab8d3359e7c04e13da8cd6ff2f078da25e1dbdf4b8366db9610e23",
+      "new": false
+    },
+    {
+      "path": "control-post-stage-2.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "transparent": false,
+      "sha256": "54a1bdff6fceba4b9d5a81242927cb63ee360d8c1db7f90d8c7c77b68fa22fe2",
+      "new": false
+    },
+    {
+      "path": "control-post-stage-3.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "transparent": false,
+      "sha256": "be50daa857191dedb04187cebd7e4a70e7351a764250819f127648709884e02c",
+      "new": false
+    },
+    {
+      "path": "control-post-stage-4.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "transparent": false,
+      "sha256": "fa5a2a7281b4d28c73b24aa5be76a6f0e0b61b010914f0398020a9e58aa1d906",
+      "new": false
+    },
+    {
+      "path": "control-post-stage-5.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "PNG",
+      "transparent": false,
+      "sha256": "60fa745d72a5806a301e9892685a5b2f9659bc60f05b079fd95da740268f4ad4",
+      "new": false
+    },
+    {
+      "path": "control-post.webp",
+      "width": 1536,
+      "height": 1024,
+      "format": "WEBP",
+      "transparent": false,
+      "sha256": "1dec69bf554e676a618af3443db1eadc16f6ee1ac410de7f5ca208ebffb9156d",
+      "new": false
+    },
+    {
+      "path": "edict-board.webp",
+      "width": 1261,
+      "height": 1247,
+      "format": "WEBP",
+      "transparent": true,
+      "sha256": "a55b4170a5df5087f9357e534bbbd216b123d1121e36d4b809115ee3c981010f",
+      "new": false
+    },
+    {
+      "path": "group-people.webp",
+      "width": 1341,
+      "height": 1173,
+      "format": "WEBP",
+      "transparent": true,
+      "sha256": "5453a847ec6520f6dfe74d0908bd00acfe577e5db635135bd98d43d1d1ff8e5a",
+      "new": false
+    },
+    {
+      "path": "map-table.webp",
+      "width": 1536,
+      "height": 1024,
+      "format": "WEBP",
+      "transparent": true,
+      "sha256": "aa10546378f9c5f616a6b8289ca4f942293ae1065f1e6adef71cab3e187b4ac7",
+      "new": false
+    },
+    {
+      "path": "palestine-map.webp",
+      "width": 1086,
+      "height": 1448,
+      "format": "WEBP",
+      "transparent": false,
+      "sha256": "c72e37a87d4e5e655f51ee720ecb99ae91e98f57889c544a014b080040d69d0a",
+      "new": false
+    },
+    {
+      "path": "report-scroll.webp",
+      "width": 1484,
+      "height": 1060,
+      "format": "WEBP",
+      "transparent": true,
+      "sha256": "0ed1054082f494214b7e551e38e859ed9a6e0b02444d1d6c481c4e64f169b434",
+      "new": false
+    },
+    {
+      "path": "roman-guard.webp",
+      "width": 1024,
+      "height": 1536,
+      "format": "WEBP",
+      "transparent": true,
+      "sha256": "402a421eb82885edb05139e3bbdba54de0327a188acf55395cea2ac748b3ef97",
+      "new": false
+    },
+    {
+      "path": "seal-authority.png",
+      "width": 512,
+      "height": 512,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "dfd83a015ffd87f88d15b456befe6c64e59aca1a9893fc525782ddb7bd9e97a9",
+      "new": false
+    },
+    {
+      "path": "seal-board.png",
+      "width": 768,
+      "height": 320,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "dd7d3dbf707d1489ded4fc4b785ed8f6013c47113bfb1b9e7979529e4b92bb1d",
+      "new": false
+    },
+    {
+      "path": "seal-burden.png",
+      "width": 512,
+      "height": 512,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "3216f1b5f6f6349ac17b928671742f465bce2eef35505220c91737e88ee17abe",
+      "new": false
+    },
+    {
+      "path": "seal-closed.webp",
+      "width": 1254,
+      "height": 1254,
+      "format": "WEBP",
+      "transparent": true,
+      "sha256": "9c1954f0bc0627b5ae3f09a5128175d90ce123ade0478ffb29b748bc19997436",
+      "new": false
+    },
+    {
+      "path": "seal-evidence.png",
+      "width": 512,
+      "height": 512,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "d49069f53457e45aac57b8925ab48d5de31333a4952e0422e64332d6bf874b6b",
+      "new": false
+    },
+    {
+      "path": "seal-land.png",
+      "width": 512,
+      "height": 512,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "ca802ef280e4d657ddacdf37f3e63140466ac387d5900675984e996d70bc7fa8",
+      "new": false
+    },
+    {
+      "path": "seal-open.webp",
+      "width": 1536,
+      "height": 1024,
+      "format": "WEBP",
+      "transparent": true,
+      "sha256": "ba27f27b58224415b477bbd0fb19b9d82deeac0ba9752eb58b3c802ceeb06c9b",
+      "new": false
+    },
+    {
+      "path": "seal-reward-frame.png",
+      "width": 512,
+      "height": 512,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "0ef817d11c8f53f7bf2e736853c78d4a0f3b97dc9f576e34a3ae68fd0803594d",
+      "new": false
+    },
+    {
+      "path": "seal-slot-empty.png",
+      "width": 512,
+      "height": 512,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "b6f44ba28c4e145ffc26bcff4587bbea99e2c653c22796da513014dfe923f03f",
+      "new": false
+    },
+    {
+      "path": "seal-voices.png",
+      "width": 512,
+      "height": 512,
+      "format": "PNG",
+      "transparent": true,
+      "sha256": "fd734194ff022716d4997f9ff17946c5de581a98a5c88f1a87f6100f806ae644",
+      "new": false
+    }
+  ],
+  "qa": "Alle neuen Assets visuell geprüft, freigestellte Bilder zusätzlich auf hellem und dunklem Grund. Szenen und Tabellen auf 1600 px Breite exportiert, geringfügig aus generierten 1536/1537 px vergrößert. Keine App-Integration oder Live-iPad-Prüfung beauftragt; Größen/Hotspots sind Integrationsvorschläge."
+}
