@@ -1,0 +1,1100 @@
+{
+  "assets/interlude/checkpoint-run-foreground.png": [
+    {
+      "name": "crates",
+      "source_rect_xyxy": [
+        0,
+        0,
+        400,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        87,
+        184,
+        356,
+        424
+      ],
+      "foot_anchor_source_xy": [
+        221.5,
+        424
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "sacks",
+      "source_rect_xyxy": [
+        400,
+        0,
+        768,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        452,
+        211,
+        739,
+        420
+      ],
+      "foot_anchor_source_xy": [
+        595.5,
+        420
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "amphorae",
+      "source_rect_xyxy": [
+        768,
+        0,
+        1152,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        800,
+        191,
+        1089,
+        417
+      ],
+      "foot_anchor_source_xy": [
+        944.5,
+        417
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "wall",
+      "source_rect_xyxy": [
+        1152,
+        0,
+        1536,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        1178,
+        213,
+        1483,
+        410
+      ],
+      "foot_anchor_source_xy": [
+        1330.5,
+        410
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "cloth",
+      "source_rect_xyxy": [
+        0,
+        512,
+        450,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        62,
+        573,
+        441,
+        857
+      ],
+      "foot_anchor_source_xy": [
+        251.5,
+        857
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "posts",
+      "source_rect_xyxy": [
+        450,
+        512,
+        760,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        520,
+        593,
+        691,
+        844
+      ],
+      "foot_anchor_source_xy": [
+        605.5,
+        844
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "cart-edge",
+      "source_rect_xyxy": [
+        760,
+        512,
+        1160,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        780,
+        600,
+        1148,
+        855
+      ],
+      "foot_anchor_source_xy": [
+        964.0,
+        855
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "olive-shrub",
+      "source_rect_xyxy": [
+        1160,
+        512,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        1184,
+        586,
+        1485,
+        868
+      ],
+      "foot_anchor_source_xy": [
+        1334.5,
+        868
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    }
+  ],
+  "assets/interlude/checkpoint-run-hideouts.png": [
+    {
+      "name": "wagon",
+      "source_rect_xyxy": [
+        0,
+        0,
+        590,
+        510
+      ],
+      "visible_bbox_xyxy": [
+        67,
+        153,
+        580,
+        467
+      ],
+      "foot_anchor_source_xy": [
+        323.5,
+        467
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "amphora-stack",
+      "source_rect_xyxy": [
+        590,
+        0,
+        1000,
+        510
+      ],
+      "visible_bbox_xyxy": [
+        634,
+        144,
+        959,
+        464
+      ],
+      "foot_anchor_source_xy": [
+        796.5,
+        464
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "wooden-shelter",
+      "source_rect_xyxy": [
+        1000,
+        0,
+        1536,
+        510
+      ],
+      "visible_bbox_xyxy": [
+        1041,
+        164,
+        1476,
+        458
+      ],
+      "foot_anchor_source_xy": [
+        1258.5,
+        458
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "low-wall",
+      "source_rect_xyxy": [
+        0,
+        510,
+        550,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        68,
+        618,
+        501,
+        859
+      ],
+      "foot_anchor_source_xy": [
+        284.5,
+        859
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "cloth-stall",
+      "source_rect_xyxy": [
+        550,
+        510,
+        1030,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        589,
+        573,
+        987,
+        881
+      ],
+      "foot_anchor_source_xy": [
+        788.0,
+        881
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "sack-stack",
+      "source_rect_xyxy": [
+        1030,
+        510,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        1082,
+        573,
+        1462,
+        881
+      ],
+      "foot_anchor_source_xy": [
+        1272.0,
+        881
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    }
+  ],
+  "assets/interlude/checkpoint-run-route-markers.png": [
+    {
+      "name": "footprints",
+      "source_rect_xyxy": [
+        0,
+        0,
+        512,
+        505
+      ],
+      "visible_bbox_xyxy": [
+        93,
+        117,
+        466,
+        462
+      ],
+      "foot_anchor_source_xy": [
+        279.5,
+        462
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "pebbles",
+      "source_rect_xyxy": [
+        512,
+        0,
+        1024,
+        505
+      ],
+      "visible_bbox_xyxy": [
+        646,
+        126,
+        913,
+        466
+      ],
+      "foot_anchor_source_xy": [
+        779.5,
+        466
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "shadow",
+      "source_rect_xyxy": [
+        1024,
+        0,
+        1536,
+        505
+      ],
+      "visible_bbox_xyxy": [
+        1084,
+        240,
+        1444,
+        359
+      ],
+      "foot_anchor_source_xy": [
+        1264.0,
+        359
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "target",
+      "source_rect_xyxy": [
+        0,
+        505,
+        490,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        76,
+        516,
+        442,
+        901
+      ],
+      "foot_anchor_source_xy": [
+        259.0,
+        901
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "safe-zone",
+      "source_rect_xyxy": [
+        490,
+        505,
+        1050,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        502,
+        541,
+        1036,
+        916
+      ],
+      "foot_anchor_source_xy": [
+        769.0,
+        916
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "scuffs",
+      "source_rect_xyxy": [
+        1050,
+        505,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        1121,
+        573,
+        1459,
+        895
+      ],
+      "foot_anchor_source_xy": [
+        1290.0,
+        895
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    }
+  ],
+  "assets/interlude/checkpoint-run-player.png": [
+    {
+      "name": "south-idle",
+      "source_rect_xyxy": [
+        330,
+        0,
+        570,
+        330
+      ],
+      "visible_bbox_xyxy": [
+        381,
+        37,
+        544,
+        302
+      ],
+      "foot_anchor_source_xy": [
+        462.5,
+        302
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "south-step",
+      "source_rect_xyxy": [
+        630,
+        0,
+        900,
+        330
+      ],
+      "visible_bbox_xyxy": [
+        674,
+        38,
+        847,
+        313
+      ],
+      "foot_anchor_source_xy": [
+        760.5,
+        313
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "hide",
+      "source_rect_xyxy": [
+        960,
+        0,
+        1240,
+        330
+      ],
+      "visible_bbox_xyxy": [
+        988,
+        111,
+        1157,
+        297
+      ],
+      "foot_anchor_source_xy": [
+        1072.5,
+        297
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "west-idle",
+      "source_rect_xyxy": [
+        330,
+        330,
+        570,
+        650
+      ],
+      "visible_bbox_xyxy": [
+        374,
+        345,
+        521,
+        621
+      ],
+      "foot_anchor_source_xy": [
+        447.5,
+        621
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "west-step",
+      "source_rect_xyxy": [
+        630,
+        330,
+        900,
+        650
+      ],
+      "visible_bbox_xyxy": [
+        670,
+        345,
+        844,
+        613
+      ],
+      "foot_anchor_source_xy": [
+        757.0,
+        613
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "east-idle",
+      "source_rect_xyxy": [
+        960,
+        330,
+        1240,
+        650
+      ],
+      "visible_bbox_xyxy": [
+        1019,
+        345,
+        1158,
+        622
+      ],
+      "foot_anchor_source_xy": [
+        1088.5,
+        622
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "east-step",
+      "source_rect_xyxy": [
+        330,
+        650,
+        570,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        362,
+        657,
+        534,
+        932
+      ],
+      "foot_anchor_source_xy": [
+        448.0,
+        932
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "north-idle",
+      "source_rect_xyxy": [
+        630,
+        650,
+        900,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        691,
+        657,
+        847,
+        932
+      ],
+      "foot_anchor_source_xy": [
+        769.0,
+        932
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "north-step",
+      "source_rect_xyxy": [
+        960,
+        650,
+        1240,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        997,
+        657,
+        1160,
+        943
+      ],
+      "foot_anchor_source_xy": [
+        1078.5,
+        943
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    }
+  ],
+  "assets/interlude/checkpoint-run-guards.png": [
+    {
+      "name": "south-idle",
+      "source_rect_xyxy": [
+        330,
+        0,
+        570,
+        330
+      ],
+      "visible_bbox_xyxy": [
+        382,
+        12,
+        530,
+        317
+      ],
+      "foot_anchor_source_xy": [
+        456.0,
+        317
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "south-step",
+      "source_rect_xyxy": [
+        630,
+        0,
+        900,
+        330
+      ],
+      "visible_bbox_xyxy": [
+        688,
+        12,
+        844,
+        321
+      ],
+      "foot_anchor_source_xy": [
+        766.0,
+        321
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "alert",
+      "source_rect_xyxy": [
+        960,
+        0,
+        1240,
+        330
+      ],
+      "visible_bbox_xyxy": [
+        1007,
+        59,
+        1195,
+        319
+      ],
+      "foot_anchor_source_xy": [
+        1101.0,
+        319
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "west-idle",
+      "source_rect_xyxy": [
+        330,
+        330,
+        570,
+        650
+      ],
+      "visible_bbox_xyxy": [
+        393,
+        341,
+        519,
+        639
+      ],
+      "foot_anchor_source_xy": [
+        456.0,
+        639
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "west-step",
+      "source_rect_xyxy": [
+        630,
+        330,
+        900,
+        650
+      ],
+      "visible_bbox_xyxy": [
+        680,
+        342,
+        855,
+        633
+      ],
+      "foot_anchor_source_xy": [
+        767.5,
+        633
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "east-idle",
+      "source_rect_xyxy": [
+        960,
+        330,
+        1240,
+        650
+      ],
+      "visible_bbox_xyxy": [
+        1014,
+        342,
+        1145,
+        639
+      ],
+      "foot_anchor_source_xy": [
+        1079.5,
+        639
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "east-step",
+      "source_rect_xyxy": [
+        330,
+        650,
+        570,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        364,
+        663,
+        533,
+        953
+      ],
+      "foot_anchor_source_xy": [
+        448.5,
+        953
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "north-idle",
+      "source_rect_xyxy": [
+        630,
+        650,
+        900,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        691,
+        657,
+        846,
+        962
+      ],
+      "foot_anchor_source_xy": [
+        768.5,
+        962
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "north-step",
+      "source_rect_xyxy": [
+        960,
+        650,
+        1240,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        1009,
+        657,
+        1168,
+        965
+      ],
+      "foot_anchor_source_xy": [
+        1088.5,
+        965
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    }
+  ],
+  "assets/interlude/checkpoint-run-collectibles.png": [
+    {
+      "name": "map",
+      "source_rect_xyxy": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        52,
+        80,
+        492,
+        438
+      ],
+      "foot_anchor_source_xy": [
+        272.0,
+        438
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "provisions",
+      "source_rect_xyxy": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        578,
+        71,
+        968,
+        476
+      ],
+      "foot_anchor_source_xy": [
+        773.0,
+        476
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "permit",
+      "source_rect_xyxy": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        1089,
+        86,
+        1496,
+        440
+      ],
+      "foot_anchor_source_xy": [
+        1292.5,
+        440
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "water",
+      "source_rect_xyxy": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        79,
+        562,
+        448,
+        961
+      ],
+      "foot_anchor_source_xy": [
+        263.5,
+        961
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "pouch",
+      "source_rect_xyxy": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        611,
+        601,
+        935,
+        961
+      ],
+      "foot_anchor_source_xy": [
+        773.0,
+        961
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    }
+  ],
+  "assets/interlude/checkpoint-run-alert-effects.png": [
+    {
+      "name": "attention",
+      "source_rect_xyxy": [
+        0,
+        0,
+        768,
+        530
+      ],
+      "visible_bbox_xyxy": [
+        242,
+        84,
+        505,
+        513
+      ],
+      "foot_anchor_source_xy": [
+        373.5,
+        513
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "alarm",
+      "source_rect_xyxy": [
+        768,
+        0,
+        1536,
+        530
+      ],
+      "visible_bbox_xyxy": [
+        809,
+        118,
+        1335,
+        480
+      ],
+      "foot_anchor_source_xy": [
+        1072.0,
+        480
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "sight",
+      "source_rect_xyxy": [
+        0,
+        530,
+        768,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        134,
+        561,
+        732,
+        944
+      ],
+      "foot_anchor_source_xy": [
+        433.0,
+        944
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "discovered",
+      "source_rect_xyxy": [
+        768,
+        530,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        829,
+        622,
+        1413,
+        917
+      ],
+      "foot_anchor_source_xy": [
+        1121.0,
+        917
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    }
+  ],
+  "assets/interlude/checkpoint-run-ui.png": [
+    {
+      "name": "status",
+      "source_rect_xyxy": [
+        0,
+        0,
+        760,
+        500
+      ],
+      "visible_bbox_xyxy": [
+        50,
+        183,
+        718,
+        402
+      ],
+      "foot_anchor_source_xy": [
+        384.0,
+        402
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "three-slots",
+      "source_rect_xyxy": [
+        760,
+        0,
+        1536,
+        500
+      ],
+      "visible_bbox_xyxy": [
+        787,
+        168,
+        1485,
+        443
+      ],
+      "foot_anchor_source_xy": [
+        1136.0,
+        443
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "undetected",
+      "source_rect_xyxy": [
+        0,
+        500,
+        520,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        43,
+        529,
+        480,
+        878
+      ],
+      "foot_anchor_source_xy": [
+        261.5,
+        878
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "target",
+      "source_rect_xyxy": [
+        520,
+        500,
+        930,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        561,
+        557,
+        892,
+        877
+      ],
+      "foot_anchor_source_xy": [
+        726.5,
+        877
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "progress",
+      "source_rect_xyxy": [
+        930,
+        500,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        950,
+        674,
+        1488,
+        793
+      ],
+      "foot_anchor_source_xy": [
+        1219.0,
+        793
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    }
+  ],
+  "assets/bonus/puzzle-ui/mode-icons.png": [
+    {
+      "name": "easy-swap",
+      "source_rect_xyxy": [
+        0,
+        0,
+        730,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        34,
+        172,
+        701,
+        832
+      ],
+      "foot_anchor_source_xy": [
+        367.5,
+        832
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    },
+    {
+      "name": "classic-slide",
+      "source_rect_xyxy": [
+        730,
+        0,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        748,
+        357,
+        1509,
+        689
+      ],
+      "foot_anchor_source_xy": [
+        1128.5,
+        689
+      ],
+      "note": "Fußanker für Figuren; bei Objekten geometrischer Basisanker, visuell anpassen."
+    }
+  ]
+}
