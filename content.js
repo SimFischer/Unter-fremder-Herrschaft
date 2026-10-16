@@ -53,7 +53,7 @@ const READINGS=[
   [
     [
       "Norden, Mitte, Süden",
-      "Merkt euch die Reihenfolge: <strong>Galiläa im Norden – Samaria in der Mitte – Judäa im Süden</strong>. Der See Genezareth liegt in Galiläa. Der Jordan fließt vom See nach Süden zum Toten Meer.</p><p>Eine Region ist ein größeres Gebiet, eine Stadt oder ein Dorf dagegen ein einzelner Ort. Sucht auf der Karte zuerst die Regionen und dann die Orte und Gewässer. <strong>Der Jordan ist ein Fluss, der See Genezareth ein See.</strong> Solche Unterschiede helfen bei Reisehinweisen.",
+      "Merkt euch die Reihenfolge: <strong>Galiläa im Norden – Samaria in der Mitte – Judäa im Süden</strong>. Der See Genezareth liegt in Galiläa. Der Jordan fließt von Norden in den See Genezareth und von dort nach Süden zum Toten Meer. Das Mittelmeer liegt westlich der drei Regionen.</p><p>Eine Region ist ein größeres Gebiet, eine Stadt oder ein Dorf dagegen ein einzelner Ort. Sucht auf der Karte zuerst die Regionen und dann die Orte und Gewässer. <strong>Der Jordan ist ein Fluss, der See Genezareth ein See.</strong> Solche Unterschiede helfen bei Reisehinweisen.",
       "palestine-map"
     ],
     [
@@ -63,7 +63,7 @@ const READINGS=[
     ],
     [
       "Warum Jerusalem wichtig ist",
-      "<strong>Jerusalem liegt in Judäa.</strong> Dort stand der Tempel: ein wichtiger Mittelpunkt des jüdischen Glaubens. Verwechselt also die Stadt Jerusalem nicht mit der Region Galiläa.</p><p>Menschen kommen auch aus anderen Gegenden zum Tempel nach Jerusalem. Die Stadt hat deshalb eine besondere religiöse Bedeutung. <strong>Judäa ist die Region, Jerusalem die Stadt darin.</strong> Der Tempel steht also nicht in der nördlichen Region Galiläa.",
+      "<strong>Jerusalem liegt in Judäa.</strong> Dort stand der Tempel: ein wichtiger Mittelpunkt des jüdischen Glaubens. Verwechselt also die Stadt Jerusalem nicht mit der Region Galiläa.</p><p>Menschen kommen auch aus anderen Gegenden zum Tempel nach Jerusalem. Die Stadt hat deshalb eine besondere religiöse Bedeutung. Auch Jericho und Bethlehem liegen in Judäa. Jericho liegt nahe dem Jordan nördlich des Toten Meeres, Bethlehem südlich von Jerusalem. <strong>Judäa ist die Region, Jerusalem die Stadt darin.</strong> Der Tempel steht also nicht in der nördlichen Region Galiläa.",
       "edict-board"
     ]
   ],
@@ -90,13 +90,13 @@ const KNOWLEDGE=[
 ['Belastungen','Die Menschen mussten Steuern und andere Abgaben zahlen. Für wohlhabende Familien war das oft leichter zu tragen als für arme Bauern und Handwerker. Nach schlechten Ernten konnte die Belastung so groß werden, dass kaum genug zum Leben blieb. Zeichen römischer Herrschaft waren auch im Alltag sichtbar, zum Beispiel auf Münzen.'],
 ['Religion','Juden glaubten an den einen Gott. Die Römer verehrten dagegen viele Götter; auch der Kaiser wurde besonders verehrt. Viele Juden lehnten diese Verehrung ab und wollten ihren Glauben und ihre Traditionen bewahren. Dadurch entstanden religiöse Spannungen.'],
 ['Reaktionen','Die Menschen reagierten unterschiedlich auf die römische Herrschaft. Manche arrangierten sich und versuchten, ihren Alltag weiterzuleben. Andere hofften auf Freiheit. Manche wollten die Römer mit Gewalt vertreiben. Die organisierte Gruppe der Zeloten ist erst aus dem Krieg gegen Rom ab 66 n. Chr. bekannt. Nicht alle früheren Gegner Roms gehörten zu ihr.'],
-['Palästina','Palästina gliederte sich in Galiläa im Norden, Samaria in der Mitte und Judäa im Süden. Der Jordan fließt durch das Land. Der See Genezareth liegt in Galiläa. Kafarnaum lag am Nordufer des Sees. Jerusalem war die wichtigste Stadt Judäas und Standort des Tempels.']];
+['Palästina','Auf dieser Karte betrachten wir drei Regionen der historischen Landschaft Palästina: Galiläa im Norden, Samaria in der Mitte und Judäa im Süden. Der Jordan fließt durch das Land. Der See Genezareth liegt in Galiläa. Kafarnaum lag am Nordufer des Sees. Jerusalem war die wichtigste Stadt Judäas und Standort des Tempels.']];
 const PUZZLES=[
 {name:'Herrschaftsnetz',object:'Erlassbrett',pos:[17,28],anchor:[20,42],knowledge:[0,1,2],hint:'Unterscheidet politische, wirtschaftliche und religiöse Folgen. Eine Kette führt von einer Maßnahme über ihre Wirkung zum Erleben der Menschen.'},
 {name:'Manipulierte Akte',object:'Abgabentisch',pos:[28,54],anchor:[21,64],knowledge:[0,1,2],hint:'Prüft besonders, wer Herrscher bestimmte, wo Rom im Alltag sichtbar war und wie viele Juden zur Kaiserverehrung standen.'},
-{name:'Stimmen unter Fremdherrschaft',object:'Figurengruppe',pos:[79,26],anchor:[66,65],knowledge:[0,1,3],hint:'Achtet auf die Verben: weiterleben, hoffen, kämpfen und sichern. Haltung und Begründung müssen zur selben Stimme passen.'},
-{name:'Karte Palästinas',object:'Karte',pos:[83,55],anchor:[83,67],knowledge:[4],hint:'Orientiert euch zuerst an Norden, Mitte und Süden. Unterscheidet dann Orte, Gewässer und Regionen.'},
-{name:'Zacharias’ Bericht',object:'Pergamentrolle',pos:[54,69],anchor:[51,77],knowledge:[0,1,3],hint:'Sucht die vier konkreten Erfahrungen: Kontrolle, ein sichtbares Zeichen der kaiserlichen Macht, Abgaben und Hoffnung auf Selbstbestimmung.'}];
+{name:'Stimmen unter Fremdherrschaft',object:'Figurengruppe',pos:[79,26],anchor:[63,62],knowledge:[0,1,3],hint:'Achtet auf die Verben: weiterleben, hoffen, kämpfen und sichern. Haltung und Begründung müssen zur selben Stimme passen.'},
+{name:'Karte Palästinas',object:'Karte',pos:[83,55],anchor:[83,76],knowledge:[4],hint:'Orientiert euch zuerst an Norden, Mitte und Süden. Unterscheidet dann Orte, Gewässer und Regionen.'},
+{name:'Zacharias’ Bericht',object:'Pergamentrolle',pos:[54,69],anchor:[42,85],knowledge:[0,1,3],hint:'Sucht die vier konkreten Erfahrungen: Kontrolle, ein sichtbares Zeichen der kaiserlichen Macht, Abgaben und Hoffnung auf Selbstbestimmung.'}];
 
 const LEFT=['Rom bestimmt Herrscher und Beamte.','Soldaten prüfen Reisende und Waren.','Familien müssen Abgaben zahlen.','Der Kaiser wird religiös verehrt.','Das Kaiserbild steht auf Münzen.'];
 const RIGHT=['Menschen entscheiden nicht selbst, wer regiert.','Römische Macht ist auf den Straßen spürbar.','Besonders armen Familien bleibt weniger zum Leben.','Der Glaube an einen Gott gerät in Spannung zur Kaiserverehrung.','Römische Macht begegnet Menschen auch beim Bezahlen.'];
@@ -127,9 +127,7 @@ const PEOPLE=[
 const ATTITUDES=['Sich mit der Herrschaft arrangieren','Auf Freiheit hoffen','Mit Gewalt Widerstand leisten','Römische Herrschaft sichern'];
 const REASONS=['Die Fremdherrschaft soll durch einen bewaffneten Kampf enden.','Die Kontrolle wird im Auftrag Roms durchgesetzt.','Der Alltag wird angepasst, ohne damit Rom begeistert zu unterstützen.','Selbstbestimmung wird gewünscht, ein bewaffneter Kampf aber nicht angekündigt.'];
 const OVERALL=['Wer sich im Alltag anpasst, hält die römische Herrschaft auch für gerecht.','Unzufriedenheit mit Rom kann zu verschiedenen Reaktionen führen.','Wer auf Freiheit hofft, gehört deshalb schon zu bewaffneten Widerstandskämpfern.'];
-// Anchors checked against the new full map: the lake is at (75,17), Jerusalem west of the Dead Sea.
-const PLACES=[['Galiläa',62,19,'galilaea'],['Samaria',61,42,'samaria'],['Judäa',59,70,'judaea'],['Jordan',75,40,null],['See Genezareth',75,17,null],['Jerusalem',66,61,'jerusalem'],['Kafarnaum',75,12,'kafarnaum'],['Nazareth',65,24,'nazareth']];
-const CLUES=[['Euer Ziel liegt im Norden. Sucht die Region rund um Nazareth und den See Genezareth.',0],['Welche Region liegt zwischen Galiläa und Judäa?',1],['In welcher südlichen Region liegt Jerusalem?',2],['Welches Gewässer liegt in Galiläa und speist den Jordan?',4],['Ein Reisender sucht den Tempel. In welche Stadt in Judäa muss er gehen?',5],['Ein Fischer wohnt am Nordufer des Sees Genezareth. Findet seinen Ort.',6],['Welcher Ort in Galiläa kommt im Namen „Jesus von …“ vor?',7],['Welcher Fluss führt vom See Genezareth nach Süden zum Toten Meer?',3]];
+const PLACES=MapRules.places;
 const TRANSFER=[
 {question:'Warum führt eure nächste Lernreise gerade nach Galiläa?',options:['Dort lebte und wirkte Jesus; wir fragen nach seiner Botschaft in dieser Welt.','Dort stand der Tempel; wir fragen nach Jesu Leben rund um den Tempel.','Dort hatte der römische Statthalter seinen Sitz; wir fragen nach Jesu Begegnung mit ihm.'],answer:0,why:'Galiläa ist eng mit Jesu Leben und Wirken verbunden. Der Tempel stand dagegen in Jerusalem in Judäa. Galiläa wurde zur Zeit Jesu von Herodes Antipas regiert.'},
 {question:'Warum hatte Jerusalem für Juden eine besondere Bedeutung?',options:['Dort wohnte Herodes Antipas; deshalb lag dort das Zentrum des Glaubens.','Dort endete der Jordan; deshalb trafen sich dort die Pilger am Fluss.','Dort stand der Tempel; er war ein wichtiger Mittelpunkt des jüdischen Glaubens.'],answer:2,why:'Jerusalem war als Standort des Tempels religiös besonders wichtig. Politische und religiöse Bedeutung sind nicht dasselbe.'}

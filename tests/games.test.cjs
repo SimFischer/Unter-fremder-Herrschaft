@@ -58,14 +58,14 @@ test('new settings/statistics are validated; resetting has no interlude or puzzl
  assert.ok(s.interludeStarted);assert.deepEqual(s.bonusSettings,{motif:'control-post',mode:'swap',size:3});assert.deepEqual(s.bonusCompleted,['control-post:swap:3']);assert.deepEqual(s.interludeStats.collectibles,['map']);const reset=R.fresh();assert.equal(reset.interludeStarted,false);assert.equal(reset.interludeCompleted,false);assert.equal(reset.interludeRun,null);assert.deepEqual(reset.bonusCompleted,[]);
 });
 
-test('an observed route reaches the gate undetected in about one minute at multiple frame rates',()=>{
+test('an observed route reaches the gate undetected after observing the southbound patrol at multiple frame rates',()=>{
  for(const dt of [.016,.025,.05]){
-  const run=I.create(),route=[[245,260],[665,260],[665,390],[820,390],['wait',37.1],[940,390],[940,530],[1370,530],[1370,195]];
+  const run=I.create(),route=[[245,260],[665,260],[665,390],[820,390],['wait',20],[940,390],[940,530],[1370,530],[1370,195]];
   for(const target of route){for(let frame=0;frame<10000&&run.phase==='play';frame++){
    if(target[0]==='wait'){if(run.elapsed>=target[1])break;I.update(run,dt,{});continue;}
    const dx=target[0]-run.player.x,dy=target[1]-run.player.y;if(Math.hypot(dx,dy)<I.speed*dt+1)break;
    I.update(run,dt,Math.abs(dx)>I.speed*dt?{[dx>0?'right':'left']:true}:{[dy>0?'down':'up']:true});
   }}
-  assert.equal(run.phase,'result');assert.equal(run.detections,0,`${dt} seconds/frame`);assert.ok(run.elapsed>=45&&run.elapsed<=90);
+  assert.equal(run.phase,'result');assert.equal(run.detections,0,`${dt} seconds/frame`);assert.ok(run.elapsed>=30&&run.elapsed<=40);
  }
 });

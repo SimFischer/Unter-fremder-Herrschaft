@@ -9,10 +9,10 @@
 .motif-choices button>span{position:absolute;top:calc(100% + 2px);left:-6%;right:-6%;text-align:center;font:clamp(11px,1.3vw,15px)/1.1 Georgia;color:#3b2815}
 .motif-choices button[aria-pressed="true"]{border:3px solid #604c23;outline:2px solid #e0bb64;outline-offset:1px}
 .motif-selected{position:absolute;top:0;right:0;background:#5f5733;color:#fff1d0;padding:2px 6px;font-size:17px}.motif-selected[hidden]{display:none}
-.mode-choices{position:absolute;left:12%;top:73.5%;width:45%;height:9%;display:flex;gap:5%}
-.mode-choices button{width:47.5%;min-height:44px;display:flex;align-items:center;justify-content:center;gap:4px;padding:2px 5px;font:clamp(12px,1.3vw,15px)/1.15 Georgia;box-shadow:none}
+.mode-choices{position:absolute;inset:0;pointer-events:none}
+.mode-choices button{position:absolute;top:73.1%;height:8.9%;min-height:44px;pointer-events:auto;display:flex;align-items:center;justify-content:center;gap:4px;padding:2px 5px;font:clamp(12px,1.3vw,15px)/1.15 Georgia;box-shadow:none}
 .mode-choices canvas{width:32px;height:auto;flex-shrink:0}.mode-choices [aria-pressed="true"],.size-choices [aria-pressed="true"]{background:#6a5430;color:#fff0ce;outline:2px solid #c7a361;outline-offset:1px}
-.size-choices{position:absolute;left:63%;top:73.5%;width:26%;height:9%;display:flex;gap:8%}.size-choices button{flex:1;min-width:44px;min-height:44px;padding:1px;font:bold 15px Georgia;box-shadow:none}
+.size-choices{position:absolute;inset:0;pointer-events:none}.size-choices button{position:absolute;top:73.1%;height:8.9%;pointer-events:auto;min-width:44px;min-height:44px;padding:1px;font:bold 15px Georgia;box-shadow:none}
 .bonus-selection-footer{display:flex;align-items:center;gap:16px;justify-content:space-between;max-width:1080px;margin:auto;font:14px/1.4 Georgia}.bonus-selection-footer p{margin:4px 0}.bonus-selection-footer button{flex:0 0 auto;background:#505a36;color:#fff0cc;min-height:48px}
 .bonus-toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;font:14px Georgia}.bonus-toolbar>span{text-align:center}.bonus-toolbar button{font-size:14px;padding:7px 12px}.bonus-toolbar label{display:flex;align-items:center;gap:7px;min-height:44px}.bonus-toolbar input{width:22px;height:22px;accent-color:#6b5430}
 #bonus-play-message{font:15px/1.35 Georgia;margin:5px 0;min-height:21px;text-align:center}
@@ -37,3 +37,13 @@
 
 .motif-choices button>span{left:0;right:0}
 .puzzle-target>strong{white-space:nowrap}
+
+.mode-choices button,.size-choices button{border:0;border-radius:3px;background:transparent;outline-offset:-3px}
+.mode-choices [aria-pressed="true"],.size-choices [aria-pressed="true"]{background:#6a543026;color:#392714;box-shadow:inset 0 0 0 2px #70572e;outline:0}
+
+/* Measured native panel interiors: every control stays inside its own painted recess. */
+.bonus-selection{min-width:860px}
+.mode-choices button:nth-child(1){left:10.8%;width:22.1%}.mode-choices button:nth-child(2){left:35%;width:22.7%}
+.size-choices button:nth-child(1){left:61.8%;width:7.8%}.size-choices button:nth-child(2){left:71.7%;width:7.8%}.size-choices button:nth-child(3){left:81.8%;width:7.7%}
+.motif-choices button{overflow:hidden;border:0}.motif-choices button>img{object-fit:contain}.motif-choices button>span{top:auto;bottom:0;font-size:clamp(11px,1.2vw,14px);padding:2px;line-height:1.15;background:#efddb6ee;border:0}
+.motif-choices button[aria-pressed="true"]{border:0;outline:3px solid #70572e;outline-offset:-3px}

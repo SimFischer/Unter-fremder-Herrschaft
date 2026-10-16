@@ -1,6 +1,6 @@
 'use strict';
 const InterludeRules=(()=>{
- const width=1659,height=948,speed=48,sightRange=185;
+ const width=1659,height=948,speed=72,guardSpeed=42,crouchFactor=.65,sightRange=185;
  // Checked against the full background. Bodies/feet collide, not cloaks or spears.
  const obstacles=[
   {x:340,y:300,w:300,h:195},{x:712,y:225,w:202,h:140},
@@ -65,12 +65,12 @@ const InterludeRules=(()=>{
   p.hiding=!!input.hide;p.moving=!!(dx||dy);
   if(p.moving){
    p.direction=Math.abs(dx)>Math.abs(dy)?(dx>0?'east':'west'):(dy>0?'south':'north');
-   const length=Math.hypot(dx,dy);dx=dx/length*speed*dt*(p.hiding?.65:1);dy=dy/length*speed*dt*(p.hiding?.65:1);
+   const length=Math.hypot(dx,dy);dx=dx/length*speed*dt*(p.hiding?crouchFactor:1);dy=dy/length*speed*dt*(p.hiding?crouchFactor:1);
    if(free(p.x+dx,p.y))p.x+=dx;if(free(p.x,p.y+dy))p.y+=dy;
   }
   run.guards.forEach((g,i)=>{
    g.moving=false;if(g.wait>0){g.wait=Math.max(0,g.wait-dt);return;}
-   const route=routes[i],target=route[g.target],dx=target[0]-g.x,dy=target[1]-g.y,d=Math.hypot(dx,dy),step=42*dt;
+   const route=routes[i],target=route[g.target],dx=target[0]-g.x,dy=target[1]-g.y,d=Math.hypot(dx,dy),step=guardSpeed*dt;
    if(d<=step){g.x=target[0];g.y=target[1];g.wait=.8;if(g.target===route.length-1)g.sign=-1;if(g.target===0)g.sign=1;g.target+=g.sign;}
    else{g.angle=Math.atan2(dy,dx);g.x+=dx/d*step;g.y+=dy/d*step;g.moving=true;}
   });
@@ -81,7 +81,7 @@ const InterludeRules=(()=>{
   return events;
  }
  function shouldStart(state){return state.solved.filter(Boolean).length===3&&!state.interludeStarted&&!state.interludeCompleted;}
- return {width,height,speed,sightRange,obstacles,floors,checkpoints,items,routes,inside,free,segmentHit,rayEnd,sees,create,snapshot,update,shouldStart};
+ return {width,height,speed,guardSpeed,crouchFactor,sightRange,obstacles,floors,checkpoints,items,routes,inside,free,segmentHit,rayEnd,sees,create,snapshot,update,shouldStart};
 })();
 if(typeof module!=='undefined')module.exports=InterludeRules;
 if(typeof window!=='undefined')window.InterludeRules=InterludeRules;

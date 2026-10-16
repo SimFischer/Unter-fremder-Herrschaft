@@ -71,9 +71,9 @@ function render(){
   html+=`<div class="voice-strip">${PEOPLE.map((p,i)=>`<div>${portrait(i)}<strong>${p[0].split(' · ')[0]}</strong></div>`).join('')}</div>${options('overall',OVERALL)}`;
  }
  if(active===3){
-  const candidates=round<3?[0,1,2]:[3,7].includes(round)?[3,4]:[5,6,7];
-  html=`<div class="map-layout"><div class="map"><img src="assets/puzzles/map/map-table-large.png" alt="Vereinfachte Karte: Mittelmeer im Westen, See Genezareth im Nordosten, Jordan zum Toten Meer im Süden."><img class="orientation" src="assets/puzzles/map/map-compass.png" alt="Orientierungsscheibe: Norden oben, kein Magnetkompass">${round<8?candidates.map(i=>{const p=PLACES[i];return `<button data-place="${i}" style="left:${p[1]}%;top:${p[2]}%" class="map-marker ${a['place'+round]===i?'selected':''}" aria-pressed="${a['place'+round]===i}">${p[3]?sprite('assets/puzzles/map/map-marker-set.png',p[3]):'<span class="water-dot" aria-hidden="true"></span>'}<span>${p[0]}</span></button>`;}).join(''):''}<div class="route-proof">${sprite('assets/puzzles/map/map-route-strip.png','footprints')}<span>${Math.min(a.stage||0,8)} Reisemarken gesichert</span></div></div><div class="travel-note">`;
-  if(round<8)html+=`<span class="stamp">REISEHINWEIS ${round+1} VON 8</span><h3>Plant den nächsten Wegabschnitt</h3><p class="question">${CLUES[round][0]}</p><p class="selection-note">${a['place'+round]!==undefined?'Eure Wahl: '+(PLACES[a['place'+round]]?.[0]||'bitte neu wählen'):'Tippt auf den passenden Marker.'}</p><details><summary>Den Kartenschreiber fragen</summary><p>${READINGS[3].map(r=>r[1]).join('</p><p>')}</p></details>`;
+  const task=MapRules.tasks[round],chosen=round<8?MapRules.chosen(a,round):[];
+  html=`<div class="map-layout"><div class="map"><img src="assets/puzzles/map/map-table-large.png" alt="Vereinfachte Karte: Mittelmeer im Westen, See Genezareth im Nordosten, Jordan zum Toten Meer im Süden."><img class="orientation" src="assets/puzzles/map/map-compass.png" alt="Orientierungsscheibe: Norden oben, kein Magnetkompass">${round<8?`<svg class="map-anchors" viewBox="0 0 1000 665" aria-hidden="true">${task.candidates.map(i=>{const p=PLACES[i];return `<path d="M ${p[1]*10} ${p[2]*6.65} L ${p[5]*10} ${p[6]*6.65}"/><circle cx="${p[1]*10}" cy="${p[2]*6.65}" r="5"/>`;}).join('')}</svg>`+task.candidates.map(i=>{const p=PLACES[i],selected=chosen.includes(i);return `<button data-place="${i}" style="left:${p[5]}%;top:${p[6]}%" class="map-marker map-${p[4]==='Region'?'region':p[4]==='Ort'?'town':'water'} ${selected?'selected':''}" aria-pressed="${selected}" aria-label="${p[0]}, ${p[4]}${selected?', Markierung '+(chosen.indexOf(i)+1):''}"><span>${selected&&!task.unordered?chosen.indexOf(i)+1+' · ':''}${p[0]}</span></button>`;}).join(''):''}<div class="route-proof">${sprite('assets/puzzles/map/map-route-strip.png','footprints')}<span>${Math.min(a.stage||0,8)} Reisemarken gesichert</span></div></div><div class="travel-note">`;
+  if(round<8)html+=`<span class="stamp">REISEHINWEIS ${round+1} VON 8</span><h3>Plant den nächsten Wegabschnitt</h3><p class="question">${task.question}</p><p class="selection-note" role="status">${chosen.length?'Eure Wahl: '+chosen.map(i=>PLACES[i][0]).join(task.unordered?' + ':' → '):'Tippt auf die passenden Marker auf der Karte.'} · ${chosen.length} von ${task.answer.length}</p>${task.answer.length>1?'<button class="paper-quiet" data-map-reset>Markierungen zurücknehmen</button><p class="map-instruction">Erneutes Antippen nimmt eine Markierung zurück.</p>':''}<button class="paper-quiet" data-map-hint>Den Kartenschreiber fragen</button><p id="map-hint" role="status" ${hintLevel===0?'hidden':''}>${hintLevel?esc(task.hints[Math.min(hintLevel-1,2)]):''}</p>`;
   else html+=`<span class="stamp">DIE REISE GEHT WEITER</span><h3>${TRANSFER[round-8].question}</h3>${options('transfer'+(round-8),TRANSFER[round-8].options)}`;
   html+='</div></div>';
  }
@@ -106,7 +106,7 @@ function check(){
  if(awaitingNext){
   awaitingNext=false;$('#feedback').textContent='';$('#feedback').className='';
   if(round===TOTALS[active]-1){$('#puzzle').close();return;}
-  views[active]++;pending=null;render();$('#puzzle .scroll').scrollTop=0;return;
+  views[active]++;hintLevel=0;pending=null;render();$('#puzzle .scroll').scrollTop=0;return;
  }
  let ok=false,why='';
  if(active===0){
@@ -127,7 +127,7 @@ function check(){
   else{ok=a.overall===1;why='Anpassung, Hoffnung und bewaffneter Widerstand sind verschiedene Reaktionen. Aus wenigen Stimmen kann man nicht ableiten, wie die gesamte Bevölkerung dachte.';}
  }
  if(active===3){
-  if(round<8){ok=a['place'+round]===CLUES[round][1];why=PLACES[CLUES[round][1]][0]+': Ihr habt die Lage mit dem Reisehinweis verbunden.';}
+  if(round<8){ok=MapRules.correct(round,MapRules.chosen(a,round));why=MapRules.tasks[round].why;}
   else{const t=TRANSFER[round-8];ok=a['transfer'+(round-8)]===t.answer;why=t.why;}
  }
  if(active===4){
@@ -145,14 +145,16 @@ function check(){
 $('#task').addEventListener('click',e=>{
  const b=e.target.closest('button');if(!b||b.disabled)return;
  const a=state.answers[active];
- if(b.dataset.round!==undefined){views[active]=Number(b.dataset.round);awaitingNext=false;pending=null;$('#feedback').textContent='';$('#feedback').className='';render();$('#puzzle .scroll').scrollTop=0;return;}
+ if(b.dataset.round!==undefined){views[active]=Number(b.dataset.round);hintLevel=0;awaitingNext=false;pending=null;$('#feedback').textContent='';$('#feedback').className='';render();$('#puzzle .scroll').scrollTop=0;return;}
  if(b.dataset.key){a[b.dataset.key]=Number(b.dataset.value);if(b.dataset.key.startsWith('att'))delete a['reason'+views[active]];}
  else if(b.dataset.order){const key=b.dataset.order,i=Number(b.dataset.value);a[key]||=[];a[key]=a[key].includes(i)?a[key].filter(v=>v!==i):a[key].length<3?[...a[key],i]:a[key];}
  else if(b.dataset.orderReset){a[b.dataset.orderReset]=[];}
  else if(b.dataset.left!==undefined){pending=Number(b.dataset.left);}
  else if(b.dataset.right!==undefined){if(pending===null){$('#feedback').textContent='Wählt zuerst einen Eingriff Roms links.';return;}a.pairs||={};const right=Number(b.dataset.right);for(const k in a.pairs)if(a.pairs[k]===right)delete a.pairs[k];a.pairs[pending]=right;pending=null;}
  else if(b.dataset.mark!==undefined){const i=Number(b.dataset.mark);a.marked||=[];a.marked=a.marked.includes(i)?a.marked.filter(x=>x!==i):[...a.marked,i].sort();}
- else if(b.dataset.place!==undefined){a['place'+views[active]]=Number(b.dataset.place);}
+ else if(b.dataset.mapHint!==undefined){showMapHint();return;}
+ else if(b.dataset.mapReset!==undefined){a['mapStep'+views[active]]=[];}
+ else if(b.dataset.place!==undefined){MapRules.select(a,views[active],Number(b.dataset.place));}
  awaitingNext=false;$('#feedback').textContent='';$('#feedback').className='';
  const scroll=$('#puzzle .scroll').scrollTop;save();render();$('#puzzle .scroll').scrollTop=scroll;
  const attr=['key','order','orderReset','left','right','mark','place'].find(k=>b.dataset[k]!==undefined);
@@ -182,7 +184,7 @@ function failureDetail(){
  if(active===1)return CORRECTIONS[[0,3,5][r-1]].why+' Wählt eine Berichtigung, die genau diesen Unterschied ausdrückt.';
  if(active===2&&r<4)return a['att'+r]===undefined?'Wählt zuerst, was die Person ausdrücklich tut oder hofft.':`Vergleicht Haltung und Begründung mit „${PEOPLE[r][1]}“. Hoffnung allein ist kein Kampfplan; Alltagsanpassung ist keine Zustimmung.`;
  if(active===2)return 'Eine einzelne Stimme steht nicht für alle. Achtet darauf, welche Schlussfolgerung die unterschiedlichen Reaktionen offenlässt.';
- if(active===3&&r<8)return `Eure Markierung passt noch nicht zum Hinweis. ${CLUES[r][0]} Fragt den Kartenschreiber nach Region, Ort oder Gewässer.`;
+ if(active===3&&r<8)return MapRules.feedback(r,MapRules.chosen(a,r));
  if(active===3)return TRANSFER[r-8].why+' Wählt die dazu passende Begründung.';
  if(r===0)return 'Die Ortsangabe beschreibt nur den Weg. Sichert die vier Erfahrungen mit Kontrolle, Machtzeichen, Abgaben und Hoffnung.';
  if(r<5)return EVIDENCE[r-1].why+' Prüft den Schwerpunkt dieser Beobachtung.';
@@ -193,7 +195,12 @@ $('#core-info').addEventListener('click',e=>{
  const r=READINGS[active][Number(b.dataset.discover)];
  $('#discovery-detail').innerHTML=`<article class="found-note"><h3>${r[0]}</h3><p>${r[1]}</p><small>Im Reisebuch nachlesbar.</small></article>`;
 });
+function showMapHint(){
+ hintLevel=Math.min(hintLevel+1,3);const text=MapRules.tasks[views[active]].hints[hintLevel-1];
+ const target=$('#map-hint');target.hidden=false;target.textContent=['Denkimpuls: ','Räumliche Spur: ','Letzte Spur: '][hintLevel-1]+text;
+}
 $('#hint-open').onclick=()=>{
+ if(active===3&&views[active]<8){showMapHint();$('#map-hint').scrollIntoView({block:'nearest',behavior:'instant'});return;}
  $('#hint-panel').hidden=false;
  const level=Math.min(hintLevel,2);
  $('#hint-text').textContent=`${['Denkimpuls','Konkrete Spur','Lösungsnaher Hinweis'][level]}: ${HINTS[active][level]}`;
@@ -235,7 +242,7 @@ HTMLDialogElement.prototype.showModal=function(){dialogTriggers.set(this,documen
 document.querySelectorAll('dialog').forEach(d=>d.addEventListener('close',()=>{const b=dialogTriggers.get(d);if(b?.isConnected&&!b.closest('dialog:not([open])'))b.focus({preventScroll:true});}));
 // Station artwork belongs to the same coordinate system as its marker (full, uncropped scene).
 const objects=document.createElement('div');objects.className='world-objects';objects.setAttribute('aria-hidden','true');
-objects.innerHTML=[['coin-table.webp',24,69,20],['group-people.webp',66,73,16],['map-table.webp',83,79,19],['report-scroll.webp',51,81,13]].map(([src,x,y,w])=>`<img src="${src}" style="left:${x}%;top:${y}%;width:${w}%" alt="">`).join('');
+objects.innerHTML=[['coin-table.webp',25,81,21],['group-people.webp',63,84,32],['map-table.webp',83,87,18],['report-scroll.webp',42,89,10]].map(([src,x,y,w])=>`<img src="${src}" style="left:${x}%;top:${y}%;width:${w}%" alt="">`).join('');
 $('#scene').insertBefore(objects,$('#hotspots'));
 
 function drawConnections(){

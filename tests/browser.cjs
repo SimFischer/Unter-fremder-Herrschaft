@@ -45,7 +45,7 @@ const key='palaestina-adventure-klasse6-v2';
    await select('overall',1);await check();
   }
   if(station===3){
-   for(const i of [0,1,2,4,5,6,7,3]){await click(`[data-place="${i}"]`);await check();await next();}
+   for(const values of [[0],[1],[5],[4],[6,7],[5,2],[4,3,8],[5,2,1,0,7]]){for(const i of values)await click(`[data-place="${i}"]`);await check();await next();}
    await select('transfer0',0);await check();await next();await select('transfer1',2);await check();
   }
   if(station===4){

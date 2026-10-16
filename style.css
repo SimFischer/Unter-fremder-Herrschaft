@@ -146,3 +146,21 @@ dialog{width:min(1020px,96vw);max-height:94dvh}dialog .scroll{max-height:calc(94
 .report-paper{position:relative;display:block;aspect-ratio:2/3;padding:0}.report-slot{position:absolute;left:12%;right:12%;top:var(--slot-top);height:var(--slot-height);display:flex;justify-content:center;overflow:visible}.report-slot .passage{display:flex;flex-direction:column;justify-content:center;gap:4px;width:100%;height:100%;min-height:44px;overflow:auto;padding:2px 5px;margin:0;font:clamp(14px,1.5vw,17px)/1.45 Georgia;border:2px solid transparent;background:transparent;box-shadow:none}.report-slot .passage>strong{font:12px/1.4 Georgia;color:#624728}.report-slot .passage.selected{background:transparent!important;border:2px solid #74613b!important;outline:0;color:var(--ink);padding:2px 5px}.report-slot .sprite{right:-11%;top:30%;width:32px;height:32px}.location-note{display:flex;flex-direction:column;width:100%;margin:0 0 14px;padding:12px;font:16px/1.5 Georgia}.location-note strong{font-size:12px}
 
 .mission .eyebrow{color:#70502b}
+
+/* Feet and furniture share a ground plane; people are scaled by body height, not object width. */
+.world-objects img{transform:translate(-50%,-100%)}
+.world-objects img[src="group-people.webp"]{filter:drop-shadow(0 2px 2px #35241070)}
+.scene .hotspot[data-open="2"]{left:63%!important;top:62%!important}
+.scene .hotspot[data-open="3"]{left:83%!important;top:76%!important}
+.scene .hotspot[data-open="4"]{left:42%!important;top:85%!important}
+/* Marker labels have separate anchors; fine leaders retain the exact geographic position. */
+.map-anchors{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.map-anchors path{stroke:#73502c;stroke-width:1.5;fill:none}.map-anchors circle{fill:#503e23;stroke:#f2dfad;stroke-width:2}
+.map button.map-marker{flex-direction:row;min-height:44px;min-width:44px;max-width:135px;padding:0;font:14px Georgia}
+.map-marker>span:last-child{display:flex;align-items:center;justify-content:center;min-height:44px;padding:5px 7px;white-space:nowrap;border-radius:3px}
+.map-marker.map-region>span{background:#d9dfba}.map-marker.map-water>span{background:#d7e5df}.map-marker.selected>span:last-child{background:#b7bf8e;border:2px solid #454c2e}
+.map-marker.selected:after{display:none}.map-instruction{font-size:14px;margin:6px 0}.travel-note [data-map-hint]{margin:4px 0}.travel-note #map-hint{padding:10px;border-left:3px solid #796037;background:#eddfbb}
+.map .route-proof{top:11%;width:22%;font-size:12px}.map .route-proof .sprite{max-height:30px}
+
+.exercise-3 .travel-note{padding:14px}.exercise-3 .travel-note h3{display:none}.exercise-3 .travel-note .question{font-size:17px;line-height:1.5;margin:10px 0}.exercise-3 .selection-note{font-size:14px;padding:10px}.exercise-3 .travel-note button{font-size:14px;padding:7px 10px}
+@media(min-width:900px){.exercise-3 .map-layout{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:12px;align-items:start}.exercise-3 .travel-note{order:initial;margin:0}.exercise-3 .map{max-width:none}}

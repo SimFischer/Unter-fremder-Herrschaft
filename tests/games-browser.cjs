@@ -30,7 +30,7 @@ const out=process.env.ADVENTURE_SCREENSHOTS;
   await page.keyboard.down(key);await page.waitForFunction(({axis,targetValue,positive})=>{const r=Interlude.getRun();return r.phase==='result'||(positive?r.player[axis]>=targetValue-1:r.player[axis]<=targetValue+1);},{axis,targetValue,positive},{timeout:40000});await page.keyboard.up(key);
  }}
  for(const [x,y]of [[245,260],[665,260],[665,390],[820,390]])await walk(x,y);
- await page.waitForFunction(()=>{const g=Interlude.getRun().guards[1];return g.x>930&&g.y<435&&g.y>390&&g.angle<0;},null,{timeout:50000});
+ await page.waitForFunction(()=>{const g=Interlude.getRun().guards[1];return g.x>930&&g.y>460&&g.y<510&&g.angle>0;},null,{timeout:50000});
  for(const [x,y]of [[940,390],[940,530],[1370,530],[1370,195]])await walk(x,y);
  await page.locator('#run-done').waitFor();assert.equal(await page.locator('.run-result-icon').count(),4);assert.equal(await page.evaluate(()=>Interlude.getRun().detections),0);await shot('interlude-result');const travelTime=await page.evaluate(()=>Interlude.getRun().elapsed);await click('#run-done');assert.equal((await getState()).interludeCompleted,true);assert.equal((await getState()).solved.filter(Boolean).length,3);await page.reload();assert.equal(await page.locator('#interlude').isVisible(),false);console.log('PASS interlude: touch/key stops, tab pause, undetected route, result, once-only reload;',Math.round(travelTime),'game seconds');
  // The bonus is available at the completed main game's ending, with all five motifs.
