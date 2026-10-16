@@ -1,0 +1,646 @@
+[
+  {
+    "path": "assets/interlude/checkpoint-run-bg.webp",
+    "size": [
+      1659,
+      948
+    ],
+    "transparent_fraction": 0.0,
+    "alpha_extrema": [
+      255,
+      255
+    ],
+    "visible_bbox": [
+      0,
+      0,
+      1659,
+      948
+    ],
+    "sha256": "ad0e6c0fafec794b06fc73017683ddf11895ab985a8ee7e9ff8e836ec47f0f48",
+    "bytes": 850068,
+    "format": "WEBP",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "path": "assets/interlude/checkpoint-run-foreground.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "transparent_fraction": 0.6829433441162109,
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "visible_bbox": [
+      62,
+      184,
+      1485,
+      868
+    ],
+    "sha256": "e65d3828cd64afd8c685497a754b40a6d1af50c46471a1a5857f8c25cbff1f15",
+    "bytes": 1617842,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      62,
+      184,
+      51,
+      156
+    ]
+  },
+  {
+    "path": "assets/interlude/checkpoint-run-hideouts.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "transparent_fraction": 0.6048908233642578,
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "visible_bbox": [
+      67,
+      144,
+      1476,
+      881
+    ],
+    "sha256": "05a98bb29d742242c4ba1f733865bc01d7f9437a8e7faf977a3e52bb8e1c5548",
+    "bytes": 1802122,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      67,
+      144,
+      60,
+      143
+    ]
+  },
+  {
+    "path": "assets/interlude/checkpoint-run-route-markers.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "transparent_fraction": 0.5746046702067057,
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "visible_bbox": [
+      76,
+      117,
+      1459,
+      916
+    ],
+    "sha256": "d47fecd3353c79b31db597247a8b700f39d851ece08d8a2d86e29e92e196e72e",
+    "bytes": 1623193,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      76,
+      117,
+      77,
+      108
+    ]
+  },
+  {
+    "path": "assets/interlude/checkpoint-run-player.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "transparent_fraction": 0.8140913645426432,
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "visible_bbox": [
+      362,
+      37,
+      1160,
+      943
+    ],
+    "sha256": "bc98d10ee28ea6ddf22709db30e47a3f3d38846e15e3a7756dccb9f6e0defd3a",
+    "bytes": 1377103,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      362,
+      37,
+      376,
+      81
+    ]
+  },
+  {
+    "path": "assets/interlude/checkpoint-run-guards.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "transparent_fraction": 0.8010260264078776,
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "visible_bbox": [
+      364,
+      12,
+      1195,
+      965
+    ],
+    "sha256": "e2634d4c31fc63ab52327706effc99cf7b2f7f8908f6054dd6dd915d14a0a960",
+    "bytes": 1534071,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      364,
+      12,
+      341,
+      59
+    ]
+  },
+  {
+    "path": "assets/interlude/checkpoint-run-collectibles.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "transparent_fraction": 0.6348946889241537,
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "visible_bbox": [
+      52,
+      71,
+      1496,
+      961
+    ],
+    "sha256": "8144f0fe6631dff3e0153cc41c699895c5c17ec1cd8d9e9cb4d8abaf25119652",
+    "bytes": 1601549,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      52,
+      71,
+      40,
+      63
+    ]
+  },
+  {
+    "path": "assets/interlude/checkpoint-run-alert-effects.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "transparent_fraction": 0.755523681640625,
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "visible_bbox": [
+      134,
+      84,
+      1413,
+      944
+    ],
+    "sha256": "314dab9e4c39605d484ad8f95a14e1a64eff712ac60c6e4b46809e5df1849b95",
+    "bytes": 1367650,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      134,
+      84,
+      123,
+      80
+    ]
+  },
+  {
+    "path": "assets/interlude/checkpoint-run-ui.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "transparent_fraction": 0.6249745686848959,
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "visible_bbox": [
+      43,
+      168,
+      1488,
+      878
+    ],
+    "sha256": "8d9f425add1121216a3f3e7b22b53b15c983d3d5e2767814f1f49ed04808dec2",
+    "bytes": 1684987,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      43,
+      168,
+      48,
+      146
+    ]
+  },
+  {
+    "path": "assets/interlude/checkpoint-run-result.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "transparent_fraction": 0.2682749430338542,
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "visible_bbox": [
+      47,
+      57,
+      1488,
+      941
+    ],
+    "sha256": "a8cd0ca952c13719e0cb3c51a14fab6fab8341a822ba8565b971dd61d32534c9",
+    "bytes": 2123334,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      47,
+      57,
+      48,
+      83
+    ]
+  },
+  {
+    "path": "assets/interlude/checkpoint-run-start-panel.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "transparent_fraction": 0.5032914479573568,
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "visible_bbox": [
+      277,
+      65,
+      1259,
+      913
+    ],
+    "sha256": "d5e377e3d4e63979a7275e824b6a6983f35b56509e795a8ba0fe77f6c7aba375",
+    "bytes": 1745758,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      277,
+      65,
+      277,
+      111
+    ]
+  },
+  {
+    "path": "assets/bonus/puzzle-motifs/motif-control-post.webp",
+    "size": [
+      1658,
+      949
+    ],
+    "transparent_fraction": 0.0,
+    "alpha_extrema": [
+      255,
+      255
+    ],
+    "visible_bbox": [
+      0,
+      0,
+      1658,
+      949
+    ],
+    "sha256": "6e171fac337bd5336d871fd88704c44995803dd6fcd66295ceb8340569bbbeec",
+    "bytes": 926576,
+    "format": "WEBP",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "path": "assets/bonus/puzzle-motifs/motif-map-palestine.webp",
+    "size": [
+      1659,
+      948
+    ],
+    "transparent_fraction": 0.0,
+    "alpha_extrema": [
+      255,
+      255
+    ],
+    "visible_bbox": [
+      0,
+      0,
+      1659,
+      948
+    ],
+    "sha256": "916733a9998cd8fa3b5a53136b346059dabcda48d0602595f1d7f0cf273fdb0e",
+    "bytes": 878766,
+    "format": "WEBP",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "path": "assets/bonus/puzzle-motifs/motif-taxes-market.webp",
+    "size": [
+      1660,
+      948
+    ],
+    "transparent_fraction": 0.0,
+    "alpha_extrema": [
+      255,
+      255
+    ],
+    "visible_bbox": [
+      0,
+      0,
+      1660,
+      948
+    ],
+    "sha256": "b91d4b8c6257f7e8bd6598b09df633459249a696f8d06278c61bf80049587a37",
+    "bytes": 847610,
+    "format": "WEBP",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "path": "assets/bonus/puzzle-motifs/motif-people-under-rome.webp",
+    "size": [
+      1659,
+      948
+    ],
+    "transparent_fraction": 0.0,
+    "alpha_extrema": [
+      255,
+      255
+    ],
+    "visible_bbox": [
+      0,
+      0,
+      1659,
+      948
+    ],
+    "sha256": "b6741b28b3849c861eb275882f1c614adceeb738e81abcf5caf5e389f0c8c4b4",
+    "bytes": 888374,
+    "format": "WEBP",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "path": "assets/bonus/puzzle-motifs/motif-road-galilee.webp",
+    "size": [
+      1659,
+      948
+    ],
+    "transparent_fraction": 0.0,
+    "alpha_extrema": [
+      255,
+      255
+    ],
+    "visible_bbox": [
+      0,
+      0,
+      1659,
+      948
+    ],
+    "sha256": "9703b38adc5f8e7b0c66a15d1179810921911da772878b55232799c4aa58738e",
+    "bytes": 923420,
+    "format": "WEBP",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "path": "assets/bonus/puzzle-ui/puzzle-frame.png",
+    "size": [
+      1659,
+      948
+    ],
+    "transparent_fraction": 0.69407820277072,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "visible_bbox": [
+      65,
+      47,
+      1584,
+      895
+    ],
+    "sha256": "b89961e8748470c2b92299f70475182ea2cec0e7443897b797ddb643076cea0d",
+    "bytes": 1109412,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      65,
+      47,
+      75,
+      53
+    ]
+  },
+  {
+    "path": "assets/bonus/puzzle-ui/puzzle-selection-panel.png",
+    "size": [
+      1659,
+      948
+    ],
+    "transparent_fraction": 0.19395739388529007,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "visible_bbox": [
+      52,
+      61,
+      1597,
+      891
+    ],
+    "sha256": "10bbf9522ddaa47154911b9e2e8c95a6182467eff9a646280c7ec156ac4cd23b",
+    "bytes": 2575185,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      52,
+      61,
+      62,
+      57
+    ]
+  },
+  {
+    "path": "assets/bonus/puzzle-ui/puzzle-complete.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "transparent_fraction": 0.264041264851888,
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "visible_bbox": [
+      61,
+      76,
+      1471,
+      911
+    ],
+    "sha256": "cfa46a6042f90f0a3260c7c103593fd1c200a5c08109dde812d6f2614d54068f",
+    "bytes": 2646821,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      61,
+      76,
+      65,
+      113
+    ]
+  },
+  {
+    "path": "assets/bonus/puzzle-ui/tile-selected.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "transparent_fraction": 0.8579473913143014,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "visible_bbox": [
+      79,
+      81,
+      1176,
+      1162
+    ],
+    "sha256": "862b50c2ddcb0ced128ee4ca285b0dc4847a956dd7f1a376a7f7b46c30b55b07",
+    "bytes": 532098,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      79,
+      81,
+      78,
+      92
+    ]
+  },
+  {
+    "path": "assets/bonus/puzzle-ui/tile-swap-hint.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "transparent_fraction": 0.8626710316461009,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "visible_bbox": [
+      62,
+      71,
+      1237,
+      1175
+    ],
+    "sha256": "57f5e617654493c5758786f3642286f03d3a04c73f54cd8c20c172ca0006a673",
+    "bytes": 566506,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      62,
+      71,
+      17,
+      79
+    ]
+  },
+  {
+    "path": "assets/bonus/puzzle-ui/empty-tile.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "transparent_fraction": 0.328469153890962,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "visible_bbox": [
+      108,
+      119,
+      1147,
+      1121
+    ],
+    "sha256": "99f05980d61855d5c231c5f137bd82580dacb45bb5bbfaab170337e5ed1d2b86",
+    "bytes": 2099385,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      108,
+      119,
+      107,
+      133
+    ]
+  },
+  {
+    "path": "assets/bonus/puzzle-ui/mode-icons.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "transparent_fraction": 0.6640294392903646,
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "visible_bbox": [
+      34,
+      172,
+      1509,
+      832
+    ],
+    "sha256": "a4e087daf81c4ac2e2c8145089aad7dcf1a28d9f60ba4db9fd5271b2723b6e32",
+    "bytes": 1997318,
+    "format": "PNG",
+    "visual_review": "Nach Produktionsblock auf Inhalt, Konturen, Stil und Transparenz auf hell/dunkel geprüft.",
+    "edge_clearance_px_at_alpha_gt24": [
+      34,
+      172,
+      27,
+      192
+    ]
+  }
+]

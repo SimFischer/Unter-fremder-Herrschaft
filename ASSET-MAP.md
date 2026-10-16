@@ -1,134 +1,84 @@
-# Asset-Karte – Unter fremder Herrschaft
+# Asset-Karte – Zwischen-Minispiel und Bonuspuzzle
 
-Stand: 16. Oktober 2026. Alle 16 Dateien des Vier-Block-Auftrags wurden nacheinander mit dem eingebauten Imagegen-Werkzeug erzeugt, nach jedem Block gespeichert und geprüft. Keine vorhandene Bilddatei wurde ersetzt oder gelöscht. Die bisherigen Karten/Manifeste sind unter `docs/previous-*` erhalten.
+Stand: 16. Oktober 2026. 23 Bilddateien in sieben getrennten Produktionsblöcken; nach jedem Block gespeichert und geprüft. Keine Spielmechanik programmiert. Basisbestand geprüft am Repository-Commit `8bacf9a6cfd7b6cc121669bdd031c9dc1c60446e`.
 
-Der visuelle Abgleich erfolgte mit den tatsächlich geladenen Repository-Bildern, insbesondere `assets/objects/map-table.webp`, `assets/objects/report-scroll.webp` und `assets/scene/control-post.webp`. Warmes handgemaltes 2D-Adventure, römisches Palästina, Sand/Ocker/Terrakotta/Olive, Holz/Stein/Pergament/Bronze. Illustrative Spielobjekte, keine archäologisch exakten Rekonstruktionen.
+## Verbindliche Stiländerung
 
-## Neue Assets
+Auf ausdrücklichen Wunsch des Nutzers nutzt **nur das Schleich-Minispiel Pixelgrafik aus der Vogelperspektive**, angelehnt an seine Bildreferenz. Warme historische Materialien bleiben erhalten. Die Bonuspuzzles behalten den fein handgemalten Hauptstil. Diese zwei Bildsprachen sind beabsichtigt. Die verworfenen gemalten Minispielentwürfe gehören nicht zur Lieferung.
 
-| Dateiname | Pfad | Zweck | Transparenz | Native Liefergröße | Empfohlene Verwendung | Anzeigegröße |
+## Lieferung und Bestand
+
+Alle 23 Zielpfade waren im geprüften Repository noch nicht vorhanden. Vorhandene gute Hauptassets wurden als Stilreferenzen erhalten, nicht überschrieben oder neu exportiert. Die geprüften früheren Szenen besitzen andere Aufgaben: breite freie Spielflächen, eine ruhige beschriftungsfreie Karte und eine personenlose Abschlusslandschaft. Die neuen Puzzlemotive ergänzen unterscheidbare Details, Reisezubehör beziehungsweise Reisende. Es gibt keine bytegleichen Bildduplikate im Paket.
+
+Die ZIP wird im Repository-Root entpackt. Sie enthält `assets/...`, diese Karte, das neue Manifest und ergänzende Dokumentation. Die beiden bisherigen Root-Dokumente sind unter `docs/asset-history/before-interlude-puzzle-*` gesichert; bestehende Bilddateien werden nicht ersetzt. Es wurde nichts zu GitHub hochgeladen.
+
+## Dateien
+
+Anzeigegrößen sind CSS-Pixel und Empfehlungen, keine auf einem realen iPad getesteten Layoutwerte. Native Größe und Transparenz wurden aus den Dateien gelesen.
+
+| Dateiname | Pfad | Zweck | Transparenz | Native Größe | Empfohlene Anzeigegröße | Verwendung |
 |---|---|---|---|---|---|---|
-| bonus-ui.png | `assets/bonus/bonus-ui.png` | Acht Kontroll- und Entscheidungselemente | Ja | 1536×1024 | Individuelle Ausschnitte mit HTML-Beschriftung | Symbole 64–100 px; Schilder 170–280 px |
-| checkpoint-bg.png | `assets/bonus/checkpoint-bg.png` | Bühne für freiwilliges Kontrollpostenspiel | Nein | 1600×1067 | Hintergrund mit separat platzierten Reisenden | 900–1100 px breit |
-| goods-sheet.png | `assets/bonus/goods-sheet.png` | Sechs kontrollierbare Waren | Ja | 1536×1024 | Individuelle Ausschnitte aus 3×2-Anordnung | 90–150 px je Objekt |
-| travellers-sheet.png | `assets/bonus/travellers-sheet.png` | Fünf Reisenden-Einträge einschließlich Familie | Ja | 2073×758 | Individuelle Ausschnitte, gemeinsame Bodenlinie | Erwachsene etwa 350–470 px hoch |
-| map-compass.png | `assets/puzzles/map/map-compass.png` | Antike Orientierungsscheibe | Ja | 1254×1254 | Einzelobjekt neben Karte | 88–140 px |
-| map-marker-set.png | `assets/puzzles/map/map-marker-set.png` | Sechs Orts-/Regionsmarker | Ja | 1536×1024 | Einzelsprites aus 3×2-Bogen, zeilenweise | 56–100 px je Marker |
-| map-route-strip.png | `assets/puzzles/map/map-route-strip.png` | Sechs Reisespurvarianten | Ja | 1536×1024 | Einzelne Streifen aus 2×3-Bogen, nicht gesamten Bogen als Route nutzen | 160–360 px je Streifen |
-| map-table-large.png | `assets/puzzles/map/map-table-large.png` | Kartentisch Palästina | Nein | 1600×1065 | Hintergrund, vollständig mit contain anzeigen | 900–1100 px breit |
-| argument-tiles.png | `assets/puzzles/report/argument-tiles.png` | Sechs Satzbausteinträger | Ja | 1536×1024 | Individuell zuschneiden; breite Varianten unten | 280–460 px je Baustein |
-| evidence-marker.png | `assets/puzzles/report/evidence-marker.png` | Acht Belegmarkierungen | Ja | 1774×887 | Einzelsprites aus 4×2-Bogen | 36–64 px; Touchziel mindestens 44 px |
-| report-scroll-large.png | `assets/puzzles/report/report-scroll-large.png` | Vier gegliederte Berichtsabschnitte | Ja | 1024×1536 | Hochformatiges Lesedokument, intern scrollbar | 560–700 px breit |
-| report-table.png | `assets/puzzles/report/report-table.png` | Arbeitsfläche für Zacharias’ Bericht | Nein | 1600×1067 | Hintergrund mit separatem Pergament darüber | 900–1100 px breit |
-| finale-road-galilee.webp | `assets/scenes/finale-road-galilee.webp` | Aufbruch nach Galiläa | Nein | 1600×1067 | Abschluss-Hintergrund als echtes WebP | 900–1100 px breit |
-| finale-travel-permit.png | `assets/ui/finale-travel-permit.png` | Reisegenehmigung mit fünf Siegelflächen | Ja | 1536×1024 | Abschlussdokument mit Titel, Text und fünf Siegeloverlays | 800–1000 px breit |
-| hint-tablet.png | `assets/ui/hint-tablet.png` | Römische Hinweistafel | Ja | 1536×1024 | Einzelobjekt mit HTML-Hinweis | 400–640 px breit |
-| notebook-open.png | `assets/ui/notebook-open.png` | Zweiseitiges Reisebuch | Ja | 1536×1024 | Gesamtes Buch, zwei HTML-Textspalten | 900–1100 px breit |
+| checkpoint-run-bg.webp | `assets/interlude/checkpoint-run-bg.webp` | Pixel-Spielfläche des Kontrollpostens | Nein | 1659×948 | 900–1100 px breit | Vollständig mit contain anzeigen; keine zusätzlichen Verstecke pauschal über die bereits gemalten Deckungen legen. |
+| checkpoint-run-foreground.png | `assets/interlude/checkpoint-run-foreground.png` | Acht Pixel-Vordergrundobjekte | Ja | 1536×1024 | 40–170 px je Objekt | Einzelne Ausschnitte; dekorative Ebene vor Figuren, pointer-events:none. |
+| checkpoint-run-hideouts.png | `assets/interlude/checkpoint-run-hideouts.png` | Sechs zusätzliche Pixel-Deckungsobjekte | Ja | 1536×1024 | 110–240 px je Versteck | Varianten für spätere Levelgestaltung; Spritegröße und Kollisionsfläche getrennt behandeln. |
+| checkpoint-run-route-markers.png | `assets/interlude/checkpoint-run-route-markers.png` | Sechs Pixel-Weg-/Zielhilfen | Ja | 1536×1024 | 24–120 px je Marker | Bodenebene unter Figuren; Sichtbarkeit auf hellem Sand prüfen. |
+| checkpoint-run-player.png | `assets/interlude/checkpoint-run-player.png` | Neun Pixel-Zustände einer Reisefigur | Ja | 1536×1024 | 42–54 px sichtbare Körperhöhe | Vier Richtungen mit Stand/Schritt plus Hocke; individuelle Ausschnitte und Fußanker verwenden. |
+| checkpoint-run-guards.png | `assets/interlude/checkpoint-run-guards.png` | Neun Pixel-Zustände einer Patrouille | Ja | 1536×1024 | 46–60 px inkl. Helm | Gleiche Körperhöhe wie Spieler, Helm zusätzlich; vier Richtungen mit Stand/Schritt plus Alarm. |
+| checkpoint-run-collectibles.png | `assets/interlude/checkpoint-run-collectibles.png` | Karte, Proviant, Genehmigung, Wasserflasche, Schnurbeutel | Ja | 1536×1024 | 40–64 px je Gegenstand | Drei Hauptziele zeilenweise oben; Touchziel mindestens 44 CSS-Pixel. |
+| checkpoint-run-alert-effects.png | `assets/interlude/checkpoint-run-alert-effects.png` | Aufmerksamkeit, Alarm, Sichtkeil, Entdeckt-Effekt | Ja | 1536×1024 | 24–48 px Tuch; 90–180 px Sichtkeil | Sichtkeil ist dekorativer Hinweis, keine berechnete Sicht-/Kollisionsgeometrie. |
+| checkpoint-run-ui.png | `assets/interlude/checkpoint-run-ui.png` | Fünf Pixel-UI-Bausteine | Ja | 1536×1024 | Status 210–320 px; Symbole 40–56 px | Status, Dreifachhalter, Unentdeckt, Ziel, Fortschritt getrennt zuschneiden. |
+| checkpoint-run-result.png | `assets/interlude/checkpoint-run-result.png` | Pixel-Ergebnistafel | Ja | 1536×1024 | 700–960 px breit | Titel und vier Ergebniszeilen als HTML-Text darüberlegen. |
+| checkpoint-run-start-panel.png | `assets/interlude/checkpoint-run-start-panel.png` | Pixel-Starttafel mit drei Zielplätzen | Ja | 1536×1024 | 600–800 px breit | Anleitung oben, drei Gegenstands-Overlays mittig, Startbeschriftung unten. |
+| motif-control-post.webp | `assets/bonus/puzzle-motifs/motif-control-post.webp` | Puzzlemotiv Kontrollposten | Nein | 1658×949 | 800–1100 px breit | Ein Original für beide Modi und 3×3/4×4/5×5; proportional teilen. |
+| motif-map-palestine.webp | `assets/bonus/puzzle-motifs/motif-map-palestine.webp` | Puzzlemotiv historischer Kartentisch | Nein | 1659×948 | 800–1100 px breit | Bildhafte Karte ohne Beschriftung; keine vermessene oder quellenkritische Karte. |
+| motif-taxes-market.webp | `assets/bonus/puzzle-motifs/motif-taxes-market.webp` | Puzzlemotiv Abgaben und Markt | Nein | 1660×948 | 800–1100 px breit | Tisch, Waage, Getreide und Amtsperson bieten unterscheidbare Bildbereiche. |
+| motif-people-under-rome.webp | `assets/bonus/puzzle-motifs/motif-people-under-rome.webp` | Puzzlemotiv unterschiedliche Menschen | Nein | 1659×948 | 800–1100 px breit | Korrigierte Endfassung mit vollständig sichtbaren Sandalen der Hauptfigur. |
+| motif-road-galilee.webp | `assets/bonus/puzzle-motifs/motif-road-galilee.webp` | Puzzlemotiv Weiterreise nach Galiläa | Nein | 1659×948 | 800–1100 px breit | Abschlussmotiv mit Reisenden; ohne religiöse Ikonographie. |
+| puzzle-frame.png | `assets/bonus/puzzle-ui/puzzle-frame.png` | Handgemalter Puzzle-Rahmen mit transparenter Mitte | Ja | 1659×948 | 900–1100 px breit | Bild hinter der transparenten Öffnung positionieren; Öffnung siehe unten. |
+| puzzle-selection-panel.png | `assets/bonus/puzzle-ui/puzzle-selection-panel.png` | Handgemalte Motivauswahl mit Modus-/Größenflächen | Ja | 1659×948 | 900–1100 px breit | Fünf Vorschaubilder und echte HTML-Bedienelemente darüberlegen. |
+| puzzle-complete.png | `assets/bonus/puzzle-ui/puzzle-complete.png` | Handgemalte Erfolgstafel | Ja | 1536×1024 | 700–960 px breit | Erfolgstext und zwei Schaltflächen als HTML-Overlays. |
+| tile-selected.png | `assets/bonus/puzzle-ui/tile-selected.png` | Bronzene Auswahlkontur | Ja | 1254×1254 | Größe des Puzzleteils | Mitte transparent; für rechteckige Teile Randsegmente/9-slice verwenden oder Verzerrung prüfen. |
+| tile-swap-hint.png | `assets/bonus/puzzle-ui/tile-swap-hint.png` | Offene Bronzeecken mit Tuch als Tauschhinweis | Ja | 1254×1254 | Größe des Puzzleteils | Mitte transparent; vier Ecken einzeln verankern, Tuch nicht abschneiden. |
+| empty-tile.png | `assets/bonus/puzzle-ui/empty-tile.png` | Dunkle Holzvertiefung für die Schiebelücke | Ja | 1254×1254 | Größe des Puzzleteils | Außen transparent, Innenfläche bewusst dunkel gefüllt. |
+| mode-icons.png | `assets/bonus/puzzle-ui/mode-icons.png` | Zwei handgemalte Modussymbole | Ja | 1536×1024 | 80–120 px je Symbol | Links Tausch, rechts Schieben; immer mit HTML-Label Einfach/Klassisch ergänzen. |
 
-## Hotspots und HTML-Overlay-Flächen
+## Sprite-Ausschnitte und Animation
 
-Alle Koordinaten unten sind Prozentwerte des vollständig angezeigten Bildes. Sie sind visuell geschätzt und müssen bei der Einbindung geprüft werden. `ASSET-SPRITES.json` enthält konkrete native Pixel-Ausschnitte für die sieben Sprite-Bögen. Für Sprite-Objekte nicht pauschal CSS-Raster annehmen. Bildgröße proportional erhalten; Text über HTML setzen, nicht ins Bild schreiben.
+`docs/interlude-puzzle/SPRITES.json` enthält pro Einzelsprite ein geprüftes Quellrechteck `[x0,y0,x1,y1]` (rechte/untere Kante exklusiv), die sichtbare Kontur und einen unteren Basisanker. Kein pauschales gleichmäßiges Raster annehmen: insbesondere Wagen, UI-Teile und Figuren sind unterschiedlich angeordnet. Pixelkoordinaten beziehen sich auf native Bilder, nicht auf CSS-Größen.
 
-- **map-table-large**: Landfläche x=43–88%, y=8–85%; Galiläa oben, Samaria mittig, Judäa unten. See Genezareth etwa (75,17), Totes Meer (77,63). Ortsanker vor Integration fachlich präzisieren.
-- **map-marker-set**: Reihenfolge: Nazareth, Kafarnaum, Jerusalem; Galiläa, Samaria, Judäa. Piktogramme sind Spielsymbole, keine historischen Stadtsiegel.
-- **map-route-strip**: Punkte, Sandalenspuren; gebrochener Pfad, Richtungszeichen; Steinmännchen, Weggabelung. Dekorativ, pointer-events: none.
-- **map-compass**: Richtungsrose ohne Magnetnadel; dekorativ oder zugänglich benannte Orientierungshilfe.
-- **report-table**: Freie Holzfläche x=24–82%, y=25–87%; Randrequisiten aussparen.
-- **report-scroll-large**: Text x=12–88%; Abschnittsflächen y=11–28%, 32–49%, 53–67%, 72–88%. Keine Schrift über Trennlinien legen.
-- **evidence-marker**: Wachs rot, Zweigsiegel, Wachs ocker, Bronzedisc; Stoff grün, Stoff rot, Pergamentfalz, Etikett. Neben Text statt über Text setzen.
-- **argument-tiles**: Helle Innenflächen mit etwa 12% horizontalem und 20% vertikalem Abstand zum sichtbaren Trägerrand; Layout passt sich Textlänge an.
-- **notebook-open**: Links x=7–45%, rechts x=55–92%, jeweils y=20–77%; Bindung in Mitte freihalten. Außenrand schmal, contain verwenden.
-- **hint-tablet**: Text x=16–85%, y=23–73%; Griffel und Holzrand freihalten.
-- **finale-road-galilee**: Weg etwa x=28–76%, y=57–100%; oberen Himmel für kurze Overlaytitel nutzen; keine Personen/Jesusdarstellung.
-- **finale-travel-permit**: Text x=12–88%, y=14–61%; fünf Siegelzentren x≈16,33,50,67,83%, y≈78%, Durchmesser≈13% Bildbreite.
-- **checkpoint-bg**: Figuren in freier Mitte x=28–75%; Fußbaseline y=82–90%. Tisch links x=0–23%, y=37–58%; Tor rechts x=73–94%, y=19–50%.
-- **travellers-sheet**: Händler, Bauernfamilie, Pilger, Warenträger, römischer Bote. Kein gleichmäßiges Raster! Familie breiter. Native Maßstäbe bewahren; Füße auf gemeinsame Baseline setzen.
-- **goods-sheet**: Amphore, Getreidesack, Stoffballen; Münzbeutel, Wachstafel, Korb. Keine zu engen Standardraster: Amphore reicht unter y=512. Ausschnitte siehe ASSET-SPRITES.json.
-- **bonus-ui**: Oben Siegel, Amtsstempel, Passierzeichen, Prüfband; unten Pergamentschild, Holzplakette, Wachstafel, Anhänger. Raster ungleich; konkrete Ausschnitte verwenden.
+Figurenreihenfolge: Süden Stand, Süden Schritt, Hocke/Alarm; Westen Stand, Westen Schritt, Osten Stand; Osten Schritt, Norden Stand, Norden Schritt. Stand und Schritt bilden eine **einfache Zustandsfolge**, keinen durchgetesteten nahtlosen Laufzyklus. Beim Wechsel Quellausschnitte auf dieselbe Fußposition setzen und dieselbe Körperhöhe erhalten; Wachenhelme stehen über den Spieler hinaus. Nicht jeden Ausschnitt unabhängig auf identische Gesamtgröße strecken. Schatten oder Speere sind keine Kollisionsflächen.
 
-## Responsive Einbindung
+Pixelbilder mit scharfer Skalierung (`image-rendering: pixelated`) anzeigen. Die gelieferten Bilder sind KI-erzeugte Pixelillustrationen; sie bilden kein mathematisch einheitliches Tile-Set und keine garantiert identische logische Pixelgröße ab. Eine spätere Implementierung sollte Wege und Kollisionen ausdrücklich definieren. Die Asset-Produktion enthält keinen Spielcode.
 
-Große Hintergründe und Kartentisch sind 1600 px breit, ungefähr 3:2. Sie wurden von den generierten 1536/1537 px geringfügig hochskaliert; dadurch entsteht kein zusätzlicher Bilddetailgrad. Finale wurde als echtes WebP mit Qualität 95 exportiert. Andere Lieferbilder sind echte PNGs.
+## Spielfläche und Ebenen
 
-Für 1024×768 und 820×618 als vollständig sichtbare Bühne mit `object-fit: contain` einbinden; Brief-/Notizbuchtexte intern scrollen. Bei `cover` ändern Beschnitt und Offsets die Hotspotkoordinaten. Transparente Objekte haben vollständige Außenkonturen; einige Bögen besitzen schmale Außenränder, diese nicht zusätzlich abschneiden. Richtwert: mindestens 44×44 CSS-Pixel pro interaktivem Ziel, sichtbarer Fokus und HTML-Label. Die Responsive-Hinweise sind Empfehlungen für die spätere Integration, kein Nachweis eines durchgespielten Browser- oder iPad-Tests.
+Alle folgenden Werte sind visuell geschätzte Prozente des vollständig sichtbaren Bildes; bei Einbindung verifizieren. Die Szene vollständig proportional anzeigen, nicht mit cover abschneiden. Eingang ungefähr x=10–20%, y=85–98%; Zielbereich vor dem Tor x=79–86%, y=15–24%. Das gemalte Tor ist geschlossen; der Zielbereich liegt davor, eine spätere Toröffnung müsste separat umgesetzt werden.
 
-## Vollständiger Bildbestand
+Vier Deckungsinseln ungefähr: Wagen x=20–41%, y=30–53%; obere Stein-/Oliveninsel x=42–55%, y=17–39%; Markt-/Sackinsel x=58–79%, y=29–53%; unterer Holzverschlag x=25–56%, y=54–81%. Niedrige Mauer unten rechts x=64–81%, y=59–77%. Das sind Orientierungsbereiche, keine fertig getesteten Kollisionspolygone.
 
-Die ZIP enthält den vollständigen tatsächlichen Bildbestand einschließlich unveränderter Altdateien und vorhandener Kopien. Alle folgenden Pfade existieren. Frühere Dokumentationspfade wie `assets/seals/…` und `assets/scenes/control-post-stage-….png` waren nicht vorhanden; die betreffenden Altbilder liegen derzeit im Repository-Stamm. Kein stilles Verschieben oder Umbenennen.
+Hintergrund → Bodenspuren und Sichtkeil → Figuren/Gegenstände → gezielt platzierte Vordergrundobjekte → UI. Vorhandene gemalte Hindernisse und zusätzliche Verstecksprites sind Alternativen für die Levelgestaltung; nicht ohne Abgleich doppelt übereinanderlegen. Sichtkeil und Alarmring haben Teiltransparenz. Sichere Zone hat eine freie Mitte.
 
-| Pfad | Zweck | Transparenz | Pixelgröße | Empfohlene Verwendung / Anzeige / Overlays |
-|---|---|---|---|---|
-| `assets/bonus/bonus-ui.png` | Acht Kontroll- und Entscheidungselemente | Ja | 1536×1024 | Neue Lieferung; Details oben |
-| `assets/bonus/checkpoint-bg.png` | Bühne für freiwilliges Kontrollpostenspiel | Nein | 1600×1067 | Neue Lieferung; Details oben |
-| `assets/bonus/goods-sheet.png` | Sechs kontrollierbare Waren | Ja | 1536×1024 | Neue Lieferung; Details oben |
-| `assets/bonus/travellers-sheet.png` | Fünf Reisenden-Einträge einschließlich Familie | Ja | 2073×758 | Neue Lieferung; Details oben |
-| `assets/characters/group-people.webp` | Bestehende Figur / Figurengruppe | Ja | 1341×1173 | 280–450 px hoch; Konturen und Füße freihalten |
-| `assets/characters/roman-guard.webp` | Bestehende Figur / Figurengruppe | Ja | 1024×1536 | 280–450 px hoch; Konturen und Füße freihalten |
-| `assets/objects/coin-table.webp` | Bestehendes Interaktionsobjekt | Ja | 1536×1024 | 300–700 px breit; nach bestehender App; keine neuen Overlay-Anker festgelegt |
-| `assets/objects/edict-board.webp` | Bestehendes Interaktionsobjekt | Ja | 1261×1247 | 300–700 px breit; nach bestehender App; keine neuen Overlay-Anker festgelegt |
-| `assets/objects/map-table.webp` | Bestehendes Kartenobjekt | Ja | 1536×1024 | 600–1000 px breit; Text/Ortsmarker als HTML |
-| `assets/objects/palestine-map.webp` | Bestehendes Kartenobjekt | Nein | 1086×1448 | 600–1000 px breit; Text/Ortsmarker als HTML |
-| `assets/objects/report-scroll.webp` | Bestehendes Interaktionsobjekt | Ja | 1484×1060 | 300–700 px breit; nach bestehender App; keine neuen Overlay-Anker festgelegt |
-| `assets/puzzles/map/map-compass.png` | Antike Orientierungsscheibe | Ja | 1254×1254 | Neue Lieferung; Details oben |
-| `assets/puzzles/map/map-marker-set.png` | Sechs Orts-/Regionsmarker | Ja | 1536×1024 | Neue Lieferung; Details oben |
-| `assets/puzzles/map/map-route-strip.png` | Sechs Reisespurvarianten | Ja | 1536×1024 | Neue Lieferung; Details oben |
-| `assets/puzzles/map/map-table-large.png` | Kartentisch Palästina | Nein | 1600×1065 | Neue Lieferung; Details oben |
-| `assets/puzzles/report/argument-tiles.png` | Sechs Satzbausteinträger | Ja | 1536×1024 | Neue Lieferung; Details oben |
-| `assets/puzzles/report/evidence-marker.png` | Acht Belegmarkierungen | Ja | 1774×887 | Neue Lieferung; Details oben |
-| `assets/puzzles/report/report-scroll-large.png` | Vier gegliederte Berichtsabschnitte | Ja | 1024×1536 | Neue Lieferung; Details oben |
-| `assets/puzzles/report/report-table.png` | Arbeitsfläche für Zacharias’ Bericht | Nein | 1600×1067 | Neue Lieferung; Details oben |
-| `assets/scene/control-post-open.webp` | Bestehende Kontrollpostenszene / Torzustand | Nein | 1536×1024 | Hintergrund 900–1100 px; contain; Interaktionen nach bestehender App |
-| `assets/scene/control-post.webp` | Bestehende Kontrollpostenszene / Torzustand | Nein | 1536×1024 | Hintergrund 900–1100 px; contain; Interaktionen nach bestehender App |
-| `assets/scenes/finale-road-galilee.webp` | Aufbruch nach Galiläa | Nein | 1600×1067 | Neue Lieferung; Details oben |
-| `assets/ui/finale-travel-permit.png` | Reisegenehmigung mit fünf Siegelflächen | Ja | 1536×1024 | Neue Lieferung; Details oben |
-| `assets/ui/hint-tablet.png` | Römische Hinweistafel | Ja | 1536×1024 | Neue Lieferung; Details oben |
-| `assets/ui/notebook-open.png` | Zweiseitiges Reisebuch | Ja | 1536×1024 | Neue Lieferung; Details oben |
-| `assets/ui/seal-closed.webp` | Bestehendes Siegel / Siegelträger | Ja | 1254×1254 | Siegel 64–128 px, Brett 500–760 px; Labels als HTML |
-| `assets/ui/seal-open.webp` | Bestehendes Siegel / Siegelträger | Ja | 1536×1024 | Siegel 64–128 px, Brett 500–760 px; Labels als HTML |
-| `coin-table.webp` | Bestehendes Interaktionsobjekt | Ja | 1536×1024 | 300–700 px breit; nach bestehender App; keine neuen Overlay-Anker festgelegt |
-| `control-post-open.webp` | Bestehende Kontrollpostenszene / Torzustand | Nein | 1536×1024 | Hintergrund 900–1100 px; contain; Interaktionen nach bestehender App |
-| `control-post-stage-0.png` | Bestehende Kontrollpostenszene / Torzustand | Nein | 1536×1024 | Hintergrund 900–1100 px; contain; Interaktionen nach bestehender App |
-| `control-post-stage-1.png` | Bestehende Kontrollpostenszene / Torzustand | Nein | 1536×1024 | Hintergrund 900–1100 px; contain; Interaktionen nach bestehender App |
-| `control-post-stage-2.png` | Bestehende Kontrollpostenszene / Torzustand | Nein | 1536×1024 | Hintergrund 900–1100 px; contain; Interaktionen nach bestehender App |
-| `control-post-stage-3.png` | Bestehende Kontrollpostenszene / Torzustand | Nein | 1536×1024 | Hintergrund 900–1100 px; contain; Interaktionen nach bestehender App |
-| `control-post-stage-4.png` | Bestehende Kontrollpostenszene / Torzustand | Nein | 1536×1024 | Hintergrund 900–1100 px; contain; Interaktionen nach bestehender App |
-| `control-post-stage-5.png` | Bestehende Kontrollpostenszene / Torzustand | Nein | 1536×1024 | Hintergrund 900–1100 px; contain; Interaktionen nach bestehender App |
-| `control-post.webp` | Bestehende Kontrollpostenszene / Torzustand | Nein | 1536×1024 | Hintergrund 900–1100 px; contain; Interaktionen nach bestehender App |
-| `edict-board.webp` | Bestehendes Interaktionsobjekt | Ja | 1261×1247 | 300–700 px breit; nach bestehender App; keine neuen Overlay-Anker festgelegt |
-| `group-people.webp` | Bestehende Figur / Figurengruppe | Ja | 1341×1173 | 280–450 px hoch; Konturen und Füße freihalten |
-| `map-table.webp` | Bestehendes Kartenobjekt | Ja | 1536×1024 | 600–1000 px breit; Text/Ortsmarker als HTML |
-| `palestine-map.webp` | Bestehendes Kartenobjekt | Nein | 1086×1448 | 600–1000 px breit; Text/Ortsmarker als HTML |
-| `report-scroll.webp` | Bestehendes Interaktionsobjekt | Ja | 1484×1060 | 300–700 px breit; nach bestehender App; keine neuen Overlay-Anker festgelegt |
-| `roman-guard.webp` | Bestehende Figur / Figurengruppe | Ja | 1024×1536 | 280–450 px hoch; Konturen und Füße freihalten |
-| `seal-authority.png` | Bestehendes Siegel / Siegelträger | Ja | 512×512 | Siegel 64–128 px, Brett 500–760 px; Labels als HTML |
-| `seal-board.png` | Bestehendes Siegel / Siegelträger | Ja | 768×320 | Siegel 64–128 px, Brett 500–760 px; Labels als HTML |
-| `seal-burden.png` | Bestehendes Siegel / Siegelträger | Ja | 512×512 | Siegel 64–128 px, Brett 500–760 px; Labels als HTML |
-| `seal-closed.webp` | Bestehendes Siegel / Siegelträger | Ja | 1254×1254 | Siegel 64–128 px, Brett 500–760 px; Labels als HTML |
-| `seal-evidence.png` | Bestehendes Siegel / Siegelträger | Ja | 512×512 | Siegel 64–128 px, Brett 500–760 px; Labels als HTML |
-| `seal-land.png` | Bestehendes Siegel / Siegelträger | Ja | 512×512 | Siegel 64–128 px, Brett 500–760 px; Labels als HTML |
-| `seal-open.webp` | Bestehendes Siegel / Siegelträger | Ja | 1536×1024 | Siegel 64–128 px, Brett 500–760 px; Labels als HTML |
-| `seal-reward-frame.png` | Bestehendes Siegel / Siegelträger | Ja | 512×512 | Siegel 64–128 px, Brett 500–760 px; Labels als HTML |
-| `seal-slot-empty.png` | Bestehendes Siegel / Siegelträger | Ja | 512×512 | Siegel 64–128 px, Brett 500–760 px; Labels als HTML |
-| `seal-voices.png` | Bestehendes Siegel / Siegelträger | Ja | 512×512 | Siegel 64–128 px, Brett 500–760 px; Labels als HTML |
+## Text- und Overlayflächen
 
-## Doppelte Dateien
+Alle Prozentangaben beziehen sich auf die volle jeweilige Bildfläche. Die Flächen sind visuell geprüft und bewusst etwas kleiner als die gezeichneten Innenfelder gewählt. Keine Texte in Bilddateien eingebrannt.
 
-11 bereits vorhandene Gruppen sind bytegleich (SHA-256). Alle wurden beibehalten; die 16 neuen Bilder sind untereinander und gegenüber dem Altbestand eindeutig.
+- **Minispiel-Ergebnis:** Titel x=27–72%, y=13–22%; Textzeilen x=24–85%, y=30–37%, 44–51%, 58–65%, 71–78%. Badgeplätze etwa x=14–20% in denselben Zeilen. Fußaktion x=40–60%, y=83–88%.
+- **Minispiel-Start:** Anleitung x=27–73%, y=19–44%; drei Zielsockel x=27–39%, 44–56%, 61–73%, y=54–70%; Startbereich x=38–62%, y=79–85%.
+- **Puzzle-Rahmen:** transparente Innenöffnung ungefähr x=11.6–88.6%, y=15.2–80.7%. Rand frei lassen und Motiv entsprechend dahinter ausrichten. Die Öffnung hat etwa 2.06:1, die Motive etwa 1.75:1: Für unverzerrte Motive seitliche Innenränder im Rahmen zulassen oder den Rahmen mit Randsegmenten anpassen; das Motiv nicht unbemerkt beschneiden.
+- **Puzzle-Auswahl:** Titel x=17–83%, y=12–17%; Vorschauen oben x=12–35%, 39–61%, 66–88%, y=24–41%; unten x=24–48%, 53–76%, y=48–64%. Modusflächen x=12–32%, 36–57%, y=74–81%; Größenflächen x=63–69%, 73–79%, 83–89%, y=74–81%. Moduslabels: Einfach/Klassisch; Größenlabels: 3×3/4×4/5×5, immer als echte App-Texte.
+- **Puzzle-Erfolg:** Haupttext x=18–82%, y=22–56%; Aktionen links x=16–46%, rechts x=54–84%, jeweils y=65–74%.
+- **Auswahlkontur/Tauschhinweis:** in Rechteckgröße des tatsächlichen Puzzleteils einpassen. Sichtbare Quellkontur vor dem Skalieren berücksichtigen, da transparente Außenränder mitgeliefert werden. Bei schmalen Teilen Ecken getrennt verankern; keine Kontur über mehrere Kacheln ziehen.
 
-- `assets/characters/group-people.webp` = `group-people.webp`
-- `assets/characters/roman-guard.webp` = `roman-guard.webp`
-- `assets/objects/coin-table.webp` = `coin-table.webp`
-- `assets/objects/edict-board.webp` = `edict-board.webp`
-- `assets/objects/map-table.webp` = `map-table.webp`
-- `assets/objects/palestine-map.webp` = `palestine-map.webp`
-- `assets/objects/report-scroll.webp` = `report-scroll.webp`
-- `assets/scene/control-post-open.webp` = `control-post-open.webp`
-- `assets/scene/control-post.webp` = `control-post.webp`
-- `assets/ui/seal-closed.webp` = `seal-closed.webp`
-- `assets/ui/seal-open.webp` = `seal-open.webp`
+## Puzzlegrößen und Lesbarkeit
 
-## Prüfung und Auslieferung
+Die fünf Motive werden im Originalseitenverhältnis in N×N gleich große **rechteckige** Stücke geteilt. 3×3, 4×4 und 5×5 brauchen keine eigenen Bilder. Exakte Grenzpixel durch proportional berechnete Grenzen verwenden, damit auch Breiten von 1659 px ohne Reststreifen funktionieren. Für quadratische Stücke wäre ein ausdrücklich festgelegter Beschnitt nötig; dadurch können Bildbestandteile entfallen.
 
-Bilddateien vollständig dekodiert, exakte Namen und Formate geprüft, Alphakanäle aller Sprite-Bögen verifiziert, Außenränder geprüft und visuell auf Beschnitt kontrolliert. Fünf Siegelflächen bestätigt; fünf Reisenden-Einträge einschließlich Familie und sechs Waren vorhanden. Vier Blöcke getrennt abgeschlossen. Die Orientierungsrose ist keine Darstellung eines antiken Magnetkompasses. Kartenregionen und Ortsnamen erscheinen später dynamisch, nicht als eingebrannter Text.
+Die 3×3-/4×4-/5×5-Aufteilungen wurden als statische Vorschau geprüft. Ein Gesicht oder Objekt kann bei mehreren unterschiedlichen Rastern zwangsläufig eine Trennlinie berühren; die Motive bieten visuelle Anschlüsse über solche Linien. Bei 900 px Bildbreite sind 5×5-Teile etwa180 px breit und103 px hoch. Mindestens44×44 CSS-Pixel Touchfläche und HTML-Labels/Fokuszustände bei der späteren Einbindung vorsehen.
 
-ZIP im Repository-Stamm entpacken. Es enthält direkt `assets/`, bestehende Root-Bilder und Dokumentation, ohne zusätzlichen übergeordneten Ordner und ohne App-Code oder Git-Verzeichnis. Bestehende Bilddateien sind bytegleich zum Ausgangscommit. `ASSET-MANIFEST.txt` führt exakt alle Dateien innerhalb der ZIP auf. `ASSET-QA.json` enthält Maße, Transparenz, Prüfsummen und Dubletten. Andere im alten Plan genannte Assets außerhalb dieses 16-Dateien-Auftrags sind nicht Bestandteil der aktuellen Produktion.
+## Qualität und Grenzen
+
+Alle Bilder wurden nach ihrem Produktionsblock visuell geprüft, PNGs zusätzlich auf hellem und dunklem Grund. Alle PNGs besitzen echte Alpha-Transparenz; WebPs sind echte opake WebP-Dateien mit mindestens1600 px Breite. Figurenkonturen sind vollständig; beim Menschen-Puzzlemotiv wurde ein Fußbeschnitt gezielt korrigiert. Transparente Mittelpunkte von Rahmen und Auswahlmarkierungen sind numerisch geprüft. Die Schiebelücke hat absichtlich eine dunkle Innenfläche.
+
+Eine statische iPad-ähnliche Vorschau prüft Figuren-/Objektlesbarkeit; es gab keinen realen iPad-Test, keinen Browser-Spieltest und keinen geprüften Animationsablauf. Die historischen Bilder sind illustrative Darstellungen, keine archäologisch exakten Rekonstruktionen. Pixel-Sprites dürfen im Minispiel kompaktere Proportionen haben als die gemalten Hauptfiguren.
+
+Werkzeug und finaler Prompt-Satz: `docs/interlude-puzzle/PRODUCTION-PROMPTS.md`. Dateimaße, Alpha-Anteil, Randabstände, Hashes und Dateigrößen: `docs/interlude-puzzle/QA.json`. Die Produktion verwendete das eingebaute Imagegen; Python diente ausschließlich Dateiexport, Analyse, Prüfvorschauen und Verpackung.
