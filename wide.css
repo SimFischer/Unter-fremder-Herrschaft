@@ -1,0 +1,19 @@
+/* Breite, flache Bildschirme (Laptop, Beamer, Smartboard): Die Szene richtet sich nach der Fensterhöhe.
+   Damit sie groß wird, steht die Siegelleiste rechts neben der Szene und die Kopfzeile ist kompakter.
+   Das iPad (4:3 / 3:2, quer und hoch) behält sein bisheriges Layout. */
+@media (min-width:1100px) and (min-aspect-ratio:8/5){
+ :root{--scene-w:min(calc(100vw - 340px),calc((100dvh - 150px)*1.5));--side-w:240px;--layout-w:calc(var(--scene-w) + var(--side-w) + 24px)}
+ /* With all five seals the menu has five buttons and wraps to a second row: reserve that height. */
+ body:has(#bote-open:not([hidden])){--scene-w:min(calc(100vw - 340px),calc((100dvh - 214px)*1.5));--layout-w:calc(var(--scene-w) + var(--side-w) + 24px)}
+ header nav button{padding:8px 13px;font-size:15px}
+ header{width:var(--layout-w);max-width:none;margin:0 auto;padding:10px 0 2px;align-items:center}
+ header h1{font-size:clamp(26px,2.4vw,34px);margin:2px 0}
+ main{max-width:none;width:var(--layout-w);display:grid;grid-template-columns:var(--scene-w) var(--side-w);grid-template-areas:"intro intro" "scene side" "note note";column-gap:24px;padding:0}
+ main>.intro{grid-area:intro;max-width:none;margin:2px 0 10px;font-size:15px}
+ main>.scene{grid-area:scene;margin:0;max-height:none;min-width:0;width:var(--scene-w)}
+ main>footer{grid-area:side;flex-direction:column;align-items:flex-start;justify-content:center;gap:18px;padding:0}
+ main>footer #seals{display:grid;grid-template-columns:repeat(3,52px);gap:10px}
+ main>footer #progress{max-width:var(--side-w)}
+ main>footer #end{width:100%}
+ main>#storage-note{grid-area:note}
+}
