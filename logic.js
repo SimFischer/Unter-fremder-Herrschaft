@@ -1,8 +1,9 @@
 /* Save schema and rules are shared by the browser and the dependency-free tests. */
 'use strict';
 const AdventureRules = (() => {
- const totals=[4,4,5,10,6];
- const fresh=()=>({version:3,mapRevision:2,solved:Array(5).fill(false),answers:Array.from({length:5},()=>({})),attempts:Array(5).fill(0),discoveries:[],finale:0,bonusRound:0,interludeStarted:false,interludeCompleted:false,interludeStats:{collectibles:[],undetected:false},interludeRun:null,bonusSettings:{motif:'control-post',mode:'swap',size:3},bonusCompleted:[]});
+ // Siegel 5 (report revision 2): walk → board → argument workshop.
+ const totals=[4,4,5,10,3];
+ const fresh=()=>({version:3,mapRevision:2,reportRevision:2,solved:Array(5).fill(false),answers:Array.from({length:5},()=>({})),attempts:Array(5).fill(0),discoveries:[],finale:0,bonusRound:0,interludeStarted:false,interludeCompleted:false,interludeStats:{collectibles:[],undetected:false},interludeRun:null,bonusSettings:{motif:'control-post',mode:'swap',size:3},bonusCompleted:[],boteBest:0});
  function migrate(raw){
   const s=fresh();
   if(!raw||![1,2,3].includes(raw.version))return s;
@@ -15,11 +16,14 @@ const AdventureRules = (() => {
         ((k==='read'&&typeof v==='boolean')||Number.isInteger(v)))s.answers[i][k]=v;
      if((k==='marked'||/^chain\d$/.test(k))&&Array.isArray(v))s.answers[i][k]=[...new Set(v.filter(n=>Number.isInteger(n)&&n>=0&&n<(k.startsWith('chain')?4:i===1?6:5)))];
      if(/^mapStep[0-7]$/.test(k)&&Array.isArray(v)&&raw.mapRevision===2)s.answers[i][k]=[...new Set(v.filter(n=>Number.isInteger(n)&&n>=0&&n<12))].slice(0,5);
+     if(k==='found'&&i===4&&Array.isArray(v))s.answers[i].found=[...new Set(v.filter(n=>Number.isInteger(n)&&n>=0&&n<4))].sort();
      if(k==='pairs'&&v&&typeof v==='object')s.answers[i].pairs=Object.fromEntries(Object.entries(v).filter(([x,y])=>/^[0-4]$/.test(x)&&Number.isInteger(y)&&y>=0&&y<5));
     }
    }
    s.solved[i]=raw.solved?.[i]===true;
    if(i===3&&raw.mapRevision!==2)for(const k of Object.keys(s.answers[i]))if(/^place[0-7]$/.test(k))delete s.answers[i][k];
+   // The report puzzle was rebuilt: an unfinished older attempt restarts on the travel route; an earned seal stays.
+   if(i===4&&raw.reportRevision!==2&&!s.solved[i])s.answers[i]={stage:0};
    const stage=s.answers[i].stage;
    s.answers[i].stage=Number.isInteger(stage)?Math.max(0,Math.min(stage,totals[i]-1)):0;
    // Old map steps changed: keep the acquired seal; restart an unfinished route.
@@ -40,6 +44,7 @@ const AdventureRules = (() => {
   const bonus=raw.bonusSettings;
   s.bonusSettings={motif:motifs.includes(bonus?.motif)?bonus.motif:'control-post',mode:bonus?.mode==='slide'?'slide':'swap',size:[3,4,5].includes(bonus?.size)?bonus.size:3};
   s.bonusCompleted=Array.isArray(raw.bonusCompleted)?[...new Set(raw.bonusCompleted.filter(key=>typeof key==='string'&&motifs.some(m=>['swap','slide'].some(mode=>[3,4,5].some(n=>key===`${m}:${mode}:${n}`)))))]:[];
+  s.boteBest=Number.isInteger(raw.boteBest)?Math.max(0,Math.min(raw.boteBest,999)):0;
   return s;
  }
  function argument(a){

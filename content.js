@@ -96,7 +96,7 @@ const PUZZLES=[
 {name:'Manipulierte Akte',object:'Abgabentisch',pos:[28,54],anchor:[21,64],knowledge:[0,1,2],hint:'Prüft besonders, wer Herrscher bestimmte, wo Rom im Alltag sichtbar war und wie viele Juden zur Kaiserverehrung standen.'},
 {name:'Stimmen unter Fremdherrschaft',object:'Figurengruppe',pos:[79,26],anchor:[63,62],knowledge:[0,1,3],hint:'Achtet auf die Verben: weiterleben, hoffen, kämpfen und sichern. Haltung und Begründung müssen zur selben Stimme passen.'},
 {name:'Karte Palästinas',object:'Karte',pos:[83,55],anchor:[83,76],knowledge:[4],hint:'Orientiert euch zuerst an Norden, Mitte und Süden. Unterscheidet dann Orte, Gewässer und Regionen.'},
-{name:'Zacharias’ Bericht',object:'Pergamentrolle',pos:[54,69],anchor:[42,85],knowledge:[0,1,3],hint:'Sucht die vier konkreten Erfahrungen: Kontrolle, ein sichtbares Zeichen der kaiserlichen Macht, Abgaben und Hoffnung auf Selbstbestimmung.'}];
+{name:'Zacharias’ Bericht',object:'Pergamentrolle',pos:[54,69],anchor:[42,85],knowledge:[0,1,3],hint:'Sucht auf dem Reiseweg die vier konkreten Erfahrungen: Kontrolle, Abgaben, ein sichtbares Zeichen der römischen Macht und Hoffnung auf Selbstbestimmung.'}];
 
 const LEFT=['Rom bestimmt Herrscher und Beamte.','Soldaten prüfen Reisende und Waren.','Familien müssen Abgaben zahlen.','Der Kaiser wird religiös verehrt.','Das Kaiserbild steht auf Münzen.'];
 const RIGHT=['Menschen entscheiden nicht selbst, wer regiert.','Römische Macht ist auf den Straßen spürbar.','Besonders armen Familien bleibt weniger zum Leben.','Der Glaube an einen Gott gerät in Spannung zur Kaiserverehrung.','Römische Macht begegnet Menschen auch beim Bezahlen.'];
@@ -132,19 +132,25 @@ const TRANSFER=[
 {question:'Warum führt eure nächste Lernreise gerade nach Galiläa?',options:['Dort lebte und wirkte Jesus; wir fragen nach seiner Botschaft in dieser Welt.','Dort stand der Tempel; wir fragen nach Jesu Leben rund um den Tempel.','Dort hatte der römische Statthalter seinen Sitz; wir fragen nach Jesu Begegnung mit ihm.'],answer:0,why:'Galiläa ist eng mit Jesu Leben und Wirken verbunden. Der Tempel stand dagegen in Jerusalem in Judäa. Galiläa wurde zur Zeit Jesu von Herodes Antipas regiert.'},
 {question:'Warum hatte Jerusalem für Juden eine besondere Bedeutung?',options:['Dort wohnte Herodes Antipas; deshalb lag dort das Zentrum des Glaubens.','Dort endete der Jordan; deshalb trafen sich dort die Pilger am Fluss.','Dort stand der Tempel; er war ein wichtiger Mittelpunkt des jüdischen Glaubens.'],answer:2,why:'Jerusalem war als Standort des Tempels religiös besonders wichtig. Politische und religiöse Bedeutung sind nicht dasselbe.'}
 ];
-const REPORT=[
-'Auf dem Heimweg kommen Zacharias und Joschua an einer Straßensperre vorbei.',
-'Römische Soldaten kontrollieren die Reisenden und ihre Waren.',
-'Auf dem Markt bezahlt ein Händler mit einer Münze, auf der das Bild des Kaisers zu sehen ist. Zacharias merkt: Selbst beim Einkaufen bleibt die Macht Roms sichtbar.',
-'Der Vater erzählt von der schlechten Ernte. Trotzdem müssen Steuern und Abgaben bezahlt werden.',
-'Beim Abendessen sagt der ältere Bruder leise: „Ich hoffe, dass wir eines Tages wieder selbst über unser Land bestimmen können.“'
+// Siegel 5: Zacharias' Reisebericht, verteilt auf vier Stationen des Reisewegs (Reihenfolge = ReportWalkRules.stations).
+const REPORT_STATIONS=[
+{place:'An der Straßensperre',evidenceName:'Kontrolltafel',text:'An der Straßensperre halten römische Soldaten alle Reisenden an. Sie durchsuchen Körbe und Säcke, bevor jemand weitergehen darf.'},
+{place:'Am Markt',evidenceName:'Abgabensack',text:'Am Markt notiert ein Abgabeneinnehmer, was jede Familie abgeben muss. Der Vater sagt leise: „Die Ernte war schlecht. Trotzdem müssen wir zahlen.“'},
+{place:'Am Wachposten',evidenceName:'Soldatenschild',text:'Über dem Wachposten weht ein römisches Feldzeichen. Am Stand daneben bezahlt ein Soldat mit einer Münze, auf der das Bild des Kaisers zu sehen ist.'},
+{place:'Unter dem Olivenbaum',evidenceName:'Gespräch',text:'Unter dem Olivenbaum sagt der ältere Bruder zu einem Reisenden: „Ich hoffe, dass wir eines Tages wieder selbst über unser Land bestimmen können.“'}
 ];
-const CATEGORIES=['Politische Macht','Wirtschaftliche Belastung','Kontrolle im Alltag','Hoffnung auf Freiheit'];
-const EVIDENCE=[
-{fragment:1,question:'Welcher Schwerpunkt passt zur Handlung der Soldaten?',answer:2,why:'Die Soldaten greifen hier direkt in den Alltag der Reisenden ein: Sie kontrollieren Menschen und Waren.'},
-{fragment:2,question:'Welcher Schwerpunkt passt zur Frage: Wessen Macht zeigt das Bild auf der Münze?',answer:0,why:'Das Kaiserbild zeigt die politische Macht Roms. Es verrät nicht, ob der Händler den Kaiser religiös verehrt.'},
-{fragment:3,question:'Welcher Schwerpunkt erklärt, warum der Familie weniger zum Leben bleibt?',answer:1,why:'Schlechte Ernte und trotzdem fällige Abgaben belasten den Vorrat der Familie.'},
-{fragment:4,question:'Welcher Schwerpunkt passt zum Wunsch des Bruders?',answer:3,why:'Der Bruder hofft auf Selbstbestimmung. Er sagt nicht, dass er mit Waffen kämpfen will.'}
+const REPORT_SIGN='„Nach Galiläa“ steht auf dem Wegweiser. Das ist nur eine Ortsangabe: Sie zeigt den Weg, aber nicht, wie Rom das Leben der Menschen prägt. Für Zacharias’ Bericht ist sie kein Beleg.';
+const CATEGORIES=['Kontrolle im Alltag','Wirtschaftliche Belastung','Sichtbare römische Macht','Hoffnung auf Freiheit'];
+// Short forms for the narrow category fields of the result panel (one line at ≥16 px).
+const CATEGORY_SHORT=['Kontrolle','Belastung','Machtzeichen','Hoffnung'];
+const CATEGORY_QUESTIONS=['Wo greift Rom direkt in den Alltag ein?','Was bleibt den Familien zum Leben?','Woran sieht man, wer das Land beherrscht?','Was wünschen sich Menschen für die Zukunft?'];
+// Correct category per station, and the explanation shown after a correct board.
+const REPORT_ANSWERS=[0,1,2,3];
+const EVIDENCE_WHY=[
+'Die Soldaten greifen direkt in den Alltag der Reisenden ein: Sie halten Menschen an und prüfen Waren.',
+'Schlechte Ernte und trotzdem fällige Abgaben verkleinern den Vorrat der Familie.',
+'Feldzeichen und Kaiserbild zeigen die Macht Roms. Mit der Münze zu bezahlen ist noch keine Verehrung des Kaisers.',
+'Der Bruder hofft auf Selbstbestimmung. Er sagt nicht, dass er mit Waffen kämpfen will.'
 ];
 const MODEL='Die römische Herrschaft bestimmte, wer regierte, verlangte Abgaben und kontrollierte den Alltag. Besonders arme Familien konnten dadurch in Not geraten. Die Menschen reagierten unterschiedlich: Sie passten sich an, hofften auf Freiheit oder leisteten Widerstand.';
 const TOTALS=AdventureRules.totals;
@@ -153,7 +159,7 @@ const BRIEFS=[
 ['Die verdrehte Akte','In der Kontrollakte stehen drei falsche Aussagen. Findet sie und repariert die Einträge.'],
 ['Vier Stimmen, vier Wege','Die Reisenden denken unterschiedlich über Rom. Hört genau hin: Eine Hoffnung ist noch kein Plan zum Kämpfen.'],
 ['Euer Weg nach Norden','Löst acht Reisehinweise auf der Karte. Zwei letzte Fragen öffnen das Kartensiegel.'],
-['Spuren im Reisebericht','Zacharias hat vier Beobachtungen notiert. Sichert die Belege und erklärt, was sie über das Leben unter Rom zeigen.']
+['Spuren im Reisebericht','Folgt Zacharias’ Reiseweg. Sichert vier Beobachtungen, ordnet sie ein und erklärt, was sie über das Leben unter Rom zeigen.']
 ];
 
 const SEALS=['authority','burden','voices','land','evidence'];
@@ -163,10 +169,10 @@ const CORE=[
 'Der Schreiber bittet um Hilfe: Drei Einträge wurden verdreht. Vergleicht sie mit der Münze, den Vorräten und dem Erlass am Tisch.',
 'Vier erfundene Gesprächspartner zeigen mögliche Perspektiven. Hört zuerst die Haltung heraus und begründet sie danach. Keine Stimme steht für alle Menschen.',
 'Die Karte ist eine vereinfachte Orientierung: Norden ist oben. Region, Ort, Fluss und See sind verschiedene Dinge. Der Kartenschreiber erklärt euch die Lage im Reisebuch.',
-'Zacharias’ Bericht ist eine erfundene Spielsituation. Sichert Beobachtungen, ordnet ihre Bedeutung und baut daraus eine Erklärung.'
+'Zacharias’ Bericht ist eine erfundene Spielsituation. Geht seinen Reiseweg ab, sichert an vier Stationen seine Beobachtungen, ordnet sie ein und baut daraus eine Erklärung.'
 ];
 const ARGUMENTS={
-obs:['Die Ernte ist klein; trotzdem werden Abgaben verlangt.','Soldaten prüfen Reisende; der Bruder hofft auf Selbstbestimmung.','Ein Händler bezahlt mit einer Kaisermünze.'],
+obs:['Die Ernte ist klein; trotzdem werden Abgaben verlangt.','Soldaten prüfen Reisende; der Bruder hofft auf Selbstbestimmung.','Ein Soldat bezahlt mit einer Kaisermünze.'],
 link:['Abgaben verkleinern den ohnehin knappen Vorrat.','Kontrolle kann den Wunsch nach Selbstbestimmung verstärken.','Wer eine Kaisermünze benutzt, verehrt den Kaiser als Gott.'],
 conclusion:['Besonders arme Familien können dadurch in Not geraten.','Menschen können auf Freiheit hoffen, ohne einen bewaffneten Kampf anzukündigen.','Alle Menschen reagieren gleich auf Rom.']
 };
@@ -175,6 +181,12 @@ const HINTS=[
 ['Prüft Aussagen über Herrscherwahl, Vorräte und Glauben.','In den Einträgen 1, 4 und 6 steckt jeweils eine falsche Schlussfolgerung.','Berichtigt: Rom erlaubt Antipas die Herrschaft; wenig Vorräte bedeuten stärkere Belastung; Bezahlen ist keine Verehrung.'],
 ['Welche Handlung oder welcher Wunsch wird ausdrücklich genannt?','Miriam handelt weiter, Jakob hofft, Eleasar fordert Waffen, Marcus erfüllt einen Kontrollauftrag.','Ordnet jeweils dieselbe Haltung und Begründung zu. Aus diesen Stimmen folgt: Unzufriedenheit kann verschiedene Reaktionen auslösen.'],
 ['Sucht zuerst Norden, Mitte und Süden, danach einzelne Orte.','Galiläa – Samaria – Judäa. See und Kafarnaum liegen im Norden; Jerusalem im Süden.','Nazareth liegt südwestlich des Sees, Kafarnaum an seinem Nordufer. Der Jordan fließt südlich zum Toten Meer.'],
-['Was geschieht konkret? Welche Bedeutung hat diese Beobachtung?','Belege 2–5: Kontrolle, Machtzeichen, wirtschaftliche Belastung, Hoffnung.','Für die Werkstatt: kleine Ernte + Abgaben → kleiner Vorrat → Not; oder Kontrolle + Freiheitswunsch → Einschränkung → Hoffnung ohne Kampfplan.']
+[
+ ['Geht vom Tor aus jeden Weg ab und schaut euch jede Szene genau an.','Vier Orte: Straßensperre oben links, Markt oben rechts, Wachposten unten rechts und das Gespräch unter dem Olivenbaum in der Mitte unten. Das Gespräch hört ihr vom Weg östlich davon.','Stellt euch nah an die kleinen Zeichen am Boden und tippt auf „Untersuchen“. Der Wegweiser am Tor ist nur eine Ortsangabe, kein Beleg.'],
+ ['Fragt bei jedem Beleg: Was passiert hier genau?','Kontrolle: Menschen werden angehalten. Belastung: Es bleibt weniger zum Leben. Macht: Zeichen zeigen, wer herrscht. Hoffnung: ein Wunsch für die Zukunft.','Straßensperre → Kontrolle; Markt → Belastung; Wachposten → sichtbare Macht; Gespräch → Hoffnung.'],
+ ['Beobachtung, Zusammenhang und Schlussfolgerung müssen dieselbe Erklärung tragen.','Zwei Wege passen: kleine Ernte + Abgaben → kleiner Vorrat → Not; oder Kontrolle + Freiheitswunsch → Hoffnung ohne Kampfplan.','Die Kaisermünze beweist keine Verehrung. Wählt alles zur Ernte und den Abgaben oder alles zur Kontrolle und zur Hoffnung.']
+]
 ];
-const SPRITES={"assets/puzzles/map/map-marker-set.png": {"nazareth": [0, 0, 512, 512], "kafarnaum": [512, 0, 512, 512], "jerusalem": [1024, 0, 512, 512], "galilaea": [0, 512, 512, 512], "samaria": [512, 512, 512, 512], "judaea": [1024, 512, 512, 512]}, "assets/puzzles/map/map-route-strip.png": {"dots": [0, 0, 768, 341], "footprints": [768, 0, 768, 341], "broken-path": [0, 341, 768, 342], "direction": [768, 341, 768, 342], "cairns": [0, 683, 768, 341], "fork": [768, 683, 768, 341]}, "assets/puzzles/report/evidence-marker.png": {"red-wax": [0, 0, 444, 430], "branch-seal": [444, 0, 444, 430], "ochre-wax": [887, 0, 444, 430], "bronze": [1330, 0, 444, 430], "olive-ribbon": [0, 430, 444, 457], "red-ribbon": [444, 430, 444, 457], "parchment-fold": [887, 430, 444, 457], "tag": [1330, 430, 444, 457]}, "assets/puzzles/report/argument-tiles.png": {"short-left": [0, 0, 768, 290], "short-right": [768, 0, 768, 290], "medium-left": [0, 290, 768, 340], "medium-right": [768, 290, 768, 340], "wide-left": [0, 630, 768, 394], "wide-right": [768, 630, 768, 394]}, "assets/bonus/travellers-sheet.png": {"merchant": [0, 0, 430, 758], "family": [430, 0, 525, 758], "pilgrim": [955, 0, 365, 758], "goods-traveller": [1320, 0, 390, 758], "roman-courier": [1710, 0, 363, 758]}, "assets/bonus/goods-sheet.png": {"amphora": [0, 0, 460, 535], "grain": [460, 0, 530, 535], "cloth": [990, 0, 546, 535], "purse": [0, 535, 460, 489], "wax-tablet": [460, 535, 530, 489], "basket": [990, 535, 546, 489]}, "assets/bonus/bonus-ui.png": {"seal": [0, 0, 405, 530], "stamp": [405, 0, 445, 530], "pass-token": [850, 0, 310, 530], "inspection-ribbon": [1160, 0, 376, 530], "parchment-sign": [0, 530, 435, 494], "wood-sign": [435, 530, 400, 494], "wax-sign": [835, 530, 395, 494], "tag": [1230, 530, 306, 494]}};
+const SPRITES={"assets/puzzles/map/map-marker-set.png": {"nazareth": [0, 0, 512, 512], "kafarnaum": [512, 0, 512, 512], "jerusalem": [1024, 0, 512, 512], "galilaea": [0, 512, 512, 512], "samaria": [512, 512, 512, 512], "judaea": [1024, 512, 512, 512]}, "assets/puzzles/map/map-route-strip.png": {"dots": [0, 0, 768, 341], "footprints": [768, 0, 768, 341], "broken-path": [0, 341, 768, 342], "direction": [768, 341, 768, 342], "cairns": [0, 683, 768, 341], "fork": [768, 683, 768, 341]}, "assets/puzzles/report/evidence-marker.png": {"red-wax": [0, 0, 444, 430], "branch-seal": [444, 0, 444, 430], "ochre-wax": [887, 0, 444, 430], "bronze": [1330, 0, 444, 430], "olive-ribbon": [0, 430, 444, 457], "red-ribbon": [444, 430, 444, 457], "parchment-fold": [887, 430, 444, 457], "tag": [1330, 430, 444, 457]}, "assets/puzzles/report/argument-tiles.png": {"short-left": [0, 0, 768, 290], "short-right": [768, 0, 768, 290], "medium-left": [0, 290, 768, 340], "medium-right": [768, 290, 768, 340], "wide-left": [0, 630, 768, 394], "wide-right": [768, 630, 768, 394]}, "assets/bonus/travellers-sheet.png": {"merchant": [0, 0, 430, 758], "family": [430, 0, 525, 758], "pilgrim": [955, 0, 365, 758], "goods-traveller": [1320, 0, 390, 758], "roman-courier": [1710, 0, 363, 758]}, "assets/bonus/goods-sheet.png": {"amphora": [0, 0, 460, 535], "grain": [460, 0, 530, 535], "cloth": [990, 0, 546, 535], "purse": [0, 535, 460, 489], "wax-tablet": [460, 535, 530, 489], "basket": [990, 535, 546, 489]}, "assets/bonus/bonus-ui.png": {"seal": [0, 0, 405, 530], "stamp": [405, 0, 445, 530], "pass-token": [850, 0, 310, 530], "inspection-ribbon": [1160, 0, 376, 530], "parchment-sign": [0, 530, 435, 494], "wood-sign": [435, 530, 400, 494], "wax-sign": [835, 530, 395, 494], "tag": [1230, 530, 306, 494]}, "assets/puzzles/report-topdown/report-evidence.png": {"control-tablet": [69, 88, 514, 501], "tax-sack": [647, 39, 588, 571], "roman-shield": [86, 631, 459, 576], "shared-hope": [656, 697, 568, 434]}, "assets/puzzles/report-topdown/report-argument-tiles.png": {"short-a": [184, 130, 400, 176], "short-b": [952, 130, 400, 175], "medium-a": [82, 418, 604, 193], "medium-b": [849, 418, 605, 193], "long-a": [30, 715, 708, 190], "long-b": [798, 715, 708, 190]}, "assets/puzzles/report-topdown/report-argument-tiles-v2.png": {"short-a": [124, 36, 520, 270], "short-b": [892, 36, 520, 270], "medium-a": [64, 377, 640, 270], "medium-b": [832, 377, 640, 270], "long-a": [28, 718, 712, 270], "long-b": [796, 718, 712, 270]}};
+// Native sheet sizes, needed when crops use visible bounds rather than full grid cells.
+const SHEET_SIZES={"assets/puzzles/report-topdown/report-argument-tiles-v2.png":[1536,1024],"assets/puzzles/report-topdown/report-evidence.png":[1254,1254],"assets/puzzles/report-topdown/report-argument-tiles.png":[1536,1024]};

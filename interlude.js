@@ -88,7 +88,7 @@ if(typeof window!=='undefined')window.InterludeRules=InterludeRules;
 
 if(typeof window!=='undefined')(()=>{
  const root=document.querySelector('#interlude'),content=root.querySelector('.run-content');
- const P='assets/interlude/checkpoint-run-',paths=['bg.webp','foreground.png','hideouts.png','route-markers.png','player.png','guards.png','collectibles.png','alert-effects.png','ui.png','result.png','start-panel.png'].map(f=>P+f);
+ const P='assets/interlude/checkpoint-run-',paths=['bg.webp','foreground.png','hideouts.png','route-markers.png','player.png','guards.png','collectibles.png','alert-effects.png','ui.png','result-v2.png','start-panel-v3.png'].map(f=>P+f);
  let art=null,run=null,phase='start',raf=0,last=0,lastSave=0,paused=false,loading=false,epoch=0;
  const held=new Set(),keyboard=new Set(),reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
  const bridge=()=>window.Adventure;
@@ -111,7 +111,7 @@ if(typeof window!=='undefined')(()=>{
  function paintIcon(canvas,path,name){GameArt.icon(canvas,art,P+path+'.png',name);}
  function startPanel(){
   phase='start';
-  content.innerHTML=`<div class="run-start art-panel"><img src="${P}start-panel.png" alt="Historische Starttafel"><div class="run-start-copy"><h2>Unruhe am Kontrollposten</h2><p>Eine Patrouille zieht durch den Hof. Gelange zum Tor, ohne entdeckt zu werden.</p><p>Unterwegs könnt ihr drei Dinge für eure Weiterreise sichern.</p></div><div class="run-start-items">${['Karte','Proviant','Reisedokument'].map(t=>`<div><canvas width="100" height="82" aria-hidden="true"></canvas><span>${t}</span></div>`).join('')}</div><button id="run-begin">${state().interludeRun?'Weiter durch den Hof':'In den Hof'}</button></div>`;
+  content.innerHTML=`<div class="run-start art-panel"><img src="${P}start-panel-v3.png" alt="Historische Starttafel"><h2 class="run-start-title">Unruhe am Kontrollposten</h2><div class="run-start-copy"><p>Eine Patrouille zieht durch den Hof. Gelange zum Tor, ohne entdeckt zu werden.</p><p>Unterwegs könnt ihr drei Dinge für eure Weiterreise sichern.</p></div><div class="run-start-items">${['Karte','Proviant','Reisedokument'].map((t,i)=>`<div class="run-start-item run-start-item-${i+1}"><canvas width="100" height="82" aria-hidden="true"></canvas><span>${t}</span></div>`).join('')}</div><button id="run-begin">${state().interludeRun?'Weiter durch den Hof':'In den Hof'}</button></div>`;
   content.querySelectorAll('.run-start-items canvas').forEach((c,i)=>paintIcon(c,'collectibles',['map','provisions','permit'][i]));
   content.querySelector('#run-begin').onclick=play;
  }
@@ -170,7 +170,8 @@ if(typeof window!=='undefined')(()=>{
  }
  function result(){
   phase='result';stop();
-  content.innerHTML=`<div class="run-result art-panel"><img src="${P}result.png" alt="Ergebnistafel der Zwischenetappe"><h2>Geschafft – der Weg ist wieder frei.</h2>${[['map','Karte'],['provisions','Proviant'],['permit','Reisedokument'],['undetected','Unentdeckt']].map(([key,label],i)=>`<canvas class="run-result-icon" width="100" height="100" style="top:${[29,43,57,70][i]}%" aria-hidden="true"></canvas><p class="run-result-row" style="top:${[30,44,58,71][i]}%"><span>${label}</span><strong>${(key==='undetected'?run.detections===0:run.collected.includes(key))?'✓':'–'}</strong></p>`).join('')}<button id="run-done">Weiter zum Kontrollposten</button></div>`;
+  // Result panel v2: separate fields for icon, label and tick per row, plus its own button strip (docs/asset-update-2).
+  content.innerHTML=`<div class="run-result art-panel"><img src="${P}result-v2.png" alt="Ergebnistafel der Zwischenetappe"><h2>Geschafft – der Weg ist wieder frei.</h2>${[['map','Karte'],['provisions','Proviant'],['permit','Reisedokument'],['undetected','Unentdeckt']].map(([key,label],i)=>{const got=key==='undetected'?run.detections===0:run.collected.includes(key);return `<canvas class="run-result-icon" width="100" height="100" style="top:${[29,42.38,55.76,69.14][i]}%" aria-hidden="true"></canvas><p class="run-result-row" style="top:${[29.79,43.16,56.54,69.92][i]}%">${label}<span class="visually-hidden">: ${got?'geschafft':'nicht geschafft'}</span></p><strong class="run-result-check" style="top:${[29.79,43.16,56.54,69.92][i]}%" aria-hidden="true">${got?'✓':'–'}</strong>`;}).join('')}<button id="run-done">Weiter zum Kontrollposten</button></div>`;
   content.querySelectorAll('.run-result-icon').forEach((canvas,i)=>paintIcon(canvas,i===3?'ui':'collectibles',['map','provisions','permit','undetected'][i]));
   content.querySelector('#run-done').onclick=()=>{
    const s=state();s.interludeCompleted=true;s.interludeStarted=true;s.interludeStats={collectibles:[...run.collected],undetected:run.detections===0};s.interludeRun=null;bridge().save();root.close();updateReplay();

@@ -1,0 +1,988 @@
+{
+  "assets/puzzles/report-topdown/report-foreground.png": [
+    {
+      "name": "market-stall",
+      "source_rect_xyxy": [
+        0,
+        0,
+        420,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        49,
+        74,
+        390,
+        490
+      ],
+      "foot_anchor_source_xy": [
+        219.5,
+        490
+      ],
+      "foot_anchor_crop_xy": [
+        219.5,
+        490
+      ]
+    },
+    {
+      "name": "tax-sacks",
+      "source_rect_xyxy": [
+        420,
+        0,
+        768,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        444,
+        200,
+        758,
+        480
+      ],
+      "foot_anchor_source_xy": [
+        601.0,
+        480
+      ],
+      "foot_anchor_crop_xy": [
+        181.0,
+        480
+      ]
+    },
+    {
+      "name": "amphorae",
+      "source_rect_xyxy": [
+        768,
+        0,
+        1152,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        837,
+        161,
+        1084,
+        481
+      ],
+      "foot_anchor_source_xy": [
+        960.5,
+        481
+      ],
+      "foot_anchor_crop_xy": [
+        192.5,
+        481
+      ]
+    },
+    {
+      "name": "inspection-table",
+      "source_rect_xyxy": [
+        1152,
+        0,
+        1536,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        1157,
+        214,
+        1514,
+        481
+      ],
+      "foot_anchor_source_xy": [
+        1335.5,
+        481
+      ],
+      "foot_anchor_crop_xy": [
+        183.5,
+        481
+      ]
+    },
+    {
+      "name": "low-wall",
+      "source_rect_xyxy": [
+        0,
+        512,
+        420,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        37,
+        637,
+        388,
+        944
+      ],
+      "foot_anchor_source_xy": [
+        212.5,
+        944
+      ],
+      "foot_anchor_crop_xy": [
+        212.5,
+        432
+      ]
+    },
+    {
+      "name": "signpost",
+      "source_rect_xyxy": [
+        420,
+        512,
+        768,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        445,
+        573,
+        726,
+        947
+      ],
+      "foot_anchor_source_xy": [
+        585.5,
+        947
+      ],
+      "foot_anchor_crop_xy": [
+        165.5,
+        435
+      ]
+    },
+    {
+      "name": "crates",
+      "source_rect_xyxy": [
+        768,
+        512,
+        1152,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        782,
+        654,
+        1123,
+        942
+      ],
+      "foot_anchor_source_xy": [
+        952.5,
+        942
+      ],
+      "foot_anchor_crop_xy": [
+        184.5,
+        430
+      ]
+    },
+    {
+      "name": "linen-rack",
+      "source_rect_xyxy": [
+        1152,
+        512,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        1163,
+        587,
+        1506,
+        958
+      ],
+      "foot_anchor_source_xy": [
+        1334.5,
+        958
+      ],
+      "foot_anchor_crop_xy": [
+        182.5,
+        446
+      ]
+    }
+  ],
+  "assets/puzzles/report-topdown/report-markers.png": [
+    {
+      "name": "control",
+      "source_rect_xyxy": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "visible_bbox_xyxy": [
+        165,
+        198,
+        542,
+        544
+      ],
+      "foot_anchor_source_xy": [
+        353.5,
+        544
+      ],
+      "foot_anchor_crop_xy": [
+        353.5,
+        544
+      ]
+    },
+    {
+      "name": "tax-burden",
+      "source_rect_xyxy": [
+        627,
+        0,
+        1254,
+        627
+      ],
+      "visible_bbox_xyxy": [
+        746,
+        167,
+        1084,
+        562
+      ],
+      "foot_anchor_source_xy": [
+        915.0,
+        562
+      ],
+      "foot_anchor_crop_xy": [
+        288.0,
+        562
+      ]
+    },
+    {
+      "name": "roman-power",
+      "source_rect_xyxy": [
+        0,
+        627,
+        627,
+        1254
+      ],
+      "visible_bbox_xyxy": [
+        194,
+        665,
+        513,
+        1110
+      ],
+      "foot_anchor_source_xy": [
+        353.5,
+        1110
+      ],
+      "foot_anchor_crop_xy": [
+        353.5,
+        483
+      ]
+    },
+    {
+      "name": "hope-dialogue",
+      "source_rect_xyxy": [
+        627,
+        627,
+        1254,
+        1254
+      ],
+      "visible_bbox_xyxy": [
+        687,
+        739,
+        1160,
+        1076
+      ],
+      "foot_anchor_source_xy": [
+        923.5,
+        1076
+      ],
+      "foot_anchor_crop_xy": [
+        296.5,
+        449
+      ]
+    }
+  ],
+  "assets/puzzles/report-topdown/report-player.png": [
+    {
+      "name": "north-idle",
+      "source_rect_xyxy": [
+        0,
+        0,
+        384,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        90,
+        85,
+        289,
+        443
+      ],
+      "foot_anchor_source_xy": [
+        192,
+        440
+      ],
+      "foot_anchor_crop_xy": [
+        192,
+        440
+      ],
+      "recommended_scale": 0.21
+    },
+    {
+      "name": "north-step",
+      "source_rect_xyxy": [
+        384,
+        0,
+        768,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        473,
+        85,
+        674,
+        451
+      ],
+      "foot_anchor_source_xy": [
+        572,
+        447
+      ],
+      "foot_anchor_crop_xy": [
+        188,
+        447
+      ],
+      "recommended_scale": 0.21
+    },
+    {
+      "name": "south-idle",
+      "source_rect_xyxy": [
+        768,
+        0,
+        1152,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        848,
+        85,
+        1069,
+        437
+      ],
+      "foot_anchor_source_xy": [
+        960,
+        434
+      ],
+      "foot_anchor_crop_xy": [
+        192,
+        434
+      ],
+      "recommended_scale": 0.21
+    },
+    {
+      "name": "south-step",
+      "source_rect_xyxy": [
+        1152,
+        0,
+        1536,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        1237,
+        85,
+        1462,
+        451
+      ],
+      "foot_anchor_source_xy": [
+        1340,
+        448
+      ],
+      "foot_anchor_crop_xy": [
+        188,
+        448
+      ],
+      "recommended_scale": 0.21
+    },
+    {
+      "name": "west-idle",
+      "source_rect_xyxy": [
+        0,
+        512,
+        384,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        105,
+        558,
+        313,
+        928
+      ],
+      "foot_anchor_source_xy": [
+        186,
+        925
+      ],
+      "foot_anchor_crop_xy": [
+        186,
+        413
+      ],
+      "recommended_scale": 0.21
+    },
+    {
+      "name": "west-step",
+      "source_rect_xyxy": [
+        384,
+        512,
+        768,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        488,
+        558,
+        724,
+        928
+      ],
+      "foot_anchor_source_xy": [
+        596,
+        925
+      ],
+      "foot_anchor_crop_xy": [
+        212,
+        413
+      ],
+      "recommended_scale": 0.21
+    },
+    {
+      "name": "east-idle",
+      "source_rect_xyxy": [
+        768,
+        512,
+        1152,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        837,
+        558,
+        1040,
+        928
+      ],
+      "foot_anchor_source_xy": [
+        949,
+        925
+      ],
+      "foot_anchor_crop_xy": [
+        181,
+        413
+      ],
+      "recommended_scale": 0.21
+    },
+    {
+      "name": "east-step",
+      "source_rect_xyxy": [
+        1152,
+        512,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        1205,
+        554,
+        1437,
+        928
+      ],
+      "foot_anchor_source_xy": [
+        1330,
+        925
+      ],
+      "foot_anchor_crop_xy": [
+        178,
+        413
+      ],
+      "recommended_scale": 0.21
+    }
+  ],
+  "assets/puzzles/report-topdown/report-npcs.png": [
+    {
+      "name": "soldier",
+      "source_rect_xyxy": [
+        0,
+        0,
+        768,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        363,
+        12,
+        649,
+        489
+      ],
+      "foot_anchor_source_xy": [
+        510,
+        486
+      ],
+      "foot_anchor_crop_xy": [
+        510,
+        486
+      ],
+      "recommended_scale": 0.17
+    },
+    {
+      "name": "tax-collector",
+      "source_rect_xyxy": [
+        768,
+        0,
+        1536,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        887,
+        55,
+        1142,
+        500
+      ],
+      "foot_anchor_source_xy": [
+        1010,
+        495
+      ],
+      "foot_anchor_crop_xy": [
+        242,
+        495
+      ],
+      "recommended_scale": 0.17
+    },
+    {
+      "name": "farmer",
+      "source_rect_xyxy": [
+        0,
+        512,
+        768,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        390,
+        523,
+        674,
+        993
+      ],
+      "foot_anchor_source_xy": [
+        510,
+        988
+      ],
+      "foot_anchor_crop_xy": [
+        510,
+        476
+      ],
+      "recommended_scale": 0.17
+    },
+    {
+      "name": "traveler",
+      "source_rect_xyxy": [
+        768,
+        512,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        862,
+        531,
+        1149,
+        989
+      ],
+      "foot_anchor_source_xy": [
+        1010,
+        984
+      ],
+      "foot_anchor_crop_xy": [
+        242,
+        472
+      ],
+      "recommended_scale": 0.17
+    }
+  ],
+  "assets/puzzles/report-topdown/report-evidence.png": [
+    {
+      "name": "control-tablet",
+      "source_rect_xyxy": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "visible_bbox_xyxy": [
+        69,
+        88,
+        583,
+        589
+      ],
+      "foot_anchor_source_xy": [
+        326.0,
+        589
+      ],
+      "foot_anchor_crop_xy": [
+        326.0,
+        589
+      ]
+    },
+    {
+      "name": "tax-sack",
+      "source_rect_xyxy": [
+        627,
+        0,
+        1254,
+        627
+      ],
+      "visible_bbox_xyxy": [
+        647,
+        39,
+        1235,
+        610
+      ],
+      "foot_anchor_source_xy": [
+        941.0,
+        610
+      ],
+      "foot_anchor_crop_xy": [
+        314.0,
+        610
+      ]
+    },
+    {
+      "name": "roman-shield",
+      "source_rect_xyxy": [
+        0,
+        627,
+        627,
+        1254
+      ],
+      "visible_bbox_xyxy": [
+        86,
+        631,
+        545,
+        1207
+      ],
+      "foot_anchor_source_xy": [
+        315.5,
+        1207
+      ],
+      "foot_anchor_crop_xy": [
+        315.5,
+        580
+      ]
+    },
+    {
+      "name": "shared-hope",
+      "source_rect_xyxy": [
+        627,
+        627,
+        1254,
+        1254
+      ],
+      "visible_bbox_xyxy": [
+        656,
+        697,
+        1224,
+        1131
+      ],
+      "foot_anchor_source_xy": [
+        940.0,
+        1131
+      ],
+      "foot_anchor_crop_xy": [
+        313.0,
+        504
+      ]
+    }
+  ],
+  "assets/puzzles/report-topdown/report-argument-tiles.png": [
+    {
+      "name": "short-a",
+      "source_rect_xyxy": [
+        0,
+        0,
+        768,
+        341
+      ],
+      "visible_bbox_xyxy": [
+        184,
+        130,
+        584,
+        306
+      ],
+      "foot_anchor_source_xy": [
+        384.0,
+        306
+      ],
+      "foot_anchor_crop_xy": [
+        384.0,
+        306
+      ],
+      "html_overlay_source_xyxy": [
+        249,
+        168,
+        519,
+        271
+      ]
+    },
+    {
+      "name": "short-b",
+      "source_rect_xyxy": [
+        768,
+        0,
+        1536,
+        341
+      ],
+      "visible_bbox_xyxy": [
+        952,
+        130,
+        1352,
+        305
+      ],
+      "foot_anchor_source_xy": [
+        1152.0,
+        305
+      ],
+      "foot_anchor_crop_xy": [
+        384.0,
+        305
+      ],
+      "html_overlay_source_xyxy": [
+        1017,
+        168,
+        1287,
+        270
+      ]
+    },
+    {
+      "name": "medium-a",
+      "source_rect_xyxy": [
+        0,
+        341,
+        768,
+        683
+      ],
+      "visible_bbox_xyxy": [
+        82,
+        418,
+        686,
+        611
+      ],
+      "foot_anchor_source_xy": [
+        384.0,
+        611
+      ],
+      "foot_anchor_crop_xy": [
+        384.0,
+        270
+      ],
+      "html_overlay_source_xyxy": [
+        147,
+        456,
+        621,
+        576
+      ]
+    },
+    {
+      "name": "medium-b",
+      "source_rect_xyxy": [
+        768,
+        341,
+        1536,
+        683
+      ],
+      "visible_bbox_xyxy": [
+        849,
+        418,
+        1454,
+        611
+      ],
+      "foot_anchor_source_xy": [
+        1151.5,
+        611
+      ],
+      "foot_anchor_crop_xy": [
+        383.5,
+        270
+      ],
+      "html_overlay_source_xyxy": [
+        914,
+        456,
+        1389,
+        576
+      ]
+    },
+    {
+      "name": "long-a",
+      "source_rect_xyxy": [
+        0,
+        683,
+        768,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        30,
+        715,
+        738,
+        905
+      ],
+      "foot_anchor_source_xy": [
+        384.0,
+        905
+      ],
+      "foot_anchor_crop_xy": [
+        384.0,
+        222
+      ],
+      "html_overlay_source_xyxy": [
+        95,
+        753,
+        673,
+        870
+      ]
+    },
+    {
+      "name": "long-b",
+      "source_rect_xyxy": [
+        768,
+        683,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        798,
+        715,
+        1506,
+        905
+      ],
+      "foot_anchor_source_xy": [
+        1152.0,
+        905
+      ],
+      "foot_anchor_crop_xy": [
+        384.0,
+        222
+      ],
+      "html_overlay_source_xyxy": [
+        863,
+        753,
+        1441,
+        870
+      ]
+    }
+  ],
+  "assets/bonus/bote/bote-symbols.png": [
+    {
+      "name": "scroll",
+      "source_rect_xyxy": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "visible_bbox_xyxy": [
+        67,
+        95,
+        624,
+        567
+      ],
+      "foot_anchor_source_xy": [
+        345.5,
+        567
+      ],
+      "foot_anchor_crop_xy": [
+        345.5,
+        567
+      ]
+    },
+    {
+      "name": "amphora",
+      "source_rect_xyxy": [
+        627,
+        0,
+        1254,
+        627
+      ],
+      "visible_bbox_xyxy": [
+        763,
+        33,
+        1136,
+        611
+      ],
+      "foot_anchor_source_xy": [
+        949.5,
+        611
+      ],
+      "foot_anchor_crop_xy": [
+        322.5,
+        611
+      ]
+    },
+    {
+      "name": "sandal",
+      "source_rect_xyxy": [
+        0,
+        627,
+        627,
+        1254
+      ],
+      "visible_bbox_xyxy": [
+        67,
+        667,
+        610,
+        1207
+      ],
+      "foot_anchor_source_xy": [
+        338.5,
+        1207
+      ],
+      "foot_anchor_crop_xy": [
+        338.5,
+        580
+      ]
+    },
+    {
+      "name": "seal",
+      "source_rect_xyxy": [
+        627,
+        627,
+        1254,
+        1254
+      ],
+      "visible_bbox_xyxy": [
+        728,
+        665,
+        1217,
+        1170
+      ],
+      "foot_anchor_source_xy": [
+        972.5,
+        1170
+      ],
+      "foot_anchor_crop_xy": [
+        345.5,
+        543
+      ]
+    }
+  ],
+  "assets/puzzles/report-topdown/report-evidence-frame.png": [
+    {
+      "name": "evidence-slot",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "visible_bbox_xyxy": [
+        72,
+        82,
+        1182,
+        1155
+      ],
+      "foot_anchor_source_xy": [
+        627.0,
+        1155
+      ],
+      "foot_anchor_crop_xy": [
+        627.0,
+        1155
+      ]
+    }
+  ],
+  "assets/bonus/bote/bote-active.png": [
+    {
+      "name": "active-field",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "visible_bbox_xyxy": [
+        39,
+        39,
+        1215,
+        1205
+      ],
+      "foot_anchor_source_xy": [
+        627.0,
+        1205
+      ],
+      "foot_anchor_crop_xy": [
+        627.0,
+        1205
+      ]
+    }
+  ]
+}

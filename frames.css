@@ -1,0 +1,33 @@
+/* Gemalte 9-Slice-Rahmen für die Texträtsel (docs/asset-update-2/ASSET-MAP.md, Abschnitt 9-Slice).
+   Slice-Werte sind native Pixel; die CSS-Randbreite wird ausdrücklich gesetzt. */
+
+/* Siegel 1: Anschlagbrett für Zuordnung und Erklärungsketten */
+.match-board,.chain-path{
+ border:28px solid transparent;border-radius:0;box-shadow:none;background:none;
+ border-image:url('assets/ui/frame-erlassbrett.png') 160 fill / 28px stretch;
+}
+.match-board{padding:10px 8px}
+.chain-path{padding:14px 10px}
+.board-labels{color:#4b3218}
+.match-board .card{border-color:#b38b52}
+.chain-slot{background:#f6ead0cc}
+
+/* Siegel 2: Amtsakte und zu berichtigender Eintrag */
+.dossier,.torn-note{
+ border:28px solid transparent;border-radius:0;box-shadow:none;background:none;
+ border-image:url('assets/ui/frame-akte.png') 200 fill / 28px stretch;
+}
+.dossier{padding:8px 10px}
+.torn-note{padding:8px 12px}
+
+/* Fundnotizen (Untersuchen/Nachfragen/Weiterforschen) und Belegnotizen */
+.found-note,.evidence-note{
+ border:10px solid transparent;border-radius:0;box-shadow:none;background:none;
+ border-image:url('assets/ui/frame-notiz.png') 100 fill / 10px stretch;
+}
+.found-note{padding:14px 20px}
+
+@media(max-width:650px){
+ .match-board,.chain-path,.dossier,.torn-note{border-width:18px;border-image-width:18px}
+ .match-board{padding:6px 4px}
+}

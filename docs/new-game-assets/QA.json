@@ -1,0 +1,198 @@
+[
+  {
+    "path": "assets/interlude/checkpoint-run-start-panel-v2.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGB",
+    "alpha_extrema": [
+      255,
+      255
+    ],
+    "transparent_fraction": 0,
+    "sha256": "36dbc260d7b1bf590d6eed8ff591c4586656fe1da4e680c769000b1a7694004a"
+  },
+  {
+    "path": "assets/puzzles/report-topdown/report-route-bg.webp",
+    "size": [
+      1651,
+      953
+    ],
+    "mode": "RGB",
+    "alpha_extrema": [
+      255,
+      255
+    ],
+    "transparent_fraction": 0,
+    "sha256": "781defb532242ca7d0862d681e7f901a8fa74ab0f1c8887505667f33a08fd4f3"
+  },
+  {
+    "path": "assets/puzzles/report-topdown/report-foreground.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "transparent_fraction": 0.6202799479166666,
+    "sha256": "f747ecdf7834df83d5503997247ef451fdcfa0592dabe1382b0b146ea3cc2541"
+  },
+  {
+    "path": "assets/puzzles/report-topdown/report-markers.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.7287022834743812,
+    "sha256": "10c223783a3a5d1063486aa3e11bf06c6cf891db5b0817163ab57605dea2b8dc"
+  },
+  {
+    "path": "assets/puzzles/report-topdown/report-player.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "transparent_fraction": 0.6978251139322916,
+    "sha256": "4409d14814cda659c9b796099812ea962d125aa82dc3ac04a02a6c6124158d5b"
+  },
+  {
+    "path": "assets/puzzles/report-topdown/report-npcs.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "transparent_fraction": 0.7727483113606771,
+    "sha256": "5003fa1e627b378e6447b23643e2dc65f09e4ce8de56f649746bb0d4b43f7326"
+  },
+  {
+    "path": "assets/puzzles/report-topdown/report-evidence.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.48548059288426954,
+    "sha256": "ff357f09fa129aa0148dec72941c74f4faad184436359843aeb4050779466e87"
+  },
+  {
+    "path": "assets/puzzles/report-topdown/report-result-panel.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGB",
+    "alpha_extrema": [
+      255,
+      255
+    ],
+    "transparent_fraction": 0,
+    "sha256": "584d7303a0374072d35412093a69812e1ca0050c6b6d46af6938c1047dbf9e0b"
+  },
+  {
+    "path": "assets/puzzles/report-topdown/report-category-board.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGB",
+    "alpha_extrema": [
+      255,
+      255
+    ],
+    "transparent_fraction": 0,
+    "sha256": "223a3fa1cb9eb81234d9f3a1a93a8ba2c279e754b8bebf17c41e9bb6b0ad9df0"
+  },
+  {
+    "path": "assets/puzzles/report-topdown/report-argument-tiles.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "transparent_fraction": 0.6428140004475912,
+    "sha256": "9f958081b760c4822078072c110cad3224404b526b3cad6b9b6f9158f7f3248c"
+  },
+  {
+    "path": "assets/puzzles/report-topdown/report-evidence-frame.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.7018008083860514,
+    "sha256": "1fa2b046c0d2c9dc966fdd8640bf9b25c5c1aabae7adb81cd2fa0c49544513f0"
+  },
+  {
+    "path": "assets/bonus/bote/bote-board.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "alpha_extrema": [
+      255,
+      255
+    ],
+    "transparent_fraction": 0,
+    "sha256": "221f678af95af1c81e57af9d592d74c7c5a5a7b02c919420e4cfcbbda0359e5d"
+  },
+  {
+    "path": "assets/bonus/bote/bote-symbols.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.617147933629928,
+    "sha256": "c7f26414472882e65b87937539f367a422b3c49f5b36550d9683f55d44fc18eb"
+  },
+  {
+    "path": "assets/bonus/bote/bote-active.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.7428782918583976,
+    "sha256": "b22a0cfd82f16e51845924407fea168109477c42066ce639c50c9f064d94271f"
+  }
+]

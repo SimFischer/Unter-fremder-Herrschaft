@@ -47,3 +47,10 @@
 .size-choices button:nth-child(1){left:61.8%;width:7.8%}.size-choices button:nth-child(2){left:71.7%;width:7.8%}.size-choices button:nth-child(3){left:81.8%;width:7.7%}
 .motif-choices button{overflow:hidden;border:0}.motif-choices button>img{object-fit:contain}.motif-choices button>span{top:auto;bottom:0;font-size:clamp(11px,1.2vw,14px);padding:2px;line-height:1.15;background:#efddb6ee;border:0}
 .motif-choices button[aria-pressed="true"]{border:0;outline:3px solid #70572e;outline-offset:-3px}
+
+/* Vorlage zeigen: the finished motif covers the board until hidden again; tiles stay untouched. */
+.puzzle-preview{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:3;cursor:pointer;box-shadow:inset 0 0 0 3px #e0bb64}
+.puzzle-preview[hidden]{display:none}
+#bonus-preview[aria-pressed="true"]{background:#6a5430;color:#fff0ce}
+.motif-choices button>img.motif-solved{position:absolute;z-index:2;left:-8px;top:-8px;width:clamp(36px,3.6vw,46px);height:auto;transform:rotate(-12deg);filter:drop-shadow(0 2px 2px #3a1e0f66);pointer-events:none}
+#bonus-preview{display:inline-flex;align-items:center;gap:6px}#bonus-preview img{width:30px;height:30px;flex:0 0 auto}

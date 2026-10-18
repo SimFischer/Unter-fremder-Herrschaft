@@ -1,0 +1,402 @@
+[
+  {
+    "asset": "assets/interlude/checkpoint-run-start-panel-v3.png",
+    "field": "title",
+    "text": "Geschafft – der Weg ist wieder frei.",
+    "characters": 36,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/interlude/checkpoint-run-start-panel-v3.png",
+    "field": "description",
+    "text": "Sammelt die drei Gegenstände und findet den sicheren Weg durch den Kontrollposten.",
+    "characters": 82,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/interlude/checkpoint-run-start-panel-v3.png",
+    "field": "button",
+    "text": "Weiter zum Kontrollposten",
+    "characters": 25,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/interlude/checkpoint-run-result-v2.png",
+    "field": "title",
+    "text": "Geschafft – der Weg ist wieder frei.",
+    "characters": 36,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/interlude/checkpoint-run-result-v2.png",
+    "field": "button",
+    "text": "Weiter zum Kontrollposten",
+    "characters": 25,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/interlude/checkpoint-run-result-v2.png",
+    "field": "row-1",
+    "text": "Reisedokument",
+    "characters": 13,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/interlude/checkpoint-run-result-v2.png",
+    "field": "check-1",
+    "text": "✓",
+    "characters": 1,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/interlude/checkpoint-run-result-v2.png",
+    "field": "row-2",
+    "text": "Reisedokument",
+    "characters": 13,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/interlude/checkpoint-run-result-v2.png",
+    "field": "check-2",
+    "text": "✓",
+    "characters": 1,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/interlude/checkpoint-run-result-v2.png",
+    "field": "row-3",
+    "text": "Reisedokument",
+    "characters": 13,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/interlude/checkpoint-run-result-v2.png",
+    "field": "check-3",
+    "text": "✓",
+    "characters": 1,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/interlude/checkpoint-run-result-v2.png",
+    "field": "row-4",
+    "text": "Reisedokument",
+    "characters": 13,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/interlude/checkpoint-run-result-v2.png",
+    "field": "check-4",
+    "text": "✓",
+    "characters": 1,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-category-board-v2.png",
+    "field": "label-1",
+    "text": "Wirtschaftliche Belastung",
+    "characters": 25,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-category-board-v2.png",
+    "field": "content-1",
+    "text": "Woran sieht man, wer das Land beherrscht?",
+    "characters": 41,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-category-board-v2.png",
+    "field": "label-2",
+    "text": "Wirtschaftliche Belastung",
+    "characters": 25,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-category-board-v2.png",
+    "field": "content-2",
+    "text": "Woran sieht man, wer das Land beherrscht?",
+    "characters": 41,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-category-board-v2.png",
+    "field": "label-3",
+    "text": "Wirtschaftliche Belastung",
+    "characters": 25,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-category-board-v2.png",
+    "field": "content-3",
+    "text": "Woran sieht man, wer das Land beherrscht?",
+    "characters": 41,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-category-board-v2.png",
+    "field": "label-4",
+    "text": "Wirtschaftliche Belastung",
+    "characters": 25,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-category-board-v2.png",
+    "field": "content-4",
+    "text": "Woran sieht man, wer das Land beherrscht?",
+    "characters": 41,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-result-panel-v2.png",
+    "field": "title",
+    "text": "Zacharias’ Belege",
+    "characters": 17,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-result-panel-v2.png",
+    "field": "explanation",
+    "text": "Zacharias beobachtet Kontrollen und Abgaben. Römische Soldaten sichern die Herrschaft. Die Menschen tragen wirtschaftliche Lasten und reagieren unterschiedlich: mit Anpassung, Ablehnung oder Hoffnung auf Wandel.",
+    "characters": 211,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 2,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-result-panel-v2.png",
+    "field": "category-1",
+    "text": "Sichtbare römische Macht",
+    "characters": 24,
+    "font": "Arial Narrow",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-result-panel-v2.png",
+    "field": "category-2",
+    "text": "Sichtbare römische Macht",
+    "characters": 24,
+    "font": "Arial Narrow",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-result-panel-v2.png",
+    "field": "category-3",
+    "text": "Sichtbare römische Macht",
+    "characters": 24,
+    "font": "Arial Narrow",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-result-panel-v2.png",
+    "field": "category-4",
+    "text": "Sichtbare römische Macht",
+    "characters": 24,
+    "font": "Arial Narrow",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-argument-tiles-v2.png",
+    "field": "short-a",
+    "text": "Römische Soldaten sichern die Herrschaft und verlangen Abgaben von den Leuten.",
+    "characters": 78,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 3,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-argument-tiles-v2.png",
+    "field": "short-b",
+    "text": "Römische Soldaten sichern die Herrschaft und verlangen Abgaben von den Leuten.",
+    "characters": 78,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 3,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-argument-tiles-v2.png",
+    "field": "medium-a",
+    "text": "Römische Soldaten sichern die Herrschaft und verlangen Abgaben von den Leuten.",
+    "characters": 78,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 2,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-argument-tiles-v2.png",
+    "field": "medium-b",
+    "text": "Römische Soldaten sichern die Herrschaft und verlangen Abgaben von den Leuten.",
+    "characters": 78,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 2,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-argument-tiles-v2.png",
+    "field": "long-a",
+    "text": "Römische Soldaten sichern die Herrschaft und verlangen Abgaben von den Leuten.",
+    "characters": 78,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 2,
+    "pass": true
+  },
+  {
+    "asset": "assets/puzzles/report-topdown/report-argument-tiles-v2.png",
+    "field": "long-b",
+    "text": "Römische Soldaten sichern die Herrschaft und verlangen Abgaben von den Leuten.",
+    "characters": 78,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 2,
+    "pass": true
+  },
+  {
+    "asset": "assets/bonus/bote/bote-result.png",
+    "field": "title",
+    "text": "Durchlauf beendet",
+    "characters": 17,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/bonus/bote/bote-result.png",
+    "field": "value-1",
+    "text": "Serie: 12 Zeichen",
+    "characters": 17,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/bonus/bote/bote-result.png",
+    "field": "value-2",
+    "text": "Zeit: 03:25",
+    "characters": 11,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/bonus/bote/bote-result.png",
+    "field": "value-3",
+    "text": "Bestleistung: 15 Zeichen",
+    "characters": 24,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/bonus/bote/bote-result.png",
+    "field": "hint",
+    "text": "Das war nicht die Folge des Boten. Richtig wäre gewesen: Kontrollstempel.",
+    "characters": 73,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/bonus/bote/bote-result.png",
+    "field": "button-retry",
+    "text": "Noch einmal",
+    "characters": 11,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  },
+  {
+    "asset": "assets/bonus/bote/bote-result.png",
+    "field": "button-back",
+    "text": "Zurück zur Reise",
+    "characters": 16,
+    "font": "Georgia",
+    "css_font_px_at_1024_width": 16,
+    "line_count": 1,
+    "pass": true
+  }
+]

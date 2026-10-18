@@ -1,0 +1,91 @@
+/* Siegel 5 „Spuren im Reisebericht“: Top-Down-Erkundung, Kategorie-Tableau und Ergebnistafel.
+   Overlay rectangles come from docs/new-game-assets/ASSET-MAP.md (percent of the native image). */
+.report-walk{margin-top:12px}
+.report-walk canvas{image-rendering:pixelated}
+.walk-loading{text-align:center;font-style:italic}
+.walk-hud{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:0 auto 8px;font:14px/1.2 Georgia}
+.walk-slot{display:flex;flex-direction:column;align-items:center;gap:2px;width:78px;text-align:center;opacity:.72}
+.walk-slot.found{opacity:1}
+.walk-slot canvas{width:52px;height:52px}
+.walk-slot-label{font-size:12px;line-height:1.15}
+.walk-count{margin-left:6px;font-size:15px;color:#4a3518}
+.walk-stage{display:flex;gap:16px;align-items:center;justify-content:center}
+.walk-field{position:relative;flex:0 1 auto;width:min(calc(100% - 236px),calc((94dvh - 250px)*1651/953));aspect-ratio:1651/953;background:#5c4a2c;border:3px solid #6e5129}
+.walk-canvas{display:block;width:100%;height:100%;outline-offset:-4px}
+.walk-canvas:focus-visible{outline:3px solid #e7c56b}
+.walk-card{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(92%,560px);max-height:92%;overflow:auto;padding:16px 20px;background:linear-gradient(110deg,#f7e6c2,#efd9ad);border:3px solid #7a5a2c;box-shadow:0 10px 40px #0007;color:#342719}
+.walk-card[hidden]{display:none}
+.walk-card h3{margin:2px 0 8px;font-size:22px}
+.walk-card .eyebrow{color:#8a5b36}
+.walk-card-body{display:flex;gap:14px;align-items:center}
+.walk-card-body canvas{width:84px;height:84px;flex:0 0 auto}
+.walk-card blockquote{margin:0;font:17px/1.5 Georgia;color:#4b3520}
+.walk-card p{font:17px/1.5 Georgia;margin:4px 0}
+.walk-card-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.walk-card-secure{background:#505a36;color:#fff0cc}
+.walk-paused{position:absolute;inset:0;background:#251e12c9;color:#f7e6bc;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;font-size:22px}
+.walk-paused[hidden]{display:none}
+.walk-controls{display:flex;flex-direction:column;align-items:center;gap:10px;flex:0 0 220px}
+.walk-controls .walk-help{text-align:center}.walk-controls .walk-actions{justify-content:center}
+.walk-dpad{display:grid;grid-template-columns:repeat(3,56px);grid-template-rows:repeat(2,56px);gap:3px;flex:0 0 auto}
+.walk-dpad button{width:56px;height:56px;min-width:56px;padding:0;font:bold 27px Georgia;touch-action:none;user-select:none;-webkit-user-select:none;border:2px solid #7b6033}
+.walk-dpad [data-walk="up"]{grid-column:2;grid-row:1}.walk-dpad [data-walk="left"]{grid-column:1;grid-row:2}.walk-dpad [data-walk="down"]{grid-column:2;grid-row:2}.walk-dpad [data-walk="right"]{grid-column:3;grid-row:2}
+.walk-dpad .held{background:#68562d;color:#ffedc7;outline:2px solid #b58f45}
+.walk-help{flex:1;min-width:0}.walk-help p{font:14px/1.35 Georgia;margin:3px 0}
+.walk-actions{display:flex;gap:8px;flex-wrap:wrap}
+.walk-inspect:not(:disabled){background:#505a36;color:#fff0cc;outline:2px solid #c7a361}
+.walk-inspect:disabled{opacity:.55;cursor:default}
+.walk-message{min-height:38px;color:#614523}
+.walk-orientation{display:none}
+@media(orientation:portrait){.walk-orientation{display:block;font-style:italic}}
+
+/* Schritt 2: Belege auf das Kategorie-Tableau legen. */
+.report-tray{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0}
+.report-evidence{display:flex;gap:10px;align-items:flex-start;text-align:left;padding:10px;background:linear-gradient(110deg,#ecd3a4,#f3e3c3);border:2px solid #b08a52}
+.report-evidence .sprite{width:52px;height:52px;flex:0 0 auto}
+.report-evidence>span{display:flex;flex-direction:column;gap:3px}
+.report-evidence small{font:14px/1.4 Georgia}
+.report-evidence em{font:600 13px Georgia;color:#4d5a2f}
+.report-evidence.placed{opacity:.8}
+.report-evidence.selected{background:linear-gradient(110deg,#cfbe84,#e1cf9f);border-color:#635a30;outline:2px solid #8a622d;outline-offset:1px;opacity:1}
+.report-board{position:relative;aspect-ratio:1536/1024;max-width:900px;margin:0 auto}
+.report-board>img{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.report-zone{position:absolute;padding:0;margin:0;background:transparent;border:2px dashed transparent;border-radius:2px;box-shadow:none;color:#342719;min-height:44px}
+.report-zone:hover{border-color:#9c7547aa;filter:none}
+.report-zone:focus-visible{outline:3px solid #704012;outline-offset:1px}
+.report-zone-0{left:3.91%;top:4.88%;width:42.84%;height:40.53%}
+.report-zone-1{left:53.13%;top:4.88%;width:42.58%;height:40.53%}
+.report-zone-2{left:3.91%;top:53.71%;width:42.84%;height:41.02%}
+.report-zone-3{left:53.13%;top:53.71%;width:42.58%;height:41.02%}
+.report-zone-label{position:absolute;left:0;right:0;top:0;height:15%;display:grid;place-items:center;font:700 clamp(14px,1.7vw,19px)/1.1 Georgia}
+.report-zone-question{position:absolute;left:3%;right:3%;top:24%;font:italic clamp(14px,1.5vw,16px)/1.3 Georgia;color:#5d4528}
+.report-zone-items{position:absolute;left:3%;right:3%;top:44%;bottom:3%;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;justify-content:center}
+.report-zone-items>span{display:flex;flex-direction:column;align-items:center;font:600 clamp(12px,1.3vw,14px) Georgia}
+.report-zone-items .sprite{width:clamp(36px,5.5vw,64px);height:clamp(36px,5.5vw,64px)}
+
+/* Schritt 3: Ergebnistafel mit gesicherten Belegen und entstehender Erklärung. */
+.report-result{position:relative;aspect-ratio:1536/1024;max-width:900px;margin:14px auto 18px;color:#342719}
+.report-result>img{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.report-result .report-result-title{position:absolute;left:10.42%;width:79.17%;top:8.3%;height:5.86%;margin:0;display:grid;place-items:center;font:700 clamp(15px,1.9vw,21px) Georgia}
+.report-result-evidence,.report-result-category{position:absolute;display:grid;place-items:center}
+.report-result-evidence{top:22.95%;height:22.95%}
+.report-result-evidence .sprite{width:78%;height:78%}
+.report-result-category{top:52.73%;height:6.45%;text-align:center;white-space:nowrap;font:600 clamp(14px,1.6vw,17px)/1.1 Georgia}
+.rr-0{left:7.16%;width:16.93%}.rr-1{left:30.34%;width:16.54%}.rr-2{left:53.39%;width:16.28%}.rr-3{left:76.56%;width:16.28%}
+.report-result-explanation{position:absolute;left:9.77%;width:80.47%;top:66.89%;height:22.36%;margin:0;display:grid;place-items:center;text-align:center;overflow:auto;font:clamp(14px,1.75vw,19px)/1.45 Georgia}
+.report-tile-bank{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.report-tile{position:relative;aspect-ratio:640/270;padding:0;background:transparent;border:2px solid transparent;box-shadow:none;color:#342719}
+.report-tile>.sprite{position:absolute;inset:0;width:100%;height:100%}
+.report-tile>span{position:absolute;left:11.9%;width:76.2%;top:14.8%;height:70.4%;display:grid;place-items:center;text-align:center;overflow:hidden;font:clamp(14px,1.45vw,16px)/1.3 Georgia}
+.report-tile:hover{filter:brightness(1.04)}
+.report-tile.selected{border-color:#635a30;outline:2px solid #8a622d;outline-offset:1px;background:#d6c48a55}
+.report-tile.selected:after{content:'Gewählt';position:absolute;right:4%;bottom:-2px;background:#4c5634;color:#fff0c6;font:12px system-ui;padding:1px 6px}
+.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media(max-width:850px){
+ .report-tile-bank{grid-template-columns:1fr;justify-items:center}.report-tile{width:min(100%,400px)}.report-tile>span{font-size:15px}
+ .report-tray{grid-template-columns:1fr}
+ .walk-help p{font-size:13px}
+}
+/* Portrait and narrow screens: controls below the map. */
+@media(max-width:850px),(orientation:portrait){.walk-stage{flex-direction:column;align-items:stretch}.walk-field{width:100%}.walk-controls{flex:auto;flex-direction:row;align-items:center;gap:14px}.walk-controls .walk-help{text-align:left}.walk-controls .walk-actions{justify-content:flex-start}}
+@media(max-width:600px){.walk-controls{align-items:flex-start}.walk-slot{width:64px}.walk-slot canvas{width:42px;height:42px}.report-zone-question{display:none}.report-zone-items{top:20%}}
