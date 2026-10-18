@@ -20,6 +20,28 @@ const key='palaestina-adventure-klasse6-v2';
  const check=async()=>{await click('#check');assert.ok((await page.locator('#feedback').textContent()).startsWith('Dieser Schritt passt.'),'expected correct step');};
  const next=()=>click('#check');
  const select=(k,v)=>click(`[data-key="${k}"][data-value="${v}"]`);
+ const keyFor={right:'ArrowRight',left:'ArrowLeft',down:'ArrowDown',up:'ArrowUp'};
+ async function walkToStation(i){
+  await page.locator('.walk-canvas').focus();
+  for(let leg=0;leg<200;leg++){
+   const plan=await page.evaluate(i=>{const W=ReportWalkRules,run=ReportWalk.getRun(),s=W.stations[i],p=[run.player.x,run.player.y];
+    if(run.near===i)return null;const k=q=>q.map(v=>v.toFixed(2)).join(),q=[p],prev=new Map([[k(p),null]]);let end=null;
+    for(let n=0;n<q.length&&!end;n++){const [x,y]=q[n];if(Math.hypot(x-s.x,y-s.y)<=s.r*.8){end=q[n];break;}for(const d of [[6,0],[-6,0],[0,6],[0,-6]]){const m=[x+d[0],y+d[1]];if(!prev.has(k(m))&&W.free(...m)){prev.set(k(m),q[n]);q.push(m);}}}
+    const path=[];for(let c=end;c;c=prev.get(k(c)))path.unshift(c);
+    const dir=(a,b)=>b[0]>a[0]?'right':b[0]<a[0]?'left':b[1]>a[1]?'down':'up';let j=1;const first=dir(path[0],path[1]);
+    while(j+1<path.length&&dir(path[j],path[j+1])===first&&j<20)j++;return {dir:first,to:path[j]};},i);
+   if(!plan)return;
+   const axis=plan.dir==='left'||plan.dir==='right'?0:1,positive=plan.dir==='right'||plan.dir==='down';
+   await page.keyboard.down(keyFor[plan.dir]);
+   // A leg ends at its target, at the station, or when a wall stops the figure (then the next leg is replanned).
+   let lastPos=null,still=0;
+   for(let t=0;t<400;t++){const r=await page.evaluate(()=>{const r=ReportWalk.getRun();return {x:r.player.x,y:r.player.y,near:r.near};});const c=axis?r.y:r.x;
+    if(r.near===i||(positive?c>=plan.to[axis]-1:c<=plan.to[axis]+1))break;
+    still=lastPos&&Math.abs(lastPos.x-r.x)+Math.abs(lastPos.y-r.y)<.01?still+1:0;if(still>6)break;lastPos=r;await page.waitForTimeout(40);}
+   await page.keyboard.up(keyFor[plan.dir]);
+  }
+  throw new Error('station not reached: '+i);
+ }
  await page.goto(url);await page.waitForLoadState('networkidle');await shot('start');
  assert.equal(await page.locator('#end').isVisible(),false);
  await page.locator('[data-open="0"]').tap();assert.equal(await page.locator('#puzzle').isVisible(),true);await page.keyboard.press('Escape');
@@ -49,8 +71,21 @@ const key='palaestina-adventure-klasse6-v2';
    await select('transfer0',0);await check();await next();await select('transfer1',2);await check();
   }
   if(station===4){
-   for(const i of [1,2,3,4])await click(`[data-mark="${i}"]`);await shot('report-evidence');await check();await next();
-   for(const [i,v] of [[1,2],[2,0],[3,1],[4,3]]){await select('category'+i,v);await check();await next();}
+   // Walk the travel route with real key presses; the route is replanned in the page after every leg.
+   await page.locator('.walk-canvas').waitFor();await shot('report-walk');
+   for(let i=0;i<4;i++){
+    await walkToStation(i);assert.equal(await page.locator('.walk-inspect').isEnabled(),true);
+    await click('.walk-inspect');await page.locator('.walk-card-secure').waitFor();if(i===0)await shot('report-walk-card');
+    await click('.walk-card-secure');
+    assert.deepEqual((await save()).answers[4].found,[0,1,2,3].slice(0,i+1));
+   }
+   // The fourth observation checks the step automatically.
+   await page.waitForFunction(()=>document.querySelector('#feedback').textContent.startsWith('Dieser Schritt passt.'));await next();
+   // Board: a wrong layout is rejected, the correct one accepted. Re-placing moves a card.
+   for(const i of [0,1,2,3]){await click(`[data-evidence="${i}"]`);await click(`[data-zone="${(i+1)%4}"]`);}
+   await click('#check');assert.equal((await save()).answers[4].stage,1);
+   for(const i of [0,1,2,3]){await click(`[data-evidence="${i}"]`);await click(`[data-zone="${i}"]`);}
+   await shot('report-board');await check();await next();
    await select('obs',0);await select('link',1);await select('conclusion',0);await click('#check');assert.equal((await save()).solved[4],false);
    await select('link',0);await shot('argument-workshop');await check();
   }
@@ -81,7 +116,7 @@ const key='palaestina-adventure-klasse6-v2';
   if(problems.length)overflow.push({label,w,h,problems});await shot(`${w}x${h}-${label}`);
  }
  for(const [w,h] of viewports){await page.setViewportSize({width:w,height:h});await inspect('scene',w,h);
-  for(let i=0;i<5;i++){await click(`[data-open="${i}"]`);await inspect('station'+i,w,h);await page.evaluate(()=>{const e=document.querySelector('.exercise-body'),s=e.closest('.scroll');s.scrollTop+=e.getBoundingClientRect().top-s.getBoundingClientRect().top;});await shot(`${w}x${h}-task${i}`);if(i===4){await click('[data-round="5"]');await inspect('arguments',w,h);}await click('#close');}
+  for(let i=0;i<5;i++){await click(`[data-open="${i}"]`);await inspect('station'+i,w,h);await page.evaluate(()=>{const e=document.querySelector('.exercise-body'),s=e.closest('.scroll');s.scrollTop+=e.getBoundingClientRect().top-s.getBoundingClientRect().top;});await shot(`${w}x${h}-task${i}`);if(i===4){await page.locator('.walk-canvas').waitFor();await click('[data-round="1"]');await inspect('report-board',w,h);await click('[data-round="2"]');await inspect('arguments',w,h);}await click('#close');}
   await click('#notebook-open');await inspect('notebook',w,h);await page.keyboard.press('Escape');
   await click('#end');await inspect('finale',w,h);await click('#return');await click('#bonus-open');await inspect('bonus',w,h);await click('#bonus-close');
  }

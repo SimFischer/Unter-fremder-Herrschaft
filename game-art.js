@@ -9,10 +9,12 @@ window.GameArt = (() => {
   }));
   return cache.get(path);
  }
+ // Two delivered metadata sets (interlude/bonus puzzle and the newer report/messenger games) merge into one lookup.
+ const SOURCES=[['docs/interlude-puzzle/SPRITES.json','docs/interlude-puzzle/QA.json'],['docs/new-game-assets/SPRITES.json','docs/new-game-assets/QA.json']];
  async function prepare(paths){
-  metadata ||= Promise.all(['docs/interlude-puzzle/SPRITES.json','docs/interlude-puzzle/QA.json'].map(async path=>{
+  metadata ||= Promise.all(SOURCES.flat().map(async path=>{
    const response=await fetch(path);if(!response.ok)throw new Error('Asset-Daten fehlen.');return response.json();
-  })).catch(error=>{metadata=null;throw error;});
+  })).then(([spritesA,qaA,spritesB,qaB])=>[{...spritesA,...spritesB},[...qaA,...qaB]]).catch(error=>{metadata=null;throw error;});
   const [[sprites,qa],images]=await Promise.all([metadata,Promise.all(paths.map(image))]);
   return {sprites,qa,images:Object.fromEntries(paths.map((path,i)=>[path,images[i]]))};
  }

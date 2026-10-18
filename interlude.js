@@ -88,7 +88,7 @@ if(typeof window!=='undefined')window.InterludeRules=InterludeRules;
 
 if(typeof window!=='undefined')(()=>{
  const root=document.querySelector('#interlude'),content=root.querySelector('.run-content');
- const P='assets/interlude/checkpoint-run-',paths=['bg.webp','foreground.png','hideouts.png','route-markers.png','player.png','guards.png','collectibles.png','alert-effects.png','ui.png','result.png','start-panel.png'].map(f=>P+f);
+ const P='assets/interlude/checkpoint-run-',paths=['bg.webp','foreground.png','hideouts.png','route-markers.png','player.png','guards.png','collectibles.png','alert-effects.png','ui.png','result.png','start-panel-v2.png'].map(f=>P+f);
  let art=null,run=null,phase='start',raf=0,last=0,lastSave=0,paused=false,loading=false,epoch=0;
  const held=new Set(),keyboard=new Set(),reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
  const bridge=()=>window.Adventure;
@@ -111,7 +111,7 @@ if(typeof window!=='undefined')(()=>{
  function paintIcon(canvas,path,name){GameArt.icon(canvas,art,P+path+'.png',name);}
  function startPanel(){
   phase='start';
-  content.innerHTML=`<div class="run-start art-panel"><img src="${P}start-panel.png" alt="Historische Starttafel"><div class="run-start-copy"><h2>Unruhe am Kontrollposten</h2><p>Eine Patrouille zieht durch den Hof. Gelange zum Tor, ohne entdeckt zu werden.</p><p>Unterwegs könnt ihr drei Dinge für eure Weiterreise sichern.</p></div><div class="run-start-items">${['Karte','Proviant','Reisedokument'].map(t=>`<div><canvas width="100" height="82" aria-hidden="true"></canvas><span>${t}</span></div>`).join('')}</div><button id="run-begin">${state().interludeRun?'Weiter durch den Hof':'In den Hof'}</button></div>`;
+  content.innerHTML=`<div class="run-start art-panel"><img src="${P}start-panel-v2.png" alt="Historische Starttafel"><h2 class="run-start-title">Unruhe am Kontrollposten</h2><div class="run-start-copy"><p>Eine Patrouille zieht durch den Hof. Gelange zum Tor, ohne entdeckt zu werden.</p><p>Unterwegs könnt ihr drei Dinge für eure Weiterreise sichern.</p></div><div class="run-start-items">${['Karte','Proviant','Reisedokument'].map((t,i)=>`<div class="run-start-item run-start-item-${i+1}"><canvas width="100" height="82" aria-hidden="true"></canvas><span>${t}</span></div>`).join('')}</div><button id="run-begin">${state().interludeRun?'Weiter durch den Hof':'In den Hof'}</button></div>`;
   content.querySelectorAll('.run-start-items canvas').forEach((c,i)=>paintIcon(c,'collectibles',['map','provisions','permit'][i]));
   content.querySelector('#run-begin').onclick=play;
  }

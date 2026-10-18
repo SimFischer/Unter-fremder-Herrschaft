@@ -1,0 +1,39 @@
+/* „Der Weg des Boten“: handgemalte Holz-/Wachstafel-UI; Felder nach docs/new-game-assets/ASSET-MAP.md. */
+#bote{width:min(1100px,98vw);max-height:96dvh}
+#bote .dialog-head{padding:10px 18px}#bote .dialog-head h2{font-size:24px;margin:3px 0}
+.bote-content{padding:10px 16px 16px;overflow:auto;min-height:0;color:#342719}
+.bote-primary{background:#505a36;color:#fff0cc;min-height:48px}
+.bote-intro{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:24px;align-items:center;max-width:900px;margin:auto}
+.bote-intro-art{width:100%;height:auto;border-radius:4px;box-shadow:0 4px 14px #4a301a44}
+.bote-intro h3{font-size:24px;margin:0 0 8px}.bote-intro p{font:17px/1.5 Georgia;margin:6px 0}
+.bote-best-line{font-weight:600}
+.bote-game{display:grid;grid-template-columns:minmax(0,min(64dvh,600px)) minmax(240px,1fr);gap:22px;align-items:start;justify-content:center}
+.bote-board{position:relative;aspect-ratio:1;width:100%}
+.bote-board-art{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;border-radius:3px}
+.bote-field{position:absolute;padding:0;margin:0;min-height:44px;background:transparent;border:0;box-shadow:none;border-radius:6px;touch-action:manipulation}
+.bote-field:disabled{cursor:default;opacity:1}
+.bote-field:focus-visible{outline:3px solid #f0d27d;outline-offset:2px}
+.bote-field-0{left:8.93%;top:8.93%;width:36.2%;height:36.2%}
+.bote-field-1{left:54.86%;top:8.93%;width:36.2%;height:36.2%}
+.bote-field-2{left:8.93%;top:54.86%;width:36.2%;height:36.2%}
+.bote-field-3{left:54.86%;top:54.86%;width:36.2%;height:36.2%}
+.bote-field canvas{position:absolute;left:16%;top:16%;width:68%;height:68%}
+.bote-glow{position:absolute;inset:-6%;width:112%;height:112%;opacity:0;pointer-events:none;transition:opacity .12s}
+.bote-field[data-state="active"] .bote-glow,.bote-field[data-state="error"] .bote-glow{opacity:1}
+.bote-field[data-state="active"] canvas{transform:scale(1.06);filter:brightness(1.12) drop-shadow(0 0 10px #f6d98a)}
+.bote-field[data-state="error"] .bote-glow{opacity:0}
+.bote-field[data-state="error"]::after{content:"✗";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58px;height:58px;display:grid;place-items:center;border-radius:50%;background:#2e1a0ee6;color:#ffd9c4;border:3px solid #f0c9a0;font:bold 34px/1 Georgia}
+.bote-field[data-state="error"] canvas{filter:grayscale(.5) brightness(.85)}
+.bote-field:not(:disabled):active canvas{transform:scale(.96)}
+.bote-key{position:absolute;right:5%;bottom:4%;font:600 13px Georgia;color:#f6e1b5cc}
+.bote-panel{background:linear-gradient(110deg,#ecd3a4,#f3e3c3);border:2px solid #b08a52;padding:16px 18px;box-shadow:1px 2px 3px #49301426}
+.bote-kicker{margin:0;font:700 11px system-ui;letter-spacing:1.2px;text-transform:uppercase;color:#8a5b36}
+.bote-round{margin:4px 0 10px;font-size:24px}
+.bote-stats p{margin:3px 0;font:17px Georgia}
+.bote-status{min-height:48px;font:600 17px/1.4 Georgia;color:#4d3a1d}
+.bote-record-notice{min-height:22px;color:#4d5a2f;font-weight:700;margin:0}
+.bote-hint{font:italic 15px/1.4 Georgia;color:#5d4528}
+.bote-result h3{margin:6px 0}.bote-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.bote-game[data-phase="ended"] .bote-board{filter:saturate(.85)}
+@media(prefers-reduced-motion:no-preference){.bote-field[data-state="error"]{animation:bote-shake .32s ease-in-out}@keyframes bote-shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}.bote-field canvas{transition:transform .12s,filter .12s}}
+@media(max-width:800px){.bote-game,.bote-intro{grid-template-columns:1fr}.bote-board{max-width:min(100%,62dvh);margin:auto}.bote-intro-art{max-width:260px;margin:auto}}

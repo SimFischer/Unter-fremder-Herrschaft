@@ -21,3 +21,17 @@ assets/bonus/puzzle-ui/tile-selected.png
 assets/bonus/puzzle-ui/tile-swap-hint.png
 assets/bonus/puzzle-ui/empty-tile.png
 assets/bonus/puzzle-ui/mode-icons.png
+assets/bonus/bote/bote-active.png
+assets/bonus/bote/bote-board.png
+assets/bonus/bote/bote-symbols.png
+assets/interlude/checkpoint-run-start-panel-v2.png
+assets/puzzles/report-topdown/report-argument-tiles.png
+assets/puzzles/report-topdown/report-category-board.png
+assets/puzzles/report-topdown/report-evidence-frame.png
+assets/puzzles/report-topdown/report-evidence.png
+assets/puzzles/report-topdown/report-foreground.png
+assets/puzzles/report-topdown/report-markers.png
+assets/puzzles/report-topdown/report-npcs.png
+assets/puzzles/report-topdown/report-player.png
+assets/puzzles/report-topdown/report-result-panel.png
+assets/puzzles/report-topdown/report-route-bg.webp

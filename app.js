@@ -78,21 +78,28 @@ function render(){
   html+='</div></div>';
  }
  if(active===4&&round===0){
-  const marked=a.marked||[];
-  html=mission('Sichert vier Belege','Markiert die vier Abschnitte, die zeigen, wie Rom das Leben der Menschen prägte. Die Ortsangabe am Anfang beschreibt nur, wo die Geschichte beginnt.');
-  html+=`<button class="passage location-note ${marked.includes(0)?'selected':''}" data-mark="0" aria-pressed="${marked.includes(0)}"><span>1. ${REPORT[0]}</span><strong>${marked.includes(0)?'Als Beleg ausgewählt':'Diese Ortsangabe als Beleg auswählen?'}</strong></button><div class="report-workspace"><div class="report-paper">${[1,2,3,4].map(n=>`<div class="report-slot" style="--slot-top:${[11,32,53,72][n-1]}%;--slot-height:${[17,17,14,16][n-1]}%"><button class="passage ${marked.includes(n)?'selected':''}" data-mark="${n}" aria-pressed="${marked.includes(n)}"><span>${REPORT[n]}</span><strong>${marked.includes(n)?'Beleg ausgewählt':'Beleg sichern'}</strong></button>${marked.includes(n)?sprite('assets/puzzles/report/evidence-marker.png',['red-wax','branch-seal','ochre-wax','bronze'][n-1]):''}</div>`).join('')}</div></div><p>Die vier Beobachtungen könnt ihr nun ihren Schwerpunkten zuordnen.</p>`;
+  html=mission('Folgt Zacharias’ Reiseweg','Geht vom Tor aus durch die Gegend. An vier Orten hat Zacharias etwas beobachtet. Untersucht die Stellen und sichert seine Beobachtungen als Belege.');
+  html+='<div class="report-walk"></div>';
  }
- if(active===4&&round>0&&round<5){
-  const e=EVIDENCE[round-1];
-  html=`<div class="evidence-note"><span class="stamp">BELEG ${round} VON 4</span><blockquote>„${REPORT[e.fragment]}“</blockquote></div>${mission(e.question,'Ordnet den Beleg nach dem Schwerpunkt dieser Frage ein.')}${options('category'+e.fragment,CATEGORIES)}`;
+ if(active===4&&round===1){
+  html=mission('Ordnet die Belege ein','Tippt zuerst einen Beleg an und danach das passende Feld auf dem Tableau. Jedes Feld bekommt genau einen Beleg. Antippen eines belegten Feldes nimmt den Beleg wieder auf.');
+  html+=`<div class="report-tray" role="group" aria-label="Gesicherte Belege">${[2,0,3,1].map(i=>{const placed=a['category'+i];return `<button class="report-evidence ${pending===i?'selected':''} ${placed!==undefined?'placed':''}" data-evidence="${i}" aria-pressed="${pending===i}">${sprite(EV,STATION_EVIDENCE[i],'report-evidence-icon')}<span><strong>${esc(REPORT_STATIONS[i].evidenceName)} · ${esc(REPORT_STATIONS[i].place)}</strong><small>${esc(REPORT_STATIONS[i].text)}</small>${placed!==undefined?`<em>Liegt bei: ${CATEGORIES[placed]}</em>`:''}</span></button>`;}).join('')}</div>`;
+  html+=`<div class="report-board"><img src="assets/puzzles/report-topdown/report-category-board.png" alt="">${CATEGORIES.map((c,k)=>{const items=[0,1,2,3].filter(i=>a['category'+i]===k);return `<button class="report-zone report-zone-${k}" data-zone="${k}" aria-label="${c}${items.length?': '+items.map(i=>REPORT_STATIONS[i].evidenceName).join(', '):': noch leer'}"><span class="report-zone-label">${c}</span><span class="report-zone-question">${CATEGORY_QUESTIONS[k]}</span><span class="report-zone-items">${items.map(i=>`<span>${sprite(EV,STATION_EVIDENCE[i])}${esc(REPORT_STATIONS[i].evidenceName)}</span>`).join('')}</span></button>`;}).join('')}</div>`;
+  html+=`<p class="selection-note">${[0,1,2,3].filter(i=>a['category'+i]!==undefined).length} von 4 Belegen eingeordnet${pending!==null?` · Wählt jetzt ein Feld für „${REPORT_STATIONS[pending].evidenceName}“.`:''}</p>`;
  }
- if(active===4&&round===5){
+ if(active===4&&round===2){
   html=mission('Die Argumentationswerkstatt','Wählt je einen Baustein: Beobachtung → Zusammenhang → Schlussfolgerung. Die drei Teile müssen dieselbe Erklärung tragen. Es gibt zwei passende Wege.');
-  html+=['obs','link','conclusion'].map((key,j)=>`<section class="argument-group"><h4>${j+1} · ${['Beobachtung','Zusammenhang','Schlussfolgerung'][j]}</h4><div class="argument-bank">${ARGUMENTS[key].map((t,i)=>`<button class="argument-tile ${a[key]===i?'selected':''}" data-key="${key}" data-value="${i}" aria-pressed="${a[key]===i}">${sprite('assets/puzzles/report/argument-tiles.png',['wide-left','wide-right','medium-left'][j])}<span>${esc(t)}</span></button>`).join('')}</div></section>`).join('');
+  const parts=['obs','link','conclusion'].filter(k=>a[k]!==undefined).map(k=>ARGUMENTS[k][a[k]]);
+  html+=`<div class="report-result"><img src="assets/puzzles/report-topdown/report-result-panel.png" alt=""><h4 class="report-result-title">Zacharias’ Belege</h4>${[0,1,2,3].map(i=>`<div class="report-result-evidence rr-${i}">${sprite(EV,STATION_EVIDENCE[i])}<span class="visually-hidden">${esc(REPORT_STATIONS[i].evidenceName)}</span></div><div class="report-result-category rr-${i}">${CATEGORIES[REPORT_ANSWERS[i]]}</div>`).join('')}<p class="report-result-explanation" aria-live="polite">${parts.length?esc(parts.join(' ')):'Wählt unten drei Bausteine. Hier entsteht eure Erklärung.'}</p></div>`;
+  html+=['obs','link','conclusion'].map((key,j)=>`<section class="argument-group"><h4>${j+1} · ${['Beobachtung','Zusammenhang','Schlussfolgerung'][j]}</h4><div class="report-tile-bank">${ARGUMENTS[key].map((t,i)=>`<button class="report-tile ${a[key]===i?'selected':''}" data-key="${key}" data-value="${i}" aria-pressed="${a[key]===i}">${sprite(AT,(i+j)%2?'medium-b':'medium-a')}<span>${esc(t)}</span></button>`).join('')}</div></section>`).join('');
   html+='<p>Optional: Erklärt eure fertige Argumentation einem Partner mündlich.</p>';
  }
  const nav=`<nav class="round-nav" aria-label="Rätselschritte">${Array.from({length:total},(_,i)=>`<button data-round="${i}" ${i>unlocked&&!state.solved[active]?'disabled':''} class="${i===round?'current':''} ${i<(a.stage||0)?'complete':''}" aria-label="Schritt ${i+1}${i<(a.stage||0)?', geschafft':''}" ${i===round?'aria-current="step"':''}>${i+1}</button>`).join('')}<span>Schritt ${round+1} von ${total}</span></nav>`;
  $('#task').innerHTML=nav+`<div class="exercise-body exercise-${active}">${html}</div>`;
+ if(active===4&&round===0)ReportWalk.mount($('#task .report-walk'),{found:a.found||[],stations:REPORT_STATIONS,sign:REPORT_SIGN,
+  onSecure:found=>{a.found=found;save();},
+  onComplete:()=>{if(active===4&&views[4]===0&&!awaitingNext)check();}});
+ else window.ReportWalk?.unmount();
  requestAnimationFrame(drawConnections);
  $('#solved').textContent=state.solved[active]?'Siegel offen · ihr könnt weiter nachlesen':'';
  $('#check').textContent=awaitingNext?(round===total-1?'Zur Szene':'Weiter →'):state.solved[active]?'Wiederholung prüfen':'Diesen Schritt prüfen';
@@ -131,11 +138,12 @@ function check(){
   else{const t=TRANSFER[round-8];ok=a['transfer'+(round-8)]===t.answer;why=t.why;}
  }
  if(active===4){
-  if(round===0){ok=a.marked?.length===4&&[1,2,3,4].every(i=>a.marked.includes(i));why='Die Belege zeigen konkrete Erfahrungen: Soldaten kontrollieren, Münzen zeigen Macht, Abgaben belasten und Menschen hoffen auf Freiheit.';}
-  else if(round<5){const e=EVIDENCE[round-1];ok=a['category'+e.fragment]===e.answer;why=e.why;}
+  if(round===0){ok=(a.found||[]).length===4;why='Ihr habt vier konkrete Erfahrungen gesichert: Kontrolle, Abgaben, ein Machtzeichen und eine Hoffnung. Jetzt ordnet ihr sie ein.';}
+  else if(round===1){ok=REPORT_ANSWERS.every((v,i)=>a['category'+i]===v);why='Jeder Beleg zeigt eine andere Seite der römischen Herrschaft. '+EVIDENCE_WHY[2];}
   else{ok=AdventureRules.argument(a);why='Beobachtung, Zusammenhang und Schlussfolgerung stützen einander. '+(a.obs===0?'Eine gleiche Abgabe trifft Menschen je nach Vorrat unterschiedlich.':'Der Wunsch nach Freiheit ist noch kein Aufruf zum Kampf.');}
  }
  if(!ok){failure();return;}
+ pending=null;
  a.stage=Math.max(a.stage||0,round+1);state.attempts[active]=0;
  const newlyAwarded=a.stage>=TOTALS[active]&&AdventureRules.award(state,active);
  awaitingNext=true;$('#hint-panel').hidden=true;save();scene();render();
@@ -143,7 +151,7 @@ function check(){
  $('#feedback').scrollIntoView({block:'nearest',behavior:'instant'});if(newlyAwarded)showReward(active);
 }
 $('#task').addEventListener('click',e=>{
- const b=e.target.closest('button');if(!b||b.disabled)return;
+ const b=e.target.closest('button');if(!b||b.disabled||b.closest('.report-walk'))return;
  const a=state.answers[active];
  if(b.dataset.round!==undefined){views[active]=Number(b.dataset.round);hintLevel=0;awaitingNext=false;pending=null;$('#feedback').textContent='';$('#feedback').className='';render();$('#puzzle .scroll').scrollTop=0;return;}
  if(b.dataset.key){a[b.dataset.key]=Number(b.dataset.value);if(b.dataset.key.startsWith('att'))delete a['reason'+views[active]];}
@@ -151,13 +159,17 @@ $('#task').addEventListener('click',e=>{
  else if(b.dataset.orderReset){a[b.dataset.orderReset]=[];}
  else if(b.dataset.left!==undefined){pending=Number(b.dataset.left);}
  else if(b.dataset.right!==undefined){if(pending===null){$('#feedback').textContent='Wählt zuerst einen Eingriff Roms links.';return;}a.pairs||={};const right=Number(b.dataset.right);for(const k in a.pairs)if(a.pairs[k]===right)delete a.pairs[k];a.pairs[pending]=right;pending=null;}
+ else if(b.dataset.evidence!==undefined){const i=Number(b.dataset.evidence);pending=pending===i?null:i;}
+ else if(b.dataset.zone!==undefined){const k=Number(b.dataset.zone);
+  if(pending===null){const here=[0,1,2,3].find(i=>a['category'+i]===k);if(here===undefined){$('#feedback').textContent='Wählt zuerst oben einen Beleg.';return;}pending=here;}
+  else{for(let i=0;i<4;i++)if(a['category'+i]===k)delete a['category'+i];a['category'+pending]=k;pending=null;}}
  else if(b.dataset.mark!==undefined){const i=Number(b.dataset.mark);a.marked||=[];a.marked=a.marked.includes(i)?a.marked.filter(x=>x!==i):[...a.marked,i].sort();}
  else if(b.dataset.mapHint!==undefined){showMapHint();return;}
  else if(b.dataset.mapReset!==undefined){a['mapStep'+views[active]]=[];}
  else if(b.dataset.place!==undefined){MapRules.select(a,views[active],Number(b.dataset.place));}
  awaitingNext=false;$('#feedback').textContent='';$('#feedback').className='';
  const scroll=$('#puzzle .scroll').scrollTop;save();render();$('#puzzle .scroll').scrollTop=scroll;
- const attr=['key','order','orderReset','left','right','mark','place'].find(k=>b.dataset[k]!==undefined);
+ const attr=['key','order','orderReset','left','right','mark','place','evidence','zone'].find(k=>b.dataset[k]!==undefined);
  if(attr){const name=attr.replace(/[A-Z]/g,c=>'-'+c.toLowerCase());let selector=`[data-${name}="${b.dataset[attr]}"]`;if(b.dataset.value!==undefined)selector+=`[data-value="${b.dataset.value}"]`;$('#task').querySelector(selector)?.focus({preventScroll:true});}
 });
 $('#puzzle').setAttribute('aria-labelledby','title');$('#reset-dialog').setAttribute('aria-label','Fortschritt zurücksetzen');
@@ -169,10 +181,10 @@ $('#confirm-reset').onclick=()=>{state=fresh();views=Array(5).fill(0);save();sce
 scene();
 let hintLevel=0,spriteId=0,wiresObserver;
 // SVG viewBox crops use the native, nonuniform rectangles from ASSET-SPRITES.json.
+const EV='assets/puzzles/report-topdown/report-evidence.png',AT='assets/puzzles/report-topdown/report-argument-tiles.png',STATION_EVIDENCE=['control-tablet','tax-sack','roman-shield','shared-hope'];
 function sprite(path,name,cls=''){
  const [x,y,w,h]=SPRITES[path][name];
- const width=Math.max(...Object.values(SPRITES[path]).map(r=>r[0]+r[2]));
- const height=Math.max(...Object.values(SPRITES[path]).map(r=>r[1]+r[3]));
+ const [width,height]=SHEET_SIZES[path]||[Math.max(...Object.values(SPRITES[path]).map(r=>r[0]+r[2])),Math.max(...Object.values(SPRITES[path]).map(r=>r[1]+r[3]))];
  const id=`crop-${++spriteId}`;
  return `<svg class="sprite ${cls}" viewBox="0 0 ${w} ${h}" aria-hidden="true" focusable="false"><defs><clipPath id="${id}"><rect width="${w}" height="${h}"/></clipPath></defs><g clip-path="url(#${id})"><image href="${path}" x="${-x}" y="${-y}" width="${width}" height="${height}"/></g></svg>`;
 }
@@ -186,8 +198,10 @@ function failureDetail(){
  if(active===2)return 'Eine einzelne Stimme steht nicht für alle. Achtet darauf, welche Schlussfolgerung die unterschiedlichen Reaktionen offenlässt.';
  if(active===3&&r<8)return MapRules.feedback(r,MapRules.chosen(a,r));
  if(active===3)return TRANSFER[r-8].why+' Wählt die dazu passende Begründung.';
- if(r===0)return 'Die Ortsangabe beschreibt nur den Weg. Sichert die vier Erfahrungen mit Kontrolle, Machtzeichen, Abgaben und Hoffnung.';
- if(r<5)return EVIDENCE[r-1].why+' Prüft den Schwerpunkt dieser Beobachtung.';
+ if(r===0){const n=4-(a.found||[]).length;return `Es fehl${n===1?'t':'en'} noch ${n} Beobachtung${n===1?'':'en'}. Sucht die Stationen auf dem Reiseweg und sichert, was Zacharias dort erlebt hat.`;}
+ if(r===1){const open=[0,1,2,3].filter(i=>a['category'+i]===undefined);if(open.length)return 'Legt alle vier Belege auf das Tableau. Jedes Feld bekommt genau einen Beleg.';
+  const wrong=[0,1,2,3].filter(i=>a['category'+i]!==REPORT_ANSWERS[i]);
+  return `${wrong.length} Beleg${wrong.length===1?' liegt':'e liegen'} noch im falschen Feld. Fragt bei jedem Beleg: Was passiert hier genau?`+(state.attempts[active]>=2?` Prüft besonders „${REPORT_STATIONS[wrong[0]].evidenceName}“: ${CATEGORY_QUESTIONS[REPORT_ANSWERS[wrong[0]]]}`:'');}
  return 'Die Bausteine erklären noch nicht denselben Zusammenhang. Verbindet entweder Ernte und Abgaben mit Vorräten und Not oder Kontrolle mit dem Wunsch nach Freiheit. Münznutzung beweist keine Verehrung.';
 }
 $('#core-info').addEventListener('click',e=>{
@@ -203,7 +217,8 @@ $('#hint-open').onclick=()=>{
  if(active===3&&views[active]<8){showMapHint();$('#map-hint').scrollIntoView({block:'nearest',behavior:'instant'});return;}
  $('#hint-panel').hidden=false;
  const level=Math.min(hintLevel,2);
- $('#hint-text').textContent=`${['Denkimpuls','Konkrete Spur','Lösungsnaher Hinweis'][level]}: ${HINTS[active][level]}`;
+ const hints=active===4?HINTS[4][views[4]]:HINTS[active];
+ $('#hint-text').textContent=`${['Denkimpuls','Konkrete Spur','Lösungsnaher Hinweis'][level]}: ${hints[level]}`;
  hintLevel=Math.min(hintLevel+1,2);$('#hint-open').textContent=hintLevel===2?'Letzte Spur ansehen':'Genauere Spur erfragen';
 };
 function showReward(i){
