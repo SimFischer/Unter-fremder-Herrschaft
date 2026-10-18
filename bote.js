@@ -42,12 +42,12 @@ if(typeof window!=='undefined')window.BoteRules=BoteRules;
 
 if(typeof window!=='undefined')(()=>{
  const dialog=document.querySelector('#bote'),body=dialog.querySelector('.bote-content');
- const B='assets/bonus/bote/',paths=[B+'bote-board.png',B+'bote-symbols.png',B+'bote-active.png'];
- let art=null,model=null,raf=0,last=0,token=0,initialBest=0,lastKey='';
+ const B='assets/bonus/bote/',paths=[B+'bote-board.png',B+'bote-symbols.png',B+'bote-active.png',B+'bote-result.png',B+'bote-record-seal.png'];
+ let art=null,model=null,raf=0,last=0,token=0,initialBest=0,lastKey='',resultTimer=0;
  const state=()=>window.Adventure.getState();
  const unlocked=()=>state().solved.every(Boolean);
  const best=()=>state().boteBest||0;
- function stop(){cancelAnimationFrame(raf);raf=0;last=0;}
+ function stop(){cancelAnimationFrame(raf);raf=0;last=0;clearTimeout(resultTimer);}
  async function open(){
   if(!unlocked())return;const id=++token;if(!dialog.open)dialog.showModal();
   body.innerHTML='<p role="status">Der Bote macht sich bereit …</p>';
@@ -56,22 +56,28 @@ if(typeof window!=='undefined')(()=>{
  }
  function intro(){
   stop();model=null;
-  body.innerHTML=`<div class="bote-intro"><img src="${B}bote-board.png" alt="" class="bote-intro-art"><div><h3>Eine Botschaft für Galiläa</h3><p>Ein Bote trägt eine Nachricht durch das Land. An jeder Station zeigt er seine Zeichen in einer festen Reihenfolge: Schriftrolle, Amphore, Sandale oder Kontrollstempel.</p><p>Merkt euch die Folge und tippt sie danach nach. Nach jeder geschafften Runde kommt ein Zeichen hinzu. Ein Fehler beendet den Durchlauf.</p><p class="bote-best-line">Eure Bestleistung: ${best()} Zeichen</p><button id="bote-start" class="bote-primary">Dem Boten folgen</button></div></div>`;
+  body.innerHTML=`<div class="bote-intro"><div class="bote-board bote-intro-board" aria-hidden="true"><img class="bote-board-art" src="${B}bote-board.png" alt="">${BoteRules.ids.map((_,i)=>`<span class="bote-field bote-field-${i}"><canvas width="300" height="300"></canvas></span>`).join('')}</div><div><h3>Eine Botschaft für Galiläa</h3><p>Ein Bote trägt eine Nachricht durch das Land. An jeder Station zeigt er seine Zeichen in einer festen Reihenfolge: Schriftrolle, Amphore, Sandale oder Kontrollstempel.</p><p>Merkt euch die Folge und tippt sie danach nach. Nach jeder geschafften Runde kommt ein Zeichen hinzu. Ein Fehler beendet den Durchlauf.</p><p class="bote-best-line">Eure Bestleistung: ${best()} Zeichen</p><button id="bote-start" class="bote-primary">Dem Boten folgen</button></div></div>`;
+  body.querySelectorAll('.bote-intro-board canvas').forEach((c,i)=>GameArt.icon(c,art,B+'bote-symbols.png',BoteRules.ids[i]));
   body.querySelector('#bote-start').onclick=play;body.querySelector('#bote-start').focus({preventScroll:true});
  }
  function play(){
   stop();model=BoteRules.create();initialBest=best();lastKey='';
   body.innerHTML=`<div class="bote-game"><div class="bote-board"><img class="bote-board-art" src="${B}bote-board.png" alt="Spielbrett mit vier Feldern: Schriftrolle oben links, Amphore oben rechts, Sandale unten links, Kontrollstempel unten rechts" draggable="false">${BoteRules.ids.map((id,i)=>`<button type="button" class="bote-field bote-field-${i}" data-field="${i}" data-state="normal" aria-label="${BoteRules.names[i]}" disabled><img class="bote-glow" src="${B}bote-active.png" alt="" draggable="false"><canvas width="300" height="300" aria-hidden="true"></canvas><span class="bote-key" aria-hidden="true">${i+1}</span></button>`).join('')}</div>
-<div class="bote-panel"><p class="bote-kicker">Unterwegs mit dem Boten</p><h3 class="bote-round">Folge: 1 Zeichen</h3><div class="bote-stats"><p class="bote-series"></p><p class="bote-time"></p><p class="bote-record"></p></div><p class="bote-status" role="status" aria-live="polite"></p><p class="bote-record-notice" role="status"></p><p class="bote-hint">Erst die Zeichen ansehen.<br>Dann die Folge nachtippen. Tastatur: 1–4.</p><div class="bote-result" hidden><h3>Durchlauf beendet</h3><p class="bote-result-score"></p><div class="bote-actions"><button type="button" class="bote-restart bote-primary">Noch einmal</button><button type="button" class="bote-back">Zurück zur Reise</button></div></div></div></div>`;
+<div class="bote-panel"><p class="bote-kicker">Unterwegs mit dem Boten</p><h3 class="bote-round">Folge: 1 Zeichen</h3><div class="bote-stats"><p class="bote-series"></p><p class="bote-time"></p><p class="bote-record"></p></div><p class="bote-status" role="status" aria-live="polite"></p><p class="bote-record-notice" role="status"></p><p class="bote-hint">Erst die Zeichen ansehen.<br>Dann die Folge nachtippen. Tastatur: 1–4.</p></div></div>`;
   body.querySelectorAll('.bote-field canvas').forEach((c,i)=>GameArt.icon(c,art,B+'bote-symbols.png',BoteRules.ids[i]));
   body.querySelectorAll('[data-field]').forEach(b=>b.onclick=()=>press(Number(b.dataset.field)));
-  body.querySelector('.bote-restart').onclick=play;
-  body.querySelector('.bote-back').onclick=()=>dialog.close();
   model.start();render();loop();
  }
  function press(i){
   if(!model||model.s.phase!=='input')return;model.input(i);render();
-  if(model.s.phase==='ended')body.querySelector('.bote-restart')?.focus({preventScroll:true});
+  if(model.s.phase==='ended'){clearTimeout(resultTimer);resultTimer=setTimeout(result,matchMedia('(prefers-reduced-motion: reduce)').matches?500:1300);}
+ }
+ // Painted result board (docs/asset-update-2): every value sits in its own free field.
+ function result(){
+  if(!dialog.open||!model||model.s.phase!=='ended')return;const s=model.s,record=s.completed>initialBest;
+  body.innerHTML=`<div class="bote-result art-panel"><img src="${B}bote-result.png" alt="Ergebnistafel des Boten"><h3 class="bote-r-title">Durchlauf beendet</h3>${record?`<img class="bote-r-seal" src="${B}bote-record-seal.png" alt="Siegel: Neue Bestleistung">`:''}<p class="bote-r-value bote-r-1 bote-result-score">Serie: ${s.completed} Zeichen</p><p class="bote-r-value bote-r-2">Zeit: ${BoteRules.time(s.elapsed)}</p><p class="bote-r-value bote-r-3">Bestleistung: ${best()} Zeichen</p><p class="bote-r-hint" role="status">${record?'Neue Bestleistung! ':''}Richtig wäre gewesen: ${BoteRules.names[s.sequence[s.index]]}.</p><button type="button" class="bote-r-retry bote-restart">Noch einmal</button><button type="button" class="bote-r-back bote-back">Zurück zur Reise</button></div>`;
+  body.querySelector('.bote-restart').onclick=play;body.querySelector('.bote-back').onclick=()=>dialog.close();
+  body.querySelector('.bote-restart').focus({preventScroll:true});
  }
  function render(){
   const s=model.s;
@@ -85,8 +91,6 @@ if(typeof window!=='undefined')(()=>{
   root.querySelector('.bote-record-notice').textContent=s.completed>initialBest&&(s.phase==='success'||s.phase==='ended')?'Neue Bestleistung!':'';
   root.querySelector('.bote-status').textContent=s.phase==='ended'?`Das war nicht die Folge des Boten. Richtig wäre gewesen: ${BoteRules.names[s.sequence[s.index]]}.`:s.phase==='success'?'Richtig! Der Bote zeigt ein weiteres Zeichen.':s.phase==='input'?`Ihr seid dran · ${s.index} von ${s.sequence.length}`:'Schaut genau hin …';
   root.querySelector('.bote-hint').hidden=s.phase==='ended';
-  root.querySelector('.bote-result').hidden=s.phase!=='ended';
-  root.querySelector('.bote-result-score').textContent=`Geschafft: ${s.completed} Zeichen`;
   root.querySelectorAll('[data-field]').forEach((b,i)=>{b.disabled=s.phase!=='input';b.dataset.state=s.active===i?(s.phase==='ended'?'error':'active'):'normal';});
  }
  function loop(time){

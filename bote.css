@@ -4,7 +4,7 @@
 .bote-content{padding:10px 16px 16px;overflow:auto;min-height:0;color:#342719}
 .bote-primary{background:#505a36;color:#fff0cc;min-height:48px}
 .bote-intro{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:24px;align-items:center;max-width:900px;margin:auto}
-.bote-intro-art{width:100%;height:auto;border-radius:4px;box-shadow:0 4px 14px #4a301a44}
+.bote-intro-board{max-width:320px}
 .bote-intro h3{font-size:24px;margin:0 0 8px}.bote-intro p{font:17px/1.5 Georgia;margin:6px 0}
 .bote-best-line{font-weight:600}
 .bote-game{display:grid;grid-template-columns:minmax(0,min(64dvh,600px)) minmax(240px,1fr);gap:22px;align-items:start;justify-content:center}
@@ -36,4 +36,15 @@
 .bote-result h3{margin:6px 0}.bote-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
 .bote-game[data-phase="ended"] .bote-board{filter:saturate(.85)}
 @media(prefers-reduced-motion:no-preference){.bote-field[data-state="error"]{animation:bote-shake .32s ease-in-out}@keyframes bote-shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}.bote-field canvas{transition:transform .12s,filter .12s}}
-@media(max-width:800px){.bote-game,.bote-intro{grid-template-columns:1fr}.bote-board{max-width:min(100%,62dvh);margin:auto}.bote-intro-art{max-width:260px;margin:auto}}
+@media(max-width:800px){.bote-game,.bote-intro{grid-template-columns:1fr}.bote-board{max-width:min(100%,62dvh);margin:auto}.bote-intro-board{max-width:280px;margin:auto}}
+
+/* Ergebnistafel (bote-result.png): fields from docs/asset-update-2/ASSET-MAP.md. */
+.bote-result{position:relative;aspect-ratio:3/2;width:min(100%,calc((96dvh - 140px)*1.5),900px);margin:0 auto}
+.bote-result>img:first-child{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.bote-r-title{position:absolute;left:11.72%;width:67.06%;top:15.43%;height:6.45%;margin:0;display:grid;place-items:center;font:700 clamp(19px,2.4vw,28px) Georgia;color:#3b2815}
+.bote-result>img.bote-r-seal{position:absolute;display:block;left:84.24%;width:6.25%;top:13.96%;height:9.38%;object-fit:contain}
+.bote-r-value{position:absolute;left:11.72%;width:76.82%;height:5.86%;margin:0;display:flex;align-items:center;padding-left:2%;font:clamp(16px,2vw,22px) Georgia;color:#342719}
+.bote-r-1{top:27.73%}.bote-r-2{top:38.67%}.bote-r-3{top:49.32%}
+.bote-r-hint{position:absolute;left:11.72%;width:76.82%;top:60.16%;height:11.52%;margin:0;display:flex;align-items:center;padding:0 2%;font:600 clamp(15px,1.8vw,19px)/1.35 Georgia;color:#4d3a1d}
+.bote-r-retry,.bote-r-back{position:absolute;top:77.15%;width:35.42%;height:9.18%;min-height:44px;padding:4px;font:clamp(16px,1.9vw,20px) Georgia}
+.bote-r-retry{left:11.72%;background:#505a36;color:#fff0cc}.bote-r-back{left:53.26%}

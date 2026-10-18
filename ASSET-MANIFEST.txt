@@ -35,3 +35,15 @@ assets/puzzles/report-topdown/report-npcs.png
 assets/puzzles/report-topdown/report-player.png
 assets/puzzles/report-topdown/report-result-panel.png
 assets/puzzles/report-topdown/report-route-bg.webp
+assets/bonus/bote/bote-record-seal.png
+assets/bonus/bote/bote-result.png
+assets/bonus/puzzle-ui/puzzle-preview-icon.png
+assets/bonus/puzzle-ui/puzzle-solved-mark.png
+assets/interlude/checkpoint-run-result-v2.png
+assets/interlude/checkpoint-run-start-panel-v3.png
+assets/puzzles/report-topdown/report-argument-tiles-v2.png
+assets/puzzles/report-topdown/report-category-board-v2.png
+assets/puzzles/report-topdown/report-result-panel-v2.png
+assets/ui/frame-akte.png
+assets/ui/frame-erlassbrett.png
+assets/ui/frame-notiz.png

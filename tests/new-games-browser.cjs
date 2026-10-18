@@ -20,7 +20,7 @@ const out=process.env.ADVENTURE_SCREENSHOTS,KEY='palaestina-adventure-klasse6-v2
  for(const [w,h] of [[1024,768],[1366,1024],[820,618]]){
   await page.setViewportSize({width:w,height:h});
   const three=R.fresh();three.solved=[true,true,true,false,false];await fixture(three);await page.locator('#run-begin').waitFor();
-  const panel=await box('.run-start>img');assert.match(await page.locator('.run-start>img').getAttribute('src'),/start-panel-v2\.png$/);
+  const panel=await box('.run-start>img');assert.match(await page.locator('.run-start>img').getAttribute('src'),/start-panel-v3\.png$/);
   const area=([x0,y0,x1,y1])=>({x:panel.x+panel.width*x0/1536,y:panel.y+panel.height*y0/1024,width:panel.width*(x1-x0)/1536,height:panel.height*(y1-y0)/1024});
   const parts={'.run-start-title':[216,134,1320,230],'.run-start-copy':[216,276,1320,410],'.run-start-item-1':[184,542,496,700],'.run-start-item-2':[596,542,936,700],'.run-start-item-3':[1040,542,1352,700],'#run-begin':[400,792,1136,910]};
   const boxes={};
@@ -51,8 +51,13 @@ const out=process.env.ADVENTURE_SCREENSHOTS,KEY='palaestina-adventure-klasse6-v2
  assert.equal((await getState()).boteBest,3);assert.match(await page.locator('.bote-record-notice').textContent(),/Neue Bestleistung/);
  await page.waitForFunction(()=>Bote.getModel().s.phase==='input',null,{timeout:20000});
  const wrong=await page.evaluate(()=>(Bote.getModel().s.sequence[0]+1)%4);await page.locator(`[data-field="${wrong}"]`).tap();
+ assert.equal(await page.locator(`[data-field="${wrong}"]`).getAttribute('data-state'),'error');await shot('bote-wrong');
+ // The painted result board follows after a short pause, with the record seal for a new best.
  await page.locator('.bote-result').waitFor();assert.match(await page.locator('.bote-result-score').textContent(),/3 Zeichen/);
- assert.equal(await page.locator(`[data-field="${wrong}"]`).getAttribute('data-state'),'error');await shot('bote-ended');
+ assert.equal(await page.locator('.bote-r-seal').count(),1);assert.match(await page.locator('.bote-r-hint').textContent(),/Neue Bestleistung/);
+ const board=await box('.bote-result>img:first-child');for(const sel of ['.bote-r-title','.bote-r-1','.bote-r-2','.bote-r-3','.bote-r-hint','.bote-r-retry','.bote-r-back']){const r=await box(sel);assert.ok(inside(r,board),sel);}
+ assert.ok(await page.evaluate(()=>[...document.querySelectorAll('.bote-r-value,.bote-r-hint,.bote-r-title')].every(e=>e.scrollWidth<=e.clientWidth+1&&e.scrollHeight<=e.clientHeight+1)),'result texts fit');
+ assert.ok((await box('.bote-r-retry')).height>=44);await shot('bote-ended');
  for(const b of await page.locator('.bote-field').all()){const r=await b.boundingBox();assert.ok(r.width>=100&&r.height>=100,'touch field size');}
  await page.reload();assert.equal((await getState()).boteBest,3);await page.locator('#bote-open').click();await page.locator('#bote-start').waitFor();
  assert.match(await page.locator('.bote-best-line').textContent(),/3 Zeichen/);await page.locator('#bote-close').click();

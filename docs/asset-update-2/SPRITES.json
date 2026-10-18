@@ -1,0 +1,385 @@
+{
+  "assets/interlude/checkpoint-run-start-panel-v3.png": [
+    {
+      "name": "checkpoint-run-start-panel-v3",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        24,
+        14,
+        1512,
+        994
+      ],
+      "foot_anchor_source_xy": [
+        768.0,
+        994
+      ]
+    }
+  ],
+  "assets/interlude/checkpoint-run-result-v2.png": [
+    {
+      "name": "checkpoint-run-result-v2",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        44,
+        49,
+        1492,
+        955
+      ],
+      "foot_anchor_source_xy": [
+        768.0,
+        955
+      ]
+    }
+  ],
+  "assets/puzzles/report-topdown/report-category-board-v2.png": [
+    {
+      "name": "report-category-board-v2",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        24,
+        24,
+        1512,
+        1000
+      ],
+      "foot_anchor_source_xy": [
+        768.0,
+        1000
+      ]
+    }
+  ],
+  "assets/puzzles/report-topdown/report-result-panel-v2.png": [
+    {
+      "name": "report-result-panel-v2",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        27,
+        31,
+        1509,
+        1000
+      ],
+      "foot_anchor_source_xy": [
+        768.0,
+        1000
+      ]
+    }
+  ],
+  "assets/puzzles/report-topdown/report-argument-tiles-v2.png": [
+    {
+      "name": "short-a",
+      "source_rect_xyxy": [
+        0,
+        0,
+        768,
+        341
+      ],
+      "visible_bbox_xyxy": [
+        124,
+        36,
+        644,
+        306
+      ],
+      "foot_anchor_source_xy": [
+        384.0,
+        306
+      ],
+      "html_overlay_source_xyxy": [
+        186,
+        76,
+        582,
+        266
+      ]
+    },
+    {
+      "name": "short-b",
+      "source_rect_xyxy": [
+        768,
+        0,
+        1536,
+        341
+      ],
+      "visible_bbox_xyxy": [
+        892,
+        36,
+        1412,
+        306
+      ],
+      "foot_anchor_source_xy": [
+        1152.0,
+        306
+      ],
+      "html_overlay_source_xyxy": [
+        954,
+        76,
+        1350,
+        266
+      ]
+    },
+    {
+      "name": "medium-a",
+      "source_rect_xyxy": [
+        0,
+        341,
+        768,
+        683
+      ],
+      "visible_bbox_xyxy": [
+        64,
+        377,
+        704,
+        647
+      ],
+      "foot_anchor_source_xy": [
+        384.0,
+        647
+      ],
+      "html_overlay_source_xyxy": [
+        140,
+        417,
+        628,
+        607
+      ]
+    },
+    {
+      "name": "medium-b",
+      "source_rect_xyxy": [
+        768,
+        341,
+        1536,
+        683
+      ],
+      "visible_bbox_xyxy": [
+        832,
+        377,
+        1472,
+        647
+      ],
+      "foot_anchor_source_xy": [
+        1152.0,
+        647
+      ],
+      "html_overlay_source_xyxy": [
+        908,
+        417,
+        1396,
+        607
+      ]
+    },
+    {
+      "name": "long-a",
+      "source_rect_xyxy": [
+        0,
+        683,
+        768,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        28,
+        718,
+        740,
+        988
+      ],
+      "foot_anchor_source_xy": [
+        384.0,
+        988
+      ],
+      "html_overlay_source_xyxy": [
+        113,
+        758,
+        655,
+        948
+      ]
+    },
+    {
+      "name": "long-b",
+      "source_rect_xyxy": [
+        768,
+        683,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        796,
+        718,
+        1508,
+        988
+      ],
+      "foot_anchor_source_xy": [
+        1152.0,
+        988
+      ],
+      "html_overlay_source_xyxy": [
+        881,
+        758,
+        1423,
+        948
+      ]
+    }
+  ],
+  "assets/bonus/bote/bote-result.png": [
+    {
+      "name": "bote-result",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        37,
+        60,
+        1488,
+        981
+      ],
+      "foot_anchor_source_xy": [
+        762.5,
+        981
+      ]
+    }
+  ],
+  "assets/bonus/bote/bote-record-seal.png": [
+    {
+      "name": "bote-record-seal",
+      "source_rect_xyxy": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        29,
+        27,
+        485,
+        481
+      ],
+      "foot_anchor_source_xy": [
+        257.0,
+        481
+      ]
+    }
+  ],
+  "assets/bonus/puzzle-ui/puzzle-preview-icon.png": [
+    {
+      "name": "puzzle-preview-icon",
+      "source_rect_xyxy": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        41,
+        42,
+        472,
+        467
+      ],
+      "foot_anchor_source_xy": [
+        256.5,
+        467
+      ]
+    }
+  ],
+  "assets/bonus/puzzle-ui/puzzle-solved-mark.png": [
+    {
+      "name": "puzzle-solved-mark",
+      "source_rect_xyxy": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        42,
+        52,
+        475,
+        460
+      ],
+      "foot_anchor_source_xy": [
+        258.5,
+        460
+      ]
+    }
+  ],
+  "assets/ui/frame-erlassbrett.png": [
+    {
+      "name": "frame-erlassbrett",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "visible_bbox_xyxy": [
+        55,
+        58,
+        1200,
+        1196
+      ],
+      "foot_anchor_source_xy": [
+        627.5,
+        1196
+      ]
+    }
+  ],
+  "assets/ui/frame-akte.png": [
+    {
+      "name": "frame-akte",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "visible_bbox_xyxy": [
+        31,
+        40,
+        1223,
+        1214
+      ],
+      "foot_anchor_source_xy": [
+        627.0,
+        1214
+      ]
+    }
+  ],
+  "assets/ui/frame-notiz.png": [
+    {
+      "name": "frame-notiz",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "visible_bbox_xyxy": [
+        33,
+        34,
+        1222,
+        1216
+      ],
+      "foot_anchor_source_xy": [
+        627.5,
+        1216
+      ]
+    }
+  ]
+}

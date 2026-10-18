@@ -1,0 +1,266 @@
+[
+  {
+    "path": "assets/interlude/checkpoint-run-start-panel-v3.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.13135592142740884,
+    "sha256": "a427e0d9401d53edec3d7657b05d463c3d1ba2c31db87f2d9830ea159f57ee29",
+    "visible_bbox_xyxy": [
+      24,
+      14,
+      1512,
+      994
+    ],
+    "exterior_alpha_policy": "0; connected silhouette; no detached speckles",
+    "margin_exception": "Original v2 geometry retained: top silhouette at y14."
+  },
+  {
+    "path": "assets/interlude/checkpoint-run-result-v2.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.2553628285725911,
+    "sha256": "8f6ff7ef3370135217f4e59093f783f474545f9fb2bbeebd8cac3d44372ec857",
+    "visible_bbox_xyxy": [
+      44,
+      49,
+      1492,
+      955
+    ],
+    "exterior_alpha_policy": "0; connected silhouette; no detached speckles",
+    "margin_exception": null
+  },
+  {
+    "path": "assets/puzzles/report-topdown/report-category-board-v2.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.07726287841796875,
+    "sha256": "ff5a2aa2671102d26bd73ab355e3cb493e81c06cc88d967ca368487342e634db",
+    "visible_bbox_xyxy": [
+      24,
+      24,
+      1512,
+      1000
+    ],
+    "exterior_alpha_policy": "0; connected silhouette; no detached speckles",
+    "margin_exception": null
+  },
+  {
+    "path": "assets/puzzles/report-topdown/report-result-panel-v2.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.09547233581542969,
+    "sha256": "7f5dc950c5a9153c3f5f6693820c3d7a3989f3e222e9b55b5e62d6119036a58d",
+    "visible_bbox_xyxy": [
+      27,
+      31,
+      1509,
+      1000
+    ],
+    "exterior_alpha_policy": "0; connected silhouette; no detached speckles",
+    "margin_exception": null
+  },
+  {
+    "path": "assets/puzzles/report-topdown/report-argument-tiles-v2.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.40193621317545575,
+    "sha256": "b26f01464dad11d8d89ce5b639ed429f84871799b87221995222cf370fb54c34",
+    "visible_bbox_xyxy": [
+      28,
+      36,
+      1508,
+      988
+    ],
+    "exterior_alpha_policy": "0; connected silhouette; no detached speckles",
+    "margin_exception": null
+  },
+  {
+    "path": "assets/bonus/bote/bote-result.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.17119153340657553,
+    "sha256": "414682a9f66ffcfb5cd3da3dcac39d6a875448b9e8bf765bfeb0b7ddfe21789a",
+    "visible_bbox_xyxy": [
+      37,
+      60,
+      1488,
+      981
+    ],
+    "exterior_alpha_policy": "0; connected silhouette; no detached speckles",
+    "margin_exception": null
+  },
+  {
+    "path": "assets/bonus/bote/bote-record-seal.png",
+    "size": [
+      512,
+      512
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.3939399719238281,
+    "sha256": "7215c13317bfab5873cbaa9a4fd27ea59f7c16c2bc33c964549c7c60b9e2332a",
+    "visible_bbox_xyxy": [
+      29,
+      27,
+      485,
+      481
+    ],
+    "exterior_alpha_policy": "0; connected silhouette; no detached speckles",
+    "margin_exception": null
+  },
+  {
+    "path": "assets/bonus/puzzle-ui/puzzle-preview-icon.png",
+    "size": [
+      512,
+      512
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.301849365234375,
+    "sha256": "cfea3fd510b3da0bf4a9bed95b48e1258b37628264e733dbe3538cf3ee7e5934",
+    "visible_bbox_xyxy": [
+      41,
+      42,
+      472,
+      467
+    ],
+    "exterior_alpha_policy": "0; connected silhouette; no detached speckles",
+    "margin_exception": null
+  },
+  {
+    "path": "assets/bonus/puzzle-ui/puzzle-solved-mark.png",
+    "size": [
+      512,
+      512
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.5115585327148438,
+    "sha256": "29955da383707591ea5ef6e64c2174eb0db66072cc5168c2fc496a6536f3c5c8",
+    "visible_bbox_xyxy": [
+      42,
+      52,
+      475,
+      460
+    ],
+    "exterior_alpha_policy": "0; connected silhouette; no detached speckles",
+    "margin_exception": null
+  },
+  {
+    "path": "assets/ui/frame-erlassbrett.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.17207392484400794,
+    "sha256": "615020bcfb9052c075d6cf30765b52654946a032503a8e2861afd67099c41794",
+    "visible_bbox_xyxy": [
+      55,
+      58,
+      1200,
+      1196
+    ],
+    "exterior_alpha_policy": "0; connected silhouette; no detached speckles",
+    "margin_exception": null
+  },
+  {
+    "path": "assets/ui/frame-akte.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.14870055376225108,
+    "sha256": "4ef0c07a1324eb0332d52ed84cbc406ea96572c3dedcf004e5862e5e45803670",
+    "visible_bbox_xyxy": [
+      31,
+      40,
+      1223,
+      1214
+    ],
+    "exterior_alpha_policy": "0; connected silhouette; no detached speckles",
+    "margin_exception": null
+  },
+  {
+    "path": "assets/ui/frame-notiz.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.1263236749260421,
+    "sha256": "3480676caa609c1787ef7d389933b548647720fca728ed10dfc47f574fe5d9e3",
+    "visible_bbox_xyxy": [
+      33,
+      34,
+      1222,
+      1216
+    ],
+    "exterior_alpha_policy": "0; connected silhouette; no detached speckles",
+    "margin_exception": null
+  }
+]

@@ -40,3 +40,25 @@ Diese Notiz ergänzt `ASSET-MAP.md` (Lieferung vom 18.10.2026). Dort stehen die 
 
 - „Vorlage zeigen“ blendet das fertige Motiv über das Brett, ohne die Teile zu verändern. Ein Tippen auf die Vorlage blendet sie wieder aus.
 - Gelöste Motive tragen im Auswahlbrett die Markierung „Gelöst“. Sie ist unabhängig vom Auswahlhaken ✓.
+
+## Asset-Update 2 (`docs/asset-update-2/`)
+
+- **Zwischenetappe:**
+  - `checkpoint-run-start-panel-v3.png`: gleiche Geometrie wie v2, außen transparent.
+  - `checkpoint-run-result-v2.png`: Für Icon, Wort und Häkchen gibt es pro Zeile eigene Felder, dazu einen eigenen Buttonstreifen. Der Titel steht einzeilig.
+- **Siegel 5, Auswertung im handgemalten Stil:**
+  - `report-category-board-v2.png` und `report-result-panel-v2.png`, gleiche Felder wie zuvor.
+  - Die Kategoriefelder der Ergebnistafel sind auf y 540–606 erweitert. Dort stehen Kurzformen (`CATEGORY_SHORT`: Kontrolle, Belastung, Machtzeichen, Hoffnung), weil „Sichtbare römische Macht“ in Georgia nicht einzeilig passt. Der volle Name steht im Tableau und im `title`.
+  - `report-argument-tiles-v2.png` nutzt die Kachel `medium` (640 × 270). Die Textfläche umfasst 11,9 % / 14,8 % / 76,2 % / 70,4 % (links, oben, Breite, Höhe), die Schrift ist mindestens 14 px groß.
+- **Der Weg des Boten:**
+  - Nach einem Fehler bleibt das falsche Feld 1,3 s sichtbar. Danach erscheint `bote-result.png` mit Serie, Zeit, Bestleistung, Hinweis und zwei Buttons.
+  - `bote-record-seal.png` steht bei einer neuen Bestleistung im runden Siegelfeld.
+  - Der Startbildschirm zeigt das Brett mit den vier Zeichen.
+- **Bildpuzzle:**
+  - `puzzle-preview-icon.png` steht im Button „Vorlage zeigen“.
+  - `puzzle-solved-mark.png` sitzt oben links auf gelösten Motiven, gegenüber dem Auswahlhaken oben rechts.
+- **Siegel 1 und 2** (`frames.css`): 9-Slice-Rahmen.
+  - `frame-erlassbrett.png` (Slice 160, Rand 28 px) für Zuordnung und Ketten.
+  - `frame-akte.png` (Slice 200, Rand 28 px) für Kontrollakte und Berichtigung.
+  - `frame-notiz.png` (Slice 100, Rand 10 px) für Fund- und Belegnotizen.
+- Nicht mehr genutzt, aber im Repository belassen: `checkpoint-run-start-panel(-v2).png`, `checkpoint-run-result.png`, `report-category-board.png`, `report-result-panel.png`, `report-argument-tiles.png`.
