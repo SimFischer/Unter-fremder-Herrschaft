@@ -15,7 +15,7 @@ const R=require('../logic.js'),M=require('../map-rules.js');
  for(const [w,h]of [[1024,768],[1180,820],[1194,834],[1366,1024]]){
   await page.setViewportSize({width:w,height:h});
   for(let n=0;n<=5;n++){
-   await page.evaluate(n=>{const s=Adventure.getState();s.solved=s.solved.map((_,i)=>i<n);Adventure.save();},n);await page.reload();await page.waitForLoadState('networkidle');
+   await page.evaluate(n=>{const s=Adventure.getState();s.solved=s.solved.map((_,i)=>i<n);s.gatePassed=n===5;Adventure.save();},n);await page.reload();await page.waitForLoadState('networkidle');
    const sizes=await page.evaluate(()=>{const s=document.querySelector('.scene').getBoundingClientRect();return [...document.querySelectorAll('.world-objects img')].map(e=>{const r=e.getBoundingClientRect();return [e.getAttribute('src'),r.width/s.width,r.height/s.height,(r.bottom-s.top)/s.height];});});
    const people=sizes.find(x=>x[0]==='group-people.webp'),map=sizes.find(x=>x[0]==='map-table.webp'),table=sizes.find(x=>x[0]==='coin-table.webp');assert.ok(people[2]>.39&&people[2]<.44);assert.ok(table[2]<people[2]*.6);assert.ok(map[2]<people[2]*.5);assert.ok(people[3]>.83&&people[3]<.85);
    for(let i=0;i<5;i++){await tap(`[data-open="${i}"]`);assert.ok(await page.locator('#puzzle').isVisible());await tap('#close');}
@@ -37,7 +37,7 @@ const R=require('../logic.js'),M=require('../map-rules.js');
    else{const wrong=t.candidates.find(n=>!t.answer.includes(n))??t.answer.at(-1);await tap(`[data-place="${wrong}"]`);await tap('#check');assert.equal(await page.locator('#feedback').getAttribute('class'),'needs-help');
    if(t.answer.length>1)await tap('[data-map-reset]');
    for(const n of t.answer)await tap(`[data-place="${n}"]`);}
-   if(r===7){await tap('#close');await page.reload();await tap('[data-open="3"]');await tap('[data-round="7"]');assert.equal(await page.locator('[data-place][aria-pressed="true"]').count(),5);}
+   if(r===7){await tap('#close');await page.reload();await tap('[data-open="3"]');await tap('[data-round="7"]');assert.equal(await page.locator('[data-place][aria-pressed="true"]').count(),t.answer.length);}
    await tap('#check');assert.equal(await page.locator('#feedback').getAttribute('class'),'success');
    if([3,4,5,6,7].includes(r)){await page.locator('.map').scrollIntoViewIfNeeded();await shot(`${w}-map-${r+1}`);}
   }
