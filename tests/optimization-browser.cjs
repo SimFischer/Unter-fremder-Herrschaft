@@ -33,9 +33,10 @@ const R=require('../logic.js'),M=require('../map-rules.js');
     return bad;
    });assert.deepEqual(problems,[],`${w} clue ${r+1}`);
    for(let hint=0;hint<3;hint++){await tap('[data-map-hint]');assert.match(await page.locator('#map-hint').textContent(),new RegExp(t.hints[hint].slice(0,12).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));}
-   const wrong=t.candidates.find(n=>!t.answer.includes(n))??t.answer.at(-1);await tap(`[data-place="${wrong}"]`);await tap('#check');assert.equal(await page.locator('#feedback').getAttribute('class'),'needs-help');
+   if(M.isChoice(r)){await tap(`[data-key="mapChoice${r}"][data-value="${(t.answer+1)%t.options.length}"]`);await tap('#check');assert.equal(await page.locator('#feedback').getAttribute('class'),'needs-help');await tap(`[data-key="mapChoice${r}"][data-value="${t.answer}"]`);}
+   else{const wrong=t.candidates.find(n=>!t.answer.includes(n))??t.answer.at(-1);await tap(`[data-place="${wrong}"]`);await tap('#check');assert.equal(await page.locator('#feedback').getAttribute('class'),'needs-help');
    if(t.answer.length>1)await tap('[data-map-reset]');
-   for(const n of t.answer)await tap(`[data-place="${n}"]`);
+   for(const n of t.answer)await tap(`[data-place="${n}"]`);}
    if(r===7){await tap('#close');await page.reload();await tap('[data-open="3"]');await tap('[data-round="7"]');assert.equal(await page.locator('[data-place][aria-pressed="true"]').count(),5);}
    await tap('#check');assert.equal(await page.locator('#feedback').getAttribute('class'),'success');
    if([3,4,5,6,7].includes(r)){await page.locator('.map').scrollIntoViewIfNeeded();await shot(`${w}-map-${r+1}`);}
