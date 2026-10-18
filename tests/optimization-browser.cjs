@@ -24,7 +24,7 @@ const R=require('../logic.js'),M=require('../map-rules.js');
   await tap('[data-open="3"]');
   for(let r=0;r<8;r++){
    await tap(`[data-round="${r}"]`);
-   const t=M.tasks[r];if(t.answer.length>1)await tap('[data-map-reset]');assert.equal(await page.locator('[data-place]').count(),t.candidates.length);
+   const t=M.tasks[r];if(!M.isChoice(r)&&t.answer.length>1)await tap('[data-map-reset]');assert.equal(await page.locator('[data-place]').count(),M.isChoice(r)?t.show.length:t.candidates.length);
    const problems=await page.locator('.map').evaluate(el=>{
     const bs=[...el.querySelectorAll('button')],bad=[];
     const rects=bs.map(b=>({name:b.textContent.trim(),r:b.getBoundingClientRect()}));
