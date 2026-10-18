@@ -102,7 +102,7 @@ const key='palaestina-adventure-klasse6-v2';
  // Restore a version-1 save through the actual browser load path.
  const old={version:1,solved:[true,true,true,true,true],answers:Array.from({length:5},()=>({stage:6,sentence:'Alt'})),attempts:[0,0,0,0,0]};
  await page.evaluate(([key,old])=>localStorage.setItem(key,JSON.stringify(old)),[key,old]);await page.reload();assert.equal(await page.locator('#end').isVisible(),true);
- const viewports=[[1024,768],[1180,820],[1194,834],[1366,1024],[820,618],[834,1194]];
+ const viewports=[[1024,768],[1180,820],[1194,834],[1366,1024],[820,618],[834,1194],[1920,790],[1366,650]];
  const overflow=[];
  async function inspect(label,w,h){
   await page.waitForTimeout(80);
