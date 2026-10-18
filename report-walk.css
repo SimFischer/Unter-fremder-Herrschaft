@@ -89,3 +89,15 @@
 /* Portrait and narrow screens: controls below the map. */
 @media(max-width:850px),(orientation:portrait){.walk-stage{flex-direction:column;align-items:stretch}.walk-field{width:100%}.walk-controls{flex:auto;flex-direction:row;align-items:center;gap:14px}.walk-controls .walk-help{text-align:left}.walk-controls .walk-actions{justify-content:flex-start}}
 @media(max-width:600px){.walk-controls{align-items:flex-start}.walk-slot{width:64px}.walk-slot canvas{width:42px;height:42px}.report-zone-question{display:none}.report-zone-items{top:20%}}
+
+/* Touch devices: walking happens by tapping the map; the arrow pad is only offered with a keyboard/mouse. */
+.walk-canvas{touch-action:none;cursor:pointer}
+.walk-help-touch{display:none}
+@media (hover:none) and (pointer:coarse){
+ .walk-dpad{display:none}
+ .walk-help-touch{display:inline}.walk-help-keys{display:none}
+ .walk-stage{flex-direction:column;align-items:stretch}
+ .walk-field{width:min(100%,calc((94dvh - 230px)*1651/953));margin:0 auto}
+ .walk-controls{flex:auto;flex-direction:row;align-items:center;gap:14px;width:min(100%,calc((94dvh - 230px)*1651/953));margin:6px auto 0}
+ .walk-controls .walk-help{text-align:left}.walk-controls .walk-actions{justify-content:flex-start}
+}

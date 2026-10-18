@@ -52,3 +52,15 @@ test('a keyboard-style walk from the gate reaches all four stations without tele
  }
  assert.equal(W.complete(run),true);
 });
+test('tap-to-walk: a route to every station and the signpost stays on free ground and ends at the station',()=>{
+ for(const [i,s] of W.stations.entries()){
+  const run=W.create();assert.equal(W.walkTo(run,s.x,s.y,i),true,s.id);let k=0,events=[];
+  while(run.route&&k<4000){const e=W.update(run,.05);events.push(...e);assert.ok(W.free(run.player.x,run.player.y),s.id+' off path');k++;}
+  assert.equal(run.near,i,s.id);assert.ok(events.includes('arrived'));
+ }
+ const run=W.create();assert.equal(W.walkTo(run,W.sign.x,W.sign.y,'sign'),true);
+ const tap=W.create();assert.equal(W.walkTo(tap,840,420),true,'a tap on an obstacle walks to the nearest free spot');
+});
+test('a direction key cancels an automatic route immediately',()=>{
+ const run=W.create();W.walkTo(run,W.stations[1].x,W.stations[1].y,1);W.update(run,.05);W.update(run,.05,{up:true});assert.equal(run.route,null);
+});

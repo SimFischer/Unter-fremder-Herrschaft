@@ -97,7 +97,7 @@ if(typeof window!=='undefined')(()=>{
  function persist(){if(!run||state().interludeCompleted)return;state().interludeRun=InterludeRules.snapshot(run);bridge().save();}
  function stop(){cancelAnimationFrame(raf);raf=0;last=0;clearInput();}
  function updateReplay(){const s=state(),count=s.solved.filter(Boolean).length,b=document.querySelector('#interlude-replay');b.hidden=count<3&&!s.interludeStarted;b.textContent=s.interludeCompleted?'Zwischenetappe wiederholen':s.interludeStarted?'Zwischenetappe fortsetzen':'Zwischenetappe entdecken';}
- function auto(){updateReplay();if(InterludeRules.shouldStart(state())&&!document.querySelector('dialog[open]'))open(false);}
+ function auto(){updateReplay();if(window.Teacher?.active)return;if(InterludeRules.shouldStart(state())&&!document.querySelector('dialog[open]'))open(false);}
  async function open(replay=false){
   stop();epoch++;const token=epoch;
   if(!state().interludeStarted){state().interludeStarted=true;bridge().save();}

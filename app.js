@@ -71,9 +71,13 @@ function render(){
   html+=`<div class="voice-strip">${PEOPLE.map((p,i)=>`<div>${portrait(i)}<strong>${p[0].split(' · ')[0]}</strong></div>`).join('')}</div>${options('overall',OVERALL)}`;
  }
  if(active===3){
-  const task=MapRules.tasks[round],chosen=round<8?MapRules.chosen(a,round):[];
-  html=`<div class="map-layout"><div class="map"><img src="assets/puzzles/map/map-table-large.png" alt="Vereinfachte Karte: Mittelmeer im Westen, See Genezareth im Nordosten, Jordan zum Toten Meer im Süden."><img class="orientation" src="assets/puzzles/map/map-compass.png" alt="Orientierungsscheibe: Norden oben, kein Magnetkompass">${round<8?`<svg class="map-anchors" viewBox="0 0 1000 665" aria-hidden="true">${task.candidates.map(i=>{const p=PLACES[i];return `<path d="M ${p[1]*10} ${p[2]*6.65} L ${p[5]*10} ${p[6]*6.65}"/><circle cx="${p[1]*10}" cy="${p[2]*6.65}" r="5"/>`;}).join('')}</svg>`+task.candidates.map(i=>{const p=PLACES[i],selected=chosen.includes(i);return `<button data-place="${i}" style="left:${p[5]}%;top:${p[6]}%" class="map-marker map-${p[4]==='Region'?'region':p[4]==='Ort'?'town':'water'} ${selected?'selected':''}" aria-pressed="${selected}" aria-label="${p[0]}, ${p[4]}${selected?', Markierung '+(chosen.indexOf(i)+1):''}"><span>${selected&&!task.unordered?chosen.indexOf(i)+1+' · ':''}${p[0]}</span></button>`;}).join(''):''}<div class="route-proof">${sprite('assets/puzzles/map/map-route-strip.png','footprints')}<span>${Math.min(a.stage||0,8)} Reisemarken gesichert</span></div></div><div class="travel-note">`;
-  if(round<8)html+=`<span class="stamp">REISEHINWEIS ${round+1} VON 8</span><h3>Plant den nächsten Wegabschnitt</h3><p class="question">${task.question}</p><p class="selection-note" role="status">${chosen.length?'Eure Wahl: '+chosen.map(i=>PLACES[i][0]).join(task.unordered?' + ':' → '):'Tippt auf die passenden Marker auf der Karte.'} · ${chosen.length} von ${task.answer.length}</p>${task.answer.length>1?'<button class="paper-quiet" data-map-reset>Markierungen zurücknehmen</button><p class="map-instruction">Erneutes Antippen nimmt eine Markierung zurück.</p>':''}<button class="paper-quiet" data-map-hint>Den Kartenschreiber fragen</button><p id="map-hint" role="status" ${hintLevel===0?'hidden':''}>${hintLevel?esc(task.hints[Math.min(hintLevel-1,2)]):''}</p>`;
+  // Silent map (map revision 3): numbered markers; a name appears once the place has been found.
+  const task=MapRules.tasks[round],choice=round<8&&MapRules.isChoice(round),chosen=round<8?MapRules.chosen(a,round):[];
+  const known=MapRules.known(a.stage||0,round),shown=round<8?(choice?task.show:task.candidates):[];
+  const sc=MapRules.scale;
+  html=`<div class="map-layout"><div class="map"><img src="assets/puzzles/map/map-table-large.png" alt="Stumme Karte: Mittelmeer im Westen, See Genezareth im Nordosten, Jordan zum Toten Meer im Südosten. Die Orte sind nummeriert."><img class="orientation" src="assets/puzzles/map/map-compass.png" alt="Orientierungsscheibe: Norden oben, kein Magnetkompass"><div class="map-scale" style="--scale-h:${sc.heightPercent}%" aria-label="Maßstab: Die Leiste entspricht ${sc.km} km"><span class="map-scale-bar"></span><span>${sc.km} km</span></div>${shown.length?`<svg class="map-anchors" viewBox="0 0 1000 665" aria-hidden="true">${shown.map(i=>{const p=PLACES[i];return `<path d="M ${p[1]*10} ${p[2]*6.65} L ${p[5]*10} ${p[6]*6.65}"/><circle cx="${p[1]*10}" cy="${p[2]*6.65}" r="5"/>`;}).join('')}</svg>`+shown.map(i=>{const p=PLACES[i],selected=chosen.includes(i),name=known.has(i),num=MapRules.number(i);return `<button data-place="${i}" ${choice?'disabled':''} style="left:${p[5]}%;top:${p[6]}%" class="map-marker map-${p[4]==='Region'?'region':p[4]==='Ort'?'town':'water'} ${selected?'selected':''} ${name?'named':'silent'}" aria-pressed="${selected}" aria-label="Marker ${num}${name?': '+p[0]:''}${selected?', Markierung '+(chosen.indexOf(i)+1):''}"><span>${selected&&!task.unordered?chosen.indexOf(i)+1+' · ':''}${name?p[0]:num}</span></button>`;}).join(''):''}<div class="route-proof">${sprite('assets/puzzles/map/map-route-strip.png','footprints')}<span>${Math.min(a.stage||0,8)} Reisemarken gesichert</span></div></div><div class="travel-note">`;
+  if(round<8&&choice)html+=`<span class="stamp">REISEHINWEIS ${round+1} VON 8</span><h3>Messen und rechnen</h3><p class="question">${task.question}</p>${options('mapChoice'+round,task.options)}<button class="paper-quiet" data-map-hint>Den Kartenschreiber fragen</button><p id="map-hint" role="status" ${hintLevel===0?'hidden':''}>${hintLevel?esc(task.hints[Math.min(hintLevel-1,2)]):''}</p>`;
+  else if(round<8)html+=`<span class="stamp">REISEHINWEIS ${round+1} VON 8</span><h3>Plant den nächsten Wegabschnitt</h3><p class="question">${task.question}</p><p class="selection-note" role="status">${chosen.length?'Eure Wahl: '+chosen.map(i=>known.has(i)?PLACES[i][0]:'Marker '+MapRules.number(i)).join(task.unordered?' + ':' → '):'Tippt auf die passenden Marker auf der Karte. Die Namen erscheinen, sobald ihr einen Ort gefunden habt.'} · ${chosen.length} von ${task.answer.length}</p>${task.answer.length>1?'<button class="paper-quiet" data-map-reset>Markierungen zurücknehmen</button><p class="map-instruction">Erneutes Antippen nimmt eine Markierung zurück.</p>':''}<button class="paper-quiet" data-map-hint>Den Kartenschreiber fragen</button><p id="map-hint" role="status" ${hintLevel===0?'hidden':''}>${hintLevel?esc(task.hints[Math.min(hintLevel-1,2)]):''}</p>`;
   else html+=`<span class="stamp">DIE REISE GEHT WEITER</span><h3>${TRANSFER[round-8].question}</h3>${options('transfer'+(round-8),TRANSFER[round-8].options)}`;
   html+='</div></div>';
  }
@@ -94,7 +98,8 @@ function render(){
   html+=['obs','link','conclusion'].map((key,j)=>`<section class="argument-group"><h4>${j+1} · ${['Beobachtung','Zusammenhang','Schlussfolgerung'][j]}</h4><div class="report-tile-bank">${ARGUMENTS[key].map((t,i)=>`<button class="report-tile ${a[key]===i?'selected':''}" data-key="${key}" data-value="${i}" aria-pressed="${a[key]===i}">${sprite(AT,(i+j)%2?'medium-b':'medium-a')}<span>${esc(t)}</span></button>`).join('')}</div></section>`).join('');
   html+='<p>Optional: Erklärt eure fertige Argumentation einem Partner mündlich.</p>';
  }
- const nav=`<nav class="round-nav" aria-label="Rätselschritte">${Array.from({length:total},(_,i)=>`<button data-round="${i}" ${i>unlocked&&!state.solved[active]?'disabled':''} class="${i===round?'current':''} ${i<(a.stage||0)?'complete':''}" aria-label="Schritt ${i+1}${i<(a.stage||0)?', geschafft':''}" ${i===round?'aria-current="step"':''}>${i+1}</button>`).join('')}<span>Schritt ${round+1} von ${total}</span></nav>`;
+ const nav=`<nav class="round-nav" aria-label="Rätselschritte">${Array.from({length:total},(_,i)=>`<button data-round="${i}" ${i>unlocked&&!state.solved[active]&&!window.Teacher?.active?'disabled':''} class="${i===round?'current':''} ${i<(a.stage||0)?'complete':''}" aria-label="Schritt ${i+1}${i<(a.stage||0)?', geschafft':''}" ${i===round?'aria-current="step"':''}>${i+1}</button>`).join('')}<span>Schritt ${round+1} von ${total}</span></nav>`;
+ if(window.Teacher?.solutions)html+=`<p class="teacher-solution"><strong>Lösung (Lehrkräftemodus):</strong> ${esc(solutionText(active,round))}</p>`;
  $('#task').innerHTML=nav+`<div class="exercise-body exercise-${active}">${html}</div>`;
  if(active===4&&round===0)ReportWalk.mount($('#task .report-walk'),{found:a.found||[],stations:REPORT_STATIONS,sign:REPORT_SIGN,
   onSecure:found=>{a.found=found;save();},
@@ -134,7 +139,7 @@ function check(){
   else{ok=a.overall===1;why='Anpassung, Hoffnung und bewaffneter Widerstand sind verschiedene Reaktionen. Aus wenigen Stimmen kann man nicht ableiten, wie die gesamte Bevölkerung dachte.';}
  }
  if(active===3){
-  if(round<8){ok=MapRules.correct(round,MapRules.chosen(a,round));why=MapRules.tasks[round].why;}
+  if(round<8){ok=MapRules.correct(round,MapRules.isChoice(round)?a['mapChoice'+round]:MapRules.chosen(a,round));why=MapRules.tasks[round].why;}
   else{const t=TRANSFER[round-8];ok=a['transfer'+(round-8)]===t.answer;why=t.why;}
  }
  if(active===4){
@@ -175,7 +180,7 @@ $('#task').addEventListener('click',e=>{
 $('#puzzle').setAttribute('aria-labelledby','title');$('#reset-dialog').setAttribute('aria-label','Fortschritt zurücksetzen');
 $('#hotspots').addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(b)open(Number(b.dataset.open));});
 $('#check').onclick=check;$('#close').onclick=()=>$('#puzzle').close();$('#puzzle').addEventListener('close',()=>opener?.focus());
-$('#end').onclick=()=>{if(state.solved.every(Boolean)){renderFinale();$('#finale').showModal();}};
+$('#end').onclick=()=>{if(state.solved.every(Boolean)){if(!state.gatePassed){state.gatePassed=true;save();window.dispatchEvent(new Event('adventure:state'));}renderFinale();$('#finale').showModal();}};
 $('#return').onclick=()=>$('#finale').close();$('#reset').onclick=()=>$('#reset-dialog').showModal();$('#cancel-reset').onclick=()=>$('#reset-dialog').close();
 $('#confirm-reset').onclick=()=>{state=fresh();views=Array(5).fill(0);save();scene();$('#reset-dialog').close();};
 scene();
@@ -196,7 +201,7 @@ function failureDetail(){
  if(active===1)return CORRECTIONS[[0,3,5][r-1]].why+' Wählt eine Berichtigung, die genau diesen Unterschied ausdrückt.';
  if(active===2&&r<4)return a['att'+r]===undefined?'Wählt zuerst, was die Person ausdrücklich tut oder hofft.':`Vergleicht Haltung und Begründung mit „${PEOPLE[r][1]}“. Hoffnung allein ist kein Kampfplan; Alltagsanpassung ist keine Zustimmung.`;
  if(active===2)return 'Eine einzelne Stimme steht nicht für alle. Achtet darauf, welche Schlussfolgerung die unterschiedlichen Reaktionen offenlässt.';
- if(active===3&&r<8)return MapRules.feedback(r,MapRules.chosen(a,r));
+ if(active===3&&r<8)return MapRules.feedback(r,MapRules.isChoice(r)?a['mapChoice'+r]:MapRules.chosen(a,r));
  if(active===3)return TRANSFER[r-8].why+' Wählt die dazu passende Begründung.';
  if(r===0){const n=4-(a.found||[]).length;return `Es fehl${n===1?'t':'en'} noch ${n} Beobachtung${n===1?'':'en'}. Sucht die Stationen auf dem Reiseweg und sichert, was Zacharias dort erlebt hat.`;}
  if(r===1){const open=[0,1,2,3].filter(i=>a['category'+i]===undefined);if(open.length)return 'Legt alle vier Belege auf das Tableau. Jedes Feld bekommt genau einen Beleg.';
@@ -282,4 +287,16 @@ $('#notebook').addEventListener('close',()=>{if(bookReturn){const back=bookRetur
 $('#hint-close').onclick=()=>{$('#hint-panel').hidden=true;$('#hint-open').focus();};
 
 // Narrow integration boundary for the two optional game modules; core puzzle rules stay here.
-window.Adventure=Object.freeze({getState:()=>state,save});
+// Solutions for the teacher mode, derived from the same data the checks use.
+function solutionText(i,r){
+ if(i===0)return r===0?LEFT.map((_,k)=>`${k+1} → ${String.fromCharCode(65+k)}`).join(', '):CHAINS[r-1].answer.map(k=>CHAINS[r-1].tiles[k]).join(' → ');
+ if(i===1)return r===0?'Einträge 01, 04 und 06 sind verdreht.':CORRECTIONS[[0,3,5][r-1]].options[CORRECTIONS[[0,3,5][r-1]].answer];
+ if(i===2)return r<4?`${ATTITUDES[PEOPLE[r][2]]} – ${REASONS[PEOPLE[r][3]]}`:OVERALL[1];
+ if(i===3){if(r>=8)return TRANSFER[r-8].options[TRANSFER[r-8].answer];const t=MapRules.tasks[r];return MapRules.isChoice(r)?t.options[t.answer]:t.answer.map(k=>`${PLACES[k][0]} (Marker ${MapRules.number(k)})`).join(t.unordered?' + ':' → ');}
+ if(r===0)return 'Alle vier Stationen besuchen und sichern: '+REPORT_STATIONS.map(s=>s.place).join(', ')+'.';
+ if(r===1)return REPORT_STATIONS.map((s,k)=>`${s.evidenceName} → ${CATEGORIES[REPORT_ANSWERS[k]]}`).join('; ');
+ return `Weg 1: ${ARGUMENTS.obs[0]} / ${ARGUMENTS.link[0]} / ${ARGUMENTS.conclusion[0]} – oder Weg 2: ${ARGUMENTS.obs[1]} / ${ARGUMENTS.link[1]} / ${ARGUMENTS.conclusion[1]}`;
+}
+function openStation(i,round=0){if(document.querySelector('dialog[open]'))document.querySelectorAll('dialog[open]').forEach(d=>d.close());open(i);views[i]=round;render();}
+function openFinale(){document.querySelectorAll('dialog[open]').forEach(d=>d.close());renderFinale();$('#finale').showModal();}
+window.Adventure=Object.freeze({getState:()=>state,save,refresh:()=>{save();scene();},replace:s=>{state=AdventureRules.migrate(JSON.parse(JSON.stringify(s)));views=Array(5).fill(0);save();scene();},openStation,openFinale,solutionText});

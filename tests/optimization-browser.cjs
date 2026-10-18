@@ -10,7 +10,7 @@ const R=require('../logic.js'),M=require('../map-rules.js');
  const shot=async name=>{if(out){fs.mkdirSync(out,{recursive:true});await page.screenshot({path:path.join(out,name+'.png')});}};
  const fixture=async s=>{await page.goto(server.url);await page.evaluate(s=>localStorage.setItem('palaestina-adventure-klasse6-v2',JSON.stringify(s)),s);await page.reload();await page.waitForLoadState('networkidle');};
  const tap=s=>page.locator(s).tap();
- const full=R.fresh();full.solved.fill(true);full.interludeCompleted=true;full.interludeStarted=true;
+ const full=R.fresh();full.solved.fill(true);full.gatePassed=true;full.interludeCompleted=true;full.interludeStarted=true;
  await fixture(full);
  for(const [w,h]of [[1024,768],[1180,820],[1194,834],[1366,1024]]){
   await page.setViewportSize({width:w,height:h});
@@ -40,7 +40,7 @@ const R=require('../logic.js'),M=require('../map-rules.js');
    await tap('#check');assert.equal(await page.locator('#feedback').getAttribute('class'),'success');
    if([3,4,5,6,7].includes(r)){await page.locator('.map').scrollIntoViewIfNeeded();await shot(`${w}-map-${r+1}`);}
   }
-  await tap('#close');await tap('#bonus-open');await page.locator('#bonus-begin').waitFor();
+  await tap('#close');await tap('#bonus-games-open');await tap('#bonus-open');await page.locator('#bonus-begin').waitFor();
   // Native inner rectangles, measured on the 1659×948 asset, not inferred from rendered controls.
   const fields=[['[data-mode="swap"]',[178,692,548,779]],['[data-mode="slide"]',[578,692,959,779]],['[data-size="3"]',[1023,692,1158,779]],['[data-size="4"]',[1187,692,1322,779]],['[data-size="5"]',[1355,692,1487,779]]];
   for(const [selector,rect]of fields){const bounds=await page.locator(selector).evaluate((e,rect)=>{const panel=e.closest('.bonus-selection').getBoundingClientRect(),r=e.getBoundingClientRect();const x=(r.left-panel.left)*1659/panel.width,y=(r.top-panel.top)*948/panel.height;return {x,y,right:x+r.width*1659/panel.width,bottom:y+r.height*948/panel.height,w:r.width,h:r.height};},rect);assert.ok(bounds.w>=44&&bounds.h>=44);assert.ok(bounds.x>=rect[0]-1&&bounds.y>=rect[1]-1&&bounds.right<=rect[2]+1&&bounds.bottom<=rect[3]+1,`${w} ${selector} ${JSON.stringify(bounds)}`);await tap(selector);assert.equal(await page.locator(selector).getAttribute('aria-pressed'),'true');}

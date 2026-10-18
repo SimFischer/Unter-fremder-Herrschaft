@@ -45,7 +45,7 @@ if(typeof window!=='undefined')(()=>{
  const B='assets/bonus/bote/',paths=[B+'bote-board.png',B+'bote-symbols.png',B+'bote-active.png',B+'bote-result.png',B+'bote-record-seal.png'];
  let art=null,model=null,raf=0,last=0,token=0,initialBest=0,lastKey='',resultTimer=0;
  const state=()=>window.Adventure.getState();
- const unlocked=()=>state().solved.every(Boolean);
+ const unlocked=()=>state().gatePassed===true;
  const best=()=>state().boteBest||0;
  function stop(){cancelAnimationFrame(raf);raf=0;last=0;clearTimeout(resultTimer);}
  async function open(){
