@@ -32,6 +32,12 @@ const out=process.env.ADVENTURE_SCREENSHOTS,KEY='palaestina-adventure-klasse6-v2
   await page.locator('#run-begin').click();await page.locator('#run-canvas').waitFor();await page.locator('#run-close').click();
  }
  await page.setViewportSize({width:1024,height:768});
+ // Touch: the on-field joystick moves the figure and stops on release; the arrow pad is hidden.
+ {const st=R.fresh();st.solved=[true,true,true,false,false];await fixture(st);await page.locator('#run-begin').click();await page.locator('.run-stick').waitFor();
+  assert.equal(await page.locator('.run-dpad').isVisible(),false);const k=await box('.run-stick'),x0=await page.evaluate(()=>Interlude.getRun().player.y);
+  await page.mouse.move(k.x+k.width/2,k.y+k.height/2);await page.mouse.down();await page.mouse.move(k.x+k.width/2,k.y+5,{steps:4});await page.waitForTimeout(500);
+  assert.ok(await page.evaluate(()=>Interlude.getRun().player.y)<x0-5,'joystick up moves north');await page.mouse.up();
+  const y1=await page.evaluate(()=>Interlude.getRun().player.y);await page.waitForTimeout(200);assert.equal(await page.evaluate(()=>Interlude.getRun().player.y),y1);await shot('joystick');await page.locator('#run-close').click();}
 
  // 2 · Der Weg des Boten: hidden before all seals, then a real play-through with series, record and a mistake.
  const four=R.fresh();four.solved=[true,true,true,true,false];four.interludeStarted=four.interludeCompleted=true;await fixture(four);
