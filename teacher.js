@@ -6,18 +6,13 @@
  const A=()=>window.Adventure,S=()=>A().getState();
  const T={active:false,solutions:false};
  window.Teacher=T;
- // Long press with a visible ring; any release, cancel or leave before 5 s aborts.
- const ring=document.createElement('span');ring.className='teacher-ring';ring.setAttribute('aria-hidden','true');title.append(ring);
+ // Long press without any visible feedback (pupils must not notice it); release, cancel or leave before 5 s aborts.
  let timer=0;
  function startHold(){clearTimeout(timer);title.classList.add('holding');timer=setTimeout(()=>{stopHold();enter();},HOLD);}
  function stopHold(){clearTimeout(timer);title.classList.remove('holding');}
  title.addEventListener('pointerdown',e=>{if(e.button>0)return;startHold();});
  for(const ev of ['pointerup','pointerleave','pointercancel'])title.addEventListener(ev,stopHold);
  title.addEventListener('contextmenu',e=>{if(title.classList.contains('holding'))e.preventDefault();});
- title.tabIndex=0;
- title.addEventListener('keydown',e=>{if((e.key===' '||e.key==='Enter')&&!e.repeat){e.preventDefault();startHold();}});
- title.addEventListener('keyup',e=>{if(e.key===' '||e.key==='Enter')stopHold();});
- title.addEventListener('blur',stopHold);
  const badge=document.createElement('button');badge.id='teacher-badge';badge.hidden=true;badge.textContent='Lehrkräftemodus';badge.onclick=()=>show();
  document.querySelector('header nav').prepend(badge);
 

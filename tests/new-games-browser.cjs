@@ -32,6 +32,11 @@ const out=process.env.ADVENTURE_SCREENSHOTS,KEY='palaestina-adventure-klasse6-v2
   await page.locator('#run-begin').click();await page.locator('#run-canvas').waitFor();await page.locator('#run-close').click();
  }
  await page.setViewportSize({width:1024,height:768});
+ // Scene markers sit on their painted motifs (bbox_percent from asset update 3), no stale CSS overrides.
+ {const bb=[[13.8,38.57,25.85,54.69],[0,53.5,26.4,84],[25.4,34.2,60.8,86.4],[61.8,72,100,100],[52.6,81,75.4,99.2]],img=await box('#backdrop');
+  for(let i=0;i<5;i++){const h=await box(`.hotspot[data-open="${i}"]`),x=(h.x+h.width/2-img.x)/img.width*100,y=(h.y+h.height/2-img.y)/img.height*100,[x0,y0,x1,y1]=bb[i];
+   assert.ok(x>=x0&&x<=x1&&y>=y0&&y<=y1,`hotspot ${i+1} at ${x.toFixed(1)}/${y.toFixed(1)}`);}
+  await shot('scene-markers');}
  // Touch: the on-field joystick moves the figure and stops on release; the arrow pad is hidden.
  {const st=R.fresh();st.solved=[true,true,true,false,false];await fixture(st);await page.locator('#run-begin').click();await page.locator('.run-stick').waitFor();
   assert.equal(await page.locator('.run-dpad').isVisible(),false);const k=await box('.run-stick'),x0=await page.evaluate(()=>Interlude.getRun().player.y);
@@ -106,6 +111,13 @@ const out=process.env.ADVENTURE_SCREENSHOTS,KEY='palaestina-adventure-klasse6-v2
  await page.mouse.click(cv.x+st[0]*cv.width/1651,cv.y+st[1]*cv.height/953);
  await page.locator('.walk-card-secure').waitFor({timeout:15000});await page.locator('.walk-card-secure').click();assert.deepEqual((await getState()).answers[4].found,[0]);
  assert.doesNotMatch(await page.locator('.walk-message').textContent(),/Straßensperre: Hier/);
+ // At a station a small bubble above Zacharias replaces the old button; tapping it opens the observation.
+ assert.equal(await page.locator('.walk-dpad, .walk-inspect').count(),0);
+ await page.evaluate(()=>{const r=ReportWalk.getRun(),s=ReportWalkRules.stations[1];r.player.x=s.x;r.player.y=s.y;r.route=null;});
+ await page.waitForFunction(()=>ReportWalk.getRun().near===1);await page.waitForTimeout(200);await shot('walk-bubble');
+ {const p=await page.evaluate(()=>{const r=ReportWalk.getRun();return [r.player.x,r.player.y-102,ReportWalkRules.width,ReportWalkRules.height];}),c=await box('.walk-canvas');
+  await page.touchscreen.tap(c.x+p[0]*c.width/p[2],c.y+p[1]*c.height/p[3]);}
+ await page.locator('.walk-card-secure').waitFor({timeout:5000});assert.match(await page.locator('#walk-card-title').textContent(),/./);
  console.log(JSON.stringify({startPanel:'3 viewports inside documented areas',bote:'hidden until 5 seals, 3 rounds, record kept, mistake ends',puzzle:'preview + solved mark',bonusMenu:'after gate',teacher:'5 s hold, jump, solutions',walk:'tap to walk',errors,failed},null,1));
  await browser.close();await server.close();assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);
 })().catch(e=>{console.error(e);process.exit(1);});

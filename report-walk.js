@@ -82,10 +82,10 @@ if(typeof module!=='undefined')module.exports=ReportWalkRules;
 if(typeof window!=='undefined')window.ReportWalkRules=ReportWalkRules;
 
 if(typeof window!=='undefined')(()=>{
- const T='assets/puzzles/report-topdown/',P={bg:T+'report-route-bg.webp',player:T+'report-player.png',markers:T+'report-markers.png',evidence:T+'report-evidence.png',frame:T+'report-evidence-frame.png',fore:T+'report-foreground.png'};
+ const T='assets/puzzles/report-topdown/',P={bg:T+'report-route-bg.webp',player:T+'report-player.png',markers:T+'report-markers.png',evidence:T+'report-evidence.png',frame:T+'report-evidence-frame.png',fore:T+'report-foreground.png',touch:'assets/interlude/touch-controls.png'};
  const R=ReportWalkRules,reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
  let art=null,run=null,root=null,options=null,raf=0,last=0,paused=false,card=null,token=0,tapMark=null,autoInspect=null;
- const held=new Set(),keyboard=new Set();
+ const held=new Set(),keyboard=new Set(),BUBBLE={w:46,h:44,lift:80};
  const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const active=()=>!!(root&&root.isConnected&&root.closest('dialog[open]'));
  function stop(){cancelAnimationFrame(raf);raf=0;last=0;held.clear();keyboard.clear();root?.querySelectorAll('.held').forEach(b=>b.classList.remove('held'));}
@@ -102,16 +102,7 @@ if(typeof window!=='undefined')(()=>{
 <div class="walk-stage"><div class="walk-field"><canvas class="walk-canvas" width="${R.width}" height="${R.height}" tabindex="0" role="img" aria-label="Reiseweg aus der Vogelperspektive. Ihr startet am Tor unten links. Vier Stationen: Straßensperre oben links, Markt oben rechts, Wachposten unten rechts, Gespräch unter dem Olivenbaum unten in der Mitte." aria-describedby="walk-help"></canvas>
 <div class="walk-card" hidden role="dialog" aria-modal="false" aria-labelledby="walk-card-title"></div>
 <div class="walk-paused" hidden><p>Die Reise wartet.</p><button class="walk-resume">Weitergehen</button></div></div>
-<div class="walk-controls"><div class="walk-dpad" role="group" aria-label="Bewegungssteuerung">${[['up','↑','Nach Norden'],['left','←','Nach Westen'],['down','↓','Nach Süden'],['right','→','Nach Osten']].map(([d,t,l])=>`<button type="button" data-walk="${d}" aria-label="${l}">${t}</button>`).join('')}</div>
-<div class="walk-help"><p id="walk-help"><span class="walk-help-touch">Tippt auf die Karte: Zacharias geht dorthin. Tippt auf ein Zeichen am Boden: Er geht hin und untersucht es.</span><span class="walk-help-keys">Tippt oder klickt auf die Karte, um dorthin zu gehen. Tastatur: Pfeile oder WASD, Leertaste oder E: untersuchen.</span></p><div class="walk-actions"><button type="button" class="walk-inspect" disabled>Untersuchen</button><button type="button" class="walk-pause">Pause</button></div><p class="walk-message" role="status" aria-live="polite"></p><p class="walk-orientation">Im Querformat lässt sich der Weg besser erkunden.</p></div></div></div>`;
-  root.querySelectorAll('[data-walk]').forEach(b=>{
-   b.onpointerdown=e=>{e.preventDefault();if(card||paused)return;held.add(b.dataset.walk);b.classList.add('held');};
-   const release=()=>{held.delete(b.dataset.walk);b.classList.remove('held');};
-   b.onpointerup=release;b.onpointercancel=release;b.onpointerleave=release;
-   // Keyboard activation of a d-pad button makes one deliberate step.
-   b.onclick=e=>{if(e.detail===0&&!paused&&!card){for(let k=0;k<4;k++)R.update(run,.05,{[b.dataset.walk]:true});afterMove(['near']);draw();}};
-  });
-  root.querySelector('.walk-inspect').onclick=inspect;
+<div class="walk-bar"><p class="walk-message" role="status" aria-live="polite"></p><button type="button" class="walk-pause">Pause</button></div><p id="walk-help" class="walk-sr">Tippt oder klickt auf die Karte, um dorthin zu gehen. Tippt auf ein Zeichen am Boden: Zacharias geht hin und untersucht es. An einer Station erscheint eine Sprechblase über ihm; tippt darauf, um nachzusehen. Tastatur: Pfeile oder WASD, Leertaste oder E zum Untersuchen.</p><p class="walk-orientation">Im Querformat lässt sich der Weg besser erkunden.</p></div>`;
   // Tap-to-walk on the map itself: thumbs and eyes stay on the same spot.
   const canvas=root.querySelector('.walk-canvas');
   canvas.addEventListener('pointerdown',e=>{
@@ -121,6 +112,8 @@ if(typeof window!=='undefined')(()=>{
    R.stations.forEach((s,i)=>{if(run.found.includes(i))return;const d=Math.hypot(x-(s.mx??s.x),y-((s.my??s.y)-10));if(d<best){best=d;target=i;}});
    if(target===null&&Math.hypot(x-R.sign.sprite.x,y-(R.sign.sprite.y-25))<60)target='sign';
    if(target!==null&&run.near===target){inspect();return;}
+   // The bubble above Zacharias (or Zacharias himself) opens what he is standing at.
+   if(run.near!==-1&&!run.route){const p=run.player;if(Math.abs(x-p.x)<40&&y>p.y-BUBBLE.lift-BUBBLE.h-12&&y<p.y+8){inspect();return;}}
    const goal=target===null?{x,y}:target==='sign'?R.sign:R.stations[target];
    if(R.walkTo(run,goal.x,goal.y,target)){tapMark={x:run.route[run.route.length-1].x,y:run.route[run.route.length-1].y,t:run.elapsed};autoInspect=target;if(!raf)loop();}
    else message('Dorthin führt kein Weg. Tippt auf eine Stelle auf dem Weg.');
@@ -145,11 +138,10 @@ if(typeof window!=='undefined')(()=>{
   root.querySelector('.walk-count').textContent=`${run.found.length} von 4 Belegen`;
  }
  function afterMove(events){
-  if(!events.length)return;const b=root.querySelector('.walk-inspect'),n=run.near;
-  b.disabled=n===-1;b.textContent=n==='sign'?'Wegweiser lesen':'Untersuchen';
+  if(!events.length)return;const n=run.near;
   if(events.includes('near')){
-   if(n==='sign')message('Hier steht ein Wegweiser.');
-   else if(n!==-1)message(`${options.stations[n].place}: Hier gibt es etwas zu beobachten. Tippt auf das Zeichen oder auf „Untersuchen“.`);
+   if(n==='sign')message('Hier steht ein Wegweiser. Tippt auf die Sprechblase, um ihn zu lesen.');
+   else if(n!==-1)message(`${options.stations[n].place}: Hier gibt es etwas zu beobachten. Tippt auf die Sprechblase.`);
    // Leaving a station clears its hint, so no stale place name stays on screen.
    else message(run.found.length?`Noch ${4-run.found.length} Station${4-run.found.length===1?'':'en'}. Folgt dem Weg weiter.`:'Folgt dem Weg vom Tor aus. An vier Orten hat Zacharias etwas beobachtet.');
   }
@@ -194,6 +186,9 @@ if(typeof window!=='undefined')(()=>{
   const fig=[{y:R.sign.sprite.y,paint:()=>GameArt.draw(ctx,art,P.fore,'signpost',R.sign.sprite.x,R.sign.sprite.y,.16)},
    {y:run.player.y,paint:()=>{const p=run.player,step=!reducedMotion.matches&&p.moving&&Math.floor(t/.22)%2===1;GameArt.draw(ctx,art,P.player,p.direction+'-'+(step?'step':'idle'),p.x,p.y,.21);}}];
   fig.sort((a,b)=>a.y-b.y).forEach(f=>f.paint());
+  // Small speech bubble instead of a button: shown only while standing at something to examine.
+  if(run.near!==-1&&!run.route&&!card){const e=GameArt.entry(art,P.touch,'inspect-bubble'),[x0,y0,x1,y1]=e.visible_bbox_xyxy,p=run.player;
+   ctx.drawImage(art.images[P.touch],x0,y0,x1-x0,y1-y0,p.x-BUBBLE.w/2,p.y-BUBBLE.lift-BUBBLE.h+bob,BUBBLE.w,BUBBLE.h);}
  }
  const keys={ArrowUp:'up',w:'up',W:'up',ArrowDown:'down',s:'down',S:'down',ArrowLeft:'left',a:'left',A:'left',ArrowRight:'right',d:'right',D:'right'};
  window.addEventListener('keydown',e=>{

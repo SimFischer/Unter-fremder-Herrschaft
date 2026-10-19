@@ -9,8 +9,8 @@
 .walk-slot canvas{width:52px;height:52px}
 .walk-slot-label{font-size:12px;line-height:1.15}
 .walk-count{margin-left:6px;font-size:15px;color:#4a3518}
-.walk-stage{display:flex;gap:16px;align-items:center;justify-content:center}
-.walk-field{position:relative;flex:0 1 auto;width:min(calc(100% - 236px),calc((94dvh - 250px)*1651/953));aspect-ratio:1651/953;background:#5c4a2c;border:3px solid #6e5129}
+.walk-stage{display:flex;flex-direction:column;align-items:center;gap:6px}
+.walk-field{position:relative;width:min(100%,calc((94dvh - 255px)*1651/953));aspect-ratio:1651/953;background:#5c4a2c;border:3px solid #6e5129}
 .walk-canvas{display:block;width:100%;height:100%;outline-offset:-4px}
 .walk-canvas:focus-visible{outline:3px solid #e7c56b}
 .walk-card{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(92%,560px);max-height:92%;overflow:auto;padding:16px 20px;background:linear-gradient(110deg,#f7e6c2,#efd9ad);border:3px solid #7a5a2c;box-shadow:0 10px 40px #0007;color:#342719}
@@ -25,17 +25,9 @@
 .walk-card-secure{background:#505a36;color:#fff0cc}
 .walk-paused{position:absolute;inset:0;background:#251e12c9;color:#f7e6bc;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;font-size:22px}
 .walk-paused[hidden]{display:none}
-.walk-controls{display:flex;flex-direction:column;align-items:center;gap:10px;flex:0 0 220px}
-.walk-controls .walk-help{text-align:center}.walk-controls .walk-actions{justify-content:center}
-.walk-dpad{display:grid;grid-template-columns:repeat(3,56px);grid-template-rows:repeat(2,56px);gap:3px;flex:0 0 auto}
-.walk-dpad button{width:56px;height:56px;min-width:56px;padding:0;font:bold 27px Georgia;touch-action:none;user-select:none;-webkit-user-select:none;border:2px solid #7b6033}
-.walk-dpad [data-walk="up"]{grid-column:2;grid-row:1}.walk-dpad [data-walk="left"]{grid-column:1;grid-row:2}.walk-dpad [data-walk="down"]{grid-column:2;grid-row:2}.walk-dpad [data-walk="right"]{grid-column:3;grid-row:2}
-.walk-dpad .held{background:#68562d;color:#ffedc7;outline:2px solid #b58f45}
-.walk-help{flex:1;min-width:0}.walk-help p{font:14px/1.35 Georgia;margin:3px 0}
-.walk-actions{display:flex;gap:8px;flex-wrap:wrap}
-.walk-inspect:not(:disabled){background:#505a36;color:#fff0cc;outline:2px solid #c7a361}
-.walk-inspect:disabled{opacity:.55;cursor:default}
-.walk-message{min-height:38px;color:#614523}
+.walk-bar{display:flex;align-items:center;gap:12px;width:min(100%,calc((94dvh - 255px)*1651/953))}.walk-bar .walk-pause{flex:0 0 auto;font-family:Georgia,serif;padding:6px 16px;min-height:44px}
+.walk-message{flex:1;min-width:0;margin:0;font:14px/1.3 Georgia;color:#614523}
+.walk-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .walk-orientation{display:none}
 @media(orientation:portrait){.walk-orientation{display:block;font-style:italic}}
 
@@ -84,20 +76,9 @@
 @media(max-width:850px){
  .report-tile-bank{grid-template-columns:1fr;justify-items:center}.report-tile{width:min(100%,400px)}.report-tile>span{font-size:15px}
  .report-tray{grid-template-columns:1fr}
- .walk-help p{font-size:13px}
+ .walk-message{font-size:13px}
 }
-/* Portrait and narrow screens: controls below the map. */
-@media(max-width:850px),(orientation:portrait){.walk-stage{flex-direction:column;align-items:stretch}.walk-field{width:100%}.walk-controls{flex:auto;flex-direction:row;align-items:center;gap:14px}.walk-controls .walk-help{text-align:left}.walk-controls .walk-actions{justify-content:flex-start}}
-@media(max-width:600px){.walk-controls{align-items:flex-start}.walk-slot{width:64px}.walk-slot canvas{width:42px;height:42px}.report-zone-question{display:none}.report-zone-items{top:20%}}
+@media(max-width:600px){.walk-slot{width:64px}.walk-slot canvas{width:42px;height:42px}.report-zone-question{display:none}.report-zone-items{top:20%}}
 
-/* Touch devices: walking happens by tapping the map; the arrow pad is only offered with a keyboard/mouse. */
+/* Walking happens by tapping or clicking the map; the keyboard still works. */
 .walk-canvas{touch-action:none;cursor:pointer}
-.walk-help-touch{display:none}
-@media (hover:none) and (pointer:coarse){
- .walk-dpad{display:none}
- .walk-help-touch{display:inline}.walk-help-keys{display:none}
- .walk-stage{flex-direction:column;align-items:stretch}
- .walk-field{width:min(100%,calc((94dvh - 230px)*1651/953));margin:0 auto}
- .walk-controls{flex:auto;flex-direction:row;align-items:center;gap:14px;width:min(100%,calc((94dvh - 230px)*1651/953));margin:6px auto 0}
- .walk-controls .walk-help{text-align:left}.walk-controls .walk-actions{justify-content:flex-start}
-}

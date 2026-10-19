@@ -32,12 +32,14 @@ function scene(){
 }
 
 // Explore phase (asset update 3): Siegel 1–4 begin with a painted scene and three findings before the task.
-const EXPLORE=["explore-erlassbrett", "explore-abgabentisch", "explore-reisende", "explore-kartentisch"],EXPLORE_SPOTS=[[[24.412, 31.646], [61.483, 46.941], [87.281, 51.688]], [[18.083, 36.392], [60.277, 26.371], [87.101, 50.105]], [[21.7, 46.835], [49.427, 36.92], [85.895, 45.886]], [[14.165, 41.983], [51.236, 58.544], [84.388, 46.414]]],exploreRead=Array.from({length:5},()=>new Set());let exploring=false;
+const EXPLORE=["explore-erlassbrett", "explore-abgabentisch", "explore-reisende", "explore-kartentisch"],EXPLORE_SPOTS=[[[24.412, 31.646], [61.483, 46.941], [87.281, 51.688]], [[18.083, 36.392], [60.277, 26.371], [87.101, 50.105]], [[21.7, 46.835], [49.427, 36.92], [85.895, 45.886]], [[14.165, 41.983], [51.236, 58.544], [84.388, 46.414]]];let exploring=false;
+// Read findings are saved per seal; the task unlocks once all three are read (teacher mode skips this).
+const readSet=i=>new Set(state.answers[i].explored||[]);
 function renderExplore(){
- const i=active,read=exploreRead[i];$('#puzzle .scroll').classList.toggle('exploring',exploring);
+ const i=active,read=readSet(i),ready=read.size===3||!!window.Teacher?.active;$('#puzzle .scroll').classList.toggle('exploring',exploring);
  if(i>=4){$('#core-info').innerHTML=`<p>${CORE[i]}</p><div class="discovery-actions">${READINGS[i].map((r,j)=>`<button data-discover="${j}">${['Untersuchen','Nachfragen','Weiterforschen'][j]}: ${r[0]}</button>`).join('')}</div><div id="discovery-detail"></div>`;return;}
  if(!exploring){$('#core-info').innerHTML=`<p>${CORE[i]}</p><button class="paper-quiet explore-back">Szene und Fundstücke ansehen (${read.size} von 3 entdeckt)</button>`;return;}
- $('#core-info').innerHTML=`<p class="explore-intro">${CORE[i]}</p><div class="explore"><img class="explore-art" src="assets/explore/${EXPLORE[i]}.png" alt="Szene zu Siegel ${i+1} mit drei Fundstücken">${READINGS[i].map((r,j)=>`<button class="explore-spot ${read.has(j)?'read':''}" data-discover="${j}" style="left:${EXPLORE_SPOTS[i][j][0]}%;top:${EXPLORE_SPOTS[i][j][1]}%" aria-label="${esc(r[0])}${read.has(j)?' (gelesen)':''}"><span class="explore-mark" aria-hidden="true"></span><span class="explore-label">${r[0]}</span></button>`).join('')}<div class="explore-bar"><span class="explore-count">${read.size} von 3 Fundstücken entdeckt</span><button class="explore-go">${i===2?'Ins Gespräch kommen':'Zur Aufgabe'}</button></div><article class="explore-card" hidden></article></div>`;
+ $('#core-info').innerHTML=`<p class="explore-intro">${CORE[i]}</p><div class="explore"><img class="explore-art" src="assets/explore/${EXPLORE[i]}.png" alt="Szene zu Siegel ${i+1} mit drei Fundstücken">${READINGS[i].map((r,j)=>`<button class="explore-spot ${read.has(j)?'read':''}" data-discover="${j}" style="left:${EXPLORE_SPOTS[i][j][0]}%;top:${EXPLORE_SPOTS[i][j][1]}%" aria-label="${esc(r[0])}${read.has(j)?' (gelesen)':''}"><span class="explore-mark" aria-hidden="true"></span><span class="explore-label">${r[0]}</span></button>`).join('')}<div class="explore-bar"><span class="explore-count" role="status">${ready?'Alle Fundstücke gelesen.':`${read.size} von 3 gelesen · Lest alle drei Fundstücke, dann geht es weiter.`}</span><button class="explore-go" ${ready?'':'disabled'}>${i===2?'Ins Gespräch kommen':'Zur Aufgabe'}</button></div><article class="explore-card" hidden></article></div>`;
 }
 function open(i){
  active=i;pending=null;awaitingNext=false;opener=document.activeElement;
@@ -227,7 +229,8 @@ $('#core-info').addEventListener('click',e=>{
  const b=e.target.closest('[data-discover]');if(!b)return;
  const j=Number(b.dataset.discover),r=READINGS[active][j];
  if(b.classList.contains('explore-spot')){
-  exploreRead[active].add(j);b.classList.add('read');$('.explore-count').textContent=`${exploreRead[active].size} von 3 Fundstücken entdeckt`;
+  const a=state.answers[active];a.explored=[...new Set([...(a.explored||[]),j])].sort();save();b.classList.add('read');
+  const n=a.explored.length,ready=n===3||!!window.Teacher?.active;$('.explore-count').textContent=ready?'Alle Fundstücke gelesen.':`${n} von 3 gelesen · Lest alle drei Fundstücke, dann geht es weiter.`;$('.explore-go').disabled=!ready;
   const c=$('.explore-card');c.dataset.n=j;c.hidden=false;c.innerHTML=`<h3>${r[0]}</h3><div class="explore-text"><p>${r[1]}</p></div><div class="explore-card-actions"><small>Im Reisebuch nachlesbar.</small><button class="explore-card-close">Weiter erkunden</button></div>`;c.querySelector('button').focus({preventScroll:true});return;
  }
  $('#discovery-detail').innerHTML=`<article class="found-note"><h3>${r[0]}</h3><p>${r[1]}</p><small>Im Reisebuch nachlesbar.</small></article>`;
