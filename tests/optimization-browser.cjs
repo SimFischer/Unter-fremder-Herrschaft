@@ -10,12 +10,12 @@ const R=require('../logic.js'),M=require('../map-rules.js');
  const shot=async name=>{if(out){fs.mkdirSync(out,{recursive:true});await page.screenshot({path:path.join(out,name+'.png')});}};
  const fixture=async s=>{await page.goto(server.url);await page.evaluate(s=>localStorage.setItem('palaestina-adventure-klasse6-v2',JSON.stringify(s)),s);await page.reload();await page.waitForLoadState('networkidle');};
  const tap=s=>page.locator(s).tap();
- const full=R.fresh();full.solved.fill(true);full.interludeCompleted=true;full.interludeStarted=true;
+ const full=R.fresh();full.solved.fill(true);full.gatePassed=true;full.interludeCompleted=true;full.interludeStarted=true;
  await fixture(full);
  for(const [w,h]of [[1024,768],[1180,820],[1194,834],[1366,1024]]){
   await page.setViewportSize({width:w,height:h});
   for(let n=0;n<=5;n++){
-   await page.evaluate(n=>{const s=Adventure.getState();s.solved=s.solved.map((_,i)=>i<n);Adventure.save();},n);await page.reload();await page.waitForLoadState('networkidle');
+   await page.evaluate(n=>{const s=Adventure.getState();s.solved=s.solved.map((_,i)=>i<n);s.gatePassed=n===5;Adventure.save();},n);await page.reload();await page.waitForLoadState('networkidle');
    const sizes=await page.evaluate(()=>{const s=document.querySelector('.scene').getBoundingClientRect();return [...document.querySelectorAll('.world-objects img')].map(e=>{const r=e.getBoundingClientRect();return [e.getAttribute('src'),r.width/s.width,r.height/s.height,(r.bottom-s.top)/s.height];});});
    const people=sizes.find(x=>x[0]==='group-people.webp'),map=sizes.find(x=>x[0]==='map-table.webp'),table=sizes.find(x=>x[0]==='coin-table.webp');assert.ok(people[2]>.39&&people[2]<.44);assert.ok(table[2]<people[2]*.6);assert.ok(map[2]<people[2]*.5);assert.ok(people[3]>.83&&people[3]<.85);
    for(let i=0;i<5;i++){await tap(`[data-open="${i}"]`);assert.ok(await page.locator('#puzzle').isVisible());await tap('#close');}
@@ -24,7 +24,7 @@ const R=require('../logic.js'),M=require('../map-rules.js');
   await tap('[data-open="3"]');
   for(let r=0;r<8;r++){
    await tap(`[data-round="${r}"]`);
-   const t=M.tasks[r];if(t.answer.length>1)await tap('[data-map-reset]');assert.equal(await page.locator('[data-place]').count(),t.candidates.length);
+   const t=M.tasks[r];if(!M.isChoice(r)&&t.answer.length>1)await tap('[data-map-reset]');assert.equal(await page.locator('[data-place]').count(),M.isChoice(r)?t.show.length:t.candidates.length);
    const problems=await page.locator('.map').evaluate(el=>{
     const bs=[...el.querySelectorAll('button')],bad=[];
     const rects=bs.map(b=>({name:b.textContent.trim(),r:b.getBoundingClientRect()}));
@@ -33,14 +33,15 @@ const R=require('../logic.js'),M=require('../map-rules.js');
     return bad;
    });assert.deepEqual(problems,[],`${w} clue ${r+1}`);
    for(let hint=0;hint<3;hint++){await tap('[data-map-hint]');assert.match(await page.locator('#map-hint').textContent(),new RegExp(t.hints[hint].slice(0,12).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));}
-   const wrong=t.candidates.find(n=>!t.answer.includes(n))??t.answer.at(-1);await tap(`[data-place="${wrong}"]`);await tap('#check');assert.equal(await page.locator('#feedback').getAttribute('class'),'needs-help');
+   if(M.isChoice(r)){await tap(`[data-key="mapChoice${r}"][data-value="${(t.answer+1)%t.options.length}"]`);await tap('#check');assert.equal(await page.locator('#feedback').getAttribute('class'),'needs-help');await tap(`[data-key="mapChoice${r}"][data-value="${t.answer}"]`);}
+   else{const wrong=t.candidates.find(n=>!t.answer.includes(n))??t.answer.at(-1);await tap(`[data-place="${wrong}"]`);await tap('#check');assert.equal(await page.locator('#feedback').getAttribute('class'),'needs-help');
    if(t.answer.length>1)await tap('[data-map-reset]');
-   for(const n of t.answer)await tap(`[data-place="${n}"]`);
-   if(r===7){await tap('#close');await page.reload();await tap('[data-open="3"]');await tap('[data-round="7"]');assert.equal(await page.locator('[data-place][aria-pressed="true"]').count(),5);}
+   for(const n of t.answer)await tap(`[data-place="${n}"]`);}
+   if(r===7){await tap('#close');await page.reload();await tap('[data-open="3"]');await tap('[data-round="7"]');assert.equal(await page.locator('[data-place][aria-pressed="true"]').count(),t.answer.length);}
    await tap('#check');assert.equal(await page.locator('#feedback').getAttribute('class'),'success');
    if([3,4,5,6,7].includes(r)){await page.locator('.map').scrollIntoViewIfNeeded();await shot(`${w}-map-${r+1}`);}
   }
-  await tap('#close');await tap('#bonus-open');await page.locator('#bonus-begin').waitFor();
+  await tap('#close');await tap('#bonus-games-open');await tap('#bonus-open');await page.locator('#bonus-begin').waitFor();
   // Native inner rectangles, measured on the 1659×948 asset, not inferred from rendered controls.
   const fields=[['[data-mode="swap"]',[178,692,548,779]],['[data-mode="slide"]',[578,692,959,779]],['[data-size="3"]',[1023,692,1158,779]],['[data-size="4"]',[1187,692,1322,779]],['[data-size="5"]',[1355,692,1487,779]]];
   for(const [selector,rect]of fields){const bounds=await page.locator(selector).evaluate((e,rect)=>{const panel=e.closest('.bonus-selection').getBoundingClientRect(),r=e.getBoundingClientRect();const x=(r.left-panel.left)*1659/panel.width,y=(r.top-panel.top)*948/panel.height;return {x,y,right:x+r.width*1659/panel.width,bottom:y+r.height*948/panel.height,w:r.width,h:r.height};},rect);assert.ok(bounds.w>=44&&bounds.h>=44);assert.ok(bounds.x>=rect[0]-1&&bounds.y>=rect[1]-1&&bounds.right<=rect[2]+1&&bounds.bottom<=rect[3]+1,`${w} ${selector} ${JSON.stringify(bounds)}`);await tap(selector);assert.equal(await page.locator(selector).getAttribute('aria-pressed'),'true');}

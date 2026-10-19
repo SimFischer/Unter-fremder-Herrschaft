@@ -46,7 +46,7 @@ const key='palaestina-adventure-klasse6-v2';
  assert.equal(await page.locator('#end').isVisible(),false);
  await page.locator('[data-open="0"]').tap();assert.equal(await page.locator('#puzzle').isVisible(),true);await page.keyboard.press('Escape');
  await page.locator('[data-open="1"]').focus();await page.keyboard.press('Enter');assert.equal(await page.locator('#puzzle').isVisible(),true);await page.keyboard.press('Escape');
- assert.equal(await page.locator('#bonus-open').isVisible(),false);
+ assert.equal(await page.locator('#bonus-games-open').isVisible(),false);
  // Complete every station using the visible controls. Wrong answers never unlock steps.
  for(let station=0;station<5;station++){
   await click(`[data-open="${station}"]`);await shot(`station-${station+1}`);
@@ -67,7 +67,7 @@ const key='palaestina-adventure-klasse6-v2';
    await select('overall',1);await check();
   }
   if(station===3){
-   for(const values of [[0],[1],[5],[4],[6,7],[5,2],[4,3,8],[5,2,1,0,7]]){for(const i of values)await click(`[data-place="${i}"]`);await check();await next();}
+   for(const values of [[0,1,2],[4,3,8],[6,15],[7,14],1,1,[1,2,13],[7,12,10,5]]){if(Array.isArray(values)){for(const i of values)await click(`[data-place="${i}"]`);}else await select('mapChoice'+(await page.evaluate(()=>document.querySelector('.round-nav .current').dataset.round)),values);await check();await next();}
    await select('transfer0',0);await check();await next();await select('transfer1',2);await check();
   }
   if(station===4){
@@ -98,7 +98,7 @@ const key='palaestina-adventure-klasse6-v2';
  await click('[data-open="0"]');await click('#puzzle-book');await click('[data-book="time"]');await page.keyboard.press('Escape');await page.locator('#puzzle').waitFor({state:'visible'});assert.equal(await page.locator('#puzzle').isVisible(),true);await click('#close');
  await click('#notebook-open');await shot('notebook');await page.keyboard.press('Escape');assert.equal(await page.locator('#notebook').isVisible(),false);
  await click('#end');for(let n=0;n<3;n++){await shot('finale-'+n);await click('#finale-next');}assert.equal(await page.locator('#finale').isVisible(),false);
- await click('#bonus-open');await page.locator('#bonus-begin').waitFor();assert.equal(await page.locator('[data-motif]').count(),5);assert.equal((await save()).solved.filter(Boolean).length,5);await click('#bonus-close');
+ await click('#bonus-games-open');await click('#bonus-open');await page.locator('#bonus-begin').waitFor();assert.equal(await page.locator('[data-motif]').count(),5);assert.equal((await save()).solved.filter(Boolean).length,5);await click('#bonus-close');
  // Restore a version-1 save through the actual browser load path.
  const old={version:1,solved:[true,true,true,true,true],answers:Array.from({length:5},()=>({stage:6,sentence:'Alt'})),attempts:[0,0,0,0,0]};
  await page.evaluate(([key,old])=>localStorage.setItem(key,JSON.stringify(old)),[key,old]);await page.reload();assert.equal(await page.locator('#end').isVisible(),true);
@@ -118,7 +118,7 @@ const key='palaestina-adventure-klasse6-v2';
  for(const [w,h] of viewports){await page.setViewportSize({width:w,height:h});await inspect('scene',w,h);
   for(let i=0;i<5;i++){await click(`[data-open="${i}"]`);await inspect('station'+i,w,h);await page.evaluate(()=>{const e=document.querySelector('.exercise-body'),s=e.closest('.scroll');s.scrollTop+=e.getBoundingClientRect().top-s.getBoundingClientRect().top;});await shot(`${w}x${h}-task${i}`);if(i===4){await page.locator('.walk-canvas').waitFor();await click('[data-round="1"]');await inspect('report-board',w,h);await click('[data-round="2"]');await inspect('arguments',w,h);}await click('#close');}
   await click('#notebook-open');await inspect('notebook',w,h);await page.keyboard.press('Escape');
-  await click('#end');await inspect('finale',w,h);await click('#return');await click('#bonus-open');await inspect('bonus',w,h);await click('#bonus-close');
+  await click('#end');await inspect('finale',w,h);await click('#return');await click('#bonus-games-open');await click('#bonus-open');await inspect('bonus',w,h);await click('#bonus-close');
  }
  // Damaged JSON is recoverable; reset clears progress and returns gate to zero.
  await page.evaluate(k=>localStorage.setItem(k,'{broken'),key);await page.reload();assert.equal(await page.locator('#end').isVisible(),false);

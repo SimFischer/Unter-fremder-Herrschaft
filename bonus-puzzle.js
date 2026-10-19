@@ -52,7 +52,7 @@ if(typeof window!=='undefined')(()=>{
  let art=null,game=null,phase='selection',timer=0,token=0,settings=BonusPuzzleRules.settings();
  const state=()=>window.Adventure.getState();
  function saveSettings(){state().bonusSettings={...settings};window.Adventure.save();}
- function unlocked(){return state().solved.every(Boolean);}
+ function unlocked(){return state().gatePassed===true;}
  async function open(){
   if(!unlocked())return;
   const id=++token;if(!dialog.open)dialog.showModal();

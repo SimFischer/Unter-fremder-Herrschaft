@@ -22,7 +22,7 @@ const ReportWalkRules=(()=>{
  // An optional signpost: only a place name, deliberately not evidence.
  const sign={x:300,y:640,r:70,sprite:{x:344,y:648}};
  const valid=v=>Array.isArray(v)?[...new Set(v.filter(n=>Number.isInteger(n)&&n>=0&&n<stations.length))].sort():[];
- function create(found){return {player:{...start,direction:'north',moving:false},found:valid(found),elapsed:0,near:-1};}
+ function create(found){return {player:{...start,direction:'north',moving:false},found:valid(found),elapsed:0,near:-1,route:null,goalStation:null};}
  // Index of the unsecured station in reach, -1 for none, 'sign' for the signpost.
  function nearby(run){
   const p=run.player;let best=-1,dist=Infinity;
@@ -30,9 +30,41 @@ const ReportWalkRules=(()=>{
   if(best<0&&Math.hypot(p.x-sign.x,p.y-sign.y)<=sign.r)return 'sign';
   return best;
  }
+ // Tap-to-walk: breadth-first search on the 8 px grid (8 neighbours), then the path is thinned to straight legs.
+ const G=4,cellFree=(cx,cy)=>free(cx*G+G/2,cy*G+G/2);
+ function nearestFree(x,y){
+  const cx=Math.round((x-G/2)/G),cy=Math.round((y-G/2)/G);
+  for(let r=0;r<80;r++)for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++){if(Math.max(Math.abs(dx),Math.abs(dy))!==r)continue;if(cellFree(cx+dx,cy+dy))return [cx+dx,cy+dy];}
+  return null;
+ }
+ function lineFree(a,b){const d=Math.hypot(b.x-a.x,b.y-a.y),n=Math.ceil(d/1.5);for(let i=1;i<=n;i++){const t=i/n;if(!free(a.x+(b.x-a.x)*t,a.y+(b.y-a.y)*t))return false;}return true;}
+ // radius>0: any reachable cell within that distance of `to` counts as the goal (stations may sit behind fences).
+ function path(from,to,radius=0){
+  const s=nearestFree(from.x,from.y),g=radius?null:nearestFree(to.x,to.y);if(!s||(!radius&&!g))return null;let end=null;
+  const W=Math.ceil(width/G),key=(x,y)=>y*W+x,prev=new Map([[key(...s),-1]]),q=[s];let found=false;
+  for(let k=0;k<q.length;k++){const [x,y]=q[k];if(radius?Math.hypot(x*G+G/2-to.x,y*G+G/2-to.y)<=radius:(x===g[0]&&y===g[1])){found=true;end=[x,y];break;}
+   for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]]){const nx=x+dx,ny=y+dy,kk=key(nx,ny);if(prev.has(kk)||!cellFree(nx,ny))continue;if(dx&&dy&&(!cellFree(x+dx,y)||!cellFree(x,y+dy)))continue;prev.set(kk,key(x,y));q.push([nx,ny]);}}
+  if(!found)return null;
+  const pts=[];for(let k=key(...end);k!==-1;k=prev.get(k))pts.unshift({x:(k%W)*G+G/2,y:Math.floor(k/W)*G+G/2});
+  const out=[];let a={x:from.x,y:from.y};
+  for(let i=1;i<pts.length;i++){if(!lineFree(a,pts[i])){out.push(pts[i-1]);a=pts[i-1];}}
+  out.push(pts[pts.length-1]);return out;
+ }
+ function walkTo(run,x,y,station=null){const r=station===null?0:(station==='sign'?sign.r:stations[station].r)-4;const p=path(run.player,{x,y},r);run.route=p&&p.length?p:null;run.goalStation=run.route?station:null;return !!run.route;}
  function update(run,dt,input={}){
   dt=Math.max(0,Math.min(dt,.05));run.elapsed+=dt;
   const p=run.player;let dx=Number(!!input.right)-Number(!!input.left),dy=Number(!!input.down)-Number(!!input.up);
+  if(dx||dy)run.route=null;
+  const events=[];
+  if(!dx&&!dy&&run.route){
+   const t=run.route[0],ex=t.x-p.x,ey=t.y-p.y,d=Math.hypot(ex,ey),step=speed*dt;
+   p.direction=Math.abs(ex)>Math.abs(ey)?(ex>0?'east':'west'):(ey>0?'south':'north');p.moving=true;
+   if(d<=step){p.x=t.x;p.y=t.y;run.route.shift();if(!run.route.length){run.route=null;p.moving=false;events.push('arrived');}}
+   else{p.x+=ex/d*step;p.y+=ey/d*step;}
+   const before=run.near;run.near=nearby(run);if(before!==run.near)events.push('near');
+   if(run.goalStation!==null&&run.near===run.goalStation){run.route=null;p.moving=false;events.push('arrived');}
+   return events;
+  }
   p.moving=!!(dx||dy);
   if(p.moving){
    p.direction=Math.abs(dx)>Math.abs(dy)?(dx>0?'east':'west'):(dy>0?'south':'north');
@@ -44,7 +76,7 @@ const ReportWalkRules=(()=>{
  }
  function secure(run,i){if(!Number.isInteger(i)||i<0||i>=stations.length||run.found.includes(i))return false;run.found=valid([...run.found,i]);return true;}
  const complete=run=>run.found.length===stations.length;
- return {width,height,speed,cell,cols,rowCount:ROWS.length,walkable,free,start,stations,sign,valid,create,nearby,update,secure,complete};
+ return {width,height,speed,cell,cols,rowCount:ROWS.length,walkable,free,start,stations,sign,valid,create,nearby,path,walkTo,update,secure,complete};
 })();
 if(typeof module!=='undefined')module.exports=ReportWalkRules;
 if(typeof window!=='undefined')window.ReportWalkRules=ReportWalkRules;
@@ -52,7 +84,7 @@ if(typeof window!=='undefined')window.ReportWalkRules=ReportWalkRules;
 if(typeof window!=='undefined')(()=>{
  const T='assets/puzzles/report-topdown/',P={bg:T+'report-route-bg.webp',player:T+'report-player.png',markers:T+'report-markers.png',evidence:T+'report-evidence.png',frame:T+'report-evidence-frame.png',fore:T+'report-foreground.png'};
  const R=ReportWalkRules,reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
- let art=null,run=null,root=null,options=null,raf=0,last=0,paused=false,card=null,token=0;
+ let art=null,run=null,root=null,options=null,raf=0,last=0,paused=false,card=null,token=0,tapMark=null,autoInspect=null;
  const held=new Set(),keyboard=new Set();
  const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const active=()=>!!(root&&root.isConnected&&root.closest('dialog[open]'));
@@ -71,7 +103,7 @@ if(typeof window!=='undefined')(()=>{
 <div class="walk-card" hidden role="dialog" aria-modal="false" aria-labelledby="walk-card-title"></div>
 <div class="walk-paused" hidden><p>Die Reise wartet.</p><button class="walk-resume">Weitergehen</button></div></div>
 <div class="walk-controls"><div class="walk-dpad" role="group" aria-label="Bewegungssteuerung">${[['up','↑','Nach Norden'],['left','←','Nach Westen'],['down','↓','Nach Süden'],['right','→','Nach Osten']].map(([d,t,l])=>`<button type="button" data-walk="${d}" aria-label="${l}">${t}</button>`).join('')}</div>
-<div class="walk-help"><p id="walk-help">Richtung halten: gehen. Tastatur: Pfeile oder WASD, Leertaste oder E: untersuchen.</p><div class="walk-actions"><button type="button" class="walk-inspect" disabled>Untersuchen</button><button type="button" class="walk-pause">Pause</button></div><p class="walk-message" role="status" aria-live="polite"></p><p class="walk-orientation">Im Querformat lässt sich der Weg besser erkunden.</p></div></div></div>`;
+<div class="walk-help"><p id="walk-help"><span class="walk-help-touch">Tippt auf die Karte: Zacharias geht dorthin. Tippt auf ein Zeichen am Boden: Er geht hin und untersucht es.</span><span class="walk-help-keys">Tippt oder klickt auf die Karte, um dorthin zu gehen. Tastatur: Pfeile oder WASD, Leertaste oder E: untersuchen.</span></p><div class="walk-actions"><button type="button" class="walk-inspect" disabled>Untersuchen</button><button type="button" class="walk-pause">Pause</button></div><p class="walk-message" role="status" aria-live="polite"></p><p class="walk-orientation">Im Querformat lässt sich der Weg besser erkunden.</p></div></div></div>`;
   root.querySelectorAll('[data-walk]').forEach(b=>{
    b.onpointerdown=e=>{e.preventDefault();if(card||paused)return;held.add(b.dataset.walk);b.classList.add('held');};
    const release=()=>{held.delete(b.dataset.walk);b.classList.remove('held');};
@@ -80,6 +112,19 @@ if(typeof window!=='undefined')(()=>{
    b.onclick=e=>{if(e.detail===0&&!paused&&!card){for(let k=0;k<4;k++)R.update(run,.05,{[b.dataset.walk]:true});afterMove(['near']);draw();}};
   });
   root.querySelector('.walk-inspect').onclick=inspect;
+  // Tap-to-walk on the map itself: thumbs and eyes stay on the same spot.
+  const canvas=root.querySelector('.walk-canvas');
+  canvas.addEventListener('pointerdown',e=>{
+   if(paused||card)return;e.preventDefault();const r=canvas.getBoundingClientRect(),x=(e.clientX-r.left)*R.width/r.width,y=(e.clientY-r.top)*R.height/r.height;
+   // A tap on (or close to) an unsecured station's marker walks there and opens it on arrival.
+   let target=null,best=70;
+   R.stations.forEach((s,i)=>{if(run.found.includes(i))return;const d=Math.hypot(x-(s.mx??s.x),y-((s.my??s.y)-10));if(d<best){best=d;target=i;}});
+   if(target===null&&Math.hypot(x-R.sign.sprite.x,y-(R.sign.sprite.y-25))<60)target='sign';
+   if(target!==null&&run.near===target){inspect();return;}
+   const goal=target===null?{x,y}:target==='sign'?R.sign:R.stations[target];
+   if(R.walkTo(run,goal.x,goal.y,target)){tapMark={x:run.route[run.route.length-1].x,y:run.route[run.route.length-1].y,t:run.elapsed};autoInspect=target;if(!raf)loop();}
+   else message('Dorthin führt kein Weg. Tippt auf eine Stelle auf dem Weg.');
+  });
   root.querySelector('.walk-pause').onclick=pause;
   root.querySelector('.walk-resume').onclick=resume;
   hud();message(run.found.length===R.stations.length?'Alle vier Beobachtungen sind gesichert. Als Nächstes ordnet ihr sie ein.':run.found.length?'Sucht die übrigen Stationen auf dem Reiseweg.':'Folgt dem Weg vom Tor aus. An vier Orten hat Zacharias etwas beobachtet.');
@@ -102,8 +147,13 @@ if(typeof window!=='undefined')(()=>{
  function afterMove(events){
   if(!events.length)return;const b=root.querySelector('.walk-inspect'),n=run.near;
   b.disabled=n===-1;b.textContent=n==='sign'?'Wegweiser lesen':'Untersuchen';
-  if(n==='sign')message('Hier steht ein Wegweiser.');
-  else if(n!==-1)message(`${options.stations[n].place}: Hier gibt es etwas zu beobachten. Tippt auf „Untersuchen“.`);
+  if(events.includes('near')){
+   if(n==='sign')message('Hier steht ein Wegweiser.');
+   else if(n!==-1)message(`${options.stations[n].place}: Hier gibt es etwas zu beobachten. Tippt auf das Zeichen oder auf „Untersuchen“.`);
+   // Leaving a station clears its hint, so no stale place name stays on screen.
+   else message(run.found.length?`Noch ${4-run.found.length} Station${4-run.found.length===1?'':'en'}. Folgt dem Weg weiter.`:'Folgt dem Weg vom Tor aus. An vier Orten hat Zacharias etwas beobachtet.');
+  }
+  if(events.includes('arrived')){tapMark=null;if(autoInspect!==null&&run.near===autoInspect){autoInspect=null;inspect();}else autoInspect=null;}
  }
  function inspect(){
   const n=run.near;if(n===-1||card||paused)return;stop();
@@ -140,6 +190,7 @@ if(typeof window!=='undefined')(()=>{
   R.stations.forEach((s,i)=>{if(run.found.includes(i))return;const e=GameArt.entry(art,P.markers,s.marker),b=e.visible_bbox_xyxy,scale=30/(b[2]-b[0]);
    if(run.near===i){ctx.beginPath();ctx.ellipse(s.mx??s.x,(s.my??s.y)+2,26,9,0,0,Math.PI*2);ctx.fillStyle='rgba(240,214,140,.45)';ctx.fill();}
    GameArt.draw(ctx,art,P.markers,s.marker,s.mx??s.x,(s.my??s.y)-10+bob,scale);});
+  if(tapMark&&run.route){const a=.5+.3*Math.sin(t*6);ctx.beginPath();ctx.ellipse(tapMark.x,tapMark.y,16,7,0,0,Math.PI*2);ctx.strokeStyle=`rgba(90,58,24,${a})`;ctx.lineWidth=3;ctx.stroke();}
   const fig=[{y:R.sign.sprite.y,paint:()=>GameArt.draw(ctx,art,P.fore,'signpost',R.sign.sprite.x,R.sign.sprite.y,.16)},
    {y:run.player.y,paint:()=>{const p=run.player,step=!reducedMotion.matches&&p.moving&&Math.floor(t/.22)%2===1;GameArt.draw(ctx,art,P.player,p.direction+'-'+(step?'step':'idle'),p.x,p.y,.21);}}];
   fig.sort((a,b)=>a.y-b.y).forEach(f=>f.paint());

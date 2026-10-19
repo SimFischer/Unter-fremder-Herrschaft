@@ -90,11 +90,11 @@ const KNOWLEDGE=[
 ['Belastungen','Die Menschen mussten Steuern und andere Abgaben zahlen. Für wohlhabende Familien war das oft leichter zu tragen als für arme Bauern und Handwerker. Nach schlechten Ernten konnte die Belastung so groß werden, dass kaum genug zum Leben blieb. Zeichen römischer Herrschaft waren auch im Alltag sichtbar, zum Beispiel auf Münzen.'],
 ['Religion','Juden glaubten an den einen Gott. Die Römer verehrten dagegen viele Götter; auch der Kaiser wurde besonders verehrt. Viele Juden lehnten diese Verehrung ab und wollten ihren Glauben und ihre Traditionen bewahren. Dadurch entstanden religiöse Spannungen.'],
 ['Reaktionen','Die Menschen reagierten unterschiedlich auf die römische Herrschaft. Manche arrangierten sich und versuchten, ihren Alltag weiterzuleben. Andere hofften auf Freiheit. Manche wollten die Römer mit Gewalt vertreiben. Die organisierte Gruppe der Zeloten ist erst aus dem Krieg gegen Rom ab 66 n. Chr. bekannt. Nicht alle früheren Gegner Roms gehörten zu ihr.'],
-['Palästina','Auf dieser Karte betrachten wir drei Regionen der historischen Landschaft Palästina: Galiläa im Norden, Samaria in der Mitte und Judäa im Süden. Der Jordan fließt durch das Land. Der See Genezareth liegt in Galiläa. Kafarnaum lag am Nordufer des Sees. Jerusalem war die wichtigste Stadt Judäas und Standort des Tempels.']];
+['Palästina','Auf dieser Karte betrachten wir Regionen der historischen Landschaft Palästina: westlich des Jordan Galiläa im Norden, Samaria in der Mitte und Judäa im Süden, dazu Idumäa ganz im Süden und Peräa östlich des Jordan. Der Jordan fließt durch das Land. Der See Genezareth liegt in Galiläa. Kafarnaum lag am Nordufer des Sees. Jerusalem war die wichtigste Stadt Judäas und Standort des Tempels. Um 30 n. Chr. regierte Herodes Antipas Galiläa und Peräa östlich des Jordan. Samaria, Judäa und Idumäa im Süden verwaltete ein römischer Präfekt, damals Pontius Pilatus; er residierte meist in Kaisareia am Mittelmeer.']];
 const PUZZLES=[
 {name:'Herrschaftsnetz',object:'Erlassbrett',pos:[17,28],anchor:[20,42],knowledge:[0,1,2],hint:'Unterscheidet politische, wirtschaftliche und religiöse Folgen. Eine Kette führt von einer Maßnahme über ihre Wirkung zum Erleben der Menschen.'},
 {name:'Manipulierte Akte',object:'Abgabentisch',pos:[28,54],anchor:[21,64],knowledge:[0,1,2],hint:'Prüft besonders, wer Herrscher bestimmte, wo Rom im Alltag sichtbar war und wie viele Juden zur Kaiserverehrung standen.'},
-{name:'Stimmen unter Fremdherrschaft',object:'Figurengruppe',pos:[79,26],anchor:[63,62],knowledge:[0,1,3],hint:'Achtet auf die Verben: weiterleben, hoffen, kämpfen und sichern. Haltung und Begründung müssen zur selben Stimme passen.'},
+{name:'Stimmen unter Fremdherrschaft',object:'Reisende',pos:[79,26],anchor:[63,62],knowledge:[0,1,3],hint:'Achtet auf die Verben: weiterleben, hoffen, kämpfen und sichern. Haltung und Begründung müssen zur selben Stimme passen.'},
 {name:'Karte Palästinas',object:'Karte',pos:[83,55],anchor:[83,76],knowledge:[4],hint:'Orientiert euch zuerst an Norden, Mitte und Süden. Unterscheidet dann Orte, Gewässer und Regionen.'},
 {name:'Zacharias’ Bericht',object:'Pergamentrolle',pos:[54,69],anchor:[42,85],knowledge:[0,1,3],hint:'Sucht auf dem Reiseweg die vier konkreten Erfahrungen: Kontrolle, Abgaben, ein sichtbares Zeichen der römischen Macht und Hoffnung auf Selbstbestimmung.'}];
 
@@ -168,7 +168,7 @@ const CORE=[
 'Um 30 n. Chr.: In Galiläa regiert Herodes Antipas mit Roms Zustimmung. Judäa und Samaria werden von einem römischen Präfekten verwaltet. Am Brett untersucht ihr, wie Macht den Alltag verändert.',
 'Der Schreiber bittet um Hilfe: Drei Einträge wurden verdreht. Vergleicht sie mit der Münze, den Vorräten und dem Erlass am Tisch.',
 'Vier erfundene Gesprächspartner zeigen mögliche Perspektiven. Hört zuerst die Haltung heraus und begründet sie danach. Keine Stimme steht für alle Menschen.',
-'Die Karte ist eine vereinfachte Orientierung: Norden ist oben. Region, Ort, Fluss und See sind verschiedene Dinge. Der Kartenschreiber erklärt euch die Lage im Reisebuch.',
+'Die Karte ist eine vereinfachte, stumme Karte: Norden ist oben, die Orte tragen nur Nummern. Ein Name erscheint, sobald ihr den Ort gefunden habt. Region, Ort, Fluss und See sind verschiedene Dinge. Eine Maßstabsleiste hilft beim Schätzen von Entfernungen.',
 'Zacharias’ Bericht ist eine erfundene Spielsituation. Geht seinen Reiseweg ab, sichert an vier Stationen seine Beobachtungen, ordnet sie ein und baut daraus eine Erklärung.'
 ];
 const ARGUMENTS={

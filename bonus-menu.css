@@ -1,0 +1,10 @@
+/* Bonusspiele: Auswahl mit zwei Karten (bis das gemalte Auswahlbrett aus Asset-Update 3 vorliegt). */
+#bonus-games{width:min(860px,96vw)}
+.bonus-games-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:18px 20px 22px;color:#342719}
+.bonus-game-card{display:flex;flex-direction:column;gap:6px;padding:12px;background:linear-gradient(110deg,#ecd3a4,#f3e3c3);border:2px solid #9c7547;box-shadow:2px 3px 6px #49301430}
+.bonus-game-card>img{width:100%;aspect-ratio:16/10;object-fit:cover;border:2px solid #6e5129}
+.bonus-game-card h3{margin:6px 0 0;font-size:22px}
+.bonus-game-card p{margin:0;font:15px/1.45 Georgia}
+.bonus-game-progress{font-weight:700;color:#4d5a2f;min-height:22px}
+.bonus-game-card button{margin-top:auto;background:#505a36;color:#fff0cc;min-height:48px}
+@media(max-width:640px){.bonus-games-cards{grid-template-columns:1fr}}
