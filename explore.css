@@ -1,0 +1,33 @@
+/* Erkundungsphase (Siegel 1–4) und Gespräch mit Halbfiguren (Siegel 3) – Asset-Update 3. */
+#puzzle .scroll.exploring #task,#puzzle .scroll.exploring #hint-open,#puzzle .scroll.exploring #hint-panel,#puzzle .scroll.exploring #feedback,#puzzle .scroll.exploring .actions{display:none}
+#core-info:has(.explore){border-bottom:0}
+.explore-intro{margin:0 0 10px}
+.explore{position:relative;aspect-ratio:1659/948;width:min(100%,calc((94dvh - 230px)*1659/948));margin:0 auto;border:3px solid #6e5129;border-radius:4px;overflow:hidden;background:#5c4a2c}
+.explore-art{position:absolute;inset:0;width:100%;height:100%}
+.explore-spot{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:4px;padding:0;min-width:64px;background:none;border:0;box-shadow:none;color:#342719}
+.explore-mark{display:block;width:clamp(44px,6vw,64px);aspect-ratio:1;background:url('assets/ui/discovery-marks.png') 0 0/200% 100% no-repeat}
+.explore-spot.read .explore-mark{background-position:100% 0}
+@media(prefers-reduced-motion:no-preference){.explore-spot:not(.read) .explore-mark{animation:explore-pulse 1.8s ease-in-out infinite}@keyframes explore-pulse{50%{transform:scale(1.12);filter:brightness(1.15)}}}
+.explore-label{padding:3px 8px;background:#f3e4bde6;border:1px solid #6a4a24;border-radius:3px;font:600 clamp(12px,1.4vw,15px)/1.2 Georgia;white-space:nowrap}
+.explore-spot:focus-visible{outline:3px solid #f0d27d;outline-offset:3px}
+.explore-bar{position:absolute;left:0;right:0;top:80%;bottom:0;display:flex;align-items:center;justify-content:center;gap:18px;background:linear-gradient(transparent,#2a1d0fb3 35%)}
+.explore-count{font:600 clamp(14px,1.6vw,17px) Georgia;color:#fff0cf;text-shadow:0 1px 2px #000}
+.explore-go{background:#505a36;color:#fff0cc;min-height:48px;font-size:17px}
+/* Fundstück-Tafel: gemalte Sprechblase als 9-Slice (190 px). */
+.explore-card{position:absolute;left:50%;top:6%;transform:translateX(-50%);width:min(86%,640px);max-height:72%;overflow:auto;padding:4px 10px;border:22px solid transparent;border-image:url('assets/ui/frame-sprechblase.png') 190 fill / 22px stretch;color:#342719;z-index:3}
+.explore-card[hidden]{display:none}
+.explore-card h3{margin:0 0 6px;font-size:21px}
+.explore-text p{font:16px/1.55 system-ui,sans-serif;margin:0 0 8px}
+.explore-card-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:6px}
+.explore-card-actions button{background:#505a36;color:#fff0cc}
+/* Gespräch: große Halbfigur links, Aussage als Sprechblase rechts. */
+.voice-scene{display:flex;align-items:flex-end;gap:0;background:none!important;border:0!important;box-shadow:none!important;padding:0}
+.voice-scene .voice-portrait{width:clamp(150px,24%,230px);height:auto;aspect-ratio:2/3;flex:0 0 auto;background:radial-gradient(ellipse at 50% 70%,#ffe4a099,transparent 70%);border:0;overflow:visible}
+.voice-scene .voice-portrait>img{position:static;width:100%;height:100%;object-fit:contain;object-position:bottom}
+.voice-scene .speech{position:relative;flex:1;margin:0 0 18% 4px;padding:6px 12px;border:22px solid transparent;border-image:url('assets/ui/frame-sprechblase.png') 190 fill / 22px stretch}
+.voice-scene .speech::before{content:'';position:absolute;left:-52px;top:40%;width:44px;height:44px;background:url('assets/ui/speech-tails.png') 0 0/200% 100% no-repeat}
+.voice-scene .speech blockquote{border:0;background:none;box-shadow:none;padding:0;margin:6px 0 0}
+.speaker-response{display:inline-block;padding:8px 14px;border:16px solid transparent;border-image:url('assets/ui/frame-sprechblase.png') 190 fill / 16px stretch;font:italic 16px/1.45 Georgia}
+.voice-strip .voice-portrait{width:96px;height:130px;flex:0 0 auto;overflow:hidden;background:radial-gradient(ellipse,#ffe4a0,transparent 75%);border:0}
+.voice-strip .voice-portrait>img{width:100%;height:auto;object-fit:cover;object-position:top}
+@media(max-width:650px){.voice-scene{flex-direction:column;align-items:center}.voice-scene .voice-portrait{width:150px}.voice-scene .speech{margin:0}.voice-scene .speech::before{display:none}}
