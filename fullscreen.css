@@ -1,7 +1,0 @@
-/* CSS fullscreen stays in Safari's normal browsing context, including its real keyboard. */
-html.app-fullscreen{overflow:hidden}
-html.app-fullscreen body{position:fixed;inset:0;top:var(--app-viewport-top,0px);width:100%;width:100dvw;height:100dvh;height:var(--app-viewport-height,100dvh);overflow:auto;overscroll-behavior:contain;z-index:1000;padding-bottom:env(safe-area-inset-bottom)}
-html.app-fullscreen dialog[open]{position:fixed;top:calc(var(--app-viewport-top,0px) + 8px);bottom:auto;margin-block:0;max-height:calc(var(--app-viewport-height,100dvh) - 16px)!important}
-html.app-fullscreen dialog .scroll{max-height:calc(var(--app-viewport-height,100dvh) - 128px)!important;scroll-padding-block:16px;padding-bottom:max(20px,env(safe-area-inset-bottom))}
-html.app-fullscreen dialog .dialog-head{flex-shrink:0}
-html.app-fullscreen :is(input,textarea,[contenteditable="true"]){font-size:max(16px,1em);scroll-margin-block:16px}
