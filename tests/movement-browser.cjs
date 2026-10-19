@@ -3,6 +3,8 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),R=requ
  const server=await require('./server.cjs')(),browser=await webkit.launch({headless:true});
  try{
  const context=await browser.newContext({hasTouch:true,isMobile:true}),page=await context.newPage();
+ // These suites test the arrow pad, which computers still use; touch screens show an on-field joystick instead.
+ await context.addInitScript(()=>{document.addEventListener('DOMContentLoaded',()=>{const s=document.createElement('style');s.textContent='.run-dpad{display:grid!important}.run-control-help>div{display:flex!important}.run-touch{display:none!important}';document.head.append(s);});});
  const snapshot=()=>page.evaluate(()=>{const r=Interlude.getRun();return {x:r.player.x,y:r.player.y,t:r.elapsed,hiding:r.player.hiding};});
  for(const [width,height]of [[1024,768],[1180,820],[1194,834],[1366,1024]]){
   await page.setViewportSize({width,height});await page.goto(server.url);

@@ -1,10 +1,12 @@
-/* Bonusspiele: Auswahl mit zwei Karten (bis das gemalte Auswahlbrett aus Asset-Update 3 vorliegt). */
-#bonus-games{width:min(860px,96vw)}
-.bonus-games-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:18px 20px 22px;color:#342719}
-.bonus-game-card{display:flex;flex-direction:column;gap:6px;padding:12px;background:linear-gradient(110deg,#ecd3a4,#f3e3c3);border:2px solid #9c7547;box-shadow:2px 3px 6px #49301430}
-.bonus-game-card>img{width:100%;aspect-ratio:16/10;object-fit:cover;border:2px solid #6e5129}
-.bonus-game-card h3{margin:6px 0 0;font-size:22px}
-.bonus-game-card p{margin:0;font:15px/1.45 Georgia}
-.bonus-game-progress{font-weight:700;color:#4d5a2f;min-height:22px}
-.bonus-game-card button{margin-top:auto;background:#505a36;color:#fff0cc;min-height:48px}
-@media(max-width:640px){.bonus-games-cards{grid-template-columns:1fr}}
+/* Bonusspiele: gemaltes Auswahlbrett (assets/bonus/bonus-selection-panel.png, Flächen aus docs/asset-update-3). */
+#bonus-games{width:min(900px,96vw)}
+.bonus-games-board{position:relative;aspect-ratio:3/2;width:min(100%,calc((94dvh - 110px)*1.5));margin:4px auto 10px;color:#342719}
+.bonus-games-art{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.bonus-games-title{position:absolute;left:14.32%;width:71.35%;top:12.99%;height:7.03%;margin:0;display:grid;place-items:center;font:700 clamp(18px,2.6vw,28px) Georgia;color:#3b2815}
+.bonus-game-card{position:absolute;top:25.39%;height:54.49%;width:36.46%;padding:0;margin:0;background:none;border:0;box-shadow:none;border-radius:4px;color:#342719;touch-action:manipulation}
+.bg-left{left:11.07%}.bg-right{left:52.47%}
+.bonus-game-card:hover{filter:brightness(1.05)}
+.bonus-game-card:focus-visible{outline:3px solid #704012;outline-offset:3px}
+.bonus-game-card>img{position:absolute;left:0;top:0;width:100%;height:62.7%;object-fit:cover}
+.bonus-game-name{position:absolute;left:1%;right:1%;top:71.3%;height:10.75%;display:grid;place-items:center;font:700 clamp(15px,2vw,21px) Georgia}
+.bonus-game-progress{position:absolute;left:1%;right:1%;top:89%;height:10.9%;display:grid;place-items:center;font:600 clamp(13px,1.6vw,17px) Georgia;color:#4d5a2f}

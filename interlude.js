@@ -88,7 +88,7 @@ if(typeof window!=='undefined')window.InterludeRules=InterludeRules;
 
 if(typeof window!=='undefined')(()=>{
  const root=document.querySelector('#interlude'),content=root.querySelector('.run-content');
- const P='assets/interlude/checkpoint-run-',paths=['bg.webp','foreground.png','hideouts.png','route-markers.png','player.png','guards.png','collectibles.png','alert-effects.png','ui.png','result-v2.png','start-panel-v3.png'].map(f=>P+f);
+ const P='assets/interlude/checkpoint-run-',paths=['bg.webp','foreground.png','hideouts.png','route-markers.png','player.png','guards.png','collectibles.png','alert-effects.png','ui.png','result-v2.png','start-panel-v3.png'].map(f=>P+f).concat('assets/interlude/touch-controls.png');
  let art=null,run=null,phase='start',raf=0,last=0,lastSave=0,paused=false,loading=false,epoch=0;
  const held=new Set(),keyboard=new Set(),reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
  const bridge=()=>window.Adventure;
@@ -117,7 +117,7 @@ if(typeof window!=='undefined')(()=>{
  }
  function play(){
   phase='play';paused=false;
-  content.innerHTML=`<div class="run-hud" aria-label="Reiseausrüstung"><div class="run-collection">${['Karte','Proviant','Dokument'].map((t,i)=>`<span><canvas width="56" height="44" aria-hidden="true"></canvas><span>${t} <strong data-found="${['map','provisions','permit'][i]}">–</strong></span></span>`).join('')}</div><span class="run-undetected"><canvas width="46" height="40" aria-hidden="true"></canvas><span id="run-undetected">Unentdeckt</span></span><span class="run-target"><canvas width="40" height="40" aria-hidden="true"></canvas><span>Tor oben rechts</span></span></div><div class="run-field"><canvas id="run-canvas" width="1659" height="948" tabindex="0" role="img" aria-label="Hof aus der Vogelperspektive. Reisefigur links unten, Ziel oben rechts." aria-describedby="run-instructions"></canvas><div id="run-paused" hidden><p>Die Patrouillen warten.</p><button id="run-resume">Fortsetzen</button></div></div><div class="run-controls"><div class="run-dpad" role="group" aria-label="Bewegungssteuerung">${[['up','↑','Nach Norden'],['left','←','Nach Westen'],['down','↓','Nach Süden'],['right','→','Nach Osten']].map(([d,t,label])=>`<button data-direction="${d}" aria-label="${label}">${t}</button>`).join('')}</div><div class="run-control-help"><p id="run-instructions">Richtung halten: gehen. Loslassen: stehen. Tastatur: Pfeile oder WASD.</p><div><button id="run-hide" aria-pressed="false">Hocken</button><button id="run-pause">Pause</button></div><p id="run-message" role="status" aria-live="polite">Die drei Gegenstände sind freiwillig. Nur das Tor ist euer Ziel.</p><p class="run-orientation">Im Querformat lässt sich dieses Spiel besser spielen.</p></div></div>`;
+  content.innerHTML=`<div class="run-hud" aria-label="Reiseausrüstung"><div class="run-collection">${['Karte','Proviant','Dokument'].map((t,i)=>`<span><canvas width="56" height="44" aria-hidden="true"></canvas><span>${t} <strong data-found="${['map','provisions','permit'][i]}">–</strong></span></span>`).join('')}</div><span class="run-undetected"><canvas width="46" height="40" aria-hidden="true"></canvas><span id="run-undetected">Unentdeckt</span></span><span class="run-target"><canvas width="40" height="40" aria-hidden="true"></canvas><span>Tor oben rechts</span></span></div><div class="run-field"><canvas id="run-canvas" width="1659" height="948" tabindex="0" role="img" aria-label="Hof aus der Vogelperspektive. Reisefigur links unten, Ziel oben rechts." aria-describedby="run-instructions"></canvas><div class="run-touch" aria-hidden="true"><div class="run-stick"><canvas class="run-stick-base" width="240" height="240"></canvas><canvas class="run-stick-knob" width="120" height="120"></canvas></div><button type="button" class="run-touch-btn run-touch-hide" tabindex="-1"><canvas width="120" height="120"></canvas></button><button type="button" class="run-touch-btn run-touch-pause" tabindex="-1"><canvas width="120" height="120"></canvas></button></div><div id="run-paused" hidden><p>Die Patrouillen warten.</p><button id="run-resume">Fortsetzen</button></div></div><div class="run-controls"><div class="run-dpad" role="group" aria-label="Bewegungssteuerung">${[['up','↑','Nach Norden'],['left','←','Nach Westen'],['down','↓','Nach Süden'],['right','→','Nach Osten']].map(([d,t,label])=>`<button data-direction="${d}" aria-label="${label}">${t}</button>`).join('')}</div><div class="run-control-help"><p id="run-instructions">Richtung halten: gehen. Loslassen: stehen. Tastatur: Pfeile oder WASD.</p><div><button id="run-hide" aria-pressed="false">Hocken</button><button id="run-pause">Pause</button></div><p id="run-message" role="status" aria-live="polite">Die drei Gegenstände sind freiwillig. Nur das Tor ist euer Ziel.</p><p class="run-orientation">Im Querformat lässt sich dieses Spiel besser spielen.</p></div></div>`;
   content.querySelectorAll('.run-collection canvas').forEach((c,i)=>paintIcon(c,'collectibles',['map','provisions','permit'][i]));
   paintIcon(content.querySelector('.run-undetected canvas'),'ui','undetected');paintIcon(content.querySelector('.run-target canvas'),'ui','target');
   // The three-slot HUD carrier is supplied art, independently cropped from its sheet.
@@ -132,6 +132,24 @@ if(typeof window!=='undefined')(()=>{
   });
   content.querySelector('#run-hide').onclick=e=>{const on=e.currentTarget.getAttribute('aria-pressed')!=='true';e.currentTarget.setAttribute('aria-pressed',String(on));};
   content.querySelector('#run-pause').onclick=pause;
+  // Touch: joystick bottom left and round buttons bottom right, directly on the field (asset update 3).
+  const TC='assets/interlude/touch-controls.png';
+  // These sprites are centre-anchored, so draw their visible box to fill the canvas instead of GameArt.icon (foot-anchored).
+  const ic=(c,n)=>{const b=GameArt.entry(art,TC,n).visible_bbox_xyxy,x=c.getContext('2d');x.clearRect(0,0,c.width,c.height);x.imageSmoothingEnabled=false;x.drawImage(art.images[TC],b[0],b[1],b[2]-b[0],b[3]-b[1],0,0,c.width,c.height);};
+  ic(content.querySelector('.run-stick-base'),'joystick-base');ic(content.querySelector('.run-stick-knob'),'joystick-knob');
+  ic(content.querySelector('.run-touch-hide canvas'),'button-hide');ic(content.querySelector('.run-touch-pause canvas'),'button-pause');
+  const stick=content.querySelector('.run-stick'),knob=content.querySelector('.run-stick-knob'),hideBtn=content.querySelector('#run-hide');
+  let stickId=null;
+  const setStick=e=>{const r=stick.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2,max=r.width*.32;let dx=e.clientX-cx,dy=e.clientY-cy;const d=Math.hypot(dx,dy);if(d>max){dx*=max/d;dy*=max/d;}
+   knob.style.transform=`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px))`;held.clear();
+   if(d>r.width*.1){const a=Math.atan2(dy,dx),oct=Math.round(a/(Math.PI/4));const dirs={0:['right'],1:['right','down'],2:['down'],3:['left','down'],4:['left'],'-4':['left'],'-3':['left','up'],'-2':['up'],'-1':['right','up']};(dirs[oct]||[]).forEach(x=>held.add(x));}};
+  const endStick=()=>{stickId=null;held.clear();knob.style.transform='translate(-50%,-50%)';};
+  stick.onpointerdown=e=>{e.preventDefault();if(paused)return;stickId=e.pointerId;stick.setPointerCapture?.(e.pointerId);setStick(e);};
+  stick.onpointermove=e=>{if(e.pointerId===stickId)setStick(e);};
+  stick.onpointerup=stick.onpointercancel=e=>{if(e.pointerId===stickId)endStick();};
+  content.querySelector('.run-touch-hide').onclick=()=>{hideBtn.click();content.querySelector('.run-touch-hide').classList.toggle('on',hideBtn.getAttribute('aria-pressed')==='true');};
+  content.querySelector('.run-touch-pause').onclick=pause;
+  if(matchMedia('(hover:none) and (pointer:coarse)').matches)content.querySelector('#run-instructions').textContent='Joystick unten links ziehen: gehen. Loslassen: stehen. Unten rechts: hocken und Pause.';
   content.querySelector('#run-resume').onclick=()=>{paused=false;content.querySelector('#run-paused').hidden=true;content.querySelector('#run-canvas').tabIndex=0;clearInput();last=0;loop();content.querySelector('#run-canvas').focus();};
   updateHud();draw();loop();content.querySelector('#run-canvas').focus();
  }

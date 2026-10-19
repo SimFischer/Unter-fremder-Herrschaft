@@ -50,6 +50,12 @@ const key='palaestina-adventure-klasse6-v2';
  // Complete every station using the visible controls. Wrong answers never unlock steps.
  for(let station=0;station<5;station++){
   await click(`[data-open="${station}"]`);await shot(`station-${station+1}`);
+  if(station<4){
+   // Explore phase: the task stays hidden until the scene is left; findings open a card.
+   assert.equal(await page.locator('#check').isVisible(),false);assert.equal(await page.locator('.explore-spot').count(),3);
+   await click('[data-discover="0"]');await page.locator('.explore-card').waitFor();assert.match(await page.locator('.explore-count').textContent(),/1 von 3/);await shot(`explore-${station+1}`);
+   await click('.explore-card-close');await click('.explore-go');assert.equal(await page.locator('#check').isVisible(),true);
+  }
   assert.equal(await page.locator('textarea').count(),0);
   let before=(await save()).answers[station].stage||0;
   await click('#hint-open');await click('#hint-open');await click('#hint-open');assert.equal((await save()).answers[station].stage||0,before);

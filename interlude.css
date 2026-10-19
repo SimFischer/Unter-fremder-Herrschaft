@@ -42,3 +42,19 @@
 
 .run-result-icon{position:absolute;left:14.19%;width:5.21%;height:auto;aspect-ratio:1;padding:.4%}
 .run-result-check{position:absolute;left:81.38%;width:4.3%;height:6.45%;display:grid;place-items:center;font:700 clamp(18px,2.4vw,26px) Georgia;color:#3e4a22}
+
+/* Touch controls on the field (asset update 3): joystick bottom left, crouch and pause bottom right.
+   Shown only on touch screens; there the arrow pad and the external buttons disappear. */
+.run-touch{display:none}
+@media (hover:none) and (pointer:coarse){
+ .run-touch{display:block;position:absolute;inset:0;pointer-events:none;z-index:3}
+ .run-stick{position:absolute;left:2%;bottom:3%;width:clamp(120px,22%,190px);aspect-ratio:1;pointer-events:auto;touch-action:none;opacity:.78}
+ .run-stick-base{width:100%;height:100%}
+ .run-stick-knob{position:absolute;left:50%;top:50%;width:46%;height:46%;transform:translate(-50%,-50%)}
+ .run-touch-btn{position:absolute;bottom:4%;width:clamp(64px,10%,96px);aspect-ratio:1;padding:0;background:none;border:0;box-shadow:none;pointer-events:auto;opacity:.8;touch-action:manipulation}
+ .run-touch-btn canvas{width:100%;height:100%}
+ .run-touch-hide{right:calc(4% + clamp(64px,10%,96px) + 12px)}.run-touch-pause{right:3%}
+ .run-touch-hide.on{opacity:1;filter:drop-shadow(0 0 8px #f3d27a)}
+ .run-dpad,.run-control-help>div{display:none}
+ .run-field,.run-controls{width:min(100%,calc((94dvh - 200px)*1659/948))}
+}

@@ -28,7 +28,8 @@ const MapRules=(()=>{
  const order=places.map((p,i)=>i).sort((a,b)=>places[a][6]-places[b][6]||places[a][5]-places[b][5]);
  const number=i=>order.indexOf(i)+1;
  // Scale: 50 km on this simplified map (north–south calibration against Kafarnaum, Nazareth, Jericho, Jerusalem, Bethlehem).
- const scale={km:50,heightPercent:16.1};
+ // The painted scale bar of map-table-large-v2.png spans 191 px = 50 km (docs/asset-update-3/MAP-GEOMETRY.json).
+ const scale={km:50,heightPercent:16.1,bar:[1309,838,1501,853]};
  const tasks=[
  {question:'Norden ist oben. Tippt die drei Regionen westlich des Jordan von Norden nach Süden an.',candidates:regions,answer:[0,1,2],hints:['Zwei der fünf Gebiete liegen nicht westlich des Jordan: eines östlich des Flusses, eines ganz im Süden.','Beginnt beim Gebiet neben dem See Genezareth und geht nach Süden.','Galiläa im Norden – Samaria in der Mitte – Judäa im Süden. Peräa liegt östlich des Jordan, Idumäa noch weiter südlich.'],why:'Galiläa, Samaria und Judäa liegen westlich des Jordan von Norden nach Süden.'},
  {question:'Verfolgt den Wasserweg: Tippt zuerst den See, aus dem der Jordan nach Süden fließt, dann den Fluss und zuletzt das Gewässer, in das er mündet.',candidates:waters,answer:[4,3,8],hints:['Ordnet drei Gewässer: Ausgangssee → Fluss → Mündung. Eines der vier Gewässer gehört nicht dazu.','Folgt dem Wasser auf der Karte von Norden nach Süden.','Der Weg beginnt am See im Nordosten. Das große Gewässer im Westen liegt nicht auf diesem Weg.'],why:'See Genezareth → Jordan → Totes Meer.'},

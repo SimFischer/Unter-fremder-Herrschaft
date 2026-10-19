@@ -1,0 +1,392 @@
+{
+  "base_main_commit": "bd5b9e5dd781852ea4cb861f7562e1a5a3957029",
+  "asset_count": 20,
+  "files": {
+    "assets/bonus/bonus-selection-panel.png": {
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "fde95f0ad7d27e35dbd909725fe7688b8ee587706b340a9a9a732e3c725bd19c",
+      "alpha": {
+        "minimum": 0,
+        "maximum": 255,
+        "transparent_pixels": 331029,
+        "partially_transparent_pixels": 0,
+        "visible_bbox_xyxy": [
+          45,
+          80,
+          1491,
+          940
+        ],
+        "outer_margins_ltrb": [
+          45,
+          80,
+          45,
+          84
+        ],
+        "outer_24px_fully_transparent": true
+      }
+    },
+    "assets/characters/voice-eleasar.png": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "63414274b28811f7c51c65068917d6c48261568f5c95166cd8257b0c3f71b725",
+      "alpha": {
+        "minimum": 0,
+        "maximum": 255,
+        "transparent_pixels": 919699,
+        "partially_transparent_pixels": 13296,
+        "visible_bbox_xyxy": [
+          129,
+          159,
+          940,
+          1370
+        ],
+        "outer_margins_ltrb": [
+          129,
+          159,
+          84,
+          166
+        ],
+        "outer_24px_fully_transparent": true
+      }
+    },
+    "assets/characters/voice-jakob.png": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "ee024cd23e682725d44ac72ceb5fcaa1934005403938b5e4d173d6c87ace68ad",
+      "alpha": {
+        "minimum": 0,
+        "maximum": 255,
+        "transparent_pixels": 902610,
+        "partially_transparent_pixels": 13461,
+        "visible_bbox_xyxy": [
+          106,
+          179,
+          923,
+          1380
+        ],
+        "outer_margins_ltrb": [
+          106,
+          179,
+          101,
+          156
+        ],
+        "outer_24px_fully_transparent": true
+      }
+    },
+    "assets/characters/voice-marcus.png": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "1dff646c60dd180b07a43fc9b04d6d6d0c96624920dcc685f9a9ad5f6f8faa29",
+      "alpha": {
+        "minimum": 0,
+        "maximum": 255,
+        "transparent_pixels": 900827,
+        "partially_transparent_pixels": 14336,
+        "visible_bbox_xyxy": [
+          124,
+          126,
+          910,
+          1410
+        ],
+        "outer_margins_ltrb": [
+          124,
+          126,
+          114,
+          126
+        ],
+        "outer_24px_fully_transparent": true
+      }
+    },
+    "assets/characters/voice-miriam.png": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "b2017522be30816fb62937b69a13787a386acc45cc4a87386f796faa72f6f5ae",
+      "alpha": {
+        "minimum": 0,
+        "maximum": 255,
+        "transparent_pixels": 878491,
+        "partially_transparent_pixels": 13366,
+        "visible_bbox_xyxy": [
+          110,
+          189,
+          939,
+          1390
+        ],
+        "outer_margins_ltrb": [
+          110,
+          189,
+          85,
+          146
+        ],
+        "outer_24px_fully_transparent": true
+      }
+    },
+    "assets/explore/explore-abgabentisch.png": {
+      "size": [
+        1659,
+        948
+      ],
+      "mode": "RGB",
+      "sha256": "b7b083b54004cd961f6799c567fc765fc5670cf0ccf07785aa1b0f194c2eae46",
+      "alpha": null
+    },
+    "assets/explore/explore-erlassbrett.png": {
+      "size": [
+        1659,
+        948
+      ],
+      "mode": "RGB",
+      "sha256": "6f5ee3dfd93a611f3ae59111bd4d6c1d94fedddd19d029a9a1a852b5bee247b2",
+      "alpha": null
+    },
+    "assets/explore/explore-kartentisch.png": {
+      "size": [
+        1659,
+        948
+      ],
+      "mode": "RGB",
+      "sha256": "e54599d4d6bd9de46bf50b9dc6d8dd912ce44e795580ee711547c1f3125caba2",
+      "alpha": null
+    },
+    "assets/explore/explore-reisende.png": {
+      "size": [
+        1659,
+        948
+      ],
+      "mode": "RGB",
+      "sha256": "cf35bc48a8409b19f9203fffc705f4a85b857f8f0f42ee000a7fc51b6ddf8553",
+      "alpha": null
+    },
+    "assets/interlude/touch-controls.png": {
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "503c2a9787ddd88356153f0506aa5177d4f79b3c9b69f3e2a6c8da5a2a95e87d",
+      "alpha": {
+        "minimum": 0,
+        "maximum": 255,
+        "transparent_pixels": 1208272,
+        "partially_transparent_pixels": 0,
+        "visible_bbox_xyxy": [
+          80,
+          84,
+          1440,
+          922
+        ],
+        "outer_margins_ltrb": [
+          80,
+          84,
+          96,
+          102
+        ],
+        "outer_24px_fully_transparent": true
+      }
+    },
+    "assets/puzzles/map/map-table-large-v2.png": {
+      "size": [
+        1600,
+        1065
+      ],
+      "mode": "RGB",
+      "sha256": "81237b14bdf51a3bbc4d5c0979a22c1f67dc2e1b9345d7299c967db52f48ef58",
+      "alpha": null
+    },
+    "assets/scene/control-post-v2-stage-0.png": {
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "98b27f1993186826d364e20bb5a940d8f1f89068547306cf330f6cd84b31a6ab",
+      "alpha": null
+    },
+    "assets/scene/control-post-v2-stage-1.png": {
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "98b27f1993186826d364e20bb5a940d8f1f89068547306cf330f6cd84b31a6ab",
+      "alpha": null
+    },
+    "assets/scene/control-post-v2-stage-2.png": {
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "98b27f1993186826d364e20bb5a940d8f1f89068547306cf330f6cd84b31a6ab",
+      "alpha": null
+    },
+    "assets/scene/control-post-v2-stage-3.png": {
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "d70b8a08e41107c8b6309a38bb6b8a29ebdd44fa011e89513116f381da369e75",
+      "alpha": null
+    },
+    "assets/scene/control-post-v2-stage-4.png": {
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "9f3c47978583bc36bf0da531598998d7a10b4d7dc0d5b61a949331fd595faa59",
+      "alpha": null
+    },
+    "assets/scene/control-post-v2-stage-5.png": {
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "355572357f68b671a28432299116fc24c7903676a7715634cfb7701be4051a88",
+      "alpha": null
+    },
+    "assets/ui/discovery-marks.png": {
+      "size": [
+        1024,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "6581fbb3ff452d002299fb062eec024a5dc622e9dd03838fd13866435599cb7e",
+      "alpha": {
+        "minimum": 0,
+        "maximum": 255,
+        "transparent_pixels": 435407,
+        "partially_transparent_pixels": 8027,
+        "visible_bbox_xyxy": [
+          115,
+          106,
+          918,
+          406
+        ],
+        "outer_margins_ltrb": [
+          115,
+          106,
+          106,
+          106
+        ],
+        "outer_24px_fully_transparent": true
+      }
+    },
+    "assets/ui/frame-sprechblase.png": {
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "0944bee26b4fdae8e2ea6024640652deeb7cb037f86068da3c1ead17b7038795",
+      "alpha": {
+        "minimum": 0,
+        "maximum": 255,
+        "transparent_pixels": 300888,
+        "partially_transparent_pixels": 1826,
+        "visible_bbox_xyxy": [
+          56,
+          64,
+          1198,
+          1190
+        ],
+        "outer_margins_ltrb": [
+          56,
+          64,
+          56,
+          64
+        ],
+        "outer_24px_fully_transparent": true
+      }
+    },
+    "assets/ui/speech-tails.png": {
+      "size": [
+        512,
+        256
+      ],
+      "mode": "RGBA",
+      "sha256": "c33143d5103af1eaa039dedde79cead84fbcb7712d6d1d62cb9400e3a5b7382a",
+      "alpha": {
+        "minimum": 0,
+        "maximum": 255,
+        "transparent_pixels": 106995,
+        "partially_transparent_pixels": 2121,
+        "visible_bbox_xyxy": [
+          40,
+          55,
+          472,
+          200
+        ],
+        "outer_margins_ltrb": [
+          40,
+          55,
+          40,
+          56
+        ],
+        "outer_24px_fully_transparent": true
+      }
+    }
+  },
+  "limitations": [
+    "Map is schematic: scale191px/50km is locally calibrated, not globally metric.",
+    "Region polygons approximate historical geography; Decapolis is not one continuous province.",
+    "Antipas palm seal is an illustrative reconstruction, not an authenticated artifact."
+  ],
+  "checks": {
+    "scene_invariance": [
+      {
+        "stage": 0,
+        "changed_pixels": 0,
+        "changed_outside_gate_guard": 0
+      },
+      {
+        "stage": 1,
+        "changed_pixels": 0,
+        "changed_outside_gate_guard": 0
+      },
+      {
+        "stage": 2,
+        "changed_pixels": 0,
+        "changed_outside_gate_guard": 0
+      },
+      {
+        "stage": 3,
+        "changed_pixels": 146713,
+        "changed_outside_gate_guard": 0
+      },
+      {
+        "stage": 4,
+        "changed_pixels": 146710,
+        "changed_outside_gate_guard": 0
+      },
+      {
+        "stage": 5,
+        "changed_pixels": 224350,
+        "changed_outside_gate_guard": 0
+      }
+    ],
+    "no_existing_path_overwritten": true,
+    "all_alpha_margins_at_least24": true,
+    "all_exploration_hotspots_at_least220": true,
+    "preview_slots_equal_560x350": true,
+    "visual_review": "All20 images reviewed as contact sheet. No visible writing; identity, lighting, alpha margins and scene transitions checked. Not an OCR guarantee."
+  }
+}

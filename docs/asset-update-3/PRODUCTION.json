@@ -1,0 +1,33 @@
+{
+  "tool": "built-in image_gen",
+  "postprocessing": "User explicitly approved technical pixel-preserving edits. PIL/numpy used for alpha cleanup, dimensions, compositing, boundaries and export.",
+  "shared_prompt": "Warm handpainted lightly stylized Roman Palestine circa30CE. Light upperleft. No text letters digits pseudowriting, modern objects or Christian symbols. Genuine transparent background and24px margin for UI/characters. Pixel art only for touch controls.",
+  "source_ids": {
+    "scene-base": "23f53912-c50e-4250-9f00-46bb6dde1659",
+    "scene-crack": "b717fcda-9d2f-4946-a0a0-ffea5db750b1",
+    "scene-half": "5542e544-648f-4884-9b60-ef3d618b8f07",
+    "scene-open": "872b09d5-ecd8-4a56-9f23-72bdfcb1fad7",
+    "bonus-panel": "b131b53f-728a-42f9-80a2-688f0dda23c0",
+    "speech-frame": "77f7f62d-d247-41b1-a460-218e43beb6ed",
+    "speech-tails": "337d1ae9-cc00-46b2-8f87-059fe6657f99",
+    "touch": "d39d47a1-8deb-4833-8232-cdd006b02370",
+    "discovery": "59e392c6-6009-4ad1-a02d-3a2b02876e2d",
+    "explore-decree": "3103b415-d886-4caf-8e6d-492773caf3b5",
+    "explore-tax-final": "1c370f7d-1315-4a0e-978f-a635bed73a0e",
+    "explore-map": "25517857-7787-4310-8b3b-a0217b991ff4",
+    "explore-travelers": "7557b66b-c9b1-4a66-a108-a042afd608b2",
+    "miriam": "f4367cd9-f726-4050-aa77-15876bae1ad8",
+    "jakob": "c4f5861a-863f-4c5d-af9f-9eb28c1d30bb",
+    "eleasar": "0bdc2a78-9205-4759-8d2a-f71c128d96b4",
+    "marcus": "58263440-8bef-4ec2-8bb9-fa5a5f36a123"
+  },
+  "prompt_specifications": {
+    "scene": "Integrate decree, single tax table, same three travelers, map table and scroll chest; vary only gate and final guard gesture.",
+    "bonus": "Two equal16:10preview cards with blank title/name/progress fields.",
+    "speech": "Pale parchment rounded square dark painted border no tail; separate left/down tails.",
+    "touch": "Six512cells stone joystick base, knob, crouch, pause bars, footprint target, eye bubble.",
+    "discovery": "Gold sparkle and red wax check; readable32-48px.",
+    "explore": "Three separated tappable motifs>=220px; full bottom22%quiet ground/table. Decree/sealed document, goods or unequal grain, bust or portrait coin; map orientation disc/boat/temple; travelers stall/talking men/soldier.",
+    "portraits": "Same character identities from scene, head-to-hip, gaze right, consistent upperleft light; Miriam fruitbasket redscarf, older Jakob grainsack, unarmed Eleasar bluescarf, Marcus crest shield spear."
+  }
+}

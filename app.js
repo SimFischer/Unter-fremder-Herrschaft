@@ -12,13 +12,15 @@ function options(key,items){
  return `<div class="options">${order.map((i,j)=>`<button class="option ${state.answers[active][key]===i?'selected':''}" data-key="${key}" data-value="${i}" aria-pressed="${state.answers[active][key]===i}"><span class="choice-letter" aria-hidden="true">${String.fromCharCode(65+j)}</span><span>${esc(items[i])}</span>${state.answers[active][key]===i?'<span class="choice-state">Gewählt</span>':''}</button>`).join('')}</div>`;
 }
 function mission(title,text){return `<div class="mission"><span class="eyebrow">EUER AUFTRAG</span><h3>${title}</h3><p>${text}</p></div>`;}
-function portrait(i){return i===3?'<div class="voice-portrait guard"><img src="roman-guard.webp" alt="Marcus, römischer Soldat"></div>':`<div class="voice-portrait people person-${i}"><img src="group-people.webp" alt="${esc(PEOPLE[i][0])}"></div>`;}
+// Half figures from asset update 3 (freigestellt, gleicher Maßstab).
+const VOICES=['miriam','jakob','eleasar','marcus'];
+function portrait(i){return `<div class="voice-portrait voice-${VOICES[i]}"><img src="assets/characters/voice-${VOICES[i]}.png" alt="${esc(PEOPLE[i][0])}"></div>`;}
 function scene(){
  const count=state.solved.filter(Boolean).length;
  $('#hotspots').innerHTML=PUZZLES.map((p,i)=>`<button class="hotspot ${state.solved[i]?'done':''}" style="left:${p.anchor[0]}%;top:${p.anchor[1]}%" data-open="${i}" aria-label="${p.object}: ${state.solved[i]?'gelöst, erneut ansehen':'erkunden'}"><span aria-hidden="true">${state.solved[i]?'✓':i+1}</span><span class="tag-label">${p.object}</span></button>`).join('');
  $('#seals').innerHTML=state.solved.map((v,i)=>`<img class="seal" src="${v?'seal-'+SEALS[i]+'.png':'seal-slot-empty.png'}" alt="${['Herrschaft','Belastung','Stimmen','Land','Belege'][i]}: ${v?'erworben':'noch verschlossen'}">`).join('');
  $('#progress').textContent=count===5?'Der Wächter tritt zur Seite: „Eure Belege stimmen. Ihr könnt durch das Tor gehen.“':`${count} von 5 Erkenntnissiegeln · erkundet die Gegenstände`;
- const src=`control-post-stage-${count}.png`;
+ const src=`assets/scene/control-post-v2-stage-${count}.png`;
  if($('#backdrop').getAttribute('src')!==src){
   const old=$('#scene .world-fade');if(old)old.remove();
   const fade=$('#backdrop').cloneNode();fade.removeAttribute('id');fade.alt='';fade.className='world-fade';$('#scene').prepend(fade);
@@ -29,12 +31,21 @@ function scene(){
  window.dispatchEvent(new Event('adventure:state'));
 }
 
+// Explore phase (asset update 3): Siegel 1–4 begin with a painted scene and three findings before the task.
+const EXPLORE=["explore-erlassbrett", "explore-abgabentisch", "explore-reisende", "explore-kartentisch"],EXPLORE_SPOTS=[[[24.412, 31.646], [61.483, 46.941], [87.281, 51.688]], [[18.083, 36.392], [60.277, 26.371], [87.101, 50.105]], [[21.7, 46.835], [49.427, 36.92], [85.895, 45.886]], [[14.165, 41.983], [51.236, 58.544], [84.388, 46.414]]],exploreRead=Array.from({length:5},()=>new Set());let exploring=false;
+function renderExplore(){
+ const i=active,read=exploreRead[i];$('#puzzle .scroll').classList.toggle('exploring',exploring);
+ if(i>=4){$('#core-info').innerHTML=`<p>${CORE[i]}</p><div class="discovery-actions">${READINGS[i].map((r,j)=>`<button data-discover="${j}">${['Untersuchen','Nachfragen','Weiterforschen'][j]}: ${r[0]}</button>`).join('')}</div><div id="discovery-detail"></div>`;return;}
+ if(!exploring){$('#core-info').innerHTML=`<p>${CORE[i]}</p><button class="paper-quiet explore-back">Szene und Fundstücke ansehen (${read.size} von 3 entdeckt)</button>`;return;}
+ $('#core-info').innerHTML=`<p class="explore-intro">${CORE[i]}</p><div class="explore"><img class="explore-art" src="assets/explore/${EXPLORE[i]}.png" alt="Szene zu Siegel ${i+1} mit drei Fundstücken">${READINGS[i].map((r,j)=>`<button class="explore-spot ${read.has(j)?'read':''}" data-discover="${j}" style="left:${EXPLORE_SPOTS[i][j][0]}%;top:${EXPLORE_SPOTS[i][j][1]}%" aria-label="${esc(r[0])}${read.has(j)?' (gelesen)':''}"><span class="explore-mark" aria-hidden="true"></span><span class="explore-label">${r[0]}</span></button>`).join('')}<div class="explore-bar"><span class="explore-count">${read.size} von 3 Fundstücken entdeckt</span><button class="explore-go">${i===2?'Ins Gespräch kommen':'Zur Aufgabe'}</button></div><article class="explore-card" hidden></article></div>`;
+}
 function open(i){
  active=i;pending=null;awaitingNext=false;opener=document.activeElement;
  hintLevel=0;if(!state.discoveries.includes(i))state.discoveries.push(i);save();
  views[i]=state.solved[i]?0:Math.min(state.answers[i].stage||0,TOTALS[i]-1);
  $('#chapter').textContent=`SIEGEL ${i+1} · ${PUZZLES[i].object}`;$('#title').textContent=BRIEFS[i][0];
- $('#core-info').innerHTML=`<p>${CORE[i]}</p><div class="discovery-actions">${READINGS[i].map((r,j)=>`<button data-discover="${j}">${['Untersuchen','Nachfragen','Weiterforschen'][j]}: ${r[0]}</button>`).join('')}</div><div id="discovery-detail"></div>`;$('#hint-panel').hidden=true;$('#hint-open').textContent='Eine Spur erfragen';$('#feedback').textContent='';$('#feedback').className='';
+ exploring=i<4&&!state.solved[i]&&!(state.answers[i].stage>0);
+ renderExplore();$('#hint-panel').hidden=true;$('#hint-open').textContent='Eine Spur erfragen';$('#feedback').textContent='';$('#feedback').className='';
  render();$('#puzzle').showModal();$('#puzzle .scroll').scrollTop=0;
 }
 function render(){
@@ -75,7 +86,7 @@ function render(){
   const task=MapRules.tasks[round],choice=round<8&&MapRules.isChoice(round),chosen=round<8?MapRules.chosen(a,round):[];
   const known=MapRules.known(a.stage||0,round),shown=round<8?(choice?task.show:task.candidates):[];
   const sc=MapRules.scale;
-  html=`<div class="map-layout"><div class="map"><img src="assets/puzzles/map/map-table-large.png" alt="Stumme Karte: Mittelmeer im Westen, See Genezareth im Nordosten, Jordan zum Toten Meer im Südosten. Die Orte sind nummeriert."><img class="orientation" src="assets/puzzles/map/map-compass.png" alt="Orientierungsscheibe: Norden oben, kein Magnetkompass"><div class="map-scale" style="--scale-h:${sc.heightPercent}%" aria-label="Maßstab: Die Leiste entspricht ${sc.km} km"><span class="map-scale-bar"></span><span>${sc.km} km</span></div>${shown.length?`<svg class="map-anchors" viewBox="0 0 1000 665" aria-hidden="true">${shown.map(i=>{const p=PLACES[i];return `<path d="M ${p[1]*10} ${p[2]*6.65} L ${p[5]*10} ${p[6]*6.65}"/><circle cx="${p[1]*10}" cy="${p[2]*6.65}" r="5"/>`;}).join('')}</svg>`+shown.map(i=>{const p=PLACES[i],selected=chosen.includes(i),name=known.has(i),num=MapRules.number(i);return `<button data-place="${i}" ${choice?'disabled':''} style="left:${p[5]}%;top:${p[6]}%" class="map-marker map-${p[4]==='Region'?'region':p[4]==='Ort'?'town':'water'} ${selected?'selected':''} ${name?'named':'silent'}" aria-pressed="${selected}" aria-label="Marker ${num}${name?': '+p[0]:''}${selected?', Markierung '+(chosen.indexOf(i)+1):''}"><span>${selected&&!task.unordered?chosen.indexOf(i)+1+' · ':''}${name?p[0]:num}</span></button>`;}).join(''):''}<div class="route-proof">${sprite('assets/puzzles/map/map-route-strip.png','footprints')}<span>${Math.min(a.stage||0,8)} Reisemarken gesichert</span></div></div><div class="travel-note">`;
+  html=`<div class="map-layout"><div class="map"><img src="assets/puzzles/map/map-table-large-v2.png" alt="Stumme Karte mit Gebietsgrenzen: Mittelmeer im Westen, See Genezareth im Nordosten, Jordan zum Toten Meer im Südosten. Die Orte sind nummeriert."><img class="orientation" src="assets/puzzles/map/map-compass.png" alt="Orientierungsscheibe: Norden oben, kein Magnetkompass"><div class="map-scale" style="--scale-h:${sc.heightPercent}%" aria-label="Maßstab: Die Leiste entspricht ${sc.km} km"><span class="map-scale-bar"></span><span>${sc.km} km</span></div>${shown.length?`<svg class="map-anchors" viewBox="0 0 1000 665" aria-hidden="true">${shown.map(i=>{const p=PLACES[i];return `<path d="M ${p[1]*10} ${p[2]*6.65} L ${p[5]*10} ${p[6]*6.65}"/><circle cx="${p[1]*10}" cy="${p[2]*6.65}" r="5"/>`;}).join('')}</svg>`+shown.map(i=>{const p=PLACES[i],selected=chosen.includes(i),name=known.has(i),num=MapRules.number(i);return `<button data-place="${i}" ${choice?'disabled':''} style="left:${p[5]}%;top:${p[6]}%" class="map-marker map-${p[4]==='Region'?'region':p[4]==='Ort'?'town':'water'} ${selected?'selected':''} ${name?'named':'silent'}" aria-pressed="${selected}" aria-label="Marker ${num}${name?': '+p[0]:''}${selected?', Markierung '+(chosen.indexOf(i)+1):''}"><span>${selected&&!task.unordered?chosen.indexOf(i)+1+' · ':''}${name?p[0]:num}</span></button>`;}).join(''):''}<div class="route-proof">${sprite('assets/puzzles/map/map-route-strip.png','footprints')}<span>${Math.min(a.stage||0,8)} Reisemarken gesichert</span></div></div><div class="travel-note">`;
   if(round<8&&choice)html+=`<span class="stamp">REISEHINWEIS ${round+1} VON 8</span><h3>Messen und rechnen</h3><p class="question">${task.question}</p>${options('mapChoice'+round,task.options)}<button class="paper-quiet" data-map-hint>Den Kartenschreiber fragen</button><p id="map-hint" role="status" ${hintLevel===0?'hidden':''}>${hintLevel?esc(task.hints[Math.min(hintLevel-1,2)]):''}</p>`;
   else if(round<8)html+=`<span class="stamp">REISEHINWEIS ${round+1} VON 8</span><h3>Plant den nächsten Wegabschnitt</h3><p class="question">${task.question}</p><p class="selection-note" role="status">${chosen.length?'Eure Wahl: '+chosen.map(i=>known.has(i)?PLACES[i][0]:'Marker '+MapRules.number(i)).join(task.unordered?' + ':' → '):'Tippt auf die passenden Marker auf der Karte. Die Namen erscheinen, sobald ihr einen Ort gefunden habt.'} · ${chosen.length} von ${task.answer.length}</p>${task.answer.length>1?'<button class="paper-quiet" data-map-reset>Markierungen zurücknehmen</button><p class="map-instruction">Erneutes Antippen nimmt eine Markierung zurück.</p>':''}<button class="paper-quiet" data-map-hint>Den Kartenschreiber fragen</button><p id="map-hint" role="status" ${hintLevel===0?'hidden':''}>${hintLevel?esc(task.hints[Math.min(hintLevel-1,2)]):''}</p>`;
   else html+=`<span class="stamp">DIE REISE GEHT WEITER</span><h3>${TRANSFER[round-8].question}</h3>${options('transfer'+(round-8),TRANSFER[round-8].options)}`;
@@ -210,8 +221,15 @@ function failureDetail(){
  return 'Die Bausteine erklären noch nicht denselben Zusammenhang. Verbindet entweder Ernte und Abgaben mit Vorräten und Not oder Kontrolle mit dem Wunsch nach Freiheit. Münznutzung beweist keine Verehrung.';
 }
 $('#core-info').addEventListener('click',e=>{
+ if(e.target.closest('.explore-go')){exploring=false;renderExplore();render();$('#puzzle .scroll').scrollTop=0;return;}
+ if(e.target.closest('.explore-back')){exploring=true;renderExplore();$('#puzzle .scroll').scrollTop=0;return;}
+ if(e.target.closest('.explore-card-close')){$('.explore-card').hidden=true;const n=$('.explore-card').dataset.n;$(`[data-discover="${n}"]`)?.focus({preventScroll:true});return;}
  const b=e.target.closest('[data-discover]');if(!b)return;
- const r=READINGS[active][Number(b.dataset.discover)];
+ const j=Number(b.dataset.discover),r=READINGS[active][j];
+ if(b.classList.contains('explore-spot')){
+  exploreRead[active].add(j);b.classList.add('read');$('.explore-count').textContent=`${exploreRead[active].size} von 3 Fundstücken entdeckt`;
+  const c=$('.explore-card');c.dataset.n=j;c.hidden=false;c.innerHTML=`<h3>${r[0]}</h3><div class="explore-text"><p>${r[1]}</p></div><div class="explore-card-actions"><small>Im Reisebuch nachlesbar.</small><button class="explore-card-close">Weiter erkunden</button></div>`;c.querySelector('button').focus({preventScroll:true});return;
+ }
  $('#discovery-detail').innerHTML=`<article class="found-note"><h3>${r[0]}</h3><p>${r[1]}</p><small>Im Reisebuch nachlesbar.</small></article>`;
 });
 function showMapHint(){
@@ -261,9 +279,7 @@ const showModal=HTMLDialogElement.prototype.showModal;
 HTMLDialogElement.prototype.showModal=function(){dialogTriggers.set(this,document.activeElement);showModal.call(this);};
 document.querySelectorAll('dialog').forEach(d=>d.addEventListener('close',()=>{const b=dialogTriggers.get(d);if(b?.isConnected&&!b.closest('dialog:not([open])'))b.focus({preventScroll:true});}));
 // Station artwork belongs to the same coordinate system as its marker (full, uncropped scene).
-const objects=document.createElement('div');objects.className='world-objects';objects.setAttribute('aria-hidden','true');
-objects.innerHTML=[['coin-table.webp',25,81,21],['group-people.webp',63,84,32],['map-table.webp',83,87,18],['report-scroll.webp',42,89,10]].map(([src,x,y,w])=>`<img src="${src}" style="left:${x}%;top:${y}%;width:${w}%" alt="">`).join('');
-$('#scene').insertBefore(objects,$('#hotspots'));
+// Scene v2 (asset update 3): all five stations are painted into every stage, so no separate cut-outs are layered on top.
 
 function drawConnections(){
  wiresObserver?.disconnect();
@@ -297,6 +313,6 @@ function solutionText(i,r){
  if(r===1)return REPORT_STATIONS.map((s,k)=>`${s.evidenceName} → ${CATEGORIES[REPORT_ANSWERS[k]]}`).join('; ');
  return `Weg 1: ${ARGUMENTS.obs[0]} / ${ARGUMENTS.link[0]} / ${ARGUMENTS.conclusion[0]} – oder Weg 2: ${ARGUMENTS.obs[1]} / ${ARGUMENTS.link[1]} / ${ARGUMENTS.conclusion[1]}`;
 }
-function openStation(i,round=0){if(document.querySelector('dialog[open]'))document.querySelectorAll('dialog[open]').forEach(d=>d.close());open(i);views[i]=round;render();}
+function openStation(i,round=0){if(document.querySelector('dialog[open]'))document.querySelectorAll('dialog[open]').forEach(d=>d.close());open(i);exploring=false;renderExplore();views[i]=round;render();}
 function openFinale(){document.querySelectorAll('dialog[open]').forEach(d=>d.close());renderFinale();$('#finale').showModal();}
 window.Adventure=Object.freeze({getState:()=>state,save,refresh:()=>{save();scene();},replace:s=>{state=AdventureRules.migrate(JSON.parse(JSON.stringify(s)));views=Array(5).fill(0);save();scene();},openStation,openFinale,solutionText});

@@ -1,0 +1,4307 @@
+{
+  "assets/characters/voice-miriam.png": [
+    {
+      "name": "miriam",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "visible_bbox_xyxy": [
+        110,
+        189,
+        939,
+        1390
+      ],
+      "foot_anchor_source_xy": [
+        524,
+        1390
+      ],
+      "head_center_source_xy": [
+        594,
+        359
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        0.0,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        10.742,
+        12.305,
+        91.699,
+        90.495
+      ],
+      "foot_anchor_source_xy_percent": [
+        51.172,
+        90.495
+      ],
+      "head_center_source_xy_percent": [
+        58.008,
+        23.372
+      ]
+    }
+  ],
+  "assets/characters/voice-jakob.png": [
+    {
+      "name": "jakob",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "visible_bbox_xyxy": [
+        106,
+        179,
+        923,
+        1380
+      ],
+      "foot_anchor_source_xy": [
+        514,
+        1380
+      ],
+      "head_center_source_xy": [
+        569,
+        351
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        0.0,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        10.352,
+        11.654,
+        90.137,
+        89.844
+      ],
+      "foot_anchor_source_xy_percent": [
+        50.195,
+        89.844
+      ],
+      "head_center_source_xy_percent": [
+        55.566,
+        22.852
+      ]
+    }
+  ],
+  "assets/characters/voice-eleasar.png": [
+    {
+      "name": "eleasar",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "visible_bbox_xyxy": [
+        129,
+        159,
+        940,
+        1370
+      ],
+      "foot_anchor_source_xy": [
+        534,
+        1370
+      ],
+      "head_center_source_xy": [
+        494,
+        338
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        0.0,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        12.598,
+        10.352,
+        91.797,
+        89.193
+      ],
+      "foot_anchor_source_xy_percent": [
+        52.148,
+        89.193
+      ],
+      "head_center_source_xy_percent": [
+        48.242,
+        22.005
+      ]
+    }
+  ],
+  "assets/characters/voice-marcus.png": [
+    {
+      "name": "marcus",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "visible_bbox_xyxy": [
+        124,
+        126,
+        910,
+        1410
+      ],
+      "foot_anchor_source_xy": [
+        517,
+        1410
+      ],
+      "head_center_source_xy": [
+        531,
+        435
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        0.0,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        12.109,
+        8.203,
+        88.867,
+        91.797
+      ],
+      "foot_anchor_source_xy_percent": [
+        50.488,
+        91.797
+      ],
+      "head_center_source_xy_percent": [
+        51.855,
+        28.32
+      ]
+    }
+  ],
+  "assets/interlude/touch-controls.png": [
+    {
+      "name": "joystick-base",
+      "source_rect_xyxy": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        80,
+        84,
+        432,
+        428
+      ],
+      "foot_anchor_source_xy": [
+        256,
+        256
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        0.0,
+        33.333,
+        50.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        5.208,
+        8.203,
+        28.125,
+        41.797
+      ],
+      "foot_anchor_source_xy_percent": [
+        16.667,
+        25.0
+      ]
+    },
+    {
+      "name": "joystick-knob",
+      "source_rect_xyxy": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        664,
+        154,
+        872,
+        358
+      ],
+      "foot_anchor_source_xy": [
+        768,
+        256
+      ],
+      "source_rect_xyxy_percent": [
+        33.333,
+        0.0,
+        66.667,
+        50.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        43.229,
+        15.039,
+        56.771,
+        34.961
+      ],
+      "foot_anchor_source_xy_percent": [
+        50.0,
+        25.0
+      ]
+    },
+    {
+      "name": "button-hide",
+      "source_rect_xyxy": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        1120,
+        100,
+        1440,
+        412
+      ],
+      "foot_anchor_source_xy": [
+        1280,
+        256
+      ],
+      "source_rect_xyxy_percent": [
+        66.667,
+        0.0,
+        100.0,
+        50.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        72.917,
+        9.766,
+        93.75,
+        40.234
+      ],
+      "foot_anchor_source_xy_percent": [
+        83.333,
+        25.0
+      ]
+    },
+    {
+      "name": "button-pause",
+      "source_rect_xyxy": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        96,
+        614,
+        416,
+        922
+      ],
+      "foot_anchor_source_xy": [
+        256,
+        768
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        50.0,
+        33.333,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        6.25,
+        59.961,
+        27.083,
+        90.039
+      ],
+      "foot_anchor_source_xy_percent": [
+        16.667,
+        75.0
+      ]
+    },
+    {
+      "name": "tap-target",
+      "source_rect_xyxy": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        672,
+        674,
+        864,
+        862
+      ],
+      "foot_anchor_source_xy": [
+        768,
+        768
+      ],
+      "source_rect_xyxy_percent": [
+        33.333,
+        50.0,
+        66.667,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        43.75,
+        65.82,
+        56.25,
+        84.18
+      ],
+      "foot_anchor_source_xy_percent": [
+        50.0,
+        75.0
+      ]
+    },
+    {
+      "name": "inspect-bubble",
+      "source_rect_xyxy": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        1152,
+        646,
+        1408,
+        890
+      ],
+      "foot_anchor_source_xy": [
+        1280,
+        768
+      ],
+      "source_rect_xyxy_percent": [
+        66.667,
+        50.0,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        75.0,
+        63.086,
+        91.667,
+        86.914
+      ],
+      "foot_anchor_source_xy_percent": [
+        83.333,
+        75.0
+      ]
+    }
+  ],
+  "assets/ui/discovery-marks.png": [
+    {
+      "name": "unread",
+      "source_rect_xyxy": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        115,
+        106,
+        396,
+        406
+      ],
+      "foot_anchor_source_xy": [
+        256,
+        256
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        0.0,
+        50.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        11.23,
+        20.703,
+        38.672,
+        79.297
+      ],
+      "foot_anchor_source_xy_percent": [
+        25.0,
+        50.0
+      ]
+    },
+    {
+      "name": "read",
+      "source_rect_xyxy": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "visible_bbox_xyxy": [
+        618,
+        108,
+        918,
+        404
+      ],
+      "foot_anchor_source_xy": [
+        768,
+        256
+      ],
+      "source_rect_xyxy_percent": [
+        50.0,
+        0.0,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        60.352,
+        21.094,
+        89.648,
+        78.906
+      ],
+      "foot_anchor_source_xy_percent": [
+        75.0,
+        50.0
+      ]
+    }
+  ],
+  "assets/scene/control-post-v2-stage-0.png": [
+    {
+      "name": "erlassbrett",
+      "source_rect_xyxy": [
+        212,
+        395,
+        397,
+        560
+      ],
+      "visible_bbox_xyxy": [
+        212,
+        395,
+        397,
+        560
+      ],
+      "foot_anchor_source_xy": [
+        304.5,
+        560
+      ],
+      "marker_source_xy": [
+        302,
+        465
+      ],
+      "bbox_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "marker_percent": [
+        19.661,
+        45.41
+      ],
+      "marker_clearance_source_xyxy": [
+        257,
+        420,
+        347,
+        510
+      ],
+      "source_rect_xyxy_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "visible_bbox_xyxy_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "foot_anchor_source_xy_percent": [
+        19.824,
+        54.688
+      ]
+    },
+    {
+      "name": "abgabentisch",
+      "source_rect_xyxy": [
+        0,
+        548,
+        405,
+        860
+      ],
+      "visible_bbox_xyxy": [
+        0,
+        548,
+        405,
+        860
+      ],
+      "foot_anchor_source_xy": [
+        202.5,
+        860
+      ],
+      "marker_source_xy": [
+        322,
+        748
+      ],
+      "bbox_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "marker_percent": [
+        20.964,
+        73.047
+      ],
+      "marker_clearance_source_xyxy": [
+        277,
+        703,
+        367,
+        793
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "visible_bbox_xyxy_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "foot_anchor_source_xy_percent": [
+        13.184,
+        83.984
+      ]
+    },
+    {
+      "name": "reisende",
+      "source_rect_xyxy": [
+        390,
+        350,
+        934,
+        885
+      ],
+      "visible_bbox_xyxy": [
+        390,
+        350,
+        934,
+        885
+      ],
+      "foot_anchor_source_xy": [
+        662.0,
+        885
+      ],
+      "marker_source_xy": [
+        649,
+        937
+      ],
+      "bbox_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "marker_percent": [
+        42.253,
+        91.504
+      ],
+      "marker_clearance_source_xyxy": [
+        604,
+        892,
+        694,
+        982
+      ],
+      "source_rect_xyxy_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "visible_bbox_xyxy_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "foot_anchor_source_xy_percent": [
+        43.099,
+        86.426
+      ]
+    },
+    {
+      "name": "kartentisch",
+      "source_rect_xyxy": [
+        950,
+        738,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        950,
+        738,
+        1536,
+        1024
+      ],
+      "foot_anchor_source_xy": [
+        1243.0,
+        1024
+      ],
+      "marker_source_xy": [
+        1263,
+        844
+      ],
+      "bbox_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "marker_percent": [
+        82.227,
+        82.422
+      ],
+      "marker_clearance_source_xyxy": [
+        1218,
+        799,
+        1308,
+        889
+      ],
+      "source_rect_xyxy_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "foot_anchor_source_xy_percent": [
+        80.924,
+        100.0
+      ]
+    },
+    {
+      "name": "pergamentrolle",
+      "source_rect_xyxy": [
+        808,
+        829,
+        1158,
+        1016
+      ],
+      "visible_bbox_xyxy": [
+        808,
+        829,
+        1158,
+        1016
+      ],
+      "foot_anchor_source_xy": [
+        983.0,
+        1016
+      ],
+      "marker_source_xy": [
+        987,
+        933
+      ],
+      "bbox_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "marker_percent": [
+        64.258,
+        91.113
+      ],
+      "marker_clearance_source_xyxy": [
+        942,
+        888,
+        1032,
+        978
+      ],
+      "source_rect_xyxy_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "visible_bbox_xyxy_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "foot_anchor_source_xy_percent": [
+        63.997,
+        99.219
+      ]
+    }
+  ],
+  "assets/scene/control-post-v2-stage-1.png": [
+    {
+      "name": "erlassbrett",
+      "source_rect_xyxy": [
+        212,
+        395,
+        397,
+        560
+      ],
+      "visible_bbox_xyxy": [
+        212,
+        395,
+        397,
+        560
+      ],
+      "foot_anchor_source_xy": [
+        304.5,
+        560
+      ],
+      "marker_source_xy": [
+        302,
+        465
+      ],
+      "bbox_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "marker_percent": [
+        19.661,
+        45.41
+      ],
+      "marker_clearance_source_xyxy": [
+        257,
+        420,
+        347,
+        510
+      ],
+      "source_rect_xyxy_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "visible_bbox_xyxy_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "foot_anchor_source_xy_percent": [
+        19.824,
+        54.688
+      ]
+    },
+    {
+      "name": "abgabentisch",
+      "source_rect_xyxy": [
+        0,
+        548,
+        405,
+        860
+      ],
+      "visible_bbox_xyxy": [
+        0,
+        548,
+        405,
+        860
+      ],
+      "foot_anchor_source_xy": [
+        202.5,
+        860
+      ],
+      "marker_source_xy": [
+        322,
+        748
+      ],
+      "bbox_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "marker_percent": [
+        20.964,
+        73.047
+      ],
+      "marker_clearance_source_xyxy": [
+        277,
+        703,
+        367,
+        793
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "visible_bbox_xyxy_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "foot_anchor_source_xy_percent": [
+        13.184,
+        83.984
+      ]
+    },
+    {
+      "name": "reisende",
+      "source_rect_xyxy": [
+        390,
+        350,
+        934,
+        885
+      ],
+      "visible_bbox_xyxy": [
+        390,
+        350,
+        934,
+        885
+      ],
+      "foot_anchor_source_xy": [
+        662.0,
+        885
+      ],
+      "marker_source_xy": [
+        649,
+        937
+      ],
+      "bbox_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "marker_percent": [
+        42.253,
+        91.504
+      ],
+      "marker_clearance_source_xyxy": [
+        604,
+        892,
+        694,
+        982
+      ],
+      "source_rect_xyxy_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "visible_bbox_xyxy_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "foot_anchor_source_xy_percent": [
+        43.099,
+        86.426
+      ]
+    },
+    {
+      "name": "kartentisch",
+      "source_rect_xyxy": [
+        950,
+        738,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        950,
+        738,
+        1536,
+        1024
+      ],
+      "foot_anchor_source_xy": [
+        1243.0,
+        1024
+      ],
+      "marker_source_xy": [
+        1263,
+        844
+      ],
+      "bbox_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "marker_percent": [
+        82.227,
+        82.422
+      ],
+      "marker_clearance_source_xyxy": [
+        1218,
+        799,
+        1308,
+        889
+      ],
+      "source_rect_xyxy_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "foot_anchor_source_xy_percent": [
+        80.924,
+        100.0
+      ]
+    },
+    {
+      "name": "pergamentrolle",
+      "source_rect_xyxy": [
+        808,
+        829,
+        1158,
+        1016
+      ],
+      "visible_bbox_xyxy": [
+        808,
+        829,
+        1158,
+        1016
+      ],
+      "foot_anchor_source_xy": [
+        983.0,
+        1016
+      ],
+      "marker_source_xy": [
+        987,
+        933
+      ],
+      "bbox_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "marker_percent": [
+        64.258,
+        91.113
+      ],
+      "marker_clearance_source_xyxy": [
+        942,
+        888,
+        1032,
+        978
+      ],
+      "source_rect_xyxy_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "visible_bbox_xyxy_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "foot_anchor_source_xy_percent": [
+        63.997,
+        99.219
+      ]
+    }
+  ],
+  "assets/scene/control-post-v2-stage-2.png": [
+    {
+      "name": "erlassbrett",
+      "source_rect_xyxy": [
+        212,
+        395,
+        397,
+        560
+      ],
+      "visible_bbox_xyxy": [
+        212,
+        395,
+        397,
+        560
+      ],
+      "foot_anchor_source_xy": [
+        304.5,
+        560
+      ],
+      "marker_source_xy": [
+        302,
+        465
+      ],
+      "bbox_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "marker_percent": [
+        19.661,
+        45.41
+      ],
+      "marker_clearance_source_xyxy": [
+        257,
+        420,
+        347,
+        510
+      ],
+      "source_rect_xyxy_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "visible_bbox_xyxy_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "foot_anchor_source_xy_percent": [
+        19.824,
+        54.688
+      ]
+    },
+    {
+      "name": "abgabentisch",
+      "source_rect_xyxy": [
+        0,
+        548,
+        405,
+        860
+      ],
+      "visible_bbox_xyxy": [
+        0,
+        548,
+        405,
+        860
+      ],
+      "foot_anchor_source_xy": [
+        202.5,
+        860
+      ],
+      "marker_source_xy": [
+        322,
+        748
+      ],
+      "bbox_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "marker_percent": [
+        20.964,
+        73.047
+      ],
+      "marker_clearance_source_xyxy": [
+        277,
+        703,
+        367,
+        793
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "visible_bbox_xyxy_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "foot_anchor_source_xy_percent": [
+        13.184,
+        83.984
+      ]
+    },
+    {
+      "name": "reisende",
+      "source_rect_xyxy": [
+        390,
+        350,
+        934,
+        885
+      ],
+      "visible_bbox_xyxy": [
+        390,
+        350,
+        934,
+        885
+      ],
+      "foot_anchor_source_xy": [
+        662.0,
+        885
+      ],
+      "marker_source_xy": [
+        649,
+        937
+      ],
+      "bbox_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "marker_percent": [
+        42.253,
+        91.504
+      ],
+      "marker_clearance_source_xyxy": [
+        604,
+        892,
+        694,
+        982
+      ],
+      "source_rect_xyxy_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "visible_bbox_xyxy_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "foot_anchor_source_xy_percent": [
+        43.099,
+        86.426
+      ]
+    },
+    {
+      "name": "kartentisch",
+      "source_rect_xyxy": [
+        950,
+        738,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        950,
+        738,
+        1536,
+        1024
+      ],
+      "foot_anchor_source_xy": [
+        1243.0,
+        1024
+      ],
+      "marker_source_xy": [
+        1263,
+        844
+      ],
+      "bbox_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "marker_percent": [
+        82.227,
+        82.422
+      ],
+      "marker_clearance_source_xyxy": [
+        1218,
+        799,
+        1308,
+        889
+      ],
+      "source_rect_xyxy_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "foot_anchor_source_xy_percent": [
+        80.924,
+        100.0
+      ]
+    },
+    {
+      "name": "pergamentrolle",
+      "source_rect_xyxy": [
+        808,
+        829,
+        1158,
+        1016
+      ],
+      "visible_bbox_xyxy": [
+        808,
+        829,
+        1158,
+        1016
+      ],
+      "foot_anchor_source_xy": [
+        983.0,
+        1016
+      ],
+      "marker_source_xy": [
+        987,
+        933
+      ],
+      "bbox_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "marker_percent": [
+        64.258,
+        91.113
+      ],
+      "marker_clearance_source_xyxy": [
+        942,
+        888,
+        1032,
+        978
+      ],
+      "source_rect_xyxy_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "visible_bbox_xyxy_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "foot_anchor_source_xy_percent": [
+        63.997,
+        99.219
+      ]
+    }
+  ],
+  "assets/scene/control-post-v2-stage-3.png": [
+    {
+      "name": "erlassbrett",
+      "source_rect_xyxy": [
+        212,
+        395,
+        397,
+        560
+      ],
+      "visible_bbox_xyxy": [
+        212,
+        395,
+        397,
+        560
+      ],
+      "foot_anchor_source_xy": [
+        304.5,
+        560
+      ],
+      "marker_source_xy": [
+        302,
+        465
+      ],
+      "bbox_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "marker_percent": [
+        19.661,
+        45.41
+      ],
+      "marker_clearance_source_xyxy": [
+        257,
+        420,
+        347,
+        510
+      ],
+      "source_rect_xyxy_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "visible_bbox_xyxy_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "foot_anchor_source_xy_percent": [
+        19.824,
+        54.688
+      ]
+    },
+    {
+      "name": "abgabentisch",
+      "source_rect_xyxy": [
+        0,
+        548,
+        405,
+        860
+      ],
+      "visible_bbox_xyxy": [
+        0,
+        548,
+        405,
+        860
+      ],
+      "foot_anchor_source_xy": [
+        202.5,
+        860
+      ],
+      "marker_source_xy": [
+        322,
+        748
+      ],
+      "bbox_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "marker_percent": [
+        20.964,
+        73.047
+      ],
+      "marker_clearance_source_xyxy": [
+        277,
+        703,
+        367,
+        793
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "visible_bbox_xyxy_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "foot_anchor_source_xy_percent": [
+        13.184,
+        83.984
+      ]
+    },
+    {
+      "name": "reisende",
+      "source_rect_xyxy": [
+        390,
+        350,
+        934,
+        885
+      ],
+      "visible_bbox_xyxy": [
+        390,
+        350,
+        934,
+        885
+      ],
+      "foot_anchor_source_xy": [
+        662.0,
+        885
+      ],
+      "marker_source_xy": [
+        649,
+        937
+      ],
+      "bbox_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "marker_percent": [
+        42.253,
+        91.504
+      ],
+      "marker_clearance_source_xyxy": [
+        604,
+        892,
+        694,
+        982
+      ],
+      "source_rect_xyxy_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "visible_bbox_xyxy_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "foot_anchor_source_xy_percent": [
+        43.099,
+        86.426
+      ]
+    },
+    {
+      "name": "kartentisch",
+      "source_rect_xyxy": [
+        950,
+        738,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        950,
+        738,
+        1536,
+        1024
+      ],
+      "foot_anchor_source_xy": [
+        1243.0,
+        1024
+      ],
+      "marker_source_xy": [
+        1263,
+        844
+      ],
+      "bbox_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "marker_percent": [
+        82.227,
+        82.422
+      ],
+      "marker_clearance_source_xyxy": [
+        1218,
+        799,
+        1308,
+        889
+      ],
+      "source_rect_xyxy_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "foot_anchor_source_xy_percent": [
+        80.924,
+        100.0
+      ]
+    },
+    {
+      "name": "pergamentrolle",
+      "source_rect_xyxy": [
+        808,
+        829,
+        1158,
+        1016
+      ],
+      "visible_bbox_xyxy": [
+        808,
+        829,
+        1158,
+        1016
+      ],
+      "foot_anchor_source_xy": [
+        983.0,
+        1016
+      ],
+      "marker_source_xy": [
+        987,
+        933
+      ],
+      "bbox_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "marker_percent": [
+        64.258,
+        91.113
+      ],
+      "marker_clearance_source_xyxy": [
+        942,
+        888,
+        1032,
+        978
+      ],
+      "source_rect_xyxy_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "visible_bbox_xyxy_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "foot_anchor_source_xy_percent": [
+        63.997,
+        99.219
+      ]
+    }
+  ],
+  "assets/scene/control-post-v2-stage-4.png": [
+    {
+      "name": "erlassbrett",
+      "source_rect_xyxy": [
+        212,
+        395,
+        397,
+        560
+      ],
+      "visible_bbox_xyxy": [
+        212,
+        395,
+        397,
+        560
+      ],
+      "foot_anchor_source_xy": [
+        304.5,
+        560
+      ],
+      "marker_source_xy": [
+        302,
+        465
+      ],
+      "bbox_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "marker_percent": [
+        19.661,
+        45.41
+      ],
+      "marker_clearance_source_xyxy": [
+        257,
+        420,
+        347,
+        510
+      ],
+      "source_rect_xyxy_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "visible_bbox_xyxy_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "foot_anchor_source_xy_percent": [
+        19.824,
+        54.688
+      ]
+    },
+    {
+      "name": "abgabentisch",
+      "source_rect_xyxy": [
+        0,
+        548,
+        405,
+        860
+      ],
+      "visible_bbox_xyxy": [
+        0,
+        548,
+        405,
+        860
+      ],
+      "foot_anchor_source_xy": [
+        202.5,
+        860
+      ],
+      "marker_source_xy": [
+        322,
+        748
+      ],
+      "bbox_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "marker_percent": [
+        20.964,
+        73.047
+      ],
+      "marker_clearance_source_xyxy": [
+        277,
+        703,
+        367,
+        793
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "visible_bbox_xyxy_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "foot_anchor_source_xy_percent": [
+        13.184,
+        83.984
+      ]
+    },
+    {
+      "name": "reisende",
+      "source_rect_xyxy": [
+        390,
+        350,
+        934,
+        885
+      ],
+      "visible_bbox_xyxy": [
+        390,
+        350,
+        934,
+        885
+      ],
+      "foot_anchor_source_xy": [
+        662.0,
+        885
+      ],
+      "marker_source_xy": [
+        649,
+        937
+      ],
+      "bbox_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "marker_percent": [
+        42.253,
+        91.504
+      ],
+      "marker_clearance_source_xyxy": [
+        604,
+        892,
+        694,
+        982
+      ],
+      "source_rect_xyxy_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "visible_bbox_xyxy_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "foot_anchor_source_xy_percent": [
+        43.099,
+        86.426
+      ]
+    },
+    {
+      "name": "kartentisch",
+      "source_rect_xyxy": [
+        950,
+        738,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        950,
+        738,
+        1536,
+        1024
+      ],
+      "foot_anchor_source_xy": [
+        1243.0,
+        1024
+      ],
+      "marker_source_xy": [
+        1263,
+        844
+      ],
+      "bbox_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "marker_percent": [
+        82.227,
+        82.422
+      ],
+      "marker_clearance_source_xyxy": [
+        1218,
+        799,
+        1308,
+        889
+      ],
+      "source_rect_xyxy_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "foot_anchor_source_xy_percent": [
+        80.924,
+        100.0
+      ]
+    },
+    {
+      "name": "pergamentrolle",
+      "source_rect_xyxy": [
+        808,
+        829,
+        1158,
+        1016
+      ],
+      "visible_bbox_xyxy": [
+        808,
+        829,
+        1158,
+        1016
+      ],
+      "foot_anchor_source_xy": [
+        983.0,
+        1016
+      ],
+      "marker_source_xy": [
+        987,
+        933
+      ],
+      "bbox_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "marker_percent": [
+        64.258,
+        91.113
+      ],
+      "marker_clearance_source_xyxy": [
+        942,
+        888,
+        1032,
+        978
+      ],
+      "source_rect_xyxy_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "visible_bbox_xyxy_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "foot_anchor_source_xy_percent": [
+        63.997,
+        99.219
+      ]
+    }
+  ],
+  "assets/scene/control-post-v2-stage-5.png": [
+    {
+      "name": "erlassbrett",
+      "source_rect_xyxy": [
+        212,
+        395,
+        397,
+        560
+      ],
+      "visible_bbox_xyxy": [
+        212,
+        395,
+        397,
+        560
+      ],
+      "foot_anchor_source_xy": [
+        304.5,
+        560
+      ],
+      "marker_source_xy": [
+        302,
+        465
+      ],
+      "bbox_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "marker_percent": [
+        19.661,
+        45.41
+      ],
+      "marker_clearance_source_xyxy": [
+        257,
+        420,
+        347,
+        510
+      ],
+      "source_rect_xyxy_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "visible_bbox_xyxy_percent": [
+        13.802,
+        38.574,
+        25.846,
+        54.688
+      ],
+      "foot_anchor_source_xy_percent": [
+        19.824,
+        54.688
+      ]
+    },
+    {
+      "name": "abgabentisch",
+      "source_rect_xyxy": [
+        0,
+        548,
+        405,
+        860
+      ],
+      "visible_bbox_xyxy": [
+        0,
+        548,
+        405,
+        860
+      ],
+      "foot_anchor_source_xy": [
+        202.5,
+        860
+      ],
+      "marker_source_xy": [
+        322,
+        748
+      ],
+      "bbox_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "marker_percent": [
+        20.964,
+        73.047
+      ],
+      "marker_clearance_source_xyxy": [
+        277,
+        703,
+        367,
+        793
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "visible_bbox_xyxy_percent": [
+        0.0,
+        53.516,
+        26.367,
+        83.984
+      ],
+      "foot_anchor_source_xy_percent": [
+        13.184,
+        83.984
+      ]
+    },
+    {
+      "name": "reisende",
+      "source_rect_xyxy": [
+        390,
+        350,
+        934,
+        885
+      ],
+      "visible_bbox_xyxy": [
+        390,
+        350,
+        934,
+        885
+      ],
+      "foot_anchor_source_xy": [
+        662.0,
+        885
+      ],
+      "marker_source_xy": [
+        649,
+        937
+      ],
+      "bbox_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "marker_percent": [
+        42.253,
+        91.504
+      ],
+      "marker_clearance_source_xyxy": [
+        604,
+        892,
+        694,
+        982
+      ],
+      "source_rect_xyxy_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "visible_bbox_xyxy_percent": [
+        25.391,
+        34.18,
+        60.807,
+        86.426
+      ],
+      "foot_anchor_source_xy_percent": [
+        43.099,
+        86.426
+      ]
+    },
+    {
+      "name": "kartentisch",
+      "source_rect_xyxy": [
+        950,
+        738,
+        1536,
+        1024
+      ],
+      "visible_bbox_xyxy": [
+        950,
+        738,
+        1536,
+        1024
+      ],
+      "foot_anchor_source_xy": [
+        1243.0,
+        1024
+      ],
+      "marker_source_xy": [
+        1263,
+        844
+      ],
+      "bbox_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "marker_percent": [
+        82.227,
+        82.422
+      ],
+      "marker_clearance_source_xyxy": [
+        1218,
+        799,
+        1308,
+        889
+      ],
+      "source_rect_xyxy_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        61.849,
+        72.07,
+        100.0,
+        100.0
+      ],
+      "foot_anchor_source_xy_percent": [
+        80.924,
+        100.0
+      ]
+    },
+    {
+      "name": "pergamentrolle",
+      "source_rect_xyxy": [
+        808,
+        829,
+        1158,
+        1016
+      ],
+      "visible_bbox_xyxy": [
+        808,
+        829,
+        1158,
+        1016
+      ],
+      "foot_anchor_source_xy": [
+        983.0,
+        1016
+      ],
+      "marker_source_xy": [
+        987,
+        933
+      ],
+      "bbox_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "marker_percent": [
+        64.258,
+        91.113
+      ],
+      "marker_clearance_source_xyxy": [
+        942,
+        888,
+        1032,
+        978
+      ],
+      "source_rect_xyxy_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "visible_bbox_xyxy_percent": [
+        52.604,
+        80.957,
+        75.391,
+        99.219
+      ],
+      "foot_anchor_source_xy_percent": [
+        63.997,
+        99.219
+      ]
+    }
+  ],
+  "assets/explore/explore-erlassbrett.png": [
+    {
+      "name": "erlass",
+      "source_rect_xyxy": [
+        145,
+        42,
+        658,
+        635
+      ],
+      "visible_bbox_xyxy": [
+        145,
+        42,
+        658,
+        635
+      ],
+      "foot_anchor_source_xy": [
+        401.5,
+        635
+      ],
+      "marker_source_xy": [
+        405,
+        300
+      ],
+      "bbox_percent": [
+        8.74,
+        4.43,
+        39.662,
+        66.983
+      ],
+      "marker_percent": [
+        24.412,
+        31.646
+      ],
+      "source_rect_xyxy_percent": [
+        8.74,
+        4.43,
+        39.662,
+        66.983
+      ],
+      "visible_bbox_xyxy_percent": [
+        8.74,
+        4.43,
+        39.662,
+        66.983
+      ],
+      "foot_anchor_source_xy_percent": [
+        24.201,
+        66.983
+      ]
+    },
+    {
+      "name": "warenkorb",
+      "source_rect_xyxy": [
+        680,
+        370,
+        1244,
+        725
+      ],
+      "visible_bbox_xyxy": [
+        680,
+        370,
+        1244,
+        725
+      ],
+      "foot_anchor_source_xy": [
+        962.0,
+        725
+      ],
+      "marker_source_xy": [
+        1020,
+        445
+      ],
+      "bbox_percent": [
+        40.989,
+        39.03,
+        74.985,
+        76.477
+      ],
+      "marker_percent": [
+        61.483,
+        46.941
+      ],
+      "source_rect_xyxy_percent": [
+        40.989,
+        39.03,
+        74.985,
+        76.477
+      ],
+      "visible_bbox_xyxy_percent": [
+        40.989,
+        39.03,
+        74.985,
+        76.477
+      ],
+      "foot_anchor_source_xy_percent": [
+        57.987,
+        76.477
+      ]
+    },
+    {
+      "name": "kaiserbueste",
+      "source_rect_xyxy": [
+        1290,
+        65,
+        1600,
+        720
+      ],
+      "visible_bbox_xyxy": [
+        1290,
+        65,
+        1600,
+        720
+      ],
+      "foot_anchor_source_xy": [
+        1445.0,
+        720
+      ],
+      "marker_source_xy": [
+        1448,
+        490
+      ],
+      "bbox_percent": [
+        77.758,
+        6.857,
+        96.444,
+        75.949
+      ],
+      "marker_percent": [
+        87.281,
+        51.688
+      ],
+      "source_rect_xyxy_percent": [
+        77.758,
+        6.857,
+        96.444,
+        75.949
+      ],
+      "visible_bbox_xyxy_percent": [
+        77.758,
+        6.857,
+        96.444,
+        75.949
+      ],
+      "foot_anchor_source_xy_percent": [
+        87.101,
+        75.949
+      ]
+    },
+    {
+      "name": "progress-and-action",
+      "source_rect_xyxy": [
+        0,
+        740,
+        1659,
+        948
+      ],
+      "visible_bbox_xyxy": [
+        0,
+        740,
+        1659,
+        948
+      ],
+      "foot_anchor_source_xy": [
+        829.5,
+        948
+      ],
+      "marker_source_xy": [
+        829.5,
+        844
+      ],
+      "bbox_percent": [
+        0.0,
+        78.059,
+        100.0,
+        100.0
+      ],
+      "marker_percent": [
+        50.0,
+        89.03
+      ],
+      "html_overlay_source_xyxy": [
+        40,
+        760,
+        1619,
+        924
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        78.059,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        0.0,
+        78.059,
+        100.0,
+        100.0
+      ],
+      "foot_anchor_source_xy_percent": [
+        50.0,
+        100.0
+      ],
+      "html_overlay_source_xyxy_percent": [
+        2.411,
+        80.169,
+        97.589,
+        97.468
+      ]
+    }
+  ],
+  "assets/explore/explore-abgabentisch.png": [
+    {
+      "name": "urkunde",
+      "source_rect_xyxy": [
+        15,
+        140,
+        574,
+        694
+      ],
+      "visible_bbox_xyxy": [
+        15,
+        140,
+        574,
+        694
+      ],
+      "foot_anchor_source_xy": [
+        294.5,
+        694
+      ],
+      "marker_source_xy": [
+        300,
+        345
+      ],
+      "bbox_percent": [
+        0.904,
+        14.768,
+        34.599,
+        73.207
+      ],
+      "marker_percent": [
+        18.083,
+        36.392
+      ],
+      "source_rect_xyxy_percent": [
+        0.904,
+        14.768,
+        34.599,
+        73.207
+      ],
+      "visible_bbox_xyxy_percent": [
+        0.904,
+        14.768,
+        34.599,
+        73.207
+      ],
+      "foot_anchor_source_xy_percent": [
+        17.752,
+        73.207
+      ]
+    },
+    {
+      "name": "zwei-familien",
+      "source_rect_xyxy": [
+        578,
+        115,
+        1144,
+        617
+      ],
+      "visible_bbox_xyxy": [
+        578,
+        115,
+        1144,
+        617
+      ],
+      "foot_anchor_source_xy": [
+        861.0,
+        617
+      ],
+      "marker_source_xy": [
+        1000,
+        250
+      ],
+      "bbox_percent": [
+        34.84,
+        12.131,
+        68.957,
+        65.084
+      ],
+      "marker_percent": [
+        60.277,
+        26.371
+      ],
+      "source_rect_xyxy_percent": [
+        34.84,
+        12.131,
+        68.957,
+        65.084
+      ],
+      "visible_bbox_xyxy_percent": [
+        34.84,
+        12.131,
+        68.957,
+        65.084
+      ],
+      "foot_anchor_source_xy_percent": [
+        51.899,
+        65.084
+      ]
+    },
+    {
+      "name": "kaisermuenze",
+      "source_rect_xyxy": [
+        1146,
+        76,
+        1638,
+        565
+      ],
+      "visible_bbox_xyxy": [
+        1146,
+        76,
+        1638,
+        565
+      ],
+      "foot_anchor_source_xy": [
+        1392.0,
+        565
+      ],
+      "marker_source_xy": [
+        1445,
+        475
+      ],
+      "bbox_percent": [
+        69.078,
+        8.017,
+        98.734,
+        59.599
+      ],
+      "marker_percent": [
+        87.101,
+        50.105
+      ],
+      "source_rect_xyxy_percent": [
+        69.078,
+        8.017,
+        98.734,
+        59.599
+      ],
+      "visible_bbox_xyxy_percent": [
+        69.078,
+        8.017,
+        98.734,
+        59.599
+      ],
+      "foot_anchor_source_xy_percent": [
+        83.906,
+        59.599
+      ]
+    },
+    {
+      "name": "progress-and-action",
+      "source_rect_xyxy": [
+        0,
+        740,
+        1659,
+        948
+      ],
+      "visible_bbox_xyxy": [
+        0,
+        740,
+        1659,
+        948
+      ],
+      "foot_anchor_source_xy": [
+        829.5,
+        948
+      ],
+      "marker_source_xy": [
+        829.5,
+        844
+      ],
+      "bbox_percent": [
+        0.0,
+        78.059,
+        100.0,
+        100.0
+      ],
+      "marker_percent": [
+        50.0,
+        89.03
+      ],
+      "html_overlay_source_xyxy": [
+        40,
+        760,
+        1619,
+        924
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        78.059,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        0.0,
+        78.059,
+        100.0,
+        100.0
+      ],
+      "foot_anchor_source_xy_percent": [
+        50.0,
+        100.0
+      ],
+      "html_overlay_source_xyxy_percent": [
+        2.411,
+        80.169,
+        97.589,
+        97.468
+      ]
+    }
+  ],
+  "assets/explore/explore-kartentisch.png": [
+    {
+      "name": "orientierung",
+      "source_rect_xyxy": [
+        15,
+        210,
+        453,
+        588
+      ],
+      "visible_bbox_xyxy": [
+        15,
+        210,
+        453,
+        588
+      ],
+      "foot_anchor_source_xy": [
+        234.0,
+        588
+      ],
+      "marker_source_xy": [
+        235,
+        398
+      ],
+      "bbox_percent": [
+        0.904,
+        22.152,
+        27.306,
+        62.025
+      ],
+      "marker_percent": [
+        14.165,
+        41.983
+      ],
+      "source_rect_xyxy_percent": [
+        0.904,
+        22.152,
+        27.306,
+        62.025
+      ],
+      "visible_bbox_xyxy_percent": [
+        0.904,
+        22.152,
+        27.306,
+        62.025
+      ],
+      "foot_anchor_source_xy_percent": [
+        14.105,
+        62.025
+      ]
+    },
+    {
+      "name": "fischfang",
+      "source_rect_xyxy": [
+        490,
+        80,
+        1136,
+        660
+      ],
+      "visible_bbox_xyxy": [
+        490,
+        80,
+        1136,
+        660
+      ],
+      "foot_anchor_source_xy": [
+        813.0,
+        660
+      ],
+      "marker_source_xy": [
+        850,
+        555
+      ],
+      "bbox_percent": [
+        29.536,
+        8.439,
+        68.475,
+        69.62
+      ],
+      "marker_percent": [
+        51.236,
+        58.544
+      ],
+      "source_rect_xyxy_percent": [
+        29.536,
+        8.439,
+        68.475,
+        69.62
+      ],
+      "visible_bbox_xyxy_percent": [
+        29.536,
+        8.439,
+        68.475,
+        69.62
+      ],
+      "foot_anchor_source_xy_percent": [
+        49.005,
+        69.62
+      ]
+    },
+    {
+      "name": "tempel",
+      "source_rect_xyxy": [
+        1140,
+        230,
+        1659,
+        640
+      ],
+      "visible_bbox_xyxy": [
+        1140,
+        230,
+        1659,
+        640
+      ],
+      "foot_anchor_source_xy": [
+        1399.5,
+        640
+      ],
+      "marker_source_xy": [
+        1400,
+        440
+      ],
+      "bbox_percent": [
+        68.716,
+        24.262,
+        100.0,
+        67.511
+      ],
+      "marker_percent": [
+        84.388,
+        46.414
+      ],
+      "source_rect_xyxy_percent": [
+        68.716,
+        24.262,
+        100.0,
+        67.511
+      ],
+      "visible_bbox_xyxy_percent": [
+        68.716,
+        24.262,
+        100.0,
+        67.511
+      ],
+      "foot_anchor_source_xy_percent": [
+        84.358,
+        67.511
+      ]
+    },
+    {
+      "name": "progress-and-action",
+      "source_rect_xyxy": [
+        0,
+        740,
+        1659,
+        948
+      ],
+      "visible_bbox_xyxy": [
+        0,
+        740,
+        1659,
+        948
+      ],
+      "foot_anchor_source_xy": [
+        829.5,
+        948
+      ],
+      "marker_source_xy": [
+        829.5,
+        844
+      ],
+      "bbox_percent": [
+        0.0,
+        78.059,
+        100.0,
+        100.0
+      ],
+      "marker_percent": [
+        50.0,
+        89.03
+      ],
+      "html_overlay_source_xyxy": [
+        40,
+        760,
+        1619,
+        924
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        78.059,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        0.0,
+        78.059,
+        100.0,
+        100.0
+      ],
+      "foot_anchor_source_xy_percent": [
+        50.0,
+        100.0
+      ],
+      "html_overlay_source_xyxy_percent": [
+        2.411,
+        80.169,
+        97.589,
+        97.468
+      ]
+    }
+  ],
+  "assets/explore/explore-reisende.png": [
+    {
+      "name": "marktstand",
+      "source_rect_xyxy": [
+        30,
+        198,
+        550,
+        665
+      ],
+      "visible_bbox_xyxy": [
+        30,
+        198,
+        550,
+        665
+      ],
+      "foot_anchor_source_xy": [
+        290.0,
+        665
+      ],
+      "marker_source_xy": [
+        360,
+        444
+      ],
+      "bbox_percent": [
+        1.808,
+        20.886,
+        33.153,
+        70.148
+      ],
+      "marker_percent": [
+        21.7,
+        46.835
+      ],
+      "source_rect_xyxy_percent": [
+        1.808,
+        20.886,
+        33.153,
+        70.148
+      ],
+      "visible_bbox_xyxy_percent": [
+        1.808,
+        20.886,
+        33.153,
+        70.148
+      ],
+      "foot_anchor_source_xy_percent": [
+        17.48,
+        70.148
+      ]
+    },
+    {
+      "name": "zwei-maenner",
+      "source_rect_xyxy": [
+        578,
+        160,
+        1053,
+        665
+      ],
+      "visible_bbox_xyxy": [
+        578,
+        160,
+        1053,
+        665
+      ],
+      "foot_anchor_source_xy": [
+        815.5,
+        665
+      ],
+      "marker_source_xy": [
+        820,
+        350
+      ],
+      "bbox_percent": [
+        34.84,
+        16.878,
+        63.472,
+        70.148
+      ],
+      "marker_percent": [
+        49.427,
+        36.92
+      ],
+      "source_rect_xyxy_percent": [
+        34.84,
+        16.878,
+        63.472,
+        70.148
+      ],
+      "visible_bbox_xyxy_percent": [
+        34.84,
+        16.878,
+        63.472,
+        70.148
+      ],
+      "foot_anchor_source_xy_percent": [
+        49.156,
+        70.148
+      ]
+    },
+    {
+      "name": "soldat",
+      "source_rect_xyxy": [
+        1320,
+        60,
+        1544,
+        665
+      ],
+      "visible_bbox_xyxy": [
+        1320,
+        60,
+        1544,
+        665
+      ],
+      "foot_anchor_source_xy": [
+        1432.0,
+        665
+      ],
+      "marker_source_xy": [
+        1425,
+        435
+      ],
+      "bbox_percent": [
+        79.566,
+        6.329,
+        93.068,
+        70.148
+      ],
+      "marker_percent": [
+        85.895,
+        45.886
+      ],
+      "source_rect_xyxy_percent": [
+        79.566,
+        6.329,
+        93.068,
+        70.148
+      ],
+      "visible_bbox_xyxy_percent": [
+        79.566,
+        6.329,
+        93.068,
+        70.148
+      ],
+      "foot_anchor_source_xy_percent": [
+        86.317,
+        70.148
+      ]
+    },
+    {
+      "name": "progress-and-action",
+      "source_rect_xyxy": [
+        0,
+        740,
+        1659,
+        948
+      ],
+      "visible_bbox_xyxy": [
+        0,
+        740,
+        1659,
+        948
+      ],
+      "foot_anchor_source_xy": [
+        829.5,
+        948
+      ],
+      "marker_source_xy": [
+        829.5,
+        844
+      ],
+      "bbox_percent": [
+        0.0,
+        78.059,
+        100.0,
+        100.0
+      ],
+      "marker_percent": [
+        50.0,
+        89.03
+      ],
+      "html_overlay_source_xyxy": [
+        40,
+        760,
+        1619,
+        924
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        78.059,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        0.0,
+        78.059,
+        100.0,
+        100.0
+      ],
+      "foot_anchor_source_xy_percent": [
+        50.0,
+        100.0
+      ],
+      "html_overlay_source_xyxy_percent": [
+        2.411,
+        80.169,
+        97.589,
+        97.468
+      ]
+    }
+  ],
+  "assets/bonus/bonus-selection-panel.png": [
+    {
+      "name": "title",
+      "source_rect_xyxy": [
+        220,
+        133,
+        1316,
+        205
+      ],
+      "visible_bbox_xyxy": [
+        220,
+        133,
+        1316,
+        205
+      ],
+      "foot_anchor_source_xy": [
+        768.0,
+        205
+      ],
+      "marker_source_xy": [
+        768.0,
+        169.0
+      ],
+      "bbox_percent": [
+        14.323,
+        12.988,
+        85.677,
+        20.02
+      ],
+      "marker_percent": [
+        50.0,
+        16.504
+      ],
+      "html_overlay_source_xyxy": [
+        220,
+        133,
+        1316,
+        205
+      ],
+      "aspect_ratio": null,
+      "max_characters": 20,
+      "source_rect_xyxy_percent": [
+        14.323,
+        12.988,
+        85.677,
+        20.02
+      ],
+      "visible_bbox_xyxy_percent": [
+        14.323,
+        12.988,
+        85.677,
+        20.02
+      ],
+      "foot_anchor_source_xy_percent": [
+        50.0,
+        20.02
+      ],
+      "html_overlay_source_xyxy_percent": [
+        14.323,
+        12.988,
+        85.677,
+        20.02
+      ]
+    },
+    {
+      "name": "preview-left",
+      "source_rect_xyxy": [
+        170,
+        260,
+        730,
+        610
+      ],
+      "visible_bbox_xyxy": [
+        170,
+        260,
+        730,
+        610
+      ],
+      "foot_anchor_source_xy": [
+        450.0,
+        610
+      ],
+      "marker_source_xy": [
+        450.0,
+        435.0
+      ],
+      "bbox_percent": [
+        11.068,
+        25.391,
+        47.526,
+        59.57
+      ],
+      "marker_percent": [
+        29.297,
+        42.48
+      ],
+      "html_overlay_source_xyxy": [
+        170,
+        260,
+        730,
+        610
+      ],
+      "aspect_ratio": "16:10",
+      "max_characters": null,
+      "source_rect_xyxy_percent": [
+        11.068,
+        25.391,
+        47.526,
+        59.57
+      ],
+      "visible_bbox_xyxy_percent": [
+        11.068,
+        25.391,
+        47.526,
+        59.57
+      ],
+      "foot_anchor_source_xy_percent": [
+        29.297,
+        59.57
+      ],
+      "html_overlay_source_xyxy_percent": [
+        11.068,
+        25.391,
+        47.526,
+        59.57
+      ]
+    },
+    {
+      "name": "preview-right",
+      "source_rect_xyxy": [
+        806,
+        260,
+        1366,
+        610
+      ],
+      "visible_bbox_xyxy": [
+        806,
+        260,
+        1366,
+        610
+      ],
+      "foot_anchor_source_xy": [
+        1086.0,
+        610
+      ],
+      "marker_source_xy": [
+        1086.0,
+        435.0
+      ],
+      "bbox_percent": [
+        52.474,
+        25.391,
+        88.932,
+        59.57
+      ],
+      "marker_percent": [
+        70.703,
+        42.48
+      ],
+      "html_overlay_source_xyxy": [
+        806,
+        260,
+        1366,
+        610
+      ],
+      "aspect_ratio": "16:10",
+      "max_characters": null,
+      "source_rect_xyxy_percent": [
+        52.474,
+        25.391,
+        88.932,
+        59.57
+      ],
+      "visible_bbox_xyxy_percent": [
+        52.474,
+        25.391,
+        88.932,
+        59.57
+      ],
+      "foot_anchor_source_xy_percent": [
+        70.703,
+        59.57
+      ],
+      "html_overlay_source_xyxy_percent": [
+        52.474,
+        25.391,
+        88.932,
+        59.57
+      ]
+    },
+    {
+      "name": "name-left",
+      "source_rect_xyxy": [
+        175,
+        660,
+        725,
+        720
+      ],
+      "visible_bbox_xyxy": [
+        175,
+        660,
+        725,
+        720
+      ],
+      "foot_anchor_source_xy": [
+        450.0,
+        720
+      ],
+      "marker_source_xy": [
+        450.0,
+        690.0
+      ],
+      "bbox_percent": [
+        11.393,
+        64.453,
+        47.201,
+        70.312
+      ],
+      "marker_percent": [
+        29.297,
+        67.383
+      ],
+      "html_overlay_source_xyxy": [
+        175,
+        660,
+        725,
+        720
+      ],
+      "aspect_ratio": null,
+      "max_characters": 26,
+      "source_rect_xyxy_percent": [
+        11.393,
+        64.453,
+        47.201,
+        70.312
+      ],
+      "visible_bbox_xyxy_percent": [
+        11.393,
+        64.453,
+        47.201,
+        70.312
+      ],
+      "foot_anchor_source_xy_percent": [
+        29.297,
+        70.312
+      ],
+      "html_overlay_source_xyxy_percent": [
+        11.393,
+        64.453,
+        47.201,
+        70.312
+      ]
+    },
+    {
+      "name": "name-right",
+      "source_rect_xyxy": [
+        812,
+        660,
+        1362,
+        720
+      ],
+      "visible_bbox_xyxy": [
+        812,
+        660,
+        1362,
+        720
+      ],
+      "foot_anchor_source_xy": [
+        1087.0,
+        720
+      ],
+      "marker_source_xy": [
+        1087.0,
+        690.0
+      ],
+      "bbox_percent": [
+        52.865,
+        64.453,
+        88.672,
+        70.312
+      ],
+      "marker_percent": [
+        70.768,
+        67.383
+      ],
+      "html_overlay_source_xyxy": [
+        812,
+        660,
+        1362,
+        720
+      ],
+      "aspect_ratio": null,
+      "max_characters": 26,
+      "source_rect_xyxy_percent": [
+        52.865,
+        64.453,
+        88.672,
+        70.312
+      ],
+      "visible_bbox_xyxy_percent": [
+        52.865,
+        64.453,
+        88.672,
+        70.312
+      ],
+      "foot_anchor_source_xy_percent": [
+        70.768,
+        70.312
+      ],
+      "html_overlay_source_xyxy_percent": [
+        52.865,
+        64.453,
+        88.672,
+        70.312
+      ]
+    },
+    {
+      "name": "progress-left",
+      "source_rect_xyxy": [
+        175,
+        757,
+        725,
+        818
+      ],
+      "visible_bbox_xyxy": [
+        175,
+        757,
+        725,
+        818
+      ],
+      "foot_anchor_source_xy": [
+        450.0,
+        818
+      ],
+      "marker_source_xy": [
+        450.0,
+        787.5
+      ],
+      "bbox_percent": [
+        11.393,
+        73.926,
+        47.201,
+        79.883
+      ],
+      "marker_percent": [
+        29.297,
+        76.904
+      ],
+      "html_overlay_source_xyxy": [
+        175,
+        757,
+        725,
+        818
+      ],
+      "aspect_ratio": null,
+      "max_characters": 32,
+      "source_rect_xyxy_percent": [
+        11.393,
+        73.926,
+        47.201,
+        79.883
+      ],
+      "visible_bbox_xyxy_percent": [
+        11.393,
+        73.926,
+        47.201,
+        79.883
+      ],
+      "foot_anchor_source_xy_percent": [
+        29.297,
+        79.883
+      ],
+      "html_overlay_source_xyxy_percent": [
+        11.393,
+        73.926,
+        47.201,
+        79.883
+      ]
+    },
+    {
+      "name": "progress-right",
+      "source_rect_xyxy": [
+        812,
+        757,
+        1362,
+        818
+      ],
+      "visible_bbox_xyxy": [
+        812,
+        757,
+        1362,
+        818
+      ],
+      "foot_anchor_source_xy": [
+        1087.0,
+        818
+      ],
+      "marker_source_xy": [
+        1087.0,
+        787.5
+      ],
+      "bbox_percent": [
+        52.865,
+        73.926,
+        88.672,
+        79.883
+      ],
+      "marker_percent": [
+        70.768,
+        76.904
+      ],
+      "html_overlay_source_xyxy": [
+        812,
+        757,
+        1362,
+        818
+      ],
+      "aspect_ratio": null,
+      "max_characters": 32,
+      "source_rect_xyxy_percent": [
+        52.865,
+        73.926,
+        88.672,
+        79.883
+      ],
+      "visible_bbox_xyxy_percent": [
+        52.865,
+        73.926,
+        88.672,
+        79.883
+      ],
+      "foot_anchor_source_xy_percent": [
+        70.768,
+        79.883
+      ],
+      "html_overlay_source_xyxy_percent": [
+        52.865,
+        73.926,
+        88.672,
+        79.883
+      ]
+    }
+  ],
+  "assets/ui/frame-sprechblase.png": [
+    {
+      "name": "frame",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "visible_bbox_xyxy": [
+        56,
+        64,
+        1198,
+        1190
+      ],
+      "foot_anchor_source_xy": [
+        627.0,
+        1254
+      ],
+      "marker_source_xy": [
+        627,
+        627
+      ],
+      "bbox_percent": [
+        0.0,
+        0.0,
+        100.0,
+        100.0
+      ],
+      "marker_percent": [
+        50.0,
+        50.0
+      ],
+      "slice_top_right_bottom_left": [
+        190,
+        190,
+        190,
+        190
+      ],
+      "html_overlay_source_xyxy": [
+        190,
+        190,
+        1064,
+        1064
+      ],
+      "source_rect_xyxy_percent": [
+        0.0,
+        0.0,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        4.466,
+        5.104,
+        95.534,
+        94.896
+      ],
+      "foot_anchor_source_xy_percent": [
+        50.0,
+        100.0
+      ],
+      "html_overlay_source_xyxy_percent": [
+        15.152,
+        15.152,
+        84.848,
+        84.848
+      ]
+    }
+  ],
+  "assets/ui/speech-tails.png": [
+    {
+      "name": "left",
+      "source_rect_xyxy": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "visible_bbox_xyxy": [
+        40,
+        55,
+        216,
+        200
+      ],
+      "foot_anchor_source_xy": [
+        214,
+        127.5
+      ],
+      "dock_source_xy": [
+        214,
+        127.5
+      ],
+      "overlap_pixels": 12,
+      "source_rect_xyxy_percent": [
+        0.0,
+        0.0,
+        50.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        7.812,
+        21.484,
+        42.188,
+        78.125
+      ],
+      "foot_anchor_source_xy_percent": [
+        41.797,
+        49.805
+      ],
+      "dock_source_xy_percent": [
+        41.797,
+        49.805
+      ]
+    },
+    {
+      "name": "down",
+      "source_rect_xyxy": [
+        256,
+        0,
+        512,
+        256
+      ],
+      "visible_bbox_xyxy": [
+        296,
+        67,
+        472,
+        189
+      ],
+      "foot_anchor_source_xy": [
+        384.0,
+        69
+      ],
+      "dock_source_xy": [
+        384.0,
+        69
+      ],
+      "overlap_pixels": 12,
+      "source_rect_xyxy_percent": [
+        50.0,
+        0.0,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        57.812,
+        26.172,
+        92.188,
+        73.828
+      ],
+      "foot_anchor_source_xy_percent": [
+        75.0,
+        26.953
+      ],
+      "dock_source_xy_percent": [
+        75.0,
+        26.953
+      ]
+    }
+  ],
+  "assets/puzzles/map/map-table-large-v2.png": [
+    {
+      "name": "galilaea",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1600,
+        1065
+      ],
+      "polygon_source_xy": [
+        [
+          875,
+          90
+        ],
+        [
+          1130,
+          85
+        ],
+        [
+          1160,
+          130
+        ],
+        [
+          1148,
+          210
+        ],
+        [
+          1180,
+          252
+        ],
+        [
+          1165,
+          301
+        ],
+        [
+          1040,
+          330
+        ],
+        [
+          920,
+          315
+        ],
+        [
+          800,
+          295
+        ],
+        [
+          838,
+          220
+        ]
+      ],
+      "polygon_percent": [
+        [
+          54.688,
+          8.451
+        ],
+        [
+          70.625,
+          7.981
+        ],
+        [
+          72.5,
+          12.207
+        ],
+        [
+          71.75,
+          19.718
+        ],
+        [
+          73.75,
+          23.662
+        ],
+        [
+          72.812,
+          28.263
+        ],
+        [
+          65.0,
+          30.986
+        ],
+        [
+          57.5,
+          29.577
+        ],
+        [
+          50.0,
+          27.7
+        ],
+        [
+          52.375,
+          20.657
+        ]
+      ],
+      "visible_bbox_xyxy": [
+        800,
+        85,
+        1180,
+        330
+      ],
+      "foot_anchor_source_xy": [
+        875,
+        90
+      ],
+      "approximate": true,
+      "source_rect_xyxy_percent": [
+        0.0,
+        0.0,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        50.0,
+        7.981,
+        73.75,
+        30.986
+      ],
+      "foot_anchor_source_xy_percent": [
+        54.688,
+        8.451
+      ]
+    },
+    {
+      "name": "samaria",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1600,
+        1065
+      ],
+      "polygon_source_xy": [
+        [
+          800,
+          295
+        ],
+        [
+          920,
+          315
+        ],
+        [
+          1040,
+          330
+        ],
+        [
+          1165,
+          301
+        ],
+        [
+          1180,
+          390
+        ],
+        [
+          1185,
+          460
+        ],
+        [
+          1100,
+          480
+        ],
+        [
+          950,
+          495
+        ],
+        [
+          820,
+          475
+        ],
+        [
+          730,
+          450
+        ]
+      ],
+      "polygon_percent": [
+        [
+          50.0,
+          27.7
+        ],
+        [
+          57.5,
+          29.577
+        ],
+        [
+          65.0,
+          30.986
+        ],
+        [
+          72.812,
+          28.263
+        ],
+        [
+          73.75,
+          36.62
+        ],
+        [
+          74.062,
+          43.192
+        ],
+        [
+          68.75,
+          45.07
+        ],
+        [
+          59.375,
+          46.479
+        ],
+        [
+          51.25,
+          44.601
+        ],
+        [
+          45.625,
+          42.254
+        ]
+      ],
+      "visible_bbox_xyxy": [
+        730,
+        295,
+        1185,
+        495
+      ],
+      "foot_anchor_source_xy": [
+        800,
+        295
+      ],
+      "approximate": true,
+      "source_rect_xyxy_percent": [
+        0.0,
+        0.0,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        45.625,
+        27.7,
+        74.062,
+        46.479
+      ],
+      "foot_anchor_source_xy_percent": [
+        50.0,
+        27.7
+      ]
+    },
+    {
+      "name": "judaea",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1600,
+        1065
+      ],
+      "polygon_source_xy": [
+        [
+          730,
+          450
+        ],
+        [
+          820,
+          475
+        ],
+        [
+          950,
+          495
+        ],
+        [
+          1100,
+          480
+        ],
+        [
+          1185,
+          460
+        ],
+        [
+          1200,
+          530
+        ],
+        [
+          1170,
+          560
+        ],
+        [
+          1160,
+          670
+        ],
+        [
+          1120,
+          725
+        ],
+        [
+          980,
+          755
+        ],
+        [
+          790,
+          720
+        ],
+        [
+          590,
+          670
+        ],
+        [
+          650,
+          575
+        ]
+      ],
+      "polygon_percent": [
+        [
+          45.625,
+          42.254
+        ],
+        [
+          51.25,
+          44.601
+        ],
+        [
+          59.375,
+          46.479
+        ],
+        [
+          68.75,
+          45.07
+        ],
+        [
+          74.062,
+          43.192
+        ],
+        [
+          75.0,
+          49.765
+        ],
+        [
+          73.125,
+          52.582
+        ],
+        [
+          72.5,
+          62.911
+        ],
+        [
+          70.0,
+          68.075
+        ],
+        [
+          61.25,
+          70.892
+        ],
+        [
+          49.375,
+          67.606
+        ],
+        [
+          36.875,
+          62.911
+        ],
+        [
+          40.625,
+          53.991
+        ]
+      ],
+      "visible_bbox_xyxy": [
+        590,
+        450,
+        1200,
+        755
+      ],
+      "foot_anchor_source_xy": [
+        730,
+        450
+      ],
+      "approximate": true,
+      "source_rect_xyxy_percent": [
+        0.0,
+        0.0,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        36.875,
+        42.254,
+        75.0,
+        70.892
+      ],
+      "foot_anchor_source_xy_percent": [
+        45.625,
+        42.254
+      ]
+    },
+    {
+      "name": "idumaea",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1600,
+        1065
+      ],
+      "polygon_source_xy": [
+        [
+          590,
+          670
+        ],
+        [
+          790,
+          720
+        ],
+        [
+          980,
+          755
+        ],
+        [
+          1120,
+          725
+        ],
+        [
+          1150,
+          850
+        ],
+        [
+          950,
+          875
+        ],
+        [
+          690,
+          860
+        ],
+        [
+          440,
+          800
+        ]
+      ],
+      "polygon_percent": [
+        [
+          36.875,
+          62.911
+        ],
+        [
+          49.375,
+          67.606
+        ],
+        [
+          61.25,
+          70.892
+        ],
+        [
+          70.0,
+          68.075
+        ],
+        [
+          71.875,
+          79.812
+        ],
+        [
+          59.375,
+          82.16
+        ],
+        [
+          43.125,
+          80.751
+        ],
+        [
+          27.5,
+          75.117
+        ]
+      ],
+      "visible_bbox_xyxy": [
+        440,
+        670,
+        1150,
+        875
+      ],
+      "foot_anchor_source_xy": [
+        590,
+        670
+      ],
+      "approximate": true,
+      "source_rect_xyxy_percent": [
+        0.0,
+        0.0,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        27.5,
+        62.911,
+        71.875,
+        82.16
+      ],
+      "foot_anchor_source_xy_percent": [
+        36.875,
+        62.911
+      ]
+    },
+    {
+      "name": "peraea",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1600,
+        1065
+      ],
+      "polygon_source_xy": [
+        [
+          1230,
+          375
+        ],
+        [
+          1325,
+          355
+        ],
+        [
+          1375,
+          430
+        ],
+        [
+          1400,
+          515
+        ],
+        [
+          1380,
+          610
+        ],
+        [
+          1300,
+          650
+        ],
+        [
+          1290,
+          555
+        ],
+        [
+          1250,
+          525
+        ],
+        [
+          1250,
+          465
+        ]
+      ],
+      "polygon_percent": [
+        [
+          76.875,
+          35.211
+        ],
+        [
+          82.812,
+          33.333
+        ],
+        [
+          85.938,
+          40.376
+        ],
+        [
+          87.5,
+          48.357
+        ],
+        [
+          86.25,
+          57.277
+        ],
+        [
+          81.25,
+          61.033
+        ],
+        [
+          80.625,
+          52.113
+        ],
+        [
+          78.125,
+          49.296
+        ],
+        [
+          78.125,
+          43.662
+        ]
+      ],
+      "visible_bbox_xyxy": [
+        1230,
+        355,
+        1400,
+        650
+      ],
+      "foot_anchor_source_xy": [
+        1230,
+        375
+      ],
+      "approximate": true,
+      "source_rect_xyxy_percent": [
+        0.0,
+        0.0,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        76.875,
+        33.333,
+        87.5,
+        61.033
+      ],
+      "foot_anchor_source_xy_percent": [
+        76.875,
+        35.211
+      ]
+    },
+    {
+      "name": "decapolis_approx",
+      "source_rect_xyxy": [
+        0,
+        0,
+        1600,
+        1065
+      ],
+      "polygon_source_xy": [
+        [
+          1245,
+          235
+        ],
+        [
+          1380,
+          195
+        ],
+        [
+          1460,
+          260
+        ],
+        [
+          1450,
+          380
+        ],
+        [
+          1375,
+          430
+        ],
+        [
+          1325,
+          355
+        ],
+        [
+          1230,
+          375
+        ]
+      ],
+      "polygon_percent": [
+        [
+          77.812,
+          22.066
+        ],
+        [
+          86.25,
+          18.31
+        ],
+        [
+          91.25,
+          24.413
+        ],
+        [
+          90.625,
+          35.681
+        ],
+        [
+          85.938,
+          40.376
+        ],
+        [
+          82.812,
+          33.333
+        ],
+        [
+          76.875,
+          35.211
+        ]
+      ],
+      "visible_bbox_xyxy": [
+        1230,
+        195,
+        1460,
+        430
+      ],
+      "foot_anchor_source_xy": [
+        1245,
+        235
+      ],
+      "approximate": true,
+      "source_rect_xyxy_percent": [
+        0.0,
+        0.0,
+        100.0,
+        100.0
+      ],
+      "visible_bbox_xyxy_percent": [
+        76.875,
+        18.31,
+        91.25,
+        40.376
+      ],
+      "foot_anchor_source_xy_percent": [
+        77.812,
+        22.066
+      ]
+    },
+    {
+      "name": "scale-0-50-km",
+      "source_rect_xyxy": [
+        1309,
+        838,
+        1501,
+        853
+      ],
+      "visible_bbox_xyxy": [
+        1309,
+        838,
+        1501,
+        853
+      ],
+      "foot_anchor_source_xy": [
+        1309,
+        845
+      ],
+      "pixels_per_50_km": 191,
+      "approximate_only": true,
+      "calibration": "Jerusalem/Nazareth source anchors: (1056,649.65)/(1040,255.6), 394.375px. Approximate coordinates (31.773938,35.235632)/(32.7,35.3), great-circle distance about103.15km. Rounded50km=191px.",
+      "limitation": "Schematic source is not uniformly scaled; valid only as a local teaching approximation, not a globally accurate geographic scale.",
+      "source_rect_xyxy_percent": [
+        81.812,
+        78.685,
+        93.812,
+        80.094
+      ],
+      "visible_bbox_xyxy_percent": [
+        81.812,
+        78.685,
+        93.812,
+        80.094
+      ],
+      "foot_anchor_source_xy_percent": [
+        81.812,
+        79.343
+      ]
+    }
+  ]
+}

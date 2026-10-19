@@ -5,6 +5,8 @@ const out=process.env.ADVENTURE_SCREENSHOTS;
 (async()=>{
  const server=await require('./server.cjs')(),browser=await webkit.launch({headless:true});
  const context=await browser.newContext({viewport:{width:1024,height:768},hasTouch:true,isMobile:true,deviceScaleFactor:1});
+// These suites test the arrow pad, which computers still use; touch screens show an on-field joystick instead.
+ await context.addInitScript(()=>{document.addEventListener('DOMContentLoaded',()=>{const s=document.createElement('style');s.textContent='.run-dpad{display:grid!important}.run-control-help>div{display:flex!important}.run-touch{display:none!important}';document.head.append(s);});});
  const page=await context.newPage(),errors=[],failed=[],overflow=[],requests=new Map();
  page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)failed.push(r.url());});page.on('request',r=>requests.set(r.url(),(requests.get(r.url())||0)+1));
  const shot=async name=>{if(out){fs.mkdirSync(out,{recursive:true});await page.screenshot({path:path.join(out,name+'.png'),fullPage:true});}};

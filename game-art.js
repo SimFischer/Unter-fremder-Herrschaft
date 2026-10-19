@@ -10,11 +10,11 @@ window.GameArt = (() => {
   return cache.get(path);
  }
  // Two delivered metadata sets (interlude/bonus puzzle and the newer report/messenger games) merge into one lookup.
- const SOURCES=[['docs/interlude-puzzle/SPRITES.json','docs/interlude-puzzle/QA.json'],['docs/new-game-assets/SPRITES.json','docs/new-game-assets/QA.json']];
+ const SOURCES=[['docs/interlude-puzzle/SPRITES.json','docs/interlude-puzzle/QA.json'],['docs/new-game-assets/SPRITES.json','docs/new-game-assets/QA.json'],['docs/asset-update-3/SPRITES.json','docs/asset-update-3/QA.json']];
  async function prepare(paths){
   metadata ||= Promise.all(SOURCES.flat().map(async path=>{
    const response=await fetch(path);if(!response.ok)throw new Error('Asset-Daten fehlen.');return response.json();
-  })).then(([spritesA,qaA,spritesB,qaB])=>[{...spritesA,...spritesB},[...qaA,...qaB]]).catch(error=>{metadata=null;throw error;});
+  })).then(all=>{const sprites={},qa=[];for(let i=0;i<all.length;i+=2){Object.assign(sprites,all[i]);const q=all[i+1];qa.push(...(Array.isArray(q)?q:Array.isArray(q.files)?q.files:Object.values(q.files||{})));}return [sprites,qa];}).catch(error=>{metadata=null;throw error;});
   const [[sprites,qa],images]=await Promise.all([metadata,Promise.all(paths.map(image))]);
   return {sprites,qa,images:Object.fromEntries(paths.map((path,i)=>[path,images[i]]))};
  }

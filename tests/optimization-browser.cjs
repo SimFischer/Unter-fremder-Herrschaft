@@ -16,8 +16,8 @@ const R=require('../logic.js'),M=require('../map-rules.js');
   await page.setViewportSize({width:w,height:h});
   for(let n=0;n<=5;n++){
    await page.evaluate(n=>{const s=Adventure.getState();s.solved=s.solved.map((_,i)=>i<n);s.gatePassed=n===5;Adventure.save();},n);await page.reload();await page.waitForLoadState('networkidle');
-   const sizes=await page.evaluate(()=>{const s=document.querySelector('.scene').getBoundingClientRect();return [...document.querySelectorAll('.world-objects img')].map(e=>{const r=e.getBoundingClientRect();return [e.getAttribute('src'),r.width/s.width,r.height/s.height,(r.bottom-s.top)/s.height];});});
-   const people=sizes.find(x=>x[0]==='group-people.webp'),map=sizes.find(x=>x[0]==='map-table.webp'),table=sizes.find(x=>x[0]==='coin-table.webp');assert.ok(people[2]>.39&&people[2]<.44);assert.ok(table[2]<people[2]*.6);assert.ok(map[2]<people[2]*.5);assert.ok(people[3]>.83&&people[3]<.85);
+   // Scene v2: stations are painted into the stage image; no separate cut-outs may be layered on top.
+   assert.equal(await page.locator('.world-objects img').count(),0);assert.match(await page.locator('#backdrop').getAttribute('src'),/control-post-v2-stage-/);
    for(let i=0;i<5;i++){await tap(`[data-open="${i}"]`);assert.ok(await page.locator('#puzzle').isVisible());await tap('#close');}
    if(n===0||n===5)await shot(`${w}-scene-${n}`);
   }
