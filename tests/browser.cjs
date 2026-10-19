@@ -54,7 +54,9 @@ const key='palaestina-adventure-klasse6-v2';
    // Explore phase: the task stays hidden until the scene is left; findings open a card.
    assert.equal(await page.locator('#check').isVisible(),false);assert.equal(await page.locator('.explore-spot').count(),3);
    await click('[data-discover="0"]');await page.locator('.explore-card').waitFor();assert.match(await page.locator('.explore-count').textContent(),/1 von 3/);await shot(`explore-${station+1}`);
-   await click('.explore-card-close');await click('.explore-go');assert.equal(await page.locator('#check').isVisible(),true);
+   await click('.explore-card-close');assert.equal(await page.locator('.explore-go').isDisabled(),true);
+   for(const j of [1,2]){await click(`[data-discover="${j}"]`);await page.locator('.explore-card').waitFor();await click('.explore-card-close');}
+   assert.match(await page.locator('.explore-count').textContent(),/Alle Fundstücke gelesen/);await click('.explore-go');assert.equal(await page.locator('#check').isVisible(),true);
   }
   assert.equal(await page.locator('textarea').count(),0);
   let before=(await save()).answers[station].stage||0;
@@ -80,8 +82,8 @@ const key='palaestina-adventure-klasse6-v2';
    // Walk the travel route with real key presses; the route is replanned in the page after every leg.
    await page.locator('.walk-canvas').waitFor();await shot('report-walk');
    for(let i=0;i<4;i++){
-    await walkToStation(i);assert.equal(await page.locator('.walk-inspect').isEnabled(),true);
-    await click('.walk-inspect');await page.locator('.walk-card-secure').waitFor();if(i===0)await shot('report-walk-card');
+    await walkToStation(i);assert.notEqual(await page.evaluate(()=>ReportWalk.getRun().near),-1);
+    await page.locator('.walk-canvas').focus();await page.keyboard.press('e');await page.locator('.walk-card-secure').waitFor();if(i===0)await shot('report-walk-card');
     await click('.walk-card-secure');
     assert.deepEqual((await save()).answers[4].found,[0,1,2,3].slice(0,i+1));
    }

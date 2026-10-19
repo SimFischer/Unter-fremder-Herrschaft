@@ -17,6 +17,7 @@ const AdventureRules = (() => {
      if((k==='marked'||/^chain\d$/.test(k))&&Array.isArray(v))s.answers[i][k]=[...new Set(v.filter(n=>Number.isInteger(n)&&n>=0&&n<(k.startsWith('chain')?4:i===1?6:5)))];
      if(/^mapStep[0-7]$/.test(k)&&Array.isArray(v)&&raw.mapRevision===3)s.answers[i][k]=[...new Set(v.filter(n=>Number.isInteger(n)&&n>=0&&n<19))].slice(0,5);
      if(/^mapChoice[0-7]$/.test(k)&&Number.isInteger(v)&&v>=0&&v<6&&raw.mapRevision===3)s.answers[i][k]=v;
+     if(k==='explored'&&i<4&&Array.isArray(v))s.answers[i].explored=[...new Set(v.filter(n=>Number.isInteger(n)&&n>=0&&n<3))].sort();
      if(k==='found'&&i===4&&Array.isArray(v))s.answers[i].found=[...new Set(v.filter(n=>Number.isInteger(n)&&n>=0&&n<4))].sort();
      if(k==='pairs'&&v&&typeof v==='object')s.answers[i].pairs=Object.fromEntries(Object.entries(v).filter(([x,y])=>/^[0-4]$/.test(x)&&Number.isInteger(y)&&y>=0&&y<5));
     }
