@@ -75,8 +75,16 @@ const key='palaestina-adventure-klasse6-v2';
    await select('overall',1);await check();
   }
   if(station===3){
-   for(const values of [[0,1,2],[4,3,8],[6,15],[7,14],1,1,[1,2,13],[7,12,10,5]]){if(Array.isArray(values)){for(const i of values)await click(`[data-place="${i}"]`);}else await select('mapChoice'+(await page.evaluate(()=>document.querySelector('.round-nav .current').dataset.round)),values);await check();await next();}
-   await select('transfer0',0);await check();await next();await select('transfer1',2);await check();
+   const mapAnswers=[[0,1,2],[4,3,8],[6,15],[7,14],1,1,[1,2,13],[7,12,10,5],0,2];
+   const transferHints=[['Überlegt, welche Region besonders mit Jesu Leben und Wirken verbunden ist.','Nazareth und viele Orte seines späteren Wirkens liegen in Galiläa.','Die Reise führt nach Galiläa, weil Jesus dort lebte und wirkte.'],['Denkt an den wichtigsten religiösen Ort in Jerusalem.','In Jerusalem stand der Tempel.','Der Tempel machte Jerusalem zu einem wichtigen Mittelpunkt des jüdischen Glaubens.']];
+   for(const [r,values] of mapAnswers.entries()){
+    await click(`[data-round="${r}"]`);assert.equal(await page.locator('#map-hint').isVisible(),false);
+    const beforeHints=await save();for(let h=0;h<3;h++){await click('[data-map-hint]');assert.ok(await page.locator('#map-hint').isVisible());if(r>=8)assert.equal(await page.locator('#map-hint').textContent(),['Denkimpuls: ','Konkrete Spur: ','Letzte Spur: '][h]+transferHints[r-8][h]);}
+    assert.deepEqual(await save(),beforeHints,'hints never select or award anything');
+    if(Array.isArray(values)){for(const i of values)await click(`[data-place="${i}"]`);}else await select(r<8?'mapChoice'+r:'transfer'+(r-8),values);
+    assert.match(await page.locator('.travel-note .selection-note').textContent(),/Auswahl vollständig/);
+    await check();if(r<9)await next();
+   }
   }
   if(station===4){
    // Walk the travel route with real key presses; the route is replanned in the page after every leg.
@@ -94,6 +102,10 @@ const key='palaestina-adventure-klasse6-v2';
    await click('#check');assert.equal((await save()).answers[4].stage,1);
    for(const i of [0,1,2,3]){await click(`[data-evidence="${i}"]`);await click(`[data-zone="${i}"]`);}
    await shot('report-board');await check();await next();
+   assert.match(await page.locator('.mission').textContent(),/Baut eine schlüssige Argumentationskette/);
+   assert.match(await page.locator('.exercise-4').textContent(),/Beobachtung → Zusammenhang → Schlussfolgerung/);
+   for(const id of [0,1]){const positions=[];for(const key of ['obs','link','conclusion'])positions.push((await page.locator(`[data-key="${key}"]`).evaluateAll(bs=>bs.map(b=>Number(b.dataset.value)))).indexOf(id));assert.equal(new Set(positions).size,3);}
+   const argumentBeforeHints=await save();for(let h=0;h<3;h++){await click('#hint-open');assert.ok(await page.locator('#hint-panel').isVisible());assert.ok((await page.locator('#hint-text').textContent()).length>50);}assert.deepEqual(await save(),argumentBeforeHints);
    await select('obs',0);await select('link',1);await select('conclusion',0);await click('#check');assert.equal((await save()).solved[4],false);
    await select('link',0);await shot('argument-workshop');await check();
   }
@@ -102,6 +114,12 @@ const key='palaestina-adventure-klasse6-v2';
   assert.equal((await save()).solved.filter(Boolean).length,station+1);await page.reload();await page.waitForLoadState('networkidle');
   assert.match(await page.locator('#backdrop').getAttribute('src'),new RegExp(`stage-${station+1}.png`));
  }
+ // Repeat the completed workshop via touch: accept the second path; preserve old IDs across reload.
+ await page.locator('[data-open="4"]').tap();await page.locator('[data-round="2"]').tap();
+ for(const key of ['obs','link','conclusion'])await page.locator(`[data-key="${key}"][data-value="1"]`).tap();await check();
+ await page.reload();await page.waitForLoadState('networkidle');await click('[data-open="4"]');await click('[data-round="2"]');
+ for(const key of ['obs','link','conclusion'])assert.equal(await page.locator(`[data-key="${key}"][data-value="1"]`).getAttribute('aria-pressed'),'true');
+ await check();await select('obs',0);await click('#check');assert.equal(await page.locator('#feedback').getAttribute('class'),'needs-help');assert.equal((await save()).solved.filter(Boolean).length,5);await click('#close');
  await click('[data-open="4"]');await click('#close');assert.equal((await save()).solved.filter(Boolean).length,5);assert.equal(await page.locator('#reward').isVisible(),false);
  await click('[data-open="0"]');await click('#puzzle-book');await click('[data-book="time"]');await page.keyboard.press('Escape');await page.locator('#puzzle').waitFor({state:'visible'});assert.equal(await page.locator('#puzzle').isVisible(),true);await click('#close');
  await click('#notebook-open');await shot('notebook');await page.keyboard.press('Escape');assert.equal(await page.locator('#notebook').isVisible(),false);

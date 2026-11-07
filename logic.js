@@ -53,11 +53,13 @@ const AdventureRules = (() => {
   s.gatePassed=s.solved.every(Boolean)&&(raw.gatePassed===true||s.finale>0||s.bonusCompleted.length>0||s.boteBest>0);
   return s;
  }
+ // Stored option IDs stay unchanged; each group has a different presentation order.
+ const argumentOrder={obs:[2,0,1],link:[1,2,0],conclusion:[0,1,2]};
+ const argumentPaths={economic:{obs:0,link:0,conclusion:0},freedom:{obs:1,link:1,conclusion:1}};
  function argument(a){
-  // Two supported explanations: economic burden or control and hopes of freedom.
-  return (a.obs===0&&a.link===0&&a.conclusion===0)||(a.obs===1&&a.link===1&&a.conclusion===1);
+  return Object.values(argumentPaths).some(path=>Object.entries(path).every(([key,id])=>a[key]===id));
  }
  function award(s,i){if(s.solved[i])return false;s.solved[i]=true;return true;}
- return {fresh,migrate,argument,award,totals};
+ return {fresh,migrate,argument,argumentOrder,argumentPaths,award,totals};
 })();
 if(typeof module!=='undefined')module.exports=AdventureRules;

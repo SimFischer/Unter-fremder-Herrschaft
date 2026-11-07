@@ -89,9 +89,11 @@ function render(){
   const known=MapRules.known(a.stage||0,round),shown=round<8?(choice?task.show:task.candidates):[];
   const sc=MapRules.scale;
   html=`<div class="map-layout"><div class="map"><img src="assets/puzzles/map/map-table-large-v2.png" alt="Stumme Karte mit Gebietsgrenzen: Mittelmeer im Westen, See Genezareth im Nordosten, Jordan zum Toten Meer im Südosten. Die Orte sind nummeriert."><img class="orientation" src="assets/puzzles/map/map-compass.png" alt="Orientierungsscheibe: Norden oben, kein Magnetkompass"><div class="map-scale" style="--scale-h:${sc.heightPercent}%" aria-label="Maßstab: Die Leiste entspricht ${sc.km} km"><span class="map-scale-bar"></span><span>${sc.km} km</span></div>${shown.length?`<svg class="map-anchors" viewBox="0 0 1000 665" aria-hidden="true">${shown.map(i=>{const p=PLACES[i];return `<path d="M ${p[1]*10} ${p[2]*6.65} L ${p[5]*10} ${p[6]*6.65}"/><circle cx="${p[1]*10}" cy="${p[2]*6.65}" r="5"/>`;}).join('')}</svg>`+shown.map(i=>{const p=PLACES[i],selected=chosen.includes(i),name=known.has(i),num=MapRules.number(i);return `<button data-place="${i}" ${choice?'disabled':''} style="left:${p[5]}%;top:${p[6]}%" class="map-marker map-${p[4]==='Region'?'region':p[4]==='Ort'?'town':'water'} ${selected?'selected':''} ${name?'named':'silent'}" aria-pressed="${selected}" aria-label="Marker ${num}${name?': '+p[0]:''}${selected?', Markierung '+(chosen.indexOf(i)+1):''}"><span>${selected&&!task.unordered?chosen.indexOf(i)+1+' · ':''}${name?p[0]:num}</span></button>`;}).join(''):''}<div class="route-proof">${sprite('assets/puzzles/map/map-route-strip.png','footprints')}<span>${Math.min(a.stage||0,8)} Reisemarken gesichert</span></div></div><div class="travel-note">`;
-  if(round<8&&choice)html+=`<span class="stamp">REISEHINWEIS ${round+1} VON 8</span><h3>Messen und rechnen</h3><p class="question">${task.question}</p>${options('mapChoice'+round,task.options)}<button class="paper-quiet" data-map-hint>Den Kartenschreiber fragen</button><p id="map-hint" role="status" ${hintLevel===0?'hidden':''}>${hintLevel?esc(task.hints[Math.min(hintLevel-1,2)]):''}</p>`;
-  else if(round<8)html+=`<span class="stamp">REISEHINWEIS ${round+1} VON 8</span><h3>Plant den nächsten Wegabschnitt</h3><p class="question">${task.question}</p><p class="selection-note" role="status">${chosen.length?'Eure Wahl: '+chosen.map(i=>known.has(i)?PLACES[i][0]:'Marker '+MapRules.number(i)).join(task.unordered?' + ':' → '):'Tippt auf die passenden Marker auf der Karte. Die Namen erscheinen, sobald ihr einen Ort gefunden habt.'} · ${chosen.length} von ${task.answer.length}</p>${task.answer.length>1?'<button class="paper-quiet" data-map-reset>Markierungen zurücknehmen</button><p class="map-instruction">Erneutes Antippen nimmt eine Markierung zurück.</p>':''}<button class="paper-quiet" data-map-hint>Den Kartenschreiber fragen</button><p id="map-hint" role="status" ${hintLevel===0?'hidden':''}>${hintLevel?esc(task.hints[Math.min(hintLevel-1,2)]):''}</p>`;
-  else html+=`<span class="stamp">DIE REISE GEHT WEITER</span><h3>${TRANSFER[round-8].question}</h3>${options('transfer'+(round-8),TRANSFER[round-8].options)}`;
+  if(round<8&&choice)html+=`<span class="stamp">REISEHINWEIS ${round+1} VON 8</span><h3>Messen und rechnen</h3><p class="question">${task.question}</p>${options('mapChoice'+round,task.options)}<p class="selection-note" role="status">${task.options.some((_,i)=>a['mapChoice'+round]===i)?'1 von 1 · Auswahl vollständig. Prüft jetzt diesen Schritt.':'0 von 1 · Wählt eine Antwort und prüft danach diesen Schritt.'}</p>`;
+  else if(round<8)html+=`<span class="stamp">REISEHINWEIS ${round+1} VON 8</span><h3>Plant den nächsten Wegabschnitt</h3><p class="question">${task.question}</p><p class="selection-note" role="status">${chosen.length?'Eure Wahl: '+chosen.map(i=>known.has(i)?PLACES[i][0]:'Marker '+MapRules.number(i)).join(task.unordered?' + ':' → '):'Tippt auf die passenden Marker auf der Karte. Die Namen erscheinen, sobald ihr einen Ort gefunden habt.'} · ${chosen.length} von ${task.answer.length}${chosen.length===task.answer.length?' · Auswahl vollständig. Prüft jetzt diesen Schritt.':' · Ergänzt die Markierungen und prüft danach diesen Schritt.'}</p>${task.answer.length>1?'<button class="paper-quiet" data-map-reset>Markierungen zurücknehmen</button><p class="map-instruction">Erneutes Antippen nimmt eine Markierung zurück.</p>':''}`;
+  else html+=`<span class="stamp">DIE REISE GEHT WEITER</span><h3>${TRANSFER[round-8].question}</h3><p>Wählt genau eine Antwort. Prüft danach diesen Schritt; bei Unsicherheit fragt den Kartenschreiber.</p>${options('transfer'+(round-8),TRANSFER[round-8].options)}<p class="selection-note" role="status">${TRANSFER[round-8].options.some((_,i)=>a['transfer'+(round-8)]===i)?'1 von 1 · Auswahl vollständig. Prüft jetzt diesen Schritt.':'0 von 1 · Noch keine Antwort gewählt.'}</p>`;
+  const hints=round<8?task.hints:TRANSFER[round-8].hints;
+  html+=`<button class="paper-quiet" data-map-hint>Den Kartenschreiber fragen</button><p id="map-hint" role="status" ${hintLevel===0?'hidden':''}>${hintLevel?esc(hints[Math.min(hintLevel-1,2)]):''}</p>`;
   html+='</div></div>';
  }
  if(active===4&&round===0){
@@ -105,11 +107,12 @@ function render(){
   html+=`<p class="selection-note">${[0,1,2,3].filter(i=>a['category'+i]!==undefined).length} von 4 Belegen eingeordnet${pending!==null?` · Wählt jetzt ein Feld für „${REPORT_STATIONS[pending].evidenceName}“.`:''}</p>`;
  }
  if(active===4&&round===2){
-  html=mission('Die Argumentationswerkstatt','Wählt je einen Baustein: Beobachtung → Zusammenhang → Schlussfolgerung. Die drei Teile müssen dieselbe Erklärung tragen. Es gibt zwei passende Wege.');
+  html=mission('Die Argumentationswerkstatt','Baut eine schlüssige Argumentationskette. Wählt dazu eine Beobachtung, einen passenden Zusammenhang und eine Schlussfolgerung. Alle drei Bausteine müssen dieselbe Erklärung verfolgen. Es gibt zwei mögliche richtige Argumentationswege.');
   const parts=['obs','link','conclusion'].filter(k=>a[k]!==undefined).map(k=>ARGUMENTS[k][a[k]]);
   html+=`<div class="report-result"><img src="assets/puzzles/report-topdown/report-result-panel-v2.png" alt=""><h4 class="report-result-title">Zacharias’ Belege</h4>${[0,1,2,3].map(i=>`<div class="report-result-evidence rr-${i}">${sprite(EV,STATION_EVIDENCE[i])}<span class="visually-hidden">${esc(REPORT_STATIONS[i].evidenceName)}</span></div><div class="report-result-category rr-${i}" title="${CATEGORIES[REPORT_ANSWERS[i]]}">${CATEGORY_SHORT[REPORT_ANSWERS[i]]}</div>`).join('')}<p class="report-result-explanation" aria-live="polite">${parts.length?esc(parts.join(' ')):'Wählt unten drei Bausteine. Hier entsteht eure Erklärung.'}</p></div>`;
-  html+=['obs','link','conclusion'].map((key,j)=>`<section class="argument-group"><h4>${j+1} · ${['Beobachtung','Zusammenhang','Schlussfolgerung'][j]}</h4><div class="report-tile-bank">${ARGUMENTS[key].map((t,i)=>`<button class="report-tile ${a[key]===i?'selected':''}" data-key="${key}" data-value="${i}" aria-pressed="${a[key]===i}">${sprite(AT,(i+j)%2?'medium-b':'medium-a')}<span>${esc(t)}</span></button>`).join('')}</div></section>`).join('');
-  html+='<p>Optional: Erklärt eure fertige Argumentation einem Partner mündlich.</p>';
+  html+='<p class="selection-note">Beobachtung → Zusammenhang → Schlussfolgerung</p>';
+  html+=['obs','link','conclusion'].map((key,j)=>`<section class="argument-group"><h4>${j+1} · ${['Beobachtung','Zusammenhang','Schlussfolgerung'][j]}</h4><div class="report-tile-bank">${AdventureRules.argumentOrder[key].map((i,position)=>`<button class="report-tile ${a[key]===i?'selected':''}" data-key="${key}" data-value="${i}" aria-pressed="${a[key]===i}">${sprite(AT,(position+j)%2?'medium-b':'medium-a')}<span>${esc(ARGUMENTS[key][i])}</span></button>`).join('')}</div></section>`).join('');
+  html+=`<p class="selection-note" role="status">${parts.length} von 3 Bausteinen gewählt${parts.length===3?' · Auswahl vollständig. Prüft, ob alle dieselbe Erklärung verfolgen.':' · Wählt in jedem der drei Bereiche einen Baustein.'}</p><p>Optional: Erklärt eure fertige Argumentation einem Partner mündlich.</p>`;
  }
  const nav=`<nav class="round-nav" aria-label="Rätselschritte">${Array.from({length:total},(_,i)=>`<button data-round="${i}" ${i>unlocked&&!state.solved[active]&&!window.Teacher?.active?'disabled':''} class="${i===round?'current':''} ${i<(a.stage||0)?'complete':''}" aria-label="Schritt ${i+1}${i<(a.stage||0)?', geschafft':''}" ${i===round?'aria-current="step"':''}>${i+1}</button>`).join('')}<span>Schritt ${round+1} von ${total}</span></nav>`;
  if(window.Teacher?.solutions)html+=`<p class="teacher-solution"><strong>Lösung (Lehrkräftemodus):</strong> ${esc(solutionText(active,round))}</p>`;
@@ -119,6 +122,7 @@ function render(){
   onComplete:()=>{if(active===4&&views[4]===0&&!awaitingNext)check();}});
  else window.ReportWalk?.unmount();
  requestAnimationFrame(drawConnections);
+ if(hintLevel===0)$('#hint-open').textContent=active===3?'Den Kartenschreiber fragen':active===4&&round===2?'Eine Spur zur Argumentationskette erfragen':'Eine Spur erfragen';
  $('#solved').textContent=state.solved[active]?'Siegel offen · ihr könnt weiter nachlesen':'';
  $('#check').textContent=awaitingNext?(round===total-1?'Zur Szene':'Weiter →'):state.solved[active]?'Wiederholung prüfen':'Diesen Schritt prüfen';
 }
@@ -236,11 +240,11 @@ $('#core-info').addEventListener('click',e=>{
  $('#discovery-detail').innerHTML=`<article class="found-note"><h3>${r[0]}</h3><p>${r[1]}</p><small>Im Reisebuch nachlesbar.</small></article>`;
 });
 function showMapHint(){
- hintLevel=Math.min(hintLevel+1,3);const text=MapRules.tasks[views[active]].hints[hintLevel-1];
- const target=$('#map-hint');target.hidden=false;target.textContent=['Denkimpuls: ','Räumliche Spur: ','Letzte Spur: '][hintLevel-1]+text;
+ hintLevel=Math.min(hintLevel+1,3);const round=views[active],text=(round<8?MapRules.tasks[round].hints:TRANSFER[round-8].hints)[hintLevel-1];
+ const target=$('#map-hint');target.hidden=false;target.textContent=['Denkimpuls: ',round<8?'Räumliche Spur: ':'Konkrete Spur: ','Letzte Spur: '][hintLevel-1]+text;
 }
 $('#hint-open').onclick=()=>{
- if(active===3&&views[active]<8){showMapHint();$('#map-hint').scrollIntoView({block:'nearest',behavior:'instant'});return;}
+ if(active===3){showMapHint();$('#map-hint').scrollIntoView({block:'nearest',behavior:'instant'});return;}
  $('#hint-panel').hidden=false;
  const level=Math.min(hintLevel,2);
  const hints=active===4?HINTS[4][views[4]]:HINTS[active];
@@ -314,7 +318,7 @@ function solutionText(i,r){
  if(i===3){if(r>=8)return TRANSFER[r-8].options[TRANSFER[r-8].answer];const t=MapRules.tasks[r];return MapRules.isChoice(r)?t.options[t.answer]:t.answer.map(k=>`${PLACES[k][0]} (Marker ${MapRules.number(k)})`).join(t.unordered?' + ':' → ');}
  if(r===0)return 'Alle vier Stationen besuchen und sichern: '+REPORT_STATIONS.map(s=>s.place).join(', ')+'.';
  if(r===1)return REPORT_STATIONS.map((s,k)=>`${s.evidenceName} → ${CATEGORIES[REPORT_ANSWERS[k]]}`).join('; ');
- return `Weg 1: ${ARGUMENTS.obs[0]} / ${ARGUMENTS.link[0]} / ${ARGUMENTS.conclusion[0]} – oder Weg 2: ${ARGUMENTS.obs[1]} / ${ARGUMENTS.link[1]} / ${ARGUMENTS.conclusion[1]}`;
+ return Object.values(AdventureRules.argumentPaths).map((path,i)=>`Weg ${i+1}: ${['obs','link','conclusion'].map(key=>ARGUMENTS[key][path[key]]).join(' / ')}`).join(' – oder ');
 }
 function openStation(i,round=0){if(document.querySelector('dialog[open]'))document.querySelectorAll('dialog[open]').forEach(d=>d.close());open(i);exploring=false;renderExplore();views[i]=round;render();}
 function openFinale(){document.querySelectorAll('dialog[open]').forEach(d=>d.close());renderFinale();$('#finale').showModal();}

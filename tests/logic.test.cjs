@@ -31,9 +31,17 @@ test('current saves retain choices and optional progress',()=>{
  const s=R.fresh();s.answers[4]={stage:2,found:[0,1,2,3],category0:0,obs:1,link:1,conclusion:1};s.discoveries=[4];s.bonusRound=3;
  assert.deepEqual(R.migrate(JSON.parse(JSON.stringify(s))),{...s,answers:s.answers.map(a=>({stage:0,...a}))});
 });
-test('argument must connect evidence and reasoning; two valid paths, mixed paths rejected',()=>{
- assert.ok(R.argument({obs:0,link:0,conclusion:0}));assert.ok(R.argument({obs:1,link:1,conclusion:1}));
- for(const a of [{},{obs:0,link:1,conclusion:0},{obs:2,link:2,conclusion:2},{obs:1,link:0,conclusion:1}])assert.equal(R.argument(a),false);
+test('exactly two semantic argument paths; displayed positions never reveal a valid chain',()=>{
+ const accepted=[];
+ for(let obs=0;obs<3;obs++)for(let link=0;link<3;link++)for(let conclusion=0;conclusion<3;conclusion++){
+  const a={obs,link,conclusion};if(R.argument(a))accepted.push(a);
+ }
+ assert.deepEqual(accepted,[{obs:0,link:0,conclusion:0},{obs:1,link:1,conclusion:1}]);
+ assert.equal(R.argument({}),false);
+ for(const path of accepted){const positions=Object.keys(path).map(key=>R.argumentOrder[key].indexOf(path[key]));assert.equal(new Set(positions).size,3);}
+ for(let pos=0;pos<3;pos++)assert.equal(R.argument(Object.fromEntries(Object.entries(R.argumentOrder).map(([key,order])=>[key,order[pos]]))),false);
+ const old=R.fresh();old.answers[4]={stage:2,obs:1,link:1,conclusion:1};const restored=R.migrate(old);
+ assert.deepEqual([restored.answers[4].obs,restored.answers[4].link,restored.answers[4].conclusion],[1,1,1]);assert.ok(R.argument(restored.answers[4]));
 });
 test('seal collection is idempotent and independent of bonus progress',()=>{
  const s=R.fresh();s.bonusRound=5;assert.equal(s.solved.filter(Boolean).length,0);
